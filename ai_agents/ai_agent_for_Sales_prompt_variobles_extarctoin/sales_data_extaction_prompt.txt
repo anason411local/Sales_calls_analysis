@@ -1,0 +1,566 @@
+SALES CALL ANALYSIS FRAMEWORK - DATA EXTRACTION PROMPT
+ 
+This framework is designed to extract and analyze key data points from sales call transcripts without scoring. The focus is on identifying specific patterns, behaviors, and outcomes that provide insight into call performance.
+ 
+================================================================================
+CATEGORY I: CUSTOMER ENGAGEMENT & INTEREST (15% Total Weightage)
+================================================================================
+ 
+Description: This category evaluates the depth and quality of customer participation in the conversation, measuring both quantitative engagement metrics and qualitative indicators of interest or resistance.
+ 
+I.1 Customer vs Agent Talk Ratio (40% of Category Weightage):
+ 
+Description: Measures the percentage breakdown of conversation between the customer and the sales representative to determine if the dialogue is mutual, agent-heavy, or customer-heavy.
+ 
+Data to Extract:
+- Total number of agent turns/utterances
+- Total number of customer turns/utterances
+- Percentage of conversation by agent (%)
+- Percentage of conversation by customer (%)
+- Classification: [Mutual Dialogue / Agent-Heavy / Customer-Heavy]
+- Agent Verbiage: Extract representative sample of agent's speaking patterns
+- Customer Verbiage: Extract representative sample of customer's speaking patterns
+ 
+Analysis Notes: A mutual dialogue typically shows 40-60% customer participation. Agent-heavy conversations (customer <30%) may indicate monologuing. Customer-heavy conversations (customer >70%) may indicate loss of control.
+ 
+---
+ 
+I.2 Discovery Questions Asked Before Disengage (30% of Category Weightage):
+ 
+Description: Counts and categorizes the number and quality of discovery questions the agent asks before the customer disengages or the call concludes.
+ 
+Data to Extract:
+ 
+Goal 1 - Demographics / Operations Questions (Q1-Q9):
+- How long have you been in business? [Yes/No - Timestamp]
+- Do you service residential, commercial, or both? [Yes/No - Timestamp]
+- Do you service within a 50-mile radius or more? [Yes/No - Timestamp]
+- What are your top 5 services that you provide? [Yes/No - Timestamp]
+- Are you a one-man team or do you have employees? [Yes/No - Timestamp]
+- Do you do mobile work, have a shop, or both? [Yes/No - Timestamp]
+- What kind of vehicle/equipment do you have? [Yes/No - Timestamp]
+- What made you decide to open up your own business? [Yes/No - Timestamp]
+- Total Goal 1 Questions Asked: [Count]
+ 
+Goal 2 - Competition / Marketing Questions (Q1-Q6):
+- Do you currently have a website? How effective is it? [Yes/No - Timestamp]
+- Are you managing marketing yourself or is someone managing it? [Yes/No - Timestamp]
+- What type of advertising are you doing? (Facebook, directories, print) [Yes/No - Timestamp]
+- How much do you spend on advertising monthly? [Yes/No - Timestamp]
+- What services are you getting for that price? [Yes/No - Timestamp]
+- How do non-referral prospects find you? [Yes/No - Timestamp]
+- Total Goal 2 Questions Asked: [Count]
+ 
+Goal 3 - Practical Need / Mindset Questions (Q7-Q10):
+- When was the last time you used Google to look for a service? [Yes/No - Timestamp]
+- Were you able to find what you were looking for quickly? [Yes/No - Timestamp]
+- How often do you see people using phones to find things? [Yes/No - Timestamp]
+- Do you know anyone who uses online/Google to look for something? [Yes/No - Timestamp]
+- Total Goal 3 Questions Asked: [Count]
+ 
+Advanced Discovery - "Peeling the Onion":
+- Did agent ask initial open-ended pain point question? [Yes/No]
+- Initial Question Verbiage: [Extract exact quote]
+- Did agent probe deeper with follow-up questions? [Yes/No]
+- Probing Question Verbiage: [Extract exact quotes]
+- Example: "What are your biggest challenges in attracting new customers online?"
+ 
+Total Discovery Questions: [Sum of all goals]
+Quality Assessment: [Surface-Level / Moderate Depth / Deep Discovery]
+ 
+---
+ 
+I.3 Buying Signals vs Resistance Signals (30% of Category Weightage):
+ 
+Description: Identifies and classifies explicit signals from the customer that indicate interest in purchasing versus resistance or objections.
+ 
+Data to Extract:
+ 
+Buying Signals Detected:
+- Customer asks about results: [Yes/No - Timestamp - Verbiage]
+- Customer asks about price: [Yes/No - Timestamp - Verbiage]
+- Customer asks about next steps: [Yes/No - Timestamp - Verbiage]
+- Customer asks about timeline: [Yes/No - Timestamp - Verbiage]
+- Customer expresses positive sentiment: [Yes/No - Timestamp - Verbiage]
+- Total Buying Signals: [Count]
+ 
+Resistance Signals Detected:
+- Price pushback: [Yes/No - Timestamp - Verbiage]
+- "Not interested" statements: [Yes/No - Timestamp - Verbiage]
+- Previous bad experience mentioned: [Yes/No - Timestamp - Verbiage]
+- Timing concerns: [Yes/No - Timestamp - Verbiage]
+- Budget constraints mentioned: [Yes/No - Timestamp - Verbiage]
+- Total Resistance Signals: [Count]
+ 
+Signal Ratio: [Buying Signals : Resistance Signals]
+Overall Customer Sentiment: [Interested / Neutral / Resistant]
+ 
+================================================================================
+CATEGORY II: CALL OPENING & FRAMING (10% Total Weightage)
+================================================================================
+ 
+Description: This category evaluates how effectively the agent establishes the call's purpose, context, and structure within the opening moments.
+ 
+II.1 Time to State Clear Reason for Call (40% of Category Weightage):
+ 
+Description: Measures how quickly (in seconds) the agent communicates the specific reason for the call after the initial greeting.
+ 
+Data to Extract:
+- Initial greeting timestamp: [MM:SS]
+- Reason for call stated timestamp: [MM:SS]
+- Time elapsed: [Seconds]
+- Reason for call verbiage: [Extract exact quote]
+- Was reason stated clearly? [Yes/No]
+- Agent Verbiage: [Complete opening statement through reason for call]
+ 
+Example Pattern: "I'm calling, John, to discuss how 411 Locals can help your plumbing business in Anytown..."
+ 
+---
+ 
+II.2 Business Type & Location Referenced in First 30-45 Seconds (30% of Category Weightage):
+ 
+Description: Identifies whether the agent personalizes the opening by mentioning the prospect's specific business type and location within the first 30-45 seconds.
+ 
+Data to Extract:
+- Business type mentioned: [Yes/No - Timestamp - Verbiage]
+- Location mentioned: [Yes/No - Timestamp - Verbiage]
+- Within first 30 seconds? [Yes/No]
+- Within first 45 seconds? [Yes/No]
+- Personalization quality: [Generic / Specific / Highly Tailored]
+- Agent Verbiage: [Extract personalization statement]
+ 
+Example Pattern: "I noticed you're a plumbing business in Anytown..."
+ 
+---
+ 
+II.3 Clarity of Call Structure Communicated Up Front (30% of Category Weightage):
+ 
+Description: Assesses whether the agent frames what will happen during the call, setting clear expectations for the conversation flow.
+ 
+Data to Extract:
+- Call structure mentioned: [Yes/No - Timestamp]
+- Framing phrases used: [Extract exact quotes]
+- Elements mentioned:
+  * Time expectation set: [Yes/No - Verbiage]
+  * Purpose stated: [Yes/No - Verbiage]
+  * Process outlined: [Yes/No - Verbiage]
+- Agent Verbiage: [Extract framing statement]
+ 
+Example Patterns: "So as not to take up much of your time..." / "Let me briefly explain what we'll cover..."
+ 
+================================================================================
+CATEGORY III: OBJECTION HANDLING & FRICTION (20% Total Weightage)
+================================================================================
+ 
+Description: This category analyzes how the agent responds to customer objections, concerns, and friction points throughout the call.
+ 
+III.1 Objections Raised and Rebutted (40% of Category Weightage):
+ 
+Description: Counts the total number of objections raised by the customer and tracks whether each was acknowledged and addressed by the agent.
+ 
+Data to Extract:
+ 
+Objection #1:
+- Objection type: [Price / Timeline / Previous Experience / Contract / Value / Other]
+- Timestamp: [MM:SS]
+- Customer Verbiage: [Exact objection quote]
+- Agent acknowledged: [Yes/No]
+- Agent Verbiage: [Exact response quote]
+- Rebuttal provided: [Yes/No]
+ 
+Objection #2:
+[Repeat structure for each objection]
+ 
+Total Objections Raised: [Count]
+Total Objections Acknowledged: [Count]
+Total Objections Rebutted: [Count]
+Unaddressed Objections: [Count]
+ 
+---
+ 
+III.2 Agent Acknowledged Objection First (30% of Category Weightage):
+ 
+Description: Identifies whether the agent uses acknowledgement statements before attempting to rebut or respond to customer objections.
+ 
+Data to Extract:
+ 
+For Each Objection:
+- Acknowledgement used: [Yes/No]
+- Acknowledgement type: [Empathy / Validation / Clarification / None]
+- Acknowledgement verbiage: [Extract exact quote]
+ 
+Acknowledgement Patterns Detected:
+- "Thank you for that information..." [Yes/No - Count]
+- "That must be incredibly frustrating..." [Yes/No - Count]
+- "That's a long time..." [Yes/No - Count]
+- "You're absolutely right..." [Yes/No - Count]
+- "I understand..." [Yes/No - Count]
+- Other acknowledgement phrases: [List with counts]
+ 
+Acknowledgement Rate: [Acknowledged Objections / Total Objections × 100%]
+ 
+---
+ 
+III.3 Price, Timeline, or Contract Mentions Near Drop-Off (30% of Category Weightage):
+ 
+Description: Tracks how many times pricing, timeline expectations, or contract terms are mentioned in close proximity to the call ending or customer disengagement.
+ 
+Data to Extract:
+ 
+Price Mentions:
+- Total price mentions in call: [Count]
+- Price mentions in final 2 minutes: [Count]
+- Timestamp of each mention: [List]
+- Verbiage of each mention: [Extract quotes]
+ 
+Timeline Mentions:
+- Total timeline mentions in call: [Count]
+- Timeline mentions in final 2 minutes: [Count]
+- Timestamp of each mention: [List]
+- Verbiage of each mention: [Extract quotes]
+ 
+Contract Mentions:
+- Total contract mentions in call: [Count]
+- Contract mentions in final 2 minutes: [Count]
+- Timestamp of each mention: [List]
+- Verbiage of each mention: [Extract quotes]
+ 
+ROI/Value Calculation Presented:
+- ROI discussed: [Yes/No - Timestamp - Verbiage]
+- Used customer's data: [Yes/No]
+- Example: "250 monthly service" → "1,000 job" calculation
+ 
+Correlation to Drop-Off: [High / Medium / Low / N/A]
+ 
+================================================================================
+CATEGORY IV: PACE, CONTROL, AND INTERRUPTIONS (15% Total Weightage)
+================================================================================
+ 
+Description: This category examines the agent's control over conversation flow, pacing, and adherence to the expected script structure.
+ 
+IV.1 Average Monologue Length of Agent (35% of Category Weightage):
+ 
+Description: Calculates the average number of consecutive sentences or speaking time for the agent between customer responses.
+ 
+Data to Extract:
+ 
+Agent Monologues Analysis:
+- Total number of agent speaking turns: [Count]
+- Number of extended monologues (>5 consecutive sentences): [Count]
+- Longest monologue duration: [Seconds/Sentence count]
+- Longest monologue verbiage: [Extract quote]
+- Average monologue length: [Seconds/Sentence count]
+ 
+Monologue Distribution:
+- Short (1-2 sentences): [Count]
+- Medium (3-5 sentences): [Count]
+- Long (6-10 sentences): [Count]
+- Very Long (>10 sentences): [Count]
+ 
+Conversation Balance: [Mutual / Agent-Heavy / Choppy]
+ 
+---
+ 
+IV.2 Instances Where Agent Interrupts Customer (30% of Category Weightage):
+ 
+Description: Identifies specific moments where the agent speaks before the customer has finished their thought or statement.
+ 
+Data to Extract:
+ 
+Interruption Log:
+Interruption #1:
+- Timestamp: [MM:SS]
+- Customer was saying: [Extract quote showing incomplete thought]
+- Agent interrupted with: [Extract quote]
+- Interruption type: [Cutting off / Talking over / Finishing sentence]
+ 
+[Repeat for each interruption]
+ 
+Total Interruptions: [Count]
+Interruption Rate: [Interruptions per minute]
+Pattern Analysis: [Frequent / Occasional / Rare / None]
+ 
+---
+ 
+IV.3 Deviation from Expected Script Order (35% of Category Weightage):
+ 
+Description: Maps the call flow against the expected script structure and identifies any deviations, skipped stages, or out-of-order segments.
+ 
+Data to Extract:
+ 
+Expected Script Flow:
+I. Proper Introduction → Timestamp: [MM:SS] [Present/Skipped]
+II. Clear and Personalized Reason for the Call → Timestamp: [MM:SS] [Present/Skipped]
+III. Ask Discovery Questions to Understand Pain Points → Timestamp: [MM:SS] [Present/Skipped]
+IV. Highlight Competitor Success Using FOMO → Timestamp: [MM:SS] [Present/Skipped]
+V. Value Proposition → Timestamp: [MM:SS] [Present/Skipped]
+VI. Utilize ROI Calculation → Timestamp: [MM:SS] [Present/Skipped]
+VII. Assume the Sale and Begin Gathering Information → Timestamp: [MM:SS] [Present/Skipped]
+VIII. Call Control & Engagement → [Throughout call]
+ 
+Deviations Detected:
+- Segments completed out of order: [List with timestamps]
+- Segments skipped entirely: [List]
+- Segments repeated: [List with timestamps]
+- Premature closing attempts: [Yes/No - Timestamp]
+- Returned to earlier stage: [Yes/No - Details]
+ 
+Flow Assessment: [Structured / Somewhat Structured / Unstructured]
+ 
+================================================================================
+CATEGORY V: EMOTIONAL TONE & RAPPORT (20% Total Weightage)
+================================================================================
+ 
+Description: This category assesses the emotional connection, empathy, and relationship-building efforts throughout the call.
+ 
+V.1 Rapport Moments in First Minute (35% of Category Weightage):
+ 
+Description: Identifies specific rapport-building techniques used within the first 60 seconds, including use of name and contextual references.
+ 
+Data to Extract:
+ 
+First Minute Analysis (0:00-1:00):
+- Customer name used: [Yes/No - Count - Timestamps]
+- Name usage verbiage: [Extract quotes]
+- Context reference made: [Yes/No - Type]
+- Context verbiage: [Extract quote]
+- Pleasantry/Small talk: [Yes/No]
+- Pleasantry verbiage: [Extract quote]
+- Tone assessment: [Warm / Professional / Cold / Rushed]
+ 
+Rapport Elements Present:
+- Personal greeting: [Yes/No]
+- Reference to previous interaction: [Yes/No]
+- Common ground established: [Yes/No]
+- Genuine interest expressed: [Yes/No]
+ 
+Example Pattern: "Good morning, John! It's great to finally connect with you after our email exchange..."
+ 
+---
+ 
+V.2 Sentiment of Customer Responses Over Time (35% of Category Weightage):
+ 
+Description: Tracks the emotional tone and sentiment of customer responses throughout the call to identify shifts in attitude.
+ 
+Data to Extract:
+ 
+Sentiment Timeline:
+Opening (0:00-2:00):
+- Customer sentiment: [Positive / Neutral / Negative / Skeptical]
+- Customer verbiage sample: [Extract representative quote]
+ 
+Early Middle (2:00-5:00):
+- Customer sentiment: [Positive / Neutral / Negative / Skeptical]
+- Customer verbiage sample: [Extract representative quote]
+ 
+Late Middle (5:00-End minus 2 min):
+- Customer sentiment: [Positive / Neutral / Negative / Skeptical]
+- Customer verbiage sample: [Extract representative quote]
+ 
+Closing (Final 2 minutes):
+- Customer sentiment: [Positive / Neutral / Negative / Skeptical]
+- Customer verbiage sample: [Extract representative quote]
+ 
+Sentiment Progression: [Improved / Stable / Declined / Fluctuated]
+Notable Sentiment Shifts: [List with timestamps and triggers]
+ 
+Example Indicators:
+- Positive: Asking questions, agreeing, expressing interest
+- Negative: Frustration expressed (e.g., "Facebook ads feeling like throwing money away")
+ 
+---
+ 
+V.3 Empathy Statements When Customer Shares Frustration (30% of Category Weightage):
+ 
+Description: Identifies whether the agent uses empathy statements in response to customer frustrations or challenges.
+ 
+Data to Extract:
+ 
+Customer Frustration Moments:
+Frustration #1:
+- Timestamp: [MM:SS]
+- Customer verbiage: [Extract frustration quote]
+- Agent empathy shown: [Yes/No]
+- Agent empathy verbiage: [Extract quote]
+- Empathy type: [Acknowledgement / Validation / Shared Experience / None]
+ 
+[Repeat for each frustration]
+ 
+Empathy Patterns Detected:
+- "That must be incredibly frustrating..." [Yes/No - Count]
+- "Oh wow, that sounds really tough..." [Yes/No - Count]
+- "I hear that from a lot of..." [Yes/No - Count]
+- "I understand how..." [Yes/No - Count]
+- Other empathy phrases: [List with counts]
+ 
+Total Frustrations Expressed: [Count]
+Total Empathy Responses: [Count]
+Empathy Response Rate: [Percentage]
+ 
+================================================================================
+CATEGORY VI: OUTCOME AND TIMING MARKERS (20% Total Weightage)
+================================================================================
+ 
+Description: This category analyzes the call's conclusion, including when the call ended, at what stage, and whether any commitments were secured.
+ 
+VI.1 Timestamp of Hang-Up Relative to Key Stages (40% of Category Weightage):
+ 
+Description: Maps the exact time the call ended to the stage of the sales process that was in progress.
+ 
+Data to Extract:
+ 
+Call Timing:
+- Total call duration: [MM:SS]
+- Hang-up timestamp: [MM:SS]
+- Hang-up initiated by: [Customer / Agent / Mutual]
+ 
+Last Completed Stage:
+- Stage name: [Introduction / Discovery / Pitch / ROI / Close / Other]
+- Stage timestamp range: [Start MM:SS - End MM:SS]
+- Verbiage at hang-up: [Extract final 2-3 exchanges]
+ 
+Stage Progression at Disconnect:
+☐ I/II - Introduction and Reason for Call
+☐ III - Discovery Phase
+☐ IV - FOMO/Competitor Discussion
+☐ V/VI - Value Proposition and ROI
+☐ VII - Closing/Payment Gathering
+☐ Post-Close
+ 
+Stage Duration Before Disconnect:
+- Time spent in final stage: [MM:SS]
+ 
+---
+ 
+VI.2 Next Step or Micro-Commitment Secured (30% of Category Weightage):
+ 
+Description: Identifies whether the agent secured any commitment from the customer, ranging from full sale to smaller next-step commitments.
+ 
+Data to Extract:
+ 
+Commitment Type:
+☐ Full Sale Closed
+☐ Payment Information Collected
+☐ Follow-up Call Scheduled
+☐ Email/Information Send Agreed
+☐ Customer Agreed to Think It Over (Specific Timeline)
+☐ Customer to Discuss with Partner
+☐ Customer to Review Materials
+☐ No Commitment Secured
+ 
+Commitment Details:
+- Timestamp: [MM:SS]
+- Agent verbiage: [Extract assumptive language or closing attempt]
+- Customer verbiage: [Extract response]
+- Commitment clarity: [Explicit / Implied / Vague / None]
+ 
+Assumptive Language Used:
+- "I just need to gather a few details from you..." [Yes/No - Timestamp]
+- "To get started..." [Yes/No - Timestamp]
+- "Do you have any questions so far?" [Yes/No - Timestamp]
+- Other assumptive phrases: [List with timestamps]
+ 
+Example Pattern: "I just need to gather a few details from you..."
+ 
+---
+ 
+VI.3 Call Result Tag (30% of Category Weightage):
+ 
+Description: Assigns a standardized classification to the call outcome based on the stage at which it concluded.
+ 
+Data to Extract:
+ 
+Call Result Classification:
+☐ Sale Completed
+☐ Early Disconnect - Before Discovery (Ended during stages I-II)
+☐ Disconnect - During Discovery (Ended during stage III)
+☐ Disconnect - After Discovery, Before Pitch (Ended between III-IV)
+☐ Disconnect - During Pitch/Value Prop (Ended during stages IV-V)
+☐ Disconnect - Post-Price/ROI (Ended during or after stage VI)
+☐ Disconnect - During Close Attempt (Ended during stage VII)
+☐ Follow-up Scheduled
+☐ Soft Decline (Not Now)
+☐ Hard Decline (Not Interested)
+ 
+Primary Disconnect Reason:
+- Price objection: [Yes/No]
+- Timeline concerns: [Yes/No]
+- Lack of trust/rapport: [Yes/No]
+- Need to consult others: [Yes/No]
+- Not qualified/not interested: [Yes/No]
+- Technical issue: [Yes/No]
+- Agent error: [Yes/No]
+- Unclear: [Yes/No]
+ 
+Supporting Verbiage: [Extract quotes indicating reason]
+ 
+================================================================================
+OUTPUT FORMAT REQUIREMENTS
+================================================================================
+ 
+All extracted data should be compiled into a CSV format with the following structure:
+ 
+Column Headers:
+- Category
+- Sub-Category
+- Data Point Name
+- Value/Finding
+- Timestamp (if applicable)
+- Agent Verbiage
+- Customer Verbiage
+- Notes/Context
+ 
+Special Instructions:
+1. Extract exact verbatim quotes - do not paraphrase or summarize
+2. All timestamps should be in MM:SS format
+3. For Yes/No fields, provide timestamp and verbiage when Yes
+4. For count fields, provide detailed breakdown
+5. Mark N/A when data point is not applicable or not found
+6. Include context notes for ambiguous situations
+7. Ensure each row represents a distinct, unique data point
+8. Do not duplicate verbiage across multiple data points
+ 
+CSV Export Guidelines:
+- Use proper escaping for quotes within verbiage fields
+- Separate multiple instances with semicolon (;) within cells
+- Keep verbiage excerpts under 200 characters per cell (use "..." for truncation)
+- Include full transcript references in Notes column if truncated
+ 
+================================================================================
+ANALYSIS RULES (STRICT)
+================================================================================
+ 
+1. Do not assume or infer anything outside the transcript
+2. Do not interpret sentiment - extract actual language used
+3. Do not modify or paraphrase customer/agent verbiage
+4. Count all instances explicitly - do not estimate
+5. Mark all timestamps relative to call start (00:00)
+6. If a data point cannot be determined, state "Not Found in Transcript"
+7. If a stage is skipped, explicitly note it as "Skipped"
+8. Extract both quantitative (counts, times) and qualitative (verbiage, patterns) data
+9. Cross-reference related data points for consistency
+10. Note any unusual patterns or anomalies in the Notes field
+ 
+================================================================================
+FINAL DELIVERABLE
+================================================================================
+ 
+The analysis should produce:
+ 
+1. Complete CSV file with all data points extracted
+2. Summary statistics for each category
+3. Notable patterns or anomalies identified
+4. Call flow diagram showing stage progression with timestamps
+5. Sentiment progression chart (if applicable)
+6. Key insights section highlighting:
+   - Strongest areas of performance
+   - Weakest areas needing improvement
+   - Critical moments that influenced call outcome
+   - Recommendations for agent coaching
+ 
+================================================================================
+END OF PROMPT
+================================================================================
+ 
+ 
+Reply to "prompt"
