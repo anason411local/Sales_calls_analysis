@@ -1,9 +1,10 @@
 """
 Batch Processor with Retry Logic
-Orchestrates the processing of sales calls in batches
+Orchestrates the processing of sales calls in batches with parallel execution
 """
 import pandas as pd
 from typing import List, Dict, Any
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from agents.extraction_graph import run_extraction
 from data.data_handler import DataHandler
 from schemas.extraction_schemas import SalesCallExtraction
@@ -140,7 +141,7 @@ class BatchProcessor:
         batch_start_idx: int
     ) -> List[SalesCallExtraction]:
         """
-        Process a single batch of rows.
+        Process a single batch of rows in parallel using ThreadPoolExecutor.
         
         Args:
             batch_df: DataFrame containing the batch
@@ -151,82 +152,126 @@ class BatchProcessor:
         """
         results = []
         
-        for idx, row in batch_df.iterrows():
-            row_number = batch_start_idx + (idx - batch_df.index[0])
+        # Use ThreadPoolExecutor to process rows in parallel
+        # Max workers = batch size (typically 10)
+        max_workers = min(len(batch_df), BATCH_SIZE)
+        
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Submit all rows for parallel processing
+            future_to_row = {}
             
-            try:
-                # Extract input data with NaN handling
-                row_id = str(row.get(INPUT_COLUMNS['id'], f'row_{row_number}'))
-                transcription_id = str(row.get(INPUT_COLUMNS['transcription_id'], '')) if pd.notna(row.get(INPUT_COLUMNS['transcription_id'])) else ""
-                call_date = str(row[INPUT_COLUMNS['call_date']]) if pd.notna(row[INPUT_COLUMNS['call_date']]) else ""
-                
-                # Handle NaN for length_in_sec
-                length_in_sec_raw = row[INPUT_COLUMNS['length_in_sec']]
-                length_in_sec = int(length_in_sec_raw) if pd.notna(length_in_sec_raw) else 0
-                
-                transcription = str(row[INPUT_COLUMNS['transcription']]) if pd.notna(row[INPUT_COLUMNS['transcription']]) else ""
-                fullname = str(row[INPUT_COLUMNS['fullname']]) if pd.notna(row[INPUT_COLUMNS['fullname']]) else ""
-                
-                # Skip rows with missing critical data (transcription)
-                if not transcription or transcription == "nan":
-                    logger.warning(f"Skipping row {row_number} - missing transcription")
-                    failed_extraction = self.data_handler.create_failed_extraction(
+            for idx, row in batch_df.iterrows():
+                row_number = batch_start_idx + (idx - batch_df.index[0])
+                future = executor.submit(self._process_single_row, row, row_number)
+                future_to_row[future] = (idx, row_number)
+            
+            # Collect results as they complete
+            for future in as_completed(future_to_row):
+                idx, row_number = future_to_row[future]
+                try:
+                    result = future.result()
+                    if result:
+                        results.append(result)
+                except Exception as e:
+                    logger.error(f"Failed to process row {row_number}: {str(e)}")
+                    # Create failed extraction entry
+                    row = batch_df.loc[idx]
+                    row_id = str(row.get(INPUT_COLUMNS['id'], f'row_{row_number}'))
+                    transcription_id = str(row.get(INPUT_COLUMNS['transcription_id'], ''))
+                    call_date = str(row.get(INPUT_COLUMNS['call_date'], ''))
+                    fullname = str(row.get(INPUT_COLUMNS['fullname'], ''))
+                    length_in_sec = row.get(INPUT_COLUMNS['length_in_sec'], 0)
+                    
+                    if pd.isna(length_in_sec) or length_in_sec == '':
+                        length_in_sec = 0
+                    else:
+                        try:
+                            length_in_sec = int(float(length_in_sec))
+                        except:
+                            length_in_sec = 0
+                    
+                    failed_result = self.data_handler.create_failed_extraction(
                         row_id=row_id,
                         transcription_id=transcription_id,
                         call_date=call_date,
                         fullname=fullname,
                         length_in_sec=length_in_sec,
-                        error_message="Missing transcription data"
+                        error_message=str(e)
                     )
-                    results.append(failed_extraction)
-                    continue
-                
-                # Run extraction workflow
-                final_state = run_extraction(
-                    row_id=row_id,
-                    row_number=row_number,
-                    call_date=call_date,
-                    length_in_sec=length_in_sec,
-                    transcription=transcription,
-                    fullname=fullname,
-                    system_instructions=self.system_instructions,
-                    extraction_prompt=self.extraction_prompt,
-                    max_attempts=self.max_retries
-                )
-                
-                # Add transcription_id to the result
-                if final_state['extraction_success'] and final_state['extraction_result']:
-                    result = final_state['extraction_result']
-                    # Store transcription_id in the extraction result
-                    result.transcription_id = transcription_id
-                    results.append(result)
-                else:
-                    # Create failed extraction
-                    failed_extraction = self.data_handler.create_failed_extraction(
-                        row_id=row_id,
-                        transcription_id=transcription_id,
-                        call_date=call_date,
-                        fullname=fullname,
-                        length_in_sec=length_in_sec,
-                        error_message=final_state.get('error_message', 'Unknown error')
-                    )
-                    results.append(failed_extraction)
-                
-            except Exception as e:
-                logger.error(f"Failed to process row {row_number}: {str(e)}")
-                
-                # Create failed extraction
-                failed_extraction = self.data_handler.create_failed_extraction(
-                    row_id=str(row.get(INPUT_COLUMNS['id'], f'row_{row_number}')),
-                    transcription_id=str(row.get(INPUT_COLUMNS['transcription_id'], '')) if pd.notna(row.get(INPUT_COLUMNS['transcription_id'])) else "",
-                    call_date=str(row.get(INPUT_COLUMNS['call_date'], '')),
-                    fullname=str(row.get(INPUT_COLUMNS['fullname'], '')),
-                    length_in_sec=int(row.get(INPUT_COLUMNS['length_in_sec'], 0)),
-                    error_message=str(e)
-                )
-                results.append(failed_extraction)
+                    results.append(failed_result)
         
         return results
+    
+    def _process_single_row(
+        self,
+        row: pd.Series,
+        row_number: int
+    ) -> SalesCallExtraction:
+        """
+        Process a single row (designed to be called in parallel).
+        
+        Args:
+            row: DataFrame row
+            row_number: Row number in the dataset
+        
+        Returns:
+            SalesCallExtraction result or None
+        """
+        # Extract input data with NaN handling
+        row_id = str(row.get(INPUT_COLUMNS['id'], f'row_{row_number}'))
+        transcription_id = str(row.get(INPUT_COLUMNS['transcription_id'], '')) if pd.notna(row.get(INPUT_COLUMNS['transcription_id'])) else ""
+        call_date = str(row[INPUT_COLUMNS['call_date']]) if pd.notna(row[INPUT_COLUMNS['call_date']]) else ""
+        
+        # Handle NaN for length_in_sec
+        length_in_sec_raw = row[INPUT_COLUMNS['length_in_sec']]
+        length_in_sec = int(length_in_sec_raw) if pd.notna(length_in_sec_raw) else 0
+        
+        transcription = str(row[INPUT_COLUMNS['transcription']]) if pd.notna(row[INPUT_COLUMNS['transcription']]) else ""
+        fullname = str(row[INPUT_COLUMNS['fullname']]) if pd.notna(row[INPUT_COLUMNS['fullname']]) else ""
+        
+        # Skip rows with missing critical data (transcription)
+        if not transcription or transcription == "nan":
+            logger.warning(f"Skipping row {row_number} - missing transcription")
+            failed_extraction = self.data_handler.create_failed_extraction(
+                row_id=row_id,
+                transcription_id=transcription_id,
+                call_date=call_date,
+                fullname=fullname,
+                length_in_sec=length_in_sec,
+                error_message="Missing transcription data"
+            )
+            return failed_extraction
+        
+        # Run extraction workflow
+        final_state = run_extraction(
+            row_id=row_id,
+            row_number=row_number,
+            call_date=call_date,
+            length_in_sec=length_in_sec,
+            transcription=transcription,
+            fullname=fullname,
+            system_instructions=self.system_instructions,
+            extraction_prompt=self.extraction_prompt,
+            max_attempts=self.max_retries
+        )
+        
+        # Add transcription_id to the result
+        if final_state['extraction_success'] and final_state['extraction_result']:
+            result = final_state['extraction_result']
+            # Store transcription_id in the extraction result
+            result.transcription_id = transcription_id
+            return result
+        else:
+            # Create failed extraction
+            failed_extraction = self.data_handler.create_failed_extraction(
+                row_id=row_id,
+                transcription_id=transcription_id,
+                call_date=call_date,
+                fullname=fullname,
+                length_in_sec=length_in_sec,
+                error_message=final_state.get('error_message', 'Unknown error')
+            )
+            return failed_extraction
     
     def _retry_failed_rows(
         self,
@@ -234,7 +279,7 @@ class BatchProcessor:
         full_df: pd.DataFrame
     ) -> List[SalesCallExtraction]:
         """
-        Retry failed extractions.
+        Retry failed extractions in parallel.
         
         Args:
             failed_extractions: List of failed SalesCallExtraction objects
@@ -245,46 +290,78 @@ class BatchProcessor:
         """
         retry_results = []
         
-        for failed in failed_extractions:
-            try:
-                # Find original row
-                row_id = failed.row_id
-                original_row = full_df[full_df['id'].astype(str) == row_id].iloc[0]
-                
-                # Extract input data with NaN handling
-                call_date = str(original_row[INPUT_COLUMNS['call_date']]) if pd.notna(original_row[INPUT_COLUMNS['call_date']]) else ""
-                
-                length_in_sec_raw = original_row[INPUT_COLUMNS['length_in_sec']]
-                length_in_sec = int(length_in_sec_raw) if pd.notna(length_in_sec_raw) else 0
-                
-                transcription = str(original_row[INPUT_COLUMNS['transcription']]) if pd.notna(original_row[INPUT_COLUMNS['transcription']]) else ""
-                fullname = str(original_row[INPUT_COLUMNS['fullname']]) if pd.notna(original_row[INPUT_COLUMNS['fullname']]) else ""
-                
-                logger.info(f"Retrying extraction for Row ID: {row_id}")
-                
-                # Run extraction workflow with additional retry
-                final_state = run_extraction(
-                    row_id=row_id,
-                    row_number=0,  # Row number not important for retry
-                    call_date=call_date,
-                    length_in_sec=length_in_sec,
-                    transcription=transcription,
-                    fullname=fullname,
-                    system_instructions=self.system_instructions,
-                    extraction_prompt=self.extraction_prompt,
-                    max_attempts=self.max_retries
-                )
-                
-                # Get extraction result
-                if final_state['extraction_success'] and final_state['extraction_result']:
-                    retry_results.append(final_state['extraction_result'])
-                else:
-                    # Still failed, keep the failed extraction
+        # Use ThreadPoolExecutor for parallel retries
+        max_workers = min(len(failed_extractions), BATCH_SIZE)
+        
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_failed = {}
+            
+            for failed in failed_extractions:
+                future = executor.submit(self._retry_single_row, failed, full_df)
+                future_to_failed[future] = failed
+            
+            # Collect results as they complete
+            for future in as_completed(future_to_failed):
+                failed = future_to_failed[future]
+                try:
+                    result = future.result()
+                    retry_results.append(result)
+                except Exception as e:
+                    logger.error(f"Retry failed for Row ID {failed.row_id}: {str(e)}")
                     retry_results.append(failed)
-                
-            except Exception as e:
-                logger.error(f"Retry failed for Row ID {failed.row_id}: {str(e)}")
-                retry_results.append(failed)
         
         return retry_results
+    
+    def _retry_single_row(
+        self,
+        failed: SalesCallExtraction,
+        full_df: pd.DataFrame
+    ) -> SalesCallExtraction:
+        """
+        Retry a single failed row (designed to be called in parallel).
+        
+        Args:
+            failed: Failed SalesCallExtraction object
+            full_df: Full DataFrame to get original row data
+        
+        Returns:
+            Retry result (success or original failure)
+        """
+        # Find original row
+        row_id = failed.row_id
+        original_row = full_df[full_df['id'].astype(str) == row_id].iloc[0]
+        
+        # Extract input data with NaN handling
+        call_date = str(original_row[INPUT_COLUMNS['call_date']]) if pd.notna(original_row[INPUT_COLUMNS['call_date']]) else ""
+        
+        length_in_sec_raw = original_row[INPUT_COLUMNS['length_in_sec']]
+        length_in_sec = int(length_in_sec_raw) if pd.notna(length_in_sec_raw) else 0
+        
+        transcription = str(original_row[INPUT_COLUMNS['transcription']]) if pd.notna(original_row[INPUT_COLUMNS['transcription']]) else ""
+        fullname = str(original_row[INPUT_COLUMNS['fullname']]) if pd.notna(original_row[INPUT_COLUMNS['fullname']]) else ""
+        transcription_id = str(original_row[INPUT_COLUMNS['transcription_id']]) if pd.notna(original_row[INPUT_COLUMNS['transcription_id']]) else ""
+        
+        logger.info(f"Retrying extraction for Row ID: {row_id}")
+        
+        # Run extraction workflow with additional retry
+        final_state = run_extraction(
+            row_id=row_id,
+            row_number=0,  # Row number not important for retry
+            call_date=call_date,
+            length_in_sec=length_in_sec,
+            transcription=transcription,
+            fullname=fullname,
+            system_instructions=self.system_instructions,
+            extraction_prompt=self.extraction_prompt,
+            max_attempts=self.max_retries
+        )
+        
+        # Get extraction result
+        if final_state['extraction_success'] and final_state['extraction_result']:
+            result = final_state['extraction_result']
+            result.transcription_id = transcription_id
+            return result
+        else:
+            # Still failed, keep the failed extraction
+            return failed
 
