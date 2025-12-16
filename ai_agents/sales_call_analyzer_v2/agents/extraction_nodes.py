@@ -71,7 +71,7 @@ def extract_data_node(state: AgentState) -> AgentState:
         )
         
         # Log LLM call
-        sales_logger.log_llm_call("gemini-2.5-flash-lite", row_id)
+        sales_logger.log_llm_call("gemini-2.5-flash", row_id)
         
         # Call Gemini with structured output
         metadata = {

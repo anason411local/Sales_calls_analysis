@@ -249,7 +249,13 @@ class DataHandler:
                                 # Update existing row with extracted data
                                 for col in extracted_row.index:
                                     if col in existing_df.columns:
-                                        existing_df.loc[mask, col] = extracted_row[col]
+                                        # Convert to appropriate dtype to avoid FutureWarning
+                                        value = extracted_row[col]
+                                        # Handle empty strings for numeric columns
+                                        if pd.isna(value) or value == '':
+                                            existing_df.loc[mask, col] = pd.NA
+                                        else:
+                                            existing_df.loc[mask, col] = value
                             else:
                                 # Row doesn't exist yet - merge with source and append
                                 source_row = source_df[source_df['transcription_id_omc'] == tid]

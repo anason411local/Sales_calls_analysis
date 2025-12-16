@@ -41,7 +41,7 @@ INPUT_COLUMNS = {
 
 # Gemini API Configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = "gemini-2.5-flash-lite"  # Using the correct model code
+GEMINI_MODEL = "gemini-2.5-flash"  # Using the correct model code
 
 # LangSmith Configuration
 LANGSMITH_TRACING = os.getenv("LANGSMITH_TRACING", "true").lower() == "true"

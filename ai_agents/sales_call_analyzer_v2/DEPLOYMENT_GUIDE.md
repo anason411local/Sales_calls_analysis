@@ -125,7 +125,7 @@ Creates a **wide-format CSV** with:
 All settings in `config/settings.py`:
 
 ```python
-GEMINI_MODEL = "gemini-2.5-flash-lite"
+GEMINI_MODEL = "gemini-2.5-flash"
 BATCH_SIZE = 10
 MAX_RETRIES = 3
 INPUT_CSV = "input_data/sales_calls_agent_testing_data.csv"
@@ -176,7 +176,7 @@ Checkpoint file: `output_data/processing_checkpoint.json`
 | Feature | V1 | V2 |
 |---------|----|----|
 | Architecture | Script-based | True LangGraph Agentic |
-| Model | gemini-2.0-flash-exp | gemini-2.5-flash-lite ✅ |
+| Model | gemini-2.0-flash-exp | gemini-2.5-flash ✅ |
 | Structured Output | JSON parsing | Function calling ✅ |
 | LangSmith | Not integrated | Fully integrated ✅ |
 | Logging | Errors only | All activities ✅ |
@@ -188,7 +188,7 @@ Checkpoint file: `output_data/processing_checkpoint.json`
 
 ✅ **Connection Test**: PASSED
 - Gemini API: Connected
-- Model: gemini-2.5-flash-lite
+- Model: gemini-2.5-flash
 - LangSmith: Enabled and tracking
 - Logs: Created successfully
 
