@@ -1,0 +1,63 @@
+CALL PERFORMANCE ANALYSIS TASK
+
+Analyze the following call data comprehensively:
+
+CALL INFORMATION:
+- Call ID: {call_id}
+- Call Date: {call_date}
+- OMC Call Duration: {omc_duration} seconds
+- Call Status/Outcome: {omc_status}
+
+LGS (LEAD GENERATION) DATA:
+- LGS Agent: {lgs_agent}
+- LGS Transcription:
+{lgs_transcription}
+
+OMC (OUTBOUND MARKETING) DATA:
+- OMC Agent: {omc_agent}
+- OMC Transcription:
+{omc_transcription}
+
+ANALYSIS REQUIREMENTS:
+
+1. LGS HANDOFF QUALITY ANALYSIS:
+   - Rate the LGS handoff quality (1-10)
+   - What information did LGS provide to OMC?
+   - Was the lead properly qualified?
+   - Were customer expectations set correctly?
+   - Identify any LGS issues that affected OMC performance
+   - List LGS strengths that helped OMC
+
+2. OMC CALL ANALYSIS:
+   - Is this a SHORT call (<2 minutes) or LONG call (>=2 minutes)?
+   - If SHORT: Why did it end so quickly? What went wrong?
+   - If LONG: What success factors contributed to engagement?
+   - Rate OMC agent performance (1-10)
+   - Customer engagement level: Low/Medium/High
+   - What objections were raised?
+   - How were objections handled?
+
+3. PATTERN IDENTIFICATION:
+   - For SHORT calls: List specific reasons for early termination
+   - For LONG calls: List specific success factors
+   - What could the agent have done differently?
+   - What systemic/process issues exist?
+
+4. NOTABLE QUOTES:
+   - Extract 2-3 notable quotes that illustrate key points
+   - Include both positive examples and areas for improvement
+
+5. SPECIFIC RECOMMENDATIONS:
+   - Provide 3-5 actionable recommendations for this agent
+   - Focus on what can be improved immediately
+   - Consider both individual and process-level changes
+
+IMPORTANT:
+- Be specific and use examples from the transcripts
+- Focus on actionable insights
+- Consider the full customer journey (LGS → OMC)
+- Think about training and coaching opportunities
+- Identify patterns that can help other agents
+
+Provide your analysis in the structured format requested.
+
