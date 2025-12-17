@@ -114,8 +114,19 @@ class BatchOrchestrator:
             
             report = generate_comprehensive_report(state)
             
-            # Save report
-            self.data_handler.save_report(report)
+            # Save report (Markdown)
+            markdown_path = self.data_handler.save_report(report)
+            
+            # Convert to DOCX
+            logger.info("Converting report to DOCX format...")
+            try:
+                from utils.docx_converter import convert_report_to_docx
+                docx_path = convert_report_to_docx(markdown_path)
+                logger.info(f"DOCX report saved to: {docx_path}")
+            except Exception as e:
+                logger.warning(f"Failed to generate DOCX: {str(e)}")
+                logger.warning("Markdown report is still available")
+                docx_path = None
             
             # Clear checkpoint
             self.data_handler.clear_checkpoint()
@@ -123,10 +134,12 @@ class BatchOrchestrator:
             logger.info("=" * 80)
             logger.info("ANALYSIS COMPLETE")
             logger.info(f"Total calls analyzed: {len(state['all_insights'])}")
-            logger.info(f"Report saved to: {self.data_handler.output_file}")
+            logger.info(f"Markdown report: {markdown_path}")
+            if docx_path:
+                logger.info(f"DOCX report: {docx_path}")
             logger.info("=" * 80)
             
-            return str(self.data_handler.output_file)
+            return str(markdown_path)
             
         except Exception as e:
             logger.error(f"Fatal error in analysis workflow: {str(e)}")

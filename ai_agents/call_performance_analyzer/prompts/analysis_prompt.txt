@@ -43,21 +43,33 @@ ANALYSIS REQUIREMENTS:
    - What could the agent have done differently?
    - What systemic/process issues exist?
 
-4. NOTABLE QUOTES:
+4. NOTABLE QUOTES & EVIDENCE:
    - Extract 2-3 notable quotes that illustrate key points
    - Include both positive examples and areas for improvement
+   - **CRITICAL MOMENT**: Identify the SINGLE most critical moment in the call (with exact verbatim quote)
+   - **PROOF OF ISSUE**: For short calls, provide verbatim proof of the main problem
+   - **PROOF OF SUCCESS**: For long calls, provide verbatim proof of the technique that worked
 
-5. SPECIFIC RECOMMENDATIONS:
+5. TRANSFERABLE WISDOM (For Long/Successful Calls):
+   - **TECHNIQUE**: What specific technique did this agent use that worked?
+   - **APPLICATION**: How can other agents apply this technique in their calls?
+   - **PERSONA INSIGHT**: What makes this agent's approach unique and effective?
+   - Think: "If I were training a new agent, what would I teach them from this call?"
+
+6. SPECIFIC RECOMMENDATIONS:
    - Provide 3-5 actionable recommendations for this agent
    - Focus on what can be improved immediately
    - Consider both individual and process-level changes
+   - **WITH EXAMPLES**: Show how to implement each recommendation with specific dialogue
 
 IMPORTANT:
-- Be specific and use examples from the transcripts
-- Focus on actionable insights
+- Be SPECIFIC and use EXACT QUOTES from the transcripts
+- Focus on ACTIONABLE insights with PROOF
 - Consider the full customer journey (LGS → OMC)
 - Think about training and coaching opportunities
-- Identify patterns that can help other agents
+- Identify TRANSFERABLE patterns that can help other agents
+- For successful calls: Extract the "wisdom" that can be taught
+- For failed calls: Show exactly where and why it failed (with quotes)
 
 Provide your analysis in the structured format requested.
 

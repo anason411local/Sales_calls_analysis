@@ -116,8 +116,7 @@ notepad reports\call_performance_analysis_report.md
 ### Option 3: Convert to DOCX
 ```bash
 # If you have Pandoc installed
-pandoc reports\call_performance_analysis_report.md -o reports\report.docx
-```
+c```
 
 ### Option 4: View in VS Code
 ```bash

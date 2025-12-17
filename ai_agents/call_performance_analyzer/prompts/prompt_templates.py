@@ -27,47 +27,53 @@ You have analyzed {total_calls} sales calls. Now create a comprehensive, profess
 1. EXECUTIVE SUMMARY:
    - High-level overview of findings
    - Key metrics and trends
-   - Critical issues identified
-   - Top recommendations
+   - **Critical issues identified WITH PROOF** (include 1-2 verbatim examples)
+   - **Top recommendations WITH IMPLEMENTATION EXAMPLES**
 
 2. AGENT-LEVEL PERFORMANCE:
-   - Individual agent analysis
-   - Top performers and their techniques
-   - Agents needing support
+   - Individual agent analysis with tables
+   - **Top performers and their TRANSFERABLE TECHNIQUES**
+   - **How to apply successful agents' wisdom to others**
+   - Agents needing support with specific coaching points
    - Performance distribution
 
 3. CALL PATTERN ANALYSIS:
    - Short calls (<2 min) vs Long calls (>=2 min)
-   - Why short calls fail
-   - What makes long calls successful
-   - Common objections and handling
+   - **Why short calls fail WITH VERBATIM PROOF** (1-2 critical moment quotes)
+   - **What makes long calls successful WITH VERBATIM PROOF** (1-2 technique examples)
+   - Common objections and handling WITH EXAMPLES
 
 4. LGS vs OMC ANALYSIS:
    - LGS handoff quality
-   - Issues originating from LGS
-   - OMC performance issues
-   - Handoff improvement opportunities
+   - Issues originating from LGS WITH PROOF
+   - OMC performance issues WITH PROOF
+   - Handoff improvement opportunities WITH EXAMPLES
 
 5. DAILY TRENDS:
-   - Performance by date
+   - Performance by date (table format)
    - Patterns over time
    - Peak performance periods
 
 6. STATUS/OUTCOME ANALYSIS:
-   - Breakdown by call outcome
+   - Breakdown by call outcome (table format)
    - Duration by status
    - Success patterns
 
 7. RECOMMENDATIONS:
-   - Immediate actions (quick wins)
-   - Training recommendations
-   - Process improvements
-   - Long-term strategic changes
+   - **A. Immediate Actions** (with specific examples of how to implement)
+   - **B. Training Recommendations** (with transferable techniques from successful agents)
+   - **C. Process Improvements** (with before/after examples)
+   - **D. Long-term Strategic Changes**
 
 8. REAL EXAMPLES:
-   - Include 3-5 examples of short calls with issues
-   - Include 3-5 examples of successful long calls
-   - Use actual quotes and specifics
+   - **A. Examples of Short Calls with Issues** (2-3 examples)
+     * Include: Call ID, Agent, Duration, Issue, VERBATIM PROOF, Analysis
+   - **B. Examples of Successful Long Calls** (2-3 examples)
+     * Include: Call ID, Agent, Duration, Success Factors, VERBATIM PROOF, Analysis
+   - **C. TRANSFERABLE WISDOM SECTION** (NEW):
+     * Extract the "playbook" from successful agents
+     * Show HOW to apply their techniques to other agents
+     * Include persona insights (what makes them effective)
 
 ACCUMULATED INSIGHTS:
 {accumulated_insights}
@@ -80,6 +86,14 @@ DAILY TRENDS DATA:
 
 STATUS ANALYSIS DATA:
 {status_analysis}
+
+CRITICAL REQUIREMENTS:
+- Use VERBATIM QUOTES to prove every major claim
+- Extract TRANSFERABLE WISDOM from successful agents
+- Show HOW to implement recommendations (not just what to do)
+- Keep report length manageable (~same as before, but with strategic quotes)
+- Focus on ACTIONABLE insights with PROOF
+- Think: "How would I train agents using this report?"
 
 Create a professional, well-structured Markdown report that the CEO can review and convert to Word.
 Use tables, bullet points, and clear sections. Be specific and actionable.

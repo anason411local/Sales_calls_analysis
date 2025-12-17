@@ -41,8 +41,16 @@ class CallInsight(BaseModel):
     # Recommendations
     specific_recommendations: Optional[List[str]] = Field(default_factory=list, description="Actionable recommendations")
     
-    # Examples (for report)
+    # Examples (for report) - ENHANCED
     notable_quotes: Optional[List[str]] = Field(default_factory=list, description="Notable quotes from call")
+    critical_moment_quote: Optional[str] = Field(default=None, description="The single most critical moment in the call with exact quote")
+    proof_of_issue: Optional[str] = Field(default=None, description="Verbatim proof of the main issue identified")
+    proof_of_success: Optional[str] = Field(default=None, description="Verbatim proof of success technique (for long calls)")
+    
+    # Transferable Wisdom (for successful calls)
+    transferable_technique: Optional[str] = Field(default=None, description="Specific technique that can be taught to others")
+    technique_application: Optional[str] = Field(default=None, description="How to apply this technique in other scenarios")
+    agent_persona_insight: Optional[str] = Field(default=None, description="What makes this agent's approach unique and effective")
     
     # Metadata
     analysis_timestamp: str = Field(default_factory=lambda: datetime.now().isoformat())

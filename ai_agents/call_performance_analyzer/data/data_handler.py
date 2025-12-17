@@ -94,12 +94,15 @@ class DataHandler:
         except Exception as e:
             logger.error(f"Failed to save checkpoint: {str(e)}")
     
-    def save_report(self, report_content: str):
+    def save_report(self, report_content: str) -> str:
         """
         Save final report to file
         
         Args:
             report_content: Markdown report content
+            
+        Returns:
+            Path to saved report file
         """
         try:
             logger.info(f"Saving report to {self.output_file}")
@@ -108,6 +111,7 @@ class DataHandler:
                 f.write(report_content)
             
             logger.info(f"Report saved successfully: {self.output_file}")
+            return str(self.output_file)
             
         except Exception as e:
             logger.error(f"Failed to save report: {str(e)}")

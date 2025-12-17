@@ -76,12 +76,42 @@ def _prepare_insights_summary(state: AnalysisState) -> str:
     # Collect common issues and patterns
     all_short_reasons = []
     all_success_factors = []
+    all_transferable_techniques = []
+    critical_moments_short = []
+    critical_moments_success = []
     
     for insight in state['all_insights']:
         if insight.is_short_call and insight.early_termination_reasons:
             all_short_reasons.extend(insight.early_termination_reasons)
+            # Collect proof of issues with quotes
+            if insight.proof_of_issue:
+                critical_moments_short.append({
+                    'call_id': insight.call_id,
+                    'agent': insight.omc_agent,
+                    'proof': insight.proof_of_issue,
+                    'critical_moment': insight.critical_moment_quote
+                })
+        
         if not insight.is_short_call and insight.success_factors:
             all_success_factors.extend(insight.success_factors)
+            # Collect transferable wisdom
+            if insight.transferable_technique:
+                all_transferable_techniques.append({
+                    'call_id': insight.call_id,
+                    'agent': insight.omc_agent,
+                    'technique': insight.transferable_technique,
+                    'application': insight.technique_application,
+                    'persona': insight.agent_persona_insight,
+                    'proof': insight.proof_of_success
+                })
+            # Collect success proofs
+            if insight.proof_of_success:
+                critical_moments_success.append({
+                    'call_id': insight.call_id,
+                    'agent': insight.omc_agent,
+                    'proof': insight.proof_of_success,
+                    'critical_moment': insight.critical_moment_quote
+                })
     
     summary = f"""
 TOTAL CALLS: {total_calls}
@@ -96,6 +126,15 @@ TOP SUCCESS FACTORS FOR LONG CALLS:
 
 LGS ISSUES IDENTIFIED:
 {_get_top_items(state.get('lgs_issues', []), 10)}
+
+CRITICAL MOMENTS - SHORT CALLS (With Proof):
+{json.dumps(critical_moments_short[:5], indent=2)}
+
+CRITICAL MOMENTS - SUCCESSFUL CALLS (With Proof):
+{json.dumps(critical_moments_success[:5], indent=2)}
+
+TRANSFERABLE WISDOM FROM SUCCESSFUL AGENTS:
+{json.dumps(all_transferable_techniques[:5], indent=2)}
 
 EXAMPLE SHORT CALLS:
 {json.dumps(state.get('example_short_calls', [])[:3], indent=2)}

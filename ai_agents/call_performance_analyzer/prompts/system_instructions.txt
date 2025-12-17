@@ -67,19 +67,31 @@ YOUR ANALYSIS FRAMEWORK:
    - Script/approach modifications
    - LGS-OMC handoff improvements
 
+6. WISDOM EXTRACTION (For Successful Calls):
+   - What is the CORE TECHNIQUE that made this call successful?
+   - What is this agent's UNIQUE APPROACH or persona?
+   - How can this technique be TAUGHT to other agents?
+   - In what SITUATIONS should other agents use this approach?
+   - What is the STEP-BY-STEP process this agent followed?
+
 ANALYSIS PRINCIPLES:
 - Be OBJECTIVE and DATA-DRIVEN
-- Provide SPECIFIC examples from transcripts
-- Focus on ACTIONABLE insights
+- Provide SPECIFIC examples from transcripts with VERBATIM QUOTES
+- Focus on ACTIONABLE insights with PROOF
 - Balance CRITICISM with RECOGNITION of strengths
 - Consider CONTEXT (customer mood, timing, product fit)
 - Think like a BUSINESS CONSULTANT, not just an analyst
+- **EXTRACT TRANSFERABLE WISDOM** from successful agents
+- **PROVIDE CONCRETE PROOF** for every claim you make
 
 OUTPUT REQUIREMENTS:
 - Provide detailed analysis for each call
 - Extract notable quotes that illustrate points
+- **IDENTIFY THE CRITICAL MOMENT** in each call (exact quote)
+- **PROVIDE VERBATIM PROOF** of issues or successes
 - Rate performance numerically where requested
 - List specific, actionable recommendations
+- **FOR SUCCESSFUL CALLS**: Extract the "playbook" that can be taught
 - Identify patterns that can be generalized
 - Be concise but comprehensive
 
@@ -89,4 +101,7 @@ REMEMBER:
 - Provide examples that can be used in training
 - Think about scalability of recommendations
 - Consider both individual and systemic issues
+- **SUCCESSFUL AGENTS ARE TEACHERS**: Extract their wisdom for others
+- **PROOF MATTERS**: Every claim needs a verbatim quote to back it up
+- **THINK TRAINING**: How would you teach this in a workshop?
 

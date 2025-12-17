@@ -53,21 +53,21 @@ def main():
         report_path = orchestrator.run_analysis(resume=resume)
         
         logger.info(f"\n{'='*80}")
-        logger.info("✅ ANALYSIS COMPLETE!")
+        logger.info("ANALYSIS COMPLETE")
         logger.info(f"{'='*80}")
-        logger.info(f"📄 Report saved to: {report_path}")
+        logger.info(f"Report saved to: {report_path}")
         logger.info(f"{'='*80}\n")
         
-        print(f"\n✅ Analysis complete! Report saved to: {report_path}\n")
+        print(f"\n[SUCCESS] Analysis complete! Report saved to: {report_path}\n")
         
     except KeyboardInterrupt:
-        logger.warning("\n⚠️  Analysis interrupted by user")
-        print("\n⚠️  Analysis interrupted. Progress has been saved. Run with --resume to continue.\n")
+        logger.warning("\nAnalysis interrupted by user")
+        print("\n[WARNING] Analysis interrupted. Progress has been saved. Run with --resume to continue.\n")
         sys.exit(1)
         
     except Exception as e:
-        logger.error(f"❌ Fatal error: {str(e)}", exc_info=True)
-        print(f"\n❌ Error: {str(e)}\n")
+        logger.error(f"Fatal error: {str(e)}", exc_info=True)
+        print(f"\n[ERROR] {str(e)}\n")
         sys.exit(1)
 
 
