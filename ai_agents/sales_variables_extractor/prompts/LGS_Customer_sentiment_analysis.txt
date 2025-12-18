@@ -1,0 +1,83 @@
+===================================================
+SECTION 2: EMOTIONAL STATE PROFILING
+===================================================
+
+2.1 Angry/Frustrated Profile — Assess current emotional state indicators:
+  Detection Indicators:
+  • Frustration language: "Fed up," "Sick of," "Tired of," "Done with"
+  • Complaint patterns: "Nothing works," "Waste of money," "Been burned before"
+  • Negative experiences: "Last company screwed us," "Previous provider failed"
+  • Urgent dissatisfaction: "Current situation isn't working," "Lost customers"
+  • Blame attribution: "Because of bad marketing," "Their fault we're struggling"
+  
+  Examples of angry/frustrated speech:
+  • "I'm sick and tired of throwing money away on marketing that doesn't work!"
+  • "The last company we hired completely screwed us over."
+  • "We're losing customers because our online presence is terrible."
+  • "I've been burned too many times by companies promising results."
+  
+  Return: "Angry/Frustrated" or "Not Angry/Frustrated" or "Mixed Emotional Signals"
+
+2.2 Happy/Optimistic Profile — Assess positive emotional indicators:
+  Detection Indicators:
+  • Positive language: "Excited," "Great opportunity," "Looking forward"
+  • Growth enthusiasm: "Expanding," "Growing," "Things are going well"
+  • Openness: "Sounds interesting," "Tell me more," "I'm all ears"
+  • Success mentions: "Business is good," "Doing well," "Best year ever"
+  • Future focus: "Next level," "Big plans," "Bright future"
+  
+  Examples of happy/optimistic speech:
+  • "Business is booming! We're ready to take it to the next level."
+  • "This sounds like exactly what we need to grow even faster."
+  • "I'm excited about the possibilities this could create for us."
+  • "We're having our best year ever and want to keep the momentum going."
+  
+  Return: "Happy/Optimistic" or "Not Happy/Optimistic" or "Mixed Emotional Signals"
+
+2.3 Skeptical/Cautious Profile — Assess doubt and wariness indicators:
+  Detection Indicators:
+  • Doubt expressions: "Sounds too good to be true," "How do I know," "Prove it"
+  • Request for proof: "Show me examples," "References," "Guarantees"
+  • Cautious language: "Need to be careful," "Been hurt before," "Skeptical"
+  • Verification needs: "Can you prove," "What evidence," "How can I verify"
+  • Trust issues: "Don't trust easily," "Need to see results first"
+  
+  Examples of skeptical/cautious speech:
+  • "This sounds too good to be true. How do I know it actually works?"
+  • "Can you provide references from other businesses like mine?"
+  • "I've heard these promises before. What makes you different?"
+  • "I'm naturally skeptical of marketing companies after bad experiences."
+  
+  Return: "Skeptical/Cautious" or "Not Skeptical/Cautious" or "Mixed Emotional Signals"
+
+2.4 Desperate/Urgent Profile — Assess urgency and desperation indicators:
+  Detection Indicators:
+  • Urgent language: "Need customers now," "Immediately," "As soon as possible"
+  • Crisis mentions: "Business struggling," "Going under," "Desperate for help"
+  • Time pressure: "Running out of time," "Can't wait," "Emergency"
+  • Survival mode: "Do something fast," "Need results yesterday," "Critical situation"
+  • Immediate action: "When can we start," "How quickly," "Right away"
+  
+  Examples of desperate/urgent speech:
+  • "I need customers walking through my door tomorrow or I'm going out of business!"
+  • "This is an emergency situation. How fast can you get me results?"
+  • "We're desperate. The business is struggling and I need help immediately."
+  • "I can't afford to wait months for results. I need something now."
+  
+  Return: "Desperate/Urgent" or "Not Desperate/Urgent" or "Mixed Emotional Signals"
+
+2.5 Overwhelmed/Stressed Profile — Assess stress and overload indicators:
+  Detection Indicators:
+  • Overwhelm language: "Too much," "Swamped," "Buried," "Can't handle more"
+  • Stress indicators: "Stressed out," "Pulling my hair out," "At my wit's end"
+  • Capacity issues: "No bandwidth," "Too much on my plate," "Stretched thin"
+  • Time scarcity: "No time," "Don't have capacity," "Already working 80 hours"
+  • Simplicity needs: "Make it easy," "Take care of everything," "Don't want complexity"
+  
+  Examples of overwhelmed/stressed speech:
+  • "I'm already working 80 hours a week. I don't have time to learn anything new."
+  • "I'm completely overwhelmed with everything on my plate right now."
+  • "Whatever you do, it needs to be completely hands-off for me."
+  • "I'm stressed to the max and need someone to just handle everything."
+  
+  Return: "Overwhelmed/Stressed" or "Not Overwhelmed/Stressed" or "Mixed Emotional Signals"

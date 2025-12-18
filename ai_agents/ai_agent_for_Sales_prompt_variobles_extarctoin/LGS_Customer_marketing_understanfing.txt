@@ -1,0 +1,9 @@
+Analyze the Customer's questions and responses to determine their understanding of the lead generation model. Assign one of the following labels:
+
+NOVICE (Job Seeker): Customer thinks they are being hired for a specific job; discusses their equipment/skills; does not ask about lead cost.
+
+SKEPTIC (Burned): Customer references past bad experiences, asks if leads are shared/resold, or expresses distrust of marketing companies.
+
+TRANSACTIONAL (Buyer): Customer asks about price, contract terms, or service area clearly. Understands the model but focuses on cost.
+
+EXPERT (Sophisticated): Customer asks technical questions about traffic sources (SEO/PPC), exclusivity, or CRM integration.

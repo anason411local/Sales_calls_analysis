@@ -1,0 +1,51 @@
+State	Time Zone(s)
+Alabama	Central
+Alaska	Alaska Time 
+Arizona	Mountain
+Arkansas	Central
+California	Pacific
+Colorado	Mountain
+Connecticut	Eastern
+Delaware	Eastern
+Florida	Eastern 
+Georgia	Eastern
+Hawaii	Hawaii-Aleutian
+Idaho	Mountain
+Illinois	Central
+Indiana	Eastern 
+Iowa	Central
+Kansas	Central
+Kentucky	Eastern 
+Louisiana	Central
+Maine	Eastern
+Maryland	Eastern
+Massachusetts	Eastern
+Michigan	Eastern 
+Minnesota	Central
+Mississippi	Central
+Missouri	Central
+Montana	Mountain
+Nebraska	Central
+Nevada	Pacific
+New Hampshire	Eastern
+New Jersey	Eastern
+New Mexico	Mountain
+New York	Eastern
+North Carolina	Eastern
+North Dakota	Central
+Ohio	Eastern
+Oklahoma	Central
+Oregon	Pacific
+Pennsylvania	Eastern
+Rhode Island	Eastern
+South Carolina	Eastern
+South Dakota	Central
+Tennessee	Eastern
+Texas	Central
+Utah	Mountain
+Vermont	Eastern
+Virginia	Eastern
+Washington	Pacific
+West Virginia	Eastern
+Wisconsin	Central
+Wyoming	Mountain
