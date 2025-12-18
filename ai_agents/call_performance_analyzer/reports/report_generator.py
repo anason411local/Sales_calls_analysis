@@ -113,10 +113,14 @@ def _prepare_insights_summary(state: AnalysisState) -> str:
                     'critical_moment': insight.critical_moment_quote
                 })
     
+    # Calculate percentages safely
+    short_pct = (short_calls/total_calls*100) if total_calls > 0 else 0
+    long_pct = (long_calls/total_calls*100) if total_calls > 0 else 0
+    
     summary = f"""
 TOTAL CALLS: {total_calls}
-SHORT CALLS (<2 min): {short_calls} ({short_calls/total_calls*100:.1f}%)
-LONG CALLS (>=2 min): {long_calls} ({long_calls/total_calls*100:.1f}%)
+SHORT CALLS (<2 min): {short_calls} ({short_pct:.1f}%)
+LONG CALLS (>=2 min): {long_calls} ({long_pct:.1f}%)
 
 TOP REASONS FOR SHORT CALLS:
 {_get_top_items(all_short_reasons, 10)}
@@ -245,14 +249,19 @@ def _generate_fallback_report(state: AnalysisState) -> str:
     
     total_calls = len(state['all_insights'])
     short_calls = sum(1 for i in state['all_insights'] if i.is_short_call)
+    long_calls = total_calls - short_calls
+    
+    # Calculate percentages safely
+    short_pct = (short_calls/total_calls*100) if total_calls > 0 else 0
+    long_pct = (long_calls/total_calls*100) if total_calls > 0 else 0
     
     report = f"""# CALL PERFORMANCE ANALYSIS REPORT
 
 ## Executive Summary
 
 **Total Calls Analyzed:** {total_calls}
-**Short Calls (<2 min):** {short_calls} ({short_calls/total_calls*100:.1f}%)
-**Long Calls (>=2 min):** {total_calls - short_calls} ({(total_calls-short_calls)/total_calls*100:.1f}%)
+**Short Calls (<2 min):** {short_calls} ({short_pct:.1f}%)
+**Long Calls (>=2 min):** {long_calls} ({long_pct:.1f}%)
 
 ## Key Findings
 

@@ -36,8 +36,8 @@ call_performance_analyzer/
 
 ## 📋 Features
 
-- ✅ **Batch Processing**: Processes 10 rows at a time to avoid token limits
-- ✅ **Parallel Processing**: All 10 calls in a batch analyzed simultaneously (ThreadPoolExecutor)
+- ✅ **Batch Processing**: Processes 40 rows at a time to avoid token limits
+- ✅ **Parallel Processing**: All 40 calls in a batch analyzed simultaneously (ThreadPoolExecutor)
 - ✅ **State Accumulation**: Maintains insights across all batches
 - ✅ **Checkpoint/Resume**: Can resume from interruption
 - ✅ **Structured Output**: Pydantic schemas ensure data quality
@@ -105,17 +105,19 @@ LANGSMITH_PROJECT=Call_Performance_Analysis
 ```
 
 ### 3. Input Data
-Place your CSV file at: `input_data/sales_calls_agent_testing_data.csv`
+Place your CSV file at: `input_data/mergeed_for_test.csv`
 
 Required columns:
-- `username` (LGS agent)
-- `transcription` (LGS call)
-- `username_omc` (OMC agent)
-- `status_name_omc` (Call outcome)
-- `length_in_sec_omc` (Call duration)
-- `transcription_omc` (OMC call)
-- `call_date_omc` (Call date)
-- `id` (Row identifier)
+- `TO_User_M` (LGS agent - User who generates and transfers the lead)
+- `TO_Event_O` (Date and time of LGS agent sending/transferring the call)
+- `TO_length_in_sec` (LGS call duration in seconds)
+- `TO_Transcription_VICI(0-32000) Words` (LGS transcription - Agent and Customer)
+- `TO_OMC_User` (OMC agent - User who receives the lead)
+- `TO_OMC_Call_Date_O` (Date and time of OMC agent receiving the call)
+- `TO_OMC_Duration` (OMC call duration in seconds)
+- `TO_OMC_Transcription_VICI` (OMC transcription - Agent and Customer)
+- `TO_OMC_Disposiion` (Call outcome/disposition)
+- `TO_Lead_ID` (Lead ID - Row identifier)
 
 ## 🎮 Usage
 
@@ -184,8 +186,8 @@ Logs are saved to `logs/` directory:
 ## 🔄 Workflow Details
 
 ### Batch Processing
-- Processes 10 rows at a time
-- **Parallel execution**: All 10 calls analyzed simultaneously using ThreadPoolExecutor
+- Processes 40 rows at a time
+- **Parallel execution**: All 40 calls analyzed simultaneously using ThreadPoolExecutor
 - Saves checkpoint after each batch
 - Can resume if interrupted
 - Accumulates insights across all batches

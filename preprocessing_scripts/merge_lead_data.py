@@ -1,84 +1,95 @@
 import pandas as pd
 import sys
+import os
 
-def merge_lead_data(source_file, vici_file, output_file, description=""):
+def merge_lead_data(omc_file, lead_quality_file, output_file):
     """
-    Merge data from Vici file into source file based on matching 
-    ZC_Lead_ID and lead_id.
+    Merge data from Lead Quality file into OMC Calls file based on matching 
+    TO_Lead_ID and LQ_Lead_Source.
     
     Parameters:
-    - source_file: Path to the source CSV file (has ZC_Lead_ID column)
-    - vici_file: Path to the Vici CSV file (has lead_id column)
+    - omc_file: Path to the OMC Calls CSV file (has TO_Lead_ID column)
+    - lead_quality_file: Path to the Lead Quality CSV file (has LQ_Lead_Source column)
     - output_file: Path to save the merged output CSV file
-    - description: Optional description for logging purposes
     """
     
     print(f"\n{'='*60}")
-    if description:
-        print(f"Processing: {description}")
+    print(f"Merging OMC Calls with Lead Quality Data")
     print(f"{'='*60}")
     print(f"Reading CSV files...")
     
     try:
-        # Read the source file
-        df_source = pd.read_csv(source_file, low_memory=False)
-        print(f"Source file loaded: {len(df_source)} rows")
+        # Read the OMC Calls file
+        df_omc = pd.read_csv(omc_file, low_memory=False)
+        print(f"OMC Calls file loaded: {len(df_omc)} rows")
+        print(f"OMC Calls columns: {len(df_omc.columns)}")
         
-        # Read the Vici file
-        df_vici = pd.read_csv(vici_file, low_memory=False)
-        print(f"Vici file loaded: {len(df_vici)} rows")
+        # Read the Lead Quality file
+        df_lead_quality = pd.read_csv(lead_quality_file, low_memory=False)
+        print(f"Lead Quality file loaded: {len(df_lead_quality)} rows")
+        print(f"Lead Quality columns: {len(df_lead_quality.columns)}")
         
         # Check if required columns exist
-        if 'ZC_Lead_ID' not in df_source.columns:
-            print(f"Error: 'ZC_Lead_ID' column not found in source file: {source_file}")
+        if 'TO_Lead_ID' not in df_omc.columns:
+            print(f"Error: 'TO_Lead_ID' column not found in OMC Calls file")
             return False
         
-        if 'lead_id' not in df_vici.columns:
-            print(f"Error: 'lead_id' column not found in Vici file: {vici_file}")
+        if 'LQ_Lead_Source' not in df_lead_quality.columns:
+            print(f"Error: 'LQ_Lead_Source' column not found in Lead Quality file")
             return False
         
-        # Convert ZC_Lead_ID and lead_id to string for consistent matching
-        df_source['ZC_Lead_ID'] = df_source['ZC_Lead_ID'].astype(str)
-        df_vici['lead_id'] = df_vici['lead_id'].astype(str)
+        # Convert TO_Lead_ID and LQ_Lead_Source to string for consistent matching
+        df_omc['TO_Lead_ID'] = df_omc['TO_Lead_ID'].astype(str)
+        df_lead_quality['LQ_Lead_Source'] = df_lead_quality['LQ_Lead_Source'].astype(str)
         
-        # Create a dictionary mapping lead_id to row data from Vici file
-        # Get all columns from Vici file except lead_id (to avoid duplicate)
-        vici_columns = [col for col in df_vici.columns if col != 'lead_id']
+        # Get all columns from Lead Quality file except LQ_Lead_Source (to avoid duplicate)
+        lead_quality_columns = [col for col in df_lead_quality.columns if col != 'LQ_Lead_Source']
         
-        # Create a mapping dictionary
-        vici_dict = {}
-        for idx, row in df_vici.iterrows():
-            lead_id = str(row['lead_id'])
-            if lead_id not in vici_dict:
-                vici_dict[lead_id] = {}
-                for col in vici_columns:
-                    vici_dict[lead_id][col] = row[col]
+        # Create a mapping dictionary from Lead Quality data
+        lead_quality_dict = {}
+        for idx, row in df_lead_quality.iterrows():
+            lead_source = str(row['LQ_Lead_Source'])
+            if lead_source not in lead_quality_dict:
+                lead_quality_dict[lead_source] = {}
+                for col in lead_quality_columns:
+                    lead_quality_dict[lead_source][col] = row[col]
         
-        print(f"Created mapping for {len(vici_dict)} unique lead_ids")
+        print(f"Created mapping for {len(lead_quality_dict)} unique LQ_Lead_Source values")
         
-        # Add columns from Vici file to source dataframe
-        for col in vici_columns:
-            if col not in df_source.columns:
-                df_source[col] = None
+        # Add columns from Lead Quality file to OMC dataframe
+        for col in lead_quality_columns:
+            if col not in df_omc.columns:
+                df_omc[col] = None
         
         # Merge the data
         matched_count = 0
-        for idx, row in df_source.iterrows():
-            zc_lead_id = str(row['ZC_Lead_ID'])
+        for idx, row in df_omc.iterrows():
+            to_lead_id = str(row['TO_Lead_ID'])
             
-            if zc_lead_id in vici_dict:
-                # Update the row with data from Vici file
-                for col in vici_columns:
-                    df_source.at[idx, col] = vici_dict[zc_lead_id][col]
+            if to_lead_id in lead_quality_dict:
+                # Update the row with data from Lead Quality file
+                for col in lead_quality_columns:
+                    df_omc.at[idx, col] = lead_quality_dict[to_lead_id][col]
                 matched_count += 1
         
-        print(f"Matched {matched_count} rows out of {len(df_source)} total rows")
+        print(f"Matched {matched_count} rows out of {len(df_omc)} total rows")
+        print(f"Match rate: {(matched_count/len(df_omc)*100):.2f}%")
+        
+        # Clean up date/time columns by removing "TT" suffix
+        print(f"\nCleaning date/time columns...")
+        date_columns = ['TO_Event_O', 'TO_OMC_Call_Date_O']
+        for col in date_columns:
+            if col in df_omc.columns:
+                # Remove "TT" and extra spaces at the end of date/time strings
+                df_omc[col] = df_omc[col].astype(str).str.replace(r'\s+TT\s*$', '', regex=True)
+                df_omc[col] = df_omc[col].str.strip()
+                print(f"  - Cleaned column: {col}")
         
         # Save the merged dataframe
-        df_source.to_csv(output_file, index=False)
+        df_omc.to_csv(output_file, index=False)
         print(f"\nMerged data saved to: {output_file}")
-        print(f"Total columns in output: {len(df_source.columns)}")
-        print(f"Columns added from Vici file: {', '.join(vici_columns)}")
+        print(f"Total columns in output: {len(df_omc.columns)}")
+        print(f"Columns added from Lead Quality file: {', '.join(lead_quality_columns)}")
         
         return True
         
@@ -94,44 +105,34 @@ def merge_lead_data(source_file, vici_file, output_file, description=""):
 
 def main():
     """
-    Main function to process both file pairs:
-    1. Less Then 2 Min Non Sales Human Calls.csv + Vici Sales Cluster - less than 2 min.csv
-    2. Greater Then 2 Min Non Sales Human Calls.csv + Vici Sales Cluster - Greater than 2 min.csv
+    Main function to merge OMC Calls with Lead Quality data
     """
     
     print("="*60)
     print("Lead Data Merger Script")
     print("="*60)
     
-    # Process first pair: Less than 2 min files
-    success1 = merge_lead_data(
-        source_file="Less Then 2 Min Non Sales Human Calls.csv",
-        vici_file="Vici Sales Cluster - less than 2 min.csv",
-        output_file="Less Then 2 Min Non Sales Human Calls_merged.csv",
-        description="Less Than 2 Min Files"
-    )
+    # Get the script directory and project root
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(script_dir)
     
-    # Process second pair: Greater than 2 min files
-    success2 = merge_lead_data(
-        source_file="Greater Then 2 Min Non Sales Human Calls.csv",
-        vici_file="Vici Sales Cluster - Greater than 2 min.csv",
-        output_file="Greater Then 2 Min Non Sales Human Calls_merged.csv",
-        description="Greater Than 2 Min Files"
-    )
+    # Define file paths relative to project root
+    omc_file = os.path.join(project_root, "input_data", "OMC Calls - December 18, 2025.csv")
+    lead_quality_file = os.path.join(project_root, "input_data", "Lead Quality - December 18, 2025.csv")
+    output_file = os.path.join(project_root, "input_data", "Merged_OMC_LeadQuality_December_18_2025.csv")
+    
+    # Merge the files
+    success = merge_lead_data(omc_file, lead_quality_file, output_file)
     
     # Summary
     print(f"\n{'='*60}")
     print("SUMMARY")
     print(f"{'='*60}")
-    if success1:
-        print("[SUCCESS] Less Than 2 Min files processed successfully")
+    if success:
+        print("[SUCCESS] Files merged successfully")
+        print(f"Output file: {output_file}")
     else:
-        print("[FAILED] Less Than 2 Min files processing failed")
-    
-    if success2:
-        print("[SUCCESS] Greater Than 2 Min files processed successfully")
-    else:
-        print("[FAILED] Greater Than 2 Min files processing failed")
+        print("[FAILED] Merge operation failed")
     
     print(f"{'='*60}\n")
 

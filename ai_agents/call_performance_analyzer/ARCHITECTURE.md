@@ -18,7 +18,7 @@ The Call Performance Analyzer is a sophisticated AI-powered business intelligenc
 ┌─────────────────────────────────────────────────────────────┐
 │                  DATA HANDLER                                │
 │  • Load CSV                                                  │
-│  • Create Batches (10 rows)                                 │
+│  • Create Batches (40 rows)                                 │
 │  • Checkpoint Management                                     │
 │  • Resume Capability                                         │
 └────────────────────┬────────────────────────────────────────┘
@@ -277,7 +277,7 @@ The Call Performance Analyzer is a sophisticated AI-powered business intelligenc
 
 ```
 1. Load CSV → DataFrame
-2. Split into batches (10 rows each)
+2. Split into batches (40 rows each)
 3. For each batch:
    a. Convert to dict list
    b. Update state with batch
@@ -357,7 +357,7 @@ Each node receives the current state and returns an updated state. The orchestra
 ## Performance Considerations
 
 ### Batch Size
-- Default: 10 rows
+- Default: 40 rows
 - Balances token usage and processing speed
 - Adjustable in settings
 

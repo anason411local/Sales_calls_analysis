@@ -11,8 +11,8 @@
 ## 📋 Feature Checklist
 
 ### Core Analysis ✅
-- [x] Batch processing (10 rows per batch)
-- [x] **Parallel processing** (10 calls simultaneously - ~10x faster)
+- [x] Batch processing (40 rows per batch)
+- [x] **Parallel processing** (40 calls simultaneously - ~10x faster)
 - [x] State accumulation across batches
 - [x] Checkpoint/resume capability
 - [x] Comprehensive logging
@@ -196,7 +196,7 @@ call_performance_analyzer/
 |--------|-------|
 | **Processing Mode** | Parallel (ThreadPoolExecutor) |
 | **Workers per Batch** | 10 simultaneous |
-| **Time per Batch** | ~30-60 seconds (10 calls parallel) |
+| **Time per Batch** | ~12-24 seconds (40 calls parallel) |
 | **Speedup** | ~10x vs sequential |
 | **Total Time (49 calls)** | ~3-5 minutes |
 | **Report Generation** | ~30-60 seconds |
@@ -275,7 +275,7 @@ call_performance_analyzer/
    - CEO-ready presentation
 
 5. **Parallel Processing** ⚡
-   - 10 calls simultaneously
+   - 40 calls simultaneously
    - ~10x speedup
    - ThreadPoolExecutor
 
@@ -306,7 +306,7 @@ call_performance_analyzer/
 2. Create Batches (5 batches of 10)
    ↓
 3. For Each Batch:
-   ├─ Analyze 10 calls in PARALLEL
+   ├─ Analyze 40 calls in PARALLEL
    ├─ Extract verbatim proof
    ├─ Identify transferable wisdom
    ├─ Accumulate insights

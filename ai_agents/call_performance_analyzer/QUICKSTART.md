@@ -52,7 +52,7 @@ C:\Users\Rtx_5090\.conda\envs\sales_calls_ai_agent\python.exe main.py --run --re
 ## What Happens During Execution
 
 1. **Data Loading**: Loads CSV from `input_data/`
-2. **Batch Processing**: Processes 10 rows at a time
+2. **Batch Processing**: Processes 40 rows at a time
 3. **LLM Analysis**: Each call analyzed by Gemini 2.5 Flash
 4. **Metric Accumulation**: Insights aggregated across batches
 5. **Checkpoint Saving**: Progress saved after each batch
@@ -142,7 +142,7 @@ code reports\call_performance_analysis_report.md
 
 ## Performance
 
-- **Processing Speed**: ~30-60 seconds per batch (10 calls)
+- **Processing Speed**: ~12-24 seconds per batch (40 calls)
 - **Total Time**: ~5-10 minutes for 49 calls
 - **Token Usage**: ~500-1000 tokens per call analysis
 - **Report Generation**: ~30-60 seconds

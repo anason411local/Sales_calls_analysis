@@ -12,8 +12,8 @@
 
 ### Core Functionality
 - [x] **Modular Agentic Framework** - LangGraph, LangChain, Pydantic
-- [x] **Batch Processing** - 10 rows per batch
-- [x] **⚡ Parallel Processing** - 10 calls simultaneously per batch (~10x speedup)
+- [x] **Batch Processing** - 40 rows per batch
+- [x] **⚡ Parallel Processing** - 40 calls simultaneously per batch (~10x speedup)
 - [x] **State Accumulation** - Insights maintained across batches
 - [x] **Checkpoint/Resume** - Can resume from interruption
 - [x] **Comprehensive Logging** - All activities tracked
@@ -45,7 +45,7 @@
 |--------|-------|
 | **Processing Mode** | ⚡ Parallel (ThreadPoolExecutor) |
 | **Workers per Batch** | 10 simultaneous |
-| **Time per Batch** | ~30-60 seconds (all 10 calls parallel) |
+| **Time per Batch** | ~12-24 seconds (all 40 calls parallel) |
 | **Speedup** | ~10x vs sequential |
 | **Total Time (49 calls)** | ~3-5 minutes |
 | **Report Generation** | ~30-60 seconds |
@@ -136,7 +136,7 @@ STARTING CALL PERFORMANCE ANALYSIS
 PROCESSING BATCH 1/5
 ================================================================================
 2025-12-17 02:15:14 - INFO - Analyzing batch 1 with PARALLEL processing
-2025-12-17 02:15:14 - INFO - Processing 10 calls in parallel with 10 workers
+2025-12-17 02:15:14 - INFO - Processing 40 calls in parallel with 40 workers
 2025-12-17 02:15:14 - INFO - Analyzing call ID: 12345
 2025-12-17 02:15:14 - INFO - Analyzing call ID: 12346
 ... (all 10 start simultaneously)
@@ -170,11 +170,11 @@ Report saved to: D:\Sales_calls_analysis\reports\call_performance_analysis_repor
 
 ### 1. Parallel Processing ⚡
 **Before**: Sequential processing (one call at a time)
-- Batch of 10 calls: ~30-60 seconds
+- Batch of 40 calls: ~120-240 seconds
 - Total 49 calls: ~5-10 minutes
 
-**After**: Parallel processing (10 calls simultaneously)
-- Batch of 10 calls: ~3-6 seconds ⚡
+**After**: Parallel processing (40 calls simultaneously)
+- Batch of 40 calls: ~12-24 seconds ⚡
 - Total 49 calls: ~3-5 minutes 🚀
 - **~10x speedup!**
 
@@ -241,7 +241,7 @@ Report saved to: D:\Sales_calls_analysis\reports\call_performance_analysis_repor
 | Schema Validation | ✅ Passed | Pydantic models working |
 | Data Loading | ✅ Passed | CSV loads 49 rows |
 | LLM Integration | ✅ Passed | Gemini API connected |
-| Parallel Processing | ✅ Implemented | ThreadPoolExecutor with 10 workers |
+| Parallel Processing | ✅ Implemented | ThreadPoolExecutor with 40 workers |
 | Syntax Check | ✅ Passed | No Python errors |
 | Import Check | ✅ Passed | All modules importable |
 

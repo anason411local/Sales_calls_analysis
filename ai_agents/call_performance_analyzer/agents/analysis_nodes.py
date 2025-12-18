@@ -64,25 +64,33 @@ def _analyze_single_call(row: Dict, chain) -> CallInsight:
         CallInsight for the call
     """
     try:
-        call_id = row.get('id', 'unknown')
+        from config.settings import INPUT_COLUMNS
+        
+        call_id = row.get(INPUT_COLUMNS['lead_id'], 'unknown')
         logger.info(f"Analyzing call ID: {call_id}")
         
-        # Handle missing values
-        omc_duration = row.get('length_in_sec_omc', 0)
-        if pd.isna(omc_duration):
+        # Handle missing values and convert duration safely
+        omc_duration_raw = row.get(INPUT_COLUMNS['omc_duration'], 0)
+        if pd.isna(omc_duration_raw) or omc_duration_raw == '' or omc_duration_raw == '-':
             omc_duration = 0
-            logger.warning(f"Missing OMC duration for call {call_id}, using 0")
+            logger.warning(f"Missing or invalid OMC duration for call {call_id}, using 0")
+        else:
+            try:
+                omc_duration = int(float(omc_duration_raw))
+            except (ValueError, TypeError):
+                omc_duration = 0
+                logger.warning(f"Invalid OMC duration '{omc_duration_raw}' for call {call_id}, using 0")
         
         # Prepare input for LLM
         analysis_input = {
             "call_id": str(call_id),
-            "call_date": str(row.get('call_date_omc', 'unknown')),
-            "omc_duration": int(omc_duration),
-            "omc_status": str(row.get('status_name_omc', 'unknown')),
-            "lgs_agent": str(row.get('username', 'unknown')),
-            "lgs_transcription": str(row.get('transcription', 'No transcription available'))[:5000],  # Limit length
-            "omc_agent": str(row.get('username_omc', 'unknown')),
-            "omc_transcription": str(row.get('transcription_omc', 'No transcription available'))[:5000]  # Limit length
+            "call_date": str(row.get(INPUT_COLUMNS['omc_call_date'], 'unknown')),
+            "omc_duration": omc_duration,
+            "omc_status": str(row.get(INPUT_COLUMNS['omc_status'], 'unknown')),
+            "lgs_agent": str(row.get(INPUT_COLUMNS['lgs_agent'], 'unknown')),
+            "lgs_transcription": str(row.get(INPUT_COLUMNS['lgs_transcription'], 'No transcription available'))[:5000],  # Limit length
+            "omc_agent": str(row.get(INPUT_COLUMNS['omc_agent'], 'unknown')),
+            "omc_transcription": str(row.get(INPUT_COLUMNS['omc_transcription'], 'No transcription available'))[:5000]  # Limit length
         }
         
         # Invoke LLM analysis
@@ -103,16 +111,23 @@ def _analyze_single_call(row: Dict, chain) -> CallInsight:
         return insight
         
     except Exception as e:
-        logger.error(f"Failed to analyze call {row.get('id', 'unknown')}: {str(e)}")
+        from config.settings import INPUT_COLUMNS
+        logger.error(f"Failed to analyze call {row.get(INPUT_COLUMNS['lead_id'], 'unknown')}: {str(e)}")
         
-        # Create failed insight
+        # Create failed insight with safe duration conversion
+        omc_duration_raw = row.get(INPUT_COLUMNS['omc_duration'], 0)
+        try:
+            omc_duration = int(float(omc_duration_raw)) if not pd.isna(omc_duration_raw) and omc_duration_raw != '' and omc_duration_raw != '-' else 0
+        except (ValueError, TypeError):
+            omc_duration = 0
+        
         failed_insight = CallInsight(
-            call_id=str(row.get('id', 'unknown')),
-            call_date=str(row.get('call_date_omc', 'unknown')),
-            omc_duration=int(row.get('length_in_sec_omc', 0)) if not pd.isna(row.get('length_in_sec_omc')) else 0,
-            omc_status=str(row.get('status_name_omc', 'unknown')),
-            lgs_agent=str(row.get('username', 'unknown')),
-            omc_agent=str(row.get('username_omc', 'unknown')),
+            call_id=str(row.get(INPUT_COLUMNS['lead_id'], 'unknown')),
+            call_date=str(row.get(INPUT_COLUMNS['omc_call_date'], 'unknown')),
+            omc_duration=omc_duration,
+            omc_status=str(row.get(INPUT_COLUMNS['omc_status'], 'unknown')),
+            lgs_agent=str(row.get(INPUT_COLUMNS['lgs_agent'], 'unknown')),
+            omc_agent=str(row.get(INPUT_COLUMNS['omc_agent'], 'unknown')),
             analysis_success=False,
             analysis_error=str(e)
         )
@@ -157,30 +172,38 @@ def analyze_call_node(state: AnalysisState) -> AnalysisState:
                 
                 # Track errors
                 if not insight.analysis_success:
+                    from config.settings import INPUT_COLUMNS
                     state['errors'].append({
-                        'call_id': row.get('id'),
+                        'call_id': row.get(INPUT_COLUMNS['lead_id']),
                         'error': insight.analysis_error,
                         'batch': state['batch_number']
                     })
                     
             except Exception as e:
-                logger.error(f"Exception in parallel processing for call {row.get('id')}: {str(e)}")
+                from config.settings import INPUT_COLUMNS
+                logger.error(f"Exception in parallel processing for call {row.get(INPUT_COLUMNS['lead_id'])}: {str(e)}")
                 
-                # Create failed insight
+                # Create failed insight with safe duration conversion
+                omc_duration_raw = row.get(INPUT_COLUMNS['omc_duration'], 0)
+                try:
+                    omc_duration = int(float(omc_duration_raw)) if not pd.isna(omc_duration_raw) and omc_duration_raw != '' and omc_duration_raw != '-' else 0
+                except (ValueError, TypeError):
+                    omc_duration = 0
+                
                 failed_insight = CallInsight(
-                    call_id=str(row.get('id', 'unknown')),
-                    call_date=str(row.get('call_date_omc', 'unknown')),
-                    omc_duration=int(row.get('length_in_sec_omc', 0)) if not pd.isna(row.get('length_in_sec_omc')) else 0,
-                    omc_status=str(row.get('status_name_omc', 'unknown')),
-                    lgs_agent=str(row.get('username', 'unknown')),
-                    omc_agent=str(row.get('username_omc', 'unknown')),
+                    call_id=str(row.get(INPUT_COLUMNS['lead_id'], 'unknown')),
+                    call_date=str(row.get(INPUT_COLUMNS['omc_call_date'], 'unknown')),
+                    omc_duration=omc_duration,
+                    omc_status=str(row.get(INPUT_COLUMNS['omc_status'], 'unknown')),
+                    lgs_agent=str(row.get(INPUT_COLUMNS['lgs_agent'], 'unknown')),
+                    omc_agent=str(row.get(INPUT_COLUMNS['omc_agent'], 'unknown')),
                     analysis_success=False,
                     analysis_error=str(e)
                 )
                 batch_insights.append(failed_insight)
                 
                 state['errors'].append({
-                    'call_id': row.get('id'),
+                    'call_id': row.get(INPUT_COLUMNS['lead_id']),
                     'error': str(e),
                     'batch': state['batch_number']
                 })

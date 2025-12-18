@@ -4,7 +4,7 @@
 The initial implementation was processing calls **sequentially** within each batch (one after another), which was slow.
 
 ## Solution Implemented
-Added **parallel processing** using Python's `ThreadPoolExecutor` to analyze all 10 calls in a batch **simultaneously**.
+Added **parallel processing** using Python's `ThreadPoolExecutor` to analyze all 40 calls in a batch **simultaneously**.
 
 ---
 
@@ -55,12 +55,12 @@ with ThreadPoolExecutor(max_workers=max_workers) as executor:
 
 ### Before (Sequential)
 - **Time per call**: ~3-6 seconds
-- **Time per batch (10 calls)**: ~30-60 seconds
+- **Time per batch (40 calls)**: ~120-240 seconds
 - **Total time (49 calls)**: ~5-10 minutes
 
 ### After (Parallel)
 - **Time per call**: ~3-6 seconds (same)
-- **Time per batch (10 calls)**: ~3-6 seconds ⚡ (all calls processed simultaneously)
+- **Time per batch (40 calls)**: ~12-24 seconds ⚡ (all calls processed simultaneously)
 - **Total time (49 calls)**: ~30-60 seconds 🚀
 
 ### Speedup
@@ -74,9 +74,9 @@ with ThreadPoolExecutor(max_workers=max_workers) as executor:
 ### Parallel Execution Flow
 
 ```
-Batch of 10 calls
+Batch of 40 calls
     ↓
-ThreadPoolExecutor with 10 workers
+ThreadPoolExecutor with 40 workers
     ↓
 ┌─────────────────────────────────────────────────────────┐
 │  Worker 1 → Call 1 → LLM Analysis → Insight 1          │
@@ -109,7 +109,7 @@ Continue to next batch
 ## Technical Details
 
 ### ThreadPoolExecutor Configuration
-- **Max Workers**: `min(batch_size, BATCH_SIZE)` (typically 10)
+- **Max Workers**: `min(batch_size, BATCH_SIZE)` (typically 40)
 - **Execution**: `as_completed()` for collecting results
 - **Error Handling**: Per-call try/except blocks
 - **State Management**: Thread-safe accumulation
@@ -133,13 +133,13 @@ Each call's analysis is independent:
 
 Edit `config/settings.py`:
 ```python
-BATCH_SIZE = 10  # Number of calls per batch (also max workers)
+BATCH_SIZE = 40  # Number of calls per batch (also max workers)
 ```
 
 **Recommendations**:
-- **10 workers**: Optimal for most cases
-- **5 workers**: If API rate limiting occurs
-- **20 workers**: For larger batches (if needed)
+- **40 workers**: Current configuration for optimal throughput
+- **20 workers**: If API rate limiting occurs
+- **80 workers**: For larger batches (if needed)
 
 ---
 
@@ -165,7 +165,7 @@ BATCH_SIZE = 10  # Number of calls per batch (also max workers)
 Run the analysis and observe logs:
 ```
 2025-12-17 02:15:14 - INFO - Analyzing batch 1 with PARALLEL processing
-2025-12-17 02:15:14 - INFO - Processing 10 calls in parallel with 10 workers
+2025-12-17 02:15:14 - INFO - Processing 40 calls in parallel with 40 workers
 2025-12-17 02:15:14 - INFO - Analyzing call ID: 12345
 2025-12-17 02:15:14 - INFO - Analyzing call ID: 12346
 2025-12-17 02:15:14 - INFO - Analyzing call ID: 12347

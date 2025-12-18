@@ -29,7 +29,7 @@ This system uses **Gemini 2.5 Flash** to analyze every sales call, identifying p
 ┌─────────────────────────────────────────────────────────────────────┐
 │                      DATA HANDLER                                   │
 │  • Loads CSV                                                        │
-│  • Creates 5 batches (10 rows each)                                │
+│  • Creates batches (40 rows each)                                  │
 │  • Manages checkpoints for resume                                  │
 └────────────────────────────┬────────────────────────────────────────┘
                              │
@@ -50,8 +50,8 @@ This system uses **Gemini 2.5 Flash** to analyze every sales call, identifying p
 │           ▼                                                         │
 │  ┌──────────────────┐                                              │
 │  │  Analyze Calls   │  🤖 Gemini 2.5 Flash LLM                    │
-│  │                  │  • ⚡ PARALLEL: 10 calls simultaneously     │
-│  │  (10 calls)      │  • ThreadPoolExecutor (10 workers)          │
+│  │                  │  • ⚡ PARALLEL: 40 calls simultaneously     │
+│  │  (40 calls)      │  • ThreadPoolExecutor (40 workers)          │
 │  │                  │  • Structured output (Pydantic)             │
 │  │                  │  • LGS quality assessment                    │
 │  │                  │  • OMC performance rating                    │
@@ -120,7 +120,7 @@ This system uses **Gemini 2.5 Flash** to analyze every sales call, identifying p
 ```
 CSV File (49 rows)
     ↓
-Split into 5 batches (10 rows each)
+Split into batches (40 rows each)
     ↓
 Batch 1 → LLM Analysis → Insights 1-10 → State
 Batch 2 → LLM Analysis → Insights 11-20 → State (accumulated)
@@ -282,7 +282,7 @@ Maintains across batches:
 
 ## Processing Details
 
-### **Batch Size: 10 rows**
+### **Batch Size: 40 rows**
 - Balances token usage and speed
 - Prevents API rate limiting
 - Enables checkpoint/resume
@@ -309,7 +309,7 @@ Maintains across batches:
 | Metric | Value |
 |--------|-------|
 | **Total Calls** | 49 |
-| **Batches** | 5 (10 rows each) |
+| **Batches** | Variable (40 rows each) |
 | **Parallel Workers** | 10 per batch |
 | **Time per Batch** | ~30-60 seconds (parallel) |
 | **Speedup** | ~10x vs sequential |
