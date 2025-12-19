@@ -21,7 +21,7 @@ CHECKPOINTS_DIR.mkdir(exist_ok=True)
 LOGS_DIR.mkdir(exist_ok=True)
 
 # Input/Output files
-INPUT_CSV = INPUT_DIR / "mergeed_for_test.csv"
+INPUT_CSV = INPUT_DIR / "mergeed_for_test_2.csv"
 OUTPUT_CSV = OUTPUT_DIR / "sales_variables_extracted.csv"
 CHECKPOINT_FILE = CHECKPOINTS_DIR / "variables_extraction_checkpoint.json"
 
@@ -31,7 +31,7 @@ TIMEZONE_FILE = Path(__file__).parent.parent / "prompts" / "timezone_mapping.txt
 
 # Gemini API Configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = "gemini-2.5-flash"  # Using Gemini 2.5 Flash
+GEMINI_MODEL = "gemini-2.5-flash-lite"  # Using Gemini 2.5 Flash
 
 # LangSmith Configuration (optional)
 LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY")

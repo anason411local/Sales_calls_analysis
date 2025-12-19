@@ -48,7 +48,7 @@ Goal: Did the lead confirm they want more work?
 
 Criteria: The lead must explicitly say "Yes" to questions like "Can you handle more customers?" "Do you have capacity?" or "Are you looking for more jobs?"
 
-Output: YES (Ready for growth) or NO (At capacity/Not interested).
+Output: YES (Ready for growth) or NO (At capacity/Not interested) or UNKNOWN ( if question was not asked or customer didn't responce explicitly)
 
 3. Industry Validation (Forbidden Check)
 

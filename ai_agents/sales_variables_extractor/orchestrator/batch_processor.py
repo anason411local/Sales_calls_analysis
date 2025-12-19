@@ -119,11 +119,12 @@ class BatchProcessor:
                 result['ready_for_customers'] = av.ready_for_customers
                 result['forbidden_industry'] = av.forbidden_industry
                 result['ready_to_transfer'] = av.ready_to_transfer
+                result['lgs_call_not_transferred'] = av.lgs_call_not_transferred
                 result['customer_sentiment_lgs'] = av.customer_sentiment
                 result['customer_language'] = av.customer_language
                 result['customer_knows_marketing'] = av.customer_knows_marketing
                 result['customer_availability'] = av.customer_availability
-                result['who_said_hello_first'] = av.who_said_hello_first
+                result['who_said_hello_first_lgs'] = av.who_said_hello_first
                 result['customer_marketing_experience'] = av.customer_marketing_experience
                 result['technical_quality_score'] = av.technical_quality_score
                 result['technical_quality_issues'] = av.technical_quality_issues
@@ -145,6 +146,8 @@ class BatchProcessor:
                 result['goal1_questions'] = ce.goal1_questions
                 result['goal2_questions'] = ce.goal2_questions
                 result['goal3_questions'] = ce.goal3_questions
+                result['discovery_quality'] = ce.discovery_quality
+                result['advanced_discovery_used'] = ce.advanced_discovery_used
                 result['total_buying_signals'] = ce.total_buying_signals
                 result['total_resistance_signals'] = ce.total_resistance_signals
                 result['signal_ratio'] = ce.signal_ratio
@@ -153,11 +156,14 @@ class BatchProcessor:
             # Call Opening
             if hasattr(omc_vars, 'call_opening') and omc_vars.call_opening:
                 co = omc_vars.call_opening
+                result['omc_agent_sentiment_style'] = co.omc_agent_sentiment_style
+                result['omc_who_said_hello_first'] = co.omc_who_said_hello_first
                 result['time_to_reason_seconds'] = co.time_to_reason_seconds
                 result['business_type_mentioned'] = co.business_type_mentioned
                 result['location_mentioned'] = co.location_mentioned
                 result['within_45_seconds'] = co.within_45_seconds
                 result['call_structure_framed'] = co.call_structure_framed
+                result['call_structure_clarity'] = co.call_structure_clarity
             
             # Objection Handling
             if hasattr(omc_vars, 'objection_handling') and omc_vars.objection_handling:
@@ -169,6 +175,7 @@ class BatchProcessor:
                 result['price_mentions_final_2min'] = oh.price_mentions_final_2min
                 result['timeline_mentions_final_2min'] = oh.timeline_mentions_final_2min
                 result['contract_mentions_final_2min'] = oh.contract_mentions_final_2min
+                result['price_timeline_contract_before_dropoff'] = oh.price_timeline_contract_before_dropoff
                 result['roi_calculation_presented'] = oh.roi_calculation_presented
             
             # Pace Control
@@ -176,10 +183,19 @@ class BatchProcessor:
                 pc = omc_vars.pace_control
                 result['average_monologue_length'] = pc.average_monologue_length
                 result['longest_monologue_length'] = pc.longest_monologue_length
+                result['extended_monologues_count'] = pc.extended_monologues_count
+                result['short_monologues'] = pc.short_monologues
+                result['medium_monologues'] = pc.medium_monologues
+                result['long_monologues'] = pc.long_monologues
+                result['very_long_monologues'] = pc.very_long_monologues
                 result['total_interruptions'] = pc.total_interruptions
+                result['interruption_rate'] = pc.interruption_rate
+                result['interruption_pattern'] = pc.interruption_pattern
                 result['conversation_balance'] = pc.conversation_balance
                 result['script_adherence'] = pc.script_adherence
                 result['stages_skipped'] = pc.stages_skipped
+                result['stages_out_of_order'] = pc.stages_out_of_order
+                result['premature_closing_attempt'] = pc.premature_closing_attempt
             
             # Emotional Tone
             if hasattr(omc_vars, 'emotional_tone') and omc_vars.emotional_tone:
@@ -187,7 +203,15 @@ class BatchProcessor:
                 result['name_used_first_minute'] = et.name_used_first_minute
                 result['name_usage_count'] = et.name_usage_count
                 result['rapport_elements_count'] = et.rapport_elements_count
+                result['tone_assessment'] = et.tone_assessment
+                result['personal_greeting'] = et.personal_greeting
+                result['common_ground_established'] = et.common_ground_established
                 result['sentiment_progression'] = et.sentiment_progression
+                result['sentiment_opening'] = et.sentiment_opening
+                result['sentiment_early_middle'] = et.sentiment_early_middle
+                result['sentiment_late_middle'] = et.sentiment_late_middle
+                result['sentiment_closing'] = et.sentiment_closing
+                result['notable_sentiment_shifts'] = et.notable_sentiment_shifts
                 result['customer_frustrations'] = et.customer_frustrations
                 result['empathy_responses'] = et.empathy_responses
                 result['empathy_response_rate'] = et.empathy_response_rate
@@ -198,7 +222,13 @@ class BatchProcessor:
                 result['total_call_duration'] = ot.total_call_duration
                 result['disconnect_stage'] = ot.disconnect_stage
                 result['hang_up_initiated_by'] = ot.hang_up_initiated_by
+                result['time_in_final_stage'] = ot.time_in_final_stage
                 result['commitment_type'] = ot.commitment_type
+                result['commitment_clarity'] = ot.commitment_clarity
+                result['assumptive_language_used'] = ot.assumptive_language_used
+                result['full_sale_closed'] = ot.full_sale_closed
+                result['payment_info_collected'] = ot.payment_info_collected
+                result['followup_scheduled'] = ot.followup_scheduled
                 result['call_result_tag'] = ot.call_result_tag
                 result['primary_disconnect_reason'] = ot.primary_disconnect_reason
         

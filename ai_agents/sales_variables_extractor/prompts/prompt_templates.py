@@ -122,12 +122,32 @@ SECTION C: LGS AGENT GENDER
 SECTION D: QUALIFYING VARIABLES
 {LGS_QUALIFYING}
 
+SECTION D.1: CALL TRANSFER STATUS
+11. **lgs_call_not_transferred**: Was the call transferred to OMC?
+   - Analyze if the call was successfully transferred
+   - If not transferred, identify why (customer declined, not qualified, technical issue, etc.)
+   - Return "Yes" (transferred), "No - [reason]", or "unknown"
+
 SECTION E: CUSTOMER SENTIMENT
 {LGS_CUSTOMER_SENTIMENT}
 
 SECTION F: CUSTOMER LANGUAGE
 5. **customer_language**: Language used by customer
-   - Return "English", "Spanish", or "Unknown"
+   
+   CLASSIFICATION RULES:
+   
+   SPANISH: Classify as "Spanish" if:
+   - The call opens with the greeting "Hola" OR
+   - The agent asks a variation of "Do you prefer English or Spanish/Español?"
+   
+   ENGLISH: Classify as "English" if:
+   - The conversation proceeds in English without the specific Spanish triggers mentioned above
+   
+   UNKNOWN: Classify as "Unknown" if:
+   - The language cannot be determined from the transcript
+   - The transcript is too short or unclear
+   
+   Return: "English", "Spanish", or "Unknown"
 
 SECTION G: CUSTOMER UNDERSTANDING
 6. **customer_knows_marketing**: Does customer understand this is a marketing call?
@@ -166,6 +186,7 @@ You MUST return a JSON object with this EXACT structure:
     "ready_for_customers": "string (Yes/No/unknown)",
     "forbidden_industry": "string (Yes/No/unknown)",
     "ready_to_transfer": "string (Yes/No/unknown)",
+    "lgs_call_not_transferred": "string (Yes/No - reason/unknown)",
     "customer_sentiment": "string",
     "customer_language": "string (English/Spanish/Unknown)",
     "customer_knows_marketing": "string (Yes/No/unknown)",
@@ -249,6 +270,116 @@ EXTRACTION FRAMEWORK
 {SALES_DATA_EXTRACTION_PROMPT}
 
 ================================================================================
+ADDITIONAL EXTRACTION REQUIREMENTS
+================================================================================
+
+CATEGORY I: CUSTOMER ENGAGEMENT & INTEREST
+-------------------------------------------
+1. TALK RATIO: Calculate percentage of conversation by agent vs customer
+   - Count total utterances/turns for each
+   - Classify as: Mutual Dialogue (40-60% customer) / Agent-Heavy (<30% customer) / Customer-Heavy (>70% customer)
+
+2. DISCOVERY QUESTIONS: Count and categorize all discovery questions
+   - Goal 1 (Demographics/Operations): Business duration, services, team size, equipment, etc.
+   - Goal 2 (Competition/Marketing): Website, advertising spend, marketing management, etc.
+   - Goal 3 (Practical Need/Mindset): Google usage, online search behavior, etc.
+   - Quality Assessment: Surface-Level (just asking) / Moderate Depth (some follow-up) / Deep Discovery (peeling the onion)
+   - Advanced Discovery: Did agent ask open-ended pain point questions and probe deeper with follow-ups?
+
+3. BUYING vs RESISTANCE SIGNALS:
+   - Buying: Asks about results, price, next steps, timeline, expresses positive sentiment
+   - Resistance: Price pushback, "not interested", bad experience, timing concerns, budget constraints
+   - Calculate ratio and overall sentiment
+
+CATEGORY II: CALL OPENING & FRAMING
+------------------------------------
+4. OMC AGENT SENTIMENT/STYLE: Classify agent's sales stance (NOT customer's):
+   - Expert: Advisor/consultant approach
+   - Confident & Assumptive: Controls frame, assumes sale, declarative statements
+   - Consultative & Validating: Active listening, mirrors, validates
+   - Robotic & Script-Bound: Mechanical, reads verbatim, excessive fillers
+   - Hesitant & Apologetic: Unsure, submissive, apologizes unnecessarily
+   - Urgent & Pressing: High-pressure, ignores soft "no", speeds up
+
+5. WHO SAID HELLO FIRST: At OMC call start, who greeted first (Customer/Agent/unknown)
+
+6. TIME TO STATE REASON: Seconds from greeting to clearly stating reason + value to customer
+
+7. PERSONALIZATION: Business type AND location mentioned within first 30-45 seconds?
+
+8. CALL STRUCTURE CLARITY: Did agent frame what will happen in the call?
+   - Time expectation set? Purpose stated? Process outlined?
+
+CATEGORY III: OBJECTION HANDLING & FRICTION
+--------------------------------------------
+9. OBJECTIONS: Count total objections, how many acknowledged, how many rebutted
+   - Track acknowledgement patterns (empathy, validation, clarification)
+   - Calculate acknowledgement rate
+
+10. PRICE/TIMELINE/CONTRACT MENTIONS: Track mentions in final 2 minutes
+    - Separate counts for price, timeline, contract
+    - Total mentions before drop-off
+    - Was ROI calculation presented?
+
+CATEGORY IV: PACE, CONTROL, AND INTERRUPTIONS
+----------------------------------------------
+11. MONOLOGUE ANALYSIS: Analyze agent's speaking patterns
+    - Average monologue length (sentences or seconds)
+    - Longest monologue
+    - Extended monologues (>5 sentences)
+    - Distribution: Short (1-2) / Medium (3-5) / Long (6-10) / Very Long (>10)
+    - Conversation balance: Mutual / Agent-Heavy / Choppy
+
+12. INTERRUPTIONS: Count times agent interrupted customer
+    - Calculate interruption rate (per minute)
+    - Pattern: Frequent / Occasional / Rare / None
+
+13. SCRIPT ADHERENCE: Map call flow against expected structure
+    - Expected stages: Introduction → Reason → Discovery → FOMO → Value Prop → ROI → Close
+    - Which stages were skipped?
+    - Were stages completed out of order?
+    - Premature closing attempt?
+    - Overall: Structured / Somewhat Structured / Unstructured
+
+CATEGORY V: EMOTIONAL TONE & RAPPORT
+-------------------------------------
+14. RAPPORT IN FIRST MINUTE:
+    - Customer name used? How many times?
+    - Personal greeting? Context reference? Common ground?
+    - Tone: Warm / Professional / Cold / Rushed
+
+15. SENTIMENT TIMELINE: Track customer sentiment at different periods
+    - Opening (0:00-2:00): Positive / Neutral / Negative / Skeptical
+    - Early Middle (2:00-5:00)
+    - Late Middle (5:00-end-2min)
+    - Closing (final 2 min)
+    - Overall progression: Improved / Stable / Declined / Fluctuated
+    - Notable shifts and triggers
+
+16. EMPATHY RESPONSES: When customer shares frustration, did agent show empathy?
+    - Count frustrations expressed
+    - Count empathy responses
+    - Calculate empathy response rate
+
+CATEGORY VI: OUTCOME AND TIMING MARKERS
+----------------------------------------
+17. CALL TIMING:
+    - Total duration in seconds
+    - Stage where call ended
+    - Who initiated hang-up (Customer/Agent/Mutual)
+    - Time spent in final stage before disconnect
+
+18. COMMITMENTS SECURED:
+    - Type: Full Sale / Payment Info / Follow-up / Think It Over / No Commitment
+    - Clarity: Explicit / Implied / Vague / None
+    - Assumptive language used?
+    - Full sale closed? Payment info collected? Follow-up scheduled?
+
+19. CALL RESULT TAG:
+    - Sale Completed / Early Disconnect / Disconnect - During Discovery / etc.
+    - Primary disconnect reason: Price / Timeline / Trust / Need to consult / Not qualified / Technical / Agent error / Unclear
+
+================================================================================
 OUTPUT FORMAT - CRITICAL
 ================================================================================
 
@@ -263,17 +394,22 @@ You MUST return a JSON object with this EXACT structure:
     "goal1_questions": number,
     "goal2_questions": number,
     "goal3_questions": number,
+    "discovery_quality": "string (Surface-Level/Moderate Depth/Deep Discovery)",
+    "advanced_discovery_used": "string (Yes/No - peeling the onion)",
     "total_buying_signals": number,
     "total_resistance_signals": number,
     "signal_ratio": "string",
     "customer_sentiment": "string"
   }},
   "call_opening": {{
-    "time_to_reason_seconds": number,
+    "omc_agent_sentiment_style": "string (Expert/Confident & Assumptive/Consultative & Validating/Robotic & Script-Bound/Hesitant & Apologetic/Urgent & Pressing)",
+    "omc_who_said_hello_first": "string (Customer/Agent/unknown)",
+    "time_to_reason_seconds": number (seconds to state reason and value),
     "business_type_mentioned": "string (Yes/No)",
     "location_mentioned": "string (Yes/No)",
-    "within_45_seconds": "string (Yes/No)",
-    "call_structure_framed": "string (Yes/No)"
+    "within_45_seconds": "string (Yes/No - business & location within 30-45 sec)",
+    "call_structure_framed": "string (Yes/No)",
+    "call_structure_clarity": "string (description of how structure was communicated)"
   }},
   "objection_handling": {{
     "total_objections": number,
@@ -283,21 +419,39 @@ You MUST return a JSON object with this EXACT structure:
     "price_mentions_final_2min": number,
     "timeline_mentions_final_2min": number,
     "contract_mentions_final_2min": number,
+    "price_timeline_contract_before_dropoff": number (total mentions before drop-off),
     "roi_calculation_presented": "string (Yes/No)"
   }},
   "pace_control": {{
     "average_monologue_length": number,
     "longest_monologue_length": number,
+    "extended_monologues_count": number (monologues >5 sentences),
+    "short_monologues": number (1-2 sentences),
+    "medium_monologues": number (3-5 sentences),
+    "long_monologues": number (6-10 sentences),
+    "very_long_monologues": number (>10 sentences),
     "total_interruptions": number,
+    "interruption_rate": number (per minute),
+    "interruption_pattern": "string (Frequent/Occasional/Rare/None)",
     "conversation_balance": "string",
     "script_adherence": "string",
-    "stages_skipped": "string"
+    "stages_skipped": "string",
+    "stages_out_of_order": "string",
+    "premature_closing_attempt": "string (Yes/No)"
   }},
   "emotional_tone": {{
     "name_used_first_minute": "string (Yes/No)",
     "name_usage_count": number,
     "rapport_elements_count": number,
-    "sentiment_progression": "string",
+    "tone_assessment": "string (Warm/Professional/Cold/Rushed)",
+    "personal_greeting": "string (Yes/No)",
+    "common_ground_established": "string (Yes/No)",
+    "sentiment_progression": "string (Improved/Stable/Declined/Fluctuated)",
+    "sentiment_opening": "string (Positive/Neutral/Negative/Skeptical - 0:00-2:00)",
+    "sentiment_early_middle": "string (Positive/Neutral/Negative/Skeptical - 2:00-5:00)",
+    "sentiment_late_middle": "string (Positive/Neutral/Negative/Skeptical - 5:00-end-2min)",
+    "sentiment_closing": "string (Positive/Neutral/Negative/Skeptical - final 2 min)",
+    "notable_sentiment_shifts": "string (description)",
     "customer_frustrations": "string (e.g. '3' or 'Not Found')",
     "empathy_responses": number,
     "empathy_response_rate": number
@@ -306,7 +460,13 @@ You MUST return a JSON object with this EXACT structure:
     "total_call_duration": number (seconds as integer, e.g. 155),
     "disconnect_stage": "string",
     "hang_up_initiated_by": "string",
+    "time_in_final_stage": number (seconds in final stage),
     "commitment_type": "string",
+    "commitment_clarity": "string (Explicit/Implied/Vague/None)",
+    "assumptive_language_used": "string (Yes/No)",
+    "full_sale_closed": "string (Yes/No)",
+    "payment_info_collected": "string (Yes/No)",
+    "followup_scheduled": "string (Yes/No)",
     "call_result_tag": "string",
     "primary_disconnect_reason": "string"
   }}

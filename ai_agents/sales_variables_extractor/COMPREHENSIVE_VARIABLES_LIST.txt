@@ -1,0 +1,241 @@
+================================================================================
+COMPREHENSIVE VARIABLES EXTRACTION LIST
+================================================================================
+Sales Variables Extractor - Complete Variable Mapping
+Updated: December 19, 2024
+
+This document lists ALL variables being extracted from both LGS and OMC call 
+transcripts, mapped to the sales_data_extraction_prompt.txt framework.
+
+================================================================================
+SECTION A: LGS (LEAD GENERATION SPECIALIST) VARIABLES
+================================================================================
+
+A.1 TIMING & SEASONALITY
+-------------------------
+1. timezone                          - Derived from customer address
+2. high_low_season                   - Based on industry/location seasonality
+
+A.2 LGS AGENT CHARACTERISTICS
+------------------------------
+3. lgs_agent_sentiment               - Expert/Confident/Consultative/Robotic/Hesitant/Urgent
+4. lgs_agent_gender                  - Male/Female/Unknown (inferred from name)
+5. lgs_who_said_hello_first          - Customer/Agent/Unknown
+
+A.3 LGS QUALIFYING VARIABLES
+-----------------------------
+6. is_decision_maker                 - Yes/No/Unknown - Business owner or DM for finance/marketing
+7. ready_for_more_customers          - Yes/No/Unknown - Can/want to take more leads
+8. forbidden_industry                - Yes/No/Unknown - Falls into forbidden industries
+9. ready_to_transfer                 - Yes/No/Unknown - Agreed to be transferred to OMC
+10. lgs_call_not_transferred         - Yes/No/Unknown - Was call transferred? If not, why?
+
+A.4 CUSTOMER CHARACTERISTICS (LGS)
+-----------------------------------
+11. customer_mood_lgs                - Angry/Happy/Neutral/etc. (sentiment)
+12. customer_language                - English/Spanish/Unknown
+13. knows_marketing_call             - Yes/No/Unknown - Understands it's marketing vs job
+14. customer_availability            - Busy/Available/Unknown - In middle of job?
+15. customer_marketing_experience    - Novice/Skeptic/Transactional/Expert
+
+A.5 TECHNICAL QUALITY (LGS)
+----------------------------
+16. technical_quality_score          - 0-5 (0=poor, 5=excellent)
+17. start_call_latency              - Assessment of "Hello" loop
+18. audio_stability                  - Cut-outs/robot voice issues
+19. intelligibility                  - Repetition requests needed
+20. silence_dead_air                 - Dead air indicators
+21. environmental_distractions       - Background noise level
+
+================================================================================
+SECTION B: OMC (OUTBOUND MARKETING CLOSER) VARIABLES
+================================================================================
+
+B.1 CUSTOMER ENGAGEMENT & INTEREST (Category I)
+------------------------------------------------
+22. customer_talk_percentage         - % of conversation by customer
+23. agent_talk_percentage            - % of conversation by agent
+24. talk_ratio_classification        - Mutual Dialogue/Agent-Heavy/Customer-Heavy
+
+25. total_discovery_questions        - Total count of all discovery questions
+26. goal1_questions                  - Demographics/Operations questions (Q1-Q9)
+27. goal2_questions                  - Competition/Marketing questions (Q1-Q6)
+28. goal3_questions                  - Practical Need/Mindset questions (Q7-Q10)
+29. discovery_quality                - Surface-Level/Moderate Depth/Deep Discovery
+30. advanced_discovery_used          - Yes/No - "Peeling the onion" technique
+
+31. total_buying_signals             - Count of buying signals detected
+32. total_resistance_signals         - Count of resistance signals detected
+33. signal_ratio                     - Buying:Resistance ratio
+34. customer_sentiment_omc           - Interested/Neutral/Resistant
+
+B.2 CALL OPENING & FRAMING (Category II)
+-----------------------------------------
+35. omc_agent_sentiment_style        - Expert/Confident & Assumptive/Consultative & Validating/
+                                       Robotic & Script-Bound/Hesitant & Apologetic/Urgent & Pressing
+36. omc_who_said_hello_first         - Customer/Agent/Unknown
+
+37. time_to_reason_seconds           - Seconds to state reason + value (II.1)
+38. business_type_mentioned          - Yes/No - Business type mentioned
+39. location_mentioned               - Yes/No - Location mentioned
+40. within_45_seconds                - Yes/No - Both within 30-45 seconds (II.2)
+
+41. call_structure_framed            - Yes/No - Structure communicated upfront
+42. call_structure_clarity           - Description of how structure was framed (II.3)
+
+B.3 OBJECTION HANDLING & FRICTION (Category III)
+-------------------------------------------------
+43. total_objections                 - Total objections raised by customer
+44. objections_acknowledged          - Objections acknowledged by agent
+45. objections_rebutted              - Objections rebutted by agent
+46. acknowledgement_rate             - % of objections acknowledged
+
+47. price_mentions_final_2min        - Price mentions in final 2 minutes
+48. timeline_mentions_final_2min     - Timeline mentions in final 2 minutes
+49. contract_mentions_final_2min     - Contract mentions in final 2 minutes
+50. price_timeline_contract_before_dropoff - Total mentions before drop-off (III.3)
+51. roi_calculation_presented        - Yes/No - ROI calculation shown
+
+B.4 PACE, CONTROL, AND INTERRUPTIONS (Category IV)
+---------------------------------------------------
+52. average_monologue_length         - Average sentences/seconds per agent turn
+53. longest_monologue_length         - Longest monologue in sentences
+54. extended_monologues_count        - Count of monologues >5 sentences
+55. short_monologues                 - Count of 1-2 sentence monologues
+56. medium_monologues                - Count of 3-5 sentence monologues
+57. long_monologues                  - Count of 6-10 sentence monologues
+58. very_long_monologues             - Count of >10 sentence monologues
+
+59. total_interruptions              - Times agent interrupted customer
+60. interruption_rate                - Interruptions per minute
+61. interruption_pattern             - Frequent/Occasional/Rare/None
+62. conversation_balance             - Mutual/Agent-Heavy/Choppy
+
+63. script_adherence                 - Structured/Somewhat Structured/Unstructured
+64. stages_skipped                   - List of skipped stages or 'None'
+65. stages_out_of_order              - Stages completed out of order
+66. premature_closing_attempt        - Yes/No - Premature closing detected
+
+B.5 EMOTIONAL TONE & RAPPORT (Category V)
+------------------------------------------
+67. name_used_first_minute           - Yes/No - Customer name used in first 60 sec
+68. name_usage_count                 - Times name used in first minute
+69. rapport_elements_count           - Count of rapport elements in first minute
+70. tone_assessment                  - Warm/Professional/Cold/Rushed
+71. personal_greeting                - Yes/No - Personal greeting given
+72. common_ground_established        - Yes/No - Common ground found
+
+73. sentiment_progression            - Improved/Stable/Declined/Fluctuated
+74. sentiment_opening                - Positive/Neutral/Negative/Skeptical (0:00-2:00)
+75. sentiment_early_middle           - Positive/Neutral/Negative/Skeptical (2:00-5:00)
+76. sentiment_late_middle            - Positive/Neutral/Negative/Skeptical (5:00-end-2min)
+77. sentiment_closing                - Positive/Neutral/Negative/Skeptical (final 2 min)
+78. notable_sentiment_shifts         - Description of sentiment changes
+
+79. customer_frustrations            - Number of frustrations expressed
+80. empathy_responses                - Number of empathy responses given
+81. empathy_response_rate            - % of frustrations with empathy response
+
+B.6 OUTCOME AND TIMING MARKERS (Category VI)
+---------------------------------------------
+82. total_call_duration              - Call duration in seconds
+83. disconnect_stage                 - Stage where call ended
+84. hang_up_initiated_by             - Customer/Agent/Mutual
+85. time_in_final_stage              - Seconds spent in final stage
+
+86. commitment_type                  - Full Sale/Payment Info/Follow-up/Think It Over/No Commitment
+87. commitment_clarity               - Explicit/Implied/Vague/None
+88. assumptive_language_used         - Yes/No - Assumptive closing language detected
+89. full_sale_closed                 - Yes/No - Full sale completed
+90. payment_info_collected           - Yes/No - Payment information gathered
+91. followup_scheduled               - Yes/No - Follow-up call scheduled
+
+92. call_result_tag                  - Sale Completed/Early Disconnect/Disconnect - During Discovery/
+                                       Disconnect - After Discovery/Disconnect - During Pitch/
+                                       Disconnect - Post-Price/Disconnect - During Close/
+                                       Follow-up Scheduled/Soft Decline/Hard Decline
+93. primary_disconnect_reason        - Price/Timeline/Trust/Need to consult/Not qualified/
+                                       Technical/Agent error/Unclear
+
+================================================================================
+TOTAL VARIABLES: 93 Variables
+================================================================================
+
+LGS Variables:     21 variables
+OMC Variables:     72 variables
+
+================================================================================
+EXTRACTION METHODOLOGY
+================================================================================
+
+1. AGENTIC FRAMEWORK:
+   - Built with LangGraph for stateful workflow management
+   - Uses Langchain Runnables for composable operations
+   - Implements retry logic with validation nodes
+
+2. PROMPT ENGINEERING:
+   - Comprehensive prompt templates for each section
+   - Structured JSON output with Pydantic validation
+   - Context-aware extraction with seasonality and timezone data
+
+3. PARALLEL PROCESSING:
+   - Processes 10 rows concurrently using ThreadPoolExecutor
+   - Batch processing with checkpointing for large datasets
+   - Rate limiting to respect API constraints
+
+4. DATA QUALITY:
+   - Pydantic schemas ensure type safety
+   - Validation nodes check extraction completeness
+   - Retry mechanism for failed extractions (max 3 attempts)
+   - JSON repair logic for malformed responses
+
+5. OUTPUT INTEGRATION:
+   - All extracted variables merged with original input CSV
+   - Preserves all original columns
+   - Adds 93 new extracted variable columns
+   - Exports to timestamped CSV file
+
+================================================================================
+PROMPT SOURCES
+================================================================================
+
+LGS Prompts:
+- timezone.txt                       - Timezone mapping
+- seasonality.csv                    - Industry seasonality data
+- LGS_Sentiiment_analysis.txt       - Agent sentiment classification
+- LGS_Qualifying.txt                - Lead qualification criteria
+- LGS_Customer_sentiment_analysis.txt - Customer mood/disposition
+- LGS_Customer_marketing_understanfing.txt - Marketing sophistication
+- LGS_technical_quality_of__call.txt - Technical quality assessment
+
+OMC Prompts:
+- sales_data_extaction_prompt.txt   - Comprehensive 6-category framework
+- system_instructions.txt            - System-level analysis instructions
+
+================================================================================
+EXPECTED ANSWER FORMATS
+================================================================================
+
+Binary (Yes/No/Unknown):
+- All qualification variables
+- Binary detection variables (greeting, personalization, etc.)
+
+Categorical Classifications:
+- Sentiment styles (6 categories)
+- Quality assessments (3-4 levels)
+- Call stages and results (predefined tags)
+
+Numerical:
+- Counts (questions, signals, interruptions, etc.)
+- Percentages (talk ratio, rates, etc.)
+- Durations (seconds, timestamps)
+
+Descriptive:
+- Sentiment shifts
+- Call structure descriptions
+- Disconnect reasons
+
+================================================================================
+END OF COMPREHENSIVE VARIABLES LIST
+================================================================================
+
