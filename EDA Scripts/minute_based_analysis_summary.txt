@@ -1,0 +1,251 @@
+================================================================================
+OMC CALL DURATION - MINUTE-BASED CATEGORY ANALYSIS SUMMARY
+================================================================================
+Analysis Date: December 19, 2025
+Granular Categories: 10 categories based on 0.5-minute intervals
+
+================================================================================
+MINUTE-BASED DISTRIBUTION
+================================================================================
+
+Category         Count    Percentage    Cumulative %
+---------------------------------------------------------
+<1 min           101      8.3%          8.3%
+<1.5 min         84       6.9%          15.2%
+<2 min           83       6.8%          21.9%
+<2.5 min         72       5.9%          27.8%
+<3 min           68       5.6%          33.4%
+<3.5 min         60       4.9%          38.3%
+<4 min           61       5.0%          43.3%
+<4.5 min         44       3.6%          46.9%
+<5 min           46       3.8%          50.7%
+>5 min           602      49.3%         100.0%
+---------------------------------------------------------
+TOTAL            1,221    100.0%
+
+================================================================================
+KEY INSIGHTS
+================================================================================
+
+1. DOMINANT CATEGORY:
+   - >5 minutes: 602 calls (49.3%)
+   - Nearly HALF of all calls exceed 5 minutes
+   - This indicates substantial customer engagement
+
+2. SHORT CALLS (Under 3 Minutes):
+   - Total: 408 calls (33.4%)
+   - Breakdown:
+     * <1 min: 101 calls (8.3%) - Quick disconnects/transfers
+     * 1-1.5 min: 84 calls (6.9%) - Brief inquiries
+     * 1.5-2 min: 83 calls (6.8%) - Short interactions
+     * 2-2.5 min: 72 calls (5.9%)
+     * 2.5-3 min: 68 calls (5.6%)
+
+3. MEDIUM CALLS (3-5 Minutes):
+   - Total: 211 calls (17.3%)
+   - Relatively consistent distribution across sub-categories
+   - Average ~50-60 calls per 0.5-minute interval
+
+4. LONG CALLS (Over 5 Minutes):
+   - Total: 602 calls (49.3%)
+   - Largest single category
+   - Represents engaged customer conversations
+
+================================================================================
+GROUPED ANALYSIS
+================================================================================
+
+Broad Category         Count    Percentage
+--------------------------------------------
+Under 3 Minutes        408      33.4%
+3 to 5 Minutes         211      17.3%
+Over 5 Minutes         602      49.3%
+--------------------------------------------
+
+Key Observation:
+- 66.6% of calls are 3+ minutes (substantial engagement)
+- 49.3% of calls exceed 5 minutes (deep engagement)
+- Only 33.4% are quick calls (<3 min)
+
+================================================================================
+CUMULATIVE INSIGHTS
+================================================================================
+
+By the time you reach:
+- 1 minute:     8.3% of calls completed
+- 2 minutes:    21.9% of calls completed
+- 3 minutes:    33.4% of calls completed
+- 4 minutes:    43.3% of calls completed
+- 5 minutes:    50.7% of calls completed
+- >5 minutes:   49.3% still ongoing
+
+Critical Finding:
+- At the 5-minute mark, you're only halfway through!
+- 50.7% of calls are completed within 5 minutes
+- 49.3% require MORE than 5 minutes
+
+================================================================================
+BUSINESS IMPLICATIONS
+================================================================================
+
+1. RESOURCE PLANNING:
+   - Cannot use simple averages for staffing
+   - Need to account for the large >5 min category
+   - Plan for extended call durations
+
+2. CALL QUALITY:
+   - 49.3% of calls >5 min suggests:
+     * Good customer engagement
+     * Detailed product discussions
+     * Complex customer needs
+     * Potential sales opportunities
+
+3. EFFICIENCY OPPORTUNITIES:
+   - 8.3% of calls <1 min may indicate:
+     * Technical issues
+     * Wrong numbers
+     * Immediate hang-ups
+     * Quick transfers
+   - Worth investigating for improvement
+
+4. TRAINING FOCUS:
+   - The gradual decrease from 1-5 minutes shows natural attrition
+   - The spike at >5 minutes suggests two types of calls:
+     * Quick resolution calls (<5 min)
+     * Complex engagement calls (>5 min)
+
+5. PERFORMANCE METRICS:
+   - Use 5 minutes as a key threshold
+   - Calls <5 min: Quick resolution (50.7%)
+   - Calls >5 min: Deep engagement (49.3%)
+
+================================================================================
+DISTRIBUTION PATTERN
+================================================================================
+
+Pattern Observed:
+- Gradual decline from <1 min to <5 min
+- MASSIVE spike at >5 min category
+- This suggests a BIMODAL distribution:
+  * Mode 1: Quick calls (1-5 minutes)
+  * Mode 2: Extended calls (>5 minutes)
+
+Interpretation:
+- Two distinct types of customer interactions
+- Quick calls: Simple inquiries, rejections, wrong numbers
+- Long calls: Interested customers, detailed discussions, sales
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+1. SEGMENT ANALYSIS:
+   - Separately analyze calls <5 min vs >5 min
+   - Different strategies for each segment
+   - Track conversion rates by duration segment
+
+2. QUALITY ASSURANCE:
+   - Focus on <1 min calls (potential issues)
+   - Review >5 min calls (potential opportunities)
+   - Ensure medium calls (3-5 min) are optimized
+
+3. AGENT TRAINING:
+   - Train for both quick resolution and extended engagement
+   - Develop scripts for different call types
+   - Teach agents to recognize call type early
+
+4. FORECASTING:
+   - Use bimodal distribution for capacity planning
+   - Don't rely on simple averages
+   - Account for 49.3% of calls being long
+
+5. FURTHER INVESTIGATION:
+   - What drives calls >5 minutes?
+   - Are longer calls more successful?
+   - Can we predict call duration early?
+   - Do certain agents have different distributions?
+
+================================================================================
+GENERATED VISUALIZATIONS
+================================================================================
+
+1. omc_duration_minutes_categories.png
+   - 4-panel comprehensive view
+   - Vertical histogram with all categories
+   - Pie chart with percentages
+   - Horizontal bar chart (easier to read)
+   - Cumulative distribution with dual axis
+
+2. omc_duration_minutes_detailed.png
+   - Stacked percentage distribution
+   - Donut chart with center statistics
+   - Detailed statistics table
+   - Grouped duration analysis (3 broad categories)
+
+3. omc_duration_minutes_histogram_large.png
+   - Large standalone histogram
+   - Beautiful color gradient
+   - Clear labels and percentages
+   - Statistics box included
+   - Perfect for presentations
+
+4. omc_duration_minutes_piechart_large.png
+   - Large standalone pie chart
+   - All 10 categories clearly visible
+   - Exploded slices for clarity
+   - Legend with call counts
+   - Professional appearance
+
+================================================================================
+COMPARISON WITH BROADER CATEGORIES
+================================================================================
+
+Previous Analysis (Broader):
+- Very Short (<1 min): 8.3%
+- Short (1-3 min): 25.1%
+- Medium (3-5 min): 17.3%
+- Long (5-10 min): 23.7%
+- Very Long (>10 min): 26.3%
+
+New Analysis (Granular):
+- Provides 0.5-minute resolution for <5 min range
+- Shows gradual decline pattern
+- Reveals the >5 min dominance (49.3%)
+- Better for detailed operational planning
+
+Both analyses complement each other:
+- Broader: Strategic overview
+- Granular: Tactical planning
+
+================================================================================
+TECHNICAL NOTES
+================================================================================
+
+Categories Defined:
+- <1 min: 0 to 59.99 seconds
+- <1.5 min: 60 to 89.99 seconds
+- <2 min: 90 to 119.99 seconds
+- <2.5 min: 120 to 149.99 seconds
+- <3 min: 150 to 179.99 seconds
+- <3.5 min: 180 to 209.99 seconds
+- <4 min: 210 to 239.99 seconds
+- <4.5 min: 240 to 269.99 seconds
+- <5 min: 270 to 299.99 seconds
+- >5 min: 300+ seconds
+
+Data Quality:
+- Total records analyzed: 1,221
+- All categories sum to 100%
+- No missing data in categorization
+
+Visualization Features:
+- 10-color palette for distinction
+- Multiple chart types for different audiences
+- High resolution (300 DPI)
+- Professional styling
+- Clear labels and legends
+
+================================================================================
+END OF MINUTE-BASED ANALYSIS REPORT
+================================================================================
+
