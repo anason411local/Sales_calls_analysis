@@ -38,34 +38,41 @@ You have analyzed {total_calls} sales calls. Now create a comprehensive, profess
    - Performance distribution
 
 3. CALL PATTERN ANALYSIS:
-   - Short calls (<2 min) vs Long calls (>=2 min)
+   - Short calls (<5 min) vs Long calls (>=5 min)
    - **Why short calls fail WITH VERBATIM PROOF** (1-2 critical moment quotes)
    - **What makes long calls successful WITH VERBATIM PROOF** (1-2 technique examples)
    - Common objections and handling WITH EXAMPLES
 
-4. LGS vs OMC ANALYSIS:
+4. LEAD QUALITY IMPACT ANALYSIS:
+   - How lead quality (company info, services, address) affects call duration
+   - Impact of call attempts vs. successful connections on outcomes
+   - Patterns in customer demographics and call success
+   - Service type correlations with call duration and outcomes
+
+5. LGS vs OMC ANALYSIS:
    - LGS handoff quality
    - Issues originating from LGS WITH PROOF
    - OMC performance issues WITH PROOF
    - Handoff improvement opportunities WITH EXAMPLES
 
-5. DAILY TRENDS:
+6. DAILY TRENDS:
    - Performance by date (table format)
    - Patterns over time
    - Peak performance periods
 
-6. STATUS/OUTCOME ANALYSIS:
+7. STATUS/OUTCOME ANALYSIS:
    - Breakdown by call outcome (table format)
    - Duration by status
    - Success patterns
 
-7. RECOMMENDATIONS:
+8. RECOMMENDATIONS:
    - **A. Immediate Actions** (with specific examples of how to implement)
    - **B. Training Recommendations** (with transferable techniques from successful agents)
    - **C. Process Improvements** (with before/after examples)
-   - **D. Long-term Strategic Changes**
+   - **D. Lead Quality Improvements** (how to better qualify and prepare leads)
+   - **E. Long-term Strategic Changes**
 
-8. REAL EXAMPLES:
+9. REAL EXAMPLES:
    - **A. Examples of Short Calls with Issues** (2-3 examples)
      * Include: Call ID, Agent, Duration, Issue, VERBATIM PROOF, Analysis
    - **B. Examples of Successful Long Calls** (2-3 examples)

@@ -23,7 +23,7 @@ LOGS_DIR.mkdir(exist_ok=True)
 REPORTS_DIR.mkdir(exist_ok=True)
 
 # Input/Output files
-INPUT_FILE = INPUT_DIR / "mergeed_for_test.csv"
+INPUT_FILE = INPUT_DIR / "method_3.csv"
 OUTPUT_FILE = REPORTS_DIR / "call_performance_analysis_report.md"
 CHECKPOINT_FILE = OUTPUT_DIR / "analysis_checkpoint.json"
 
@@ -34,16 +34,32 @@ ANALYSIS_PROMPT_FILE = PROMPTS_DIR / "analysis_prompt.txt"
 
 # Input columns - Updated for new dataset structure
 INPUT_COLUMNS = {
-    "lgs_agent": "TO_User_M",  # LGS agent (User who generates and transfers the lead)
-    "lgs_call_date": "TO_Event_O",  # Date and time of LGS agent sending/transferring the call
-    "lgs_duration": "TO_length_in_sec",  # LGS call duration in seconds
-    "lgs_transcription": "TO_Transcription_VICI(0-32000) Words",  # LGS transcription (Agent and Customer)
-    "omc_agent": "TO_OMC_User",  # OMC agent (User who receives the lead)
-    "omc_call_date": "TO_OMC_Call_Date_O",  # Date and time of OMC agent receiving the call
-    "omc_duration": "TO_OMC_Duration",  # OMC call duration in seconds
-    "omc_transcription": "TO_OMC_Transcription_VICI",  # OMC transcription (Agent and Customer)
-    "omc_status": "TO_OMC_Disposiion",  # Call outcome/disposition
-    "lead_id": "TO_Lead_ID"  # Row identifier (Lead ID)
+    # Lead Quality Information
+    "company_name": "LQ_Company_Name",
+    "company_address": "LQ_Company_Address",
+    "company_service": "LQ_Service",
+    "customer_name": "LQ_Customer_Name",
+    "calls_count": "Calls Count",
+    "connection_made_calls": "Connection Made Calls",
+    
+    # Call Information
+    "lead_id": "TO_Lead_ID",
+    "call_date": "TO_Event_O",
+    "lgs_duration": "TO_length_in_sec",
+    "omc_duration": "TO_OMC_Duration",
+    "omc_status": "TO_OMC_Disposiion",
+    
+    # LGS Data
+    "lgs_agent": "TO_User_M",
+    "lgs_transcription_1": "TO_Transcription_VICI(0-32000) Words",
+    "lgs_transcription_2": "TO_Transcription_VICI(32001-64000) Words",
+    "lgs_transcription_3": "TO_Transcription_VICI(64000+ Words)",
+    
+    # OMC Data
+    "omc_agent": "TO_OMC_User",
+    "omc_transcription_1": "TO_OMC_Transcription_VICI",
+    "omc_transcription_2": "TO_OMC_Transcription_VICI(32000-64000)Words",
+    "omc_transcription_3": "TO_OMC_Transcription_VICI(64000+ Words)"
 }
 
 # Gemini API Configuration
@@ -59,7 +75,7 @@ LANGSMITH_PROJECT = os.getenv("LANGSMITH_PROJECT", "Call_Performance_Analysis")
 # Processing Configuration
 BATCH_SIZE = 40  # Process 40 rows at a time
 MAX_RETRIES = 2
-CALL_DURATION_THRESHOLD = 120  # 2 minutes in seconds
+CALL_DURATION_THRESHOLD = 300  # 5 minutes in seconds
 
 # Company Context
 COMPANY_CONTEXT = """
@@ -86,8 +102,8 @@ DEPARTMENTS:
 
 # Analysis Focus Areas
 ANALYSIS_FOCUS = {
-    "short_calls": "Calls under 2 minutes (<120 seconds)",
-    "long_calls": "Calls over 2 minutes (>=120 seconds)",
+    "short_calls": "Calls under 5 minutes (<300 seconds)",
+    "long_calls": "Calls over 5 minutes (>=300 seconds)",
     "lgs_handoff": "Quality of LGS to OMC handoff",
     "agent_performance": "Individual agent performance metrics",
     "patterns": "Successful vs unsuccessful call patterns",

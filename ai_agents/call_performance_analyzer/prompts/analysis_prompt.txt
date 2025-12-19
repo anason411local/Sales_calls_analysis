@@ -2,16 +2,38 @@ CALL PERFORMANCE ANALYSIS TASK
 
 Analyze the following call data comprehensively:
 
+LEAD QUALITY:
+- Company name: {company_name}
+- Company address: {company_address}
+- Company services offered: {company_service}
+- Company owner name: {customer_name}
+- Call attempts to company phone number: {calls_count}
+- Established call connection to company phone number: {connection_made_calls}
+
 CALL INFORMATION:
-- Call ID: {call_id}
+- Call ID/Lead ID: {lead_id}
 - Call Date: {call_date}
+- LGS Call Duration: {lgs_duration} seconds
 - OMC Call Duration: {omc_duration} seconds
 - Call Status/Outcome: {omc_status}
+[P2P - Promise to Pay
+HU- Hung Up
+A- Answering Machine
+CALLBK- Call Back
+VM- Voicemail
+N- No Answer
+NI-Not Interested
+SALE- Sale Made
+CR- Cancel Request
+REJNUM- Rejected Number
+LB- Language Barrier
+AC- Already a Customer
+NP-No Pitch No Price
+SW-Sold Website]
 
 LGS (LEAD GENERATION) DATA:
 - LGS Agent: {lgs_agent}
-- LGS Transcription:
-{lgs_transcription}
+- LGS Transcription: {lgs_transcription}
 
 OMC (OUTBOUND MARKETING) DATA:
 - OMC Agent: {omc_agent}
@@ -21,21 +43,50 @@ OMC (OUTBOUND MARKETING) DATA:
 ANALYSIS REQUIREMENTS:
 
 1. LGS HANDOFF QUALITY ANALYSIS:
-   - Rate the LGS handoff quality (1-10)
-   - What information did LGS provide to OMC?
-   - Was the lead properly qualified?
-   - Were customer expectations set correctly?
-   - Identify any LGS issues that affected OMC performance
-   - List LGS strengths that helped OMC
+- How does the Lead quality affect the LGS and OMC conversation longevity?
+- How does the number of call attempts vs. connection make impact conversation longevity?
+- How is the time of the day and timezone affecting the connectivity and call duration?
+- How is the month of the year the call is made affecting the call duration based on the high/low season for that industry and services company is offering?
+- Is there a pattern between the LGS Agent and the duration of the OMC calls?
+- How is the LGS Agent sentiment affecting the OMC call duration?
+- How is the LGS Agent call duration affecting the OMC call duration?
+- How is the customer sentiment affecting the OMC call duration?
+- How is the customer language spoken [English, Spanish] affecting the OMC call duration?
+- How does the if "Customer knows it is a marketing call or it is a job?" affects the OMC call duration?
+- How does who greet first [customer, agent] affect the OMC call duration?
+- How does "Affluence : How experience is the customer about marketing" affect the OMC call duration?
+- How does "Quality of the call - Agent's background noise" affect the OMC call duration?
+- Is there a pattern between the OMC Agent and the duration of the OMC calls?
+- How is the OMC Agent sentiment affecting the OMC call duration?
+- Is there a pattern between Call Disposition and OMC call duration?
+- How does Percentage of talk time for customer vs agent affect the OMC call duration?
+- How does Number of discovery questions asked before customer disengages affect the OMC call duration?
+- How does Counts of explicit buying signals and resistance/objection statements affect the OMC call duration?
+- How does Time (seconds) taken to clearly state reason for call and value to customer affect the OMC call duration?
+- How does Whether business type and/or location are referenced in first 30-45 seconds affect the OMC call duration?
+- How does Whether agent explains what will happen in the call (agenda) affect the OMC call duration?
+- How does number of objections raised before call ended and whether each got structured rebuttal affect the OMC call duration?
+- How does Whether agent validates/acknowledges objections before pitching again affect the OMC call duration?
+- How does Number of times price, timeline, or contract is mentioned immediately before drop-off affect the OMC call duration?
+- How does Average length (seconds) of agent monologues before giving floor to customer affect the OMC call duration?
+- How does Instances where agent talks over/interrupts versus yields the floor affect the OMC call duration?
+- How does Deviation from expected script order right before customer leaves the call affect the OMC call duration?
+- How does Who asks more questions in the call and relation to outcome affect the OMC call duration?
+- How does Who terminates the call affect the OMC call duration?
+- How does Whether any next step or micro-commitment was secured before disengagement affect the OMC call duration?
+- How does Outcome tag for when in the process the call ended affect the OMC call duration?
+- How does Whether the call disposition selected by the agent matches the actual result affect the OMC call duration?
 
 2. OMC CALL ANALYSIS:
-   - Is this a SHORT call (<2 minutes) or LONG call (>=2 minutes)?
+   - Is this a SHORT call (<5 minutes) or LONG call (>=5 minutes)?
    - If SHORT: Why did it end so quickly? What went wrong?
    - If LONG: What success factors contributed to engagement?
    - Rate OMC agent performance (1-10)
    - Customer engagement level: Low/Medium/High
    - What objections were raised?
    - How were objections handled?
+- What impact on the OMC call duration does it has the OMC Agent name?
+- What impact on the OMC call duration does the Call disposition has?
 
 3. PATTERN IDENTIFICATION:
    - For SHORT calls: List specific reasons for early termination
@@ -72,4 +123,3 @@ IMPORTANT:
 - For failed calls: Show exactly where and why it failed (with quotes)
 
 Provide your analysis in the structured format requested.
-

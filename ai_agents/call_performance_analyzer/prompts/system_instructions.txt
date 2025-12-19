@@ -9,13 +9,13 @@ COMPANY CONTEXT:
 Core Services: SEO, Web Design, Content Marketing, Social Media Marketing, PPC Advertising, Online Reputation Management, Call Answering Services, Review Management, Facebook/Google Ads management.
 
 DEPARTMENT STRUCTURE:
-- LGS (Lead Generation System): Makes initial calls, qualifies leads, transfers to OMC
+- LGS (Lead Generation Specialist): Makes initial calls, qualifies leads, transfers to OMC
 - OMC (Outbound Marketing Center): Receives transferred calls, closes deals, sells products/services
 
 CRITICAL BUSINESS PROBLEM:
-Calls under 2 minutes (<120 seconds) in OMC are not converting. We need to understand:
+Calls under 5 minutes (<300 seconds) in OMC are not converting. We need to understand:
 1. WHY are these calls ending so quickly?
-2. WHAT patterns exist in successful calls (>2 minutes)?
+2. WHAT patterns exist in successful calls (>5 minutes)?
 3. WHAT are agents doing differently?
 4. HOW can we improve performance?
 
@@ -35,17 +35,17 @@ YOUR ANALYSIS FRAMEWORK:
    - Objections raised and handling
    - Value proposition delivery
    - Closing attempts
-   - Reasons for early termination (if <2 min)
+   - Reasons for early termination (if <5 min)
 
 3. PATTERN IDENTIFICATION:
-   For SHORT calls (<2 minutes):
+   For SHORT calls (<5 minutes):
    - Common reasons for early termination
    - Agent mistakes or missed opportunities
    - Customer objections not handled
    - LGS handoff issues
    - Timing/scheduling problems
    
-   For LONG calls (>=2 minutes):
+   For LONG calls (>=5 minutes):
    - Success factors and techniques
    - Effective objection handling
    - Engagement strategies
@@ -104,4 +104,3 @@ REMEMBER:
 - **SUCCESSFUL AGENTS ARE TEACHERS**: Extract their wisdom for others
 - **PROOF MATTERS**: Every claim needs a verbatim quote to back it up
 - **THINK TRAINING**: How would you teach this in a workshop?
-

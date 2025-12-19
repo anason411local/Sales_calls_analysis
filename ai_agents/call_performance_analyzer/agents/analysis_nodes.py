@@ -71,6 +71,8 @@ def _analyze_single_call(row: Dict, chain) -> CallInsight:
         
         # Handle missing values and convert duration safely
         omc_duration_raw = row.get(INPUT_COLUMNS['omc_duration'], 0)
+        lgs_duration_raw = row.get(INPUT_COLUMNS['lgs_duration'], 0)
+        
         if pd.isna(omc_duration_raw) or omc_duration_raw == '' or omc_duration_raw == '-':
             omc_duration = 0
             logger.warning(f"Missing or invalid OMC duration for call {call_id}, using 0")
@@ -81,23 +83,54 @@ def _analyze_single_call(row: Dict, chain) -> CallInsight:
                 omc_duration = 0
                 logger.warning(f"Invalid OMC duration '{omc_duration_raw}' for call {call_id}, using 0")
         
+        if pd.isna(lgs_duration_raw) or lgs_duration_raw == '' or lgs_duration_raw == '-':
+            lgs_duration = 0
+        else:
+            try:
+                lgs_duration = int(float(lgs_duration_raw))
+            except (ValueError, TypeError):
+                lgs_duration = 0
+        
+        # Concatenate LGS transcription parts
+        lgs_trans_1 = str(row.get(INPUT_COLUMNS['lgs_transcription_1'], ''))
+        lgs_trans_2 = str(row.get(INPUT_COLUMNS['lgs_transcription_2'], ''))
+        lgs_trans_3 = str(row.get(INPUT_COLUMNS['lgs_transcription_3'], ''))
+        lgs_transcription = f"{lgs_trans_1} {lgs_trans_2} {lgs_trans_3}".strip()
+        if not lgs_transcription or lgs_transcription == 'nan nan nan':
+            lgs_transcription = 'No transcription available'
+        
+        # Concatenate OMC transcription parts
+        omc_trans_1 = str(row.get(INPUT_COLUMNS['omc_transcription_1'], ''))
+        omc_trans_2 = str(row.get(INPUT_COLUMNS['omc_transcription_2'], ''))
+        omc_trans_3 = str(row.get(INPUT_COLUMNS['omc_transcription_3'], ''))
+        omc_transcription = f"{omc_trans_1} {omc_trans_2} {omc_trans_3}".strip()
+        if not omc_transcription or omc_transcription == 'nan nan nan':
+            omc_transcription = 'No transcription available'
+        
         # Prepare input for LLM
         analysis_input = {
-            "call_id": str(call_id),
-            "call_date": str(row.get(INPUT_COLUMNS['omc_call_date'], 'unknown')),
+            "company_name": str(row.get(INPUT_COLUMNS['company_name'], 'unknown')),
+            "company_address": str(row.get(INPUT_COLUMNS['company_address'], 'unknown')),
+            "company_service": str(row.get(INPUT_COLUMNS['company_service'], 'unknown')),
+            "customer_name": str(row.get(INPUT_COLUMNS['customer_name'], 'unknown')),
+            "calls_count": str(row.get(INPUT_COLUMNS['calls_count'], 'unknown')),
+            "connection_made_calls": str(row.get(INPUT_COLUMNS['connection_made_calls'], 'unknown')),
+            "lead_id": str(call_id),
+            "call_date": str(row.get(INPUT_COLUMNS['call_date'], 'unknown')),
+            "lgs_duration": lgs_duration,
             "omc_duration": omc_duration,
             "omc_status": str(row.get(INPUT_COLUMNS['omc_status'], 'unknown')),
             "lgs_agent": str(row.get(INPUT_COLUMNS['lgs_agent'], 'unknown')),
-            "lgs_transcription": str(row.get(INPUT_COLUMNS['lgs_transcription'], 'No transcription available'))[:5000],  # Limit length
+            "lgs_transcription": lgs_transcription,
             "omc_agent": str(row.get(INPUT_COLUMNS['omc_agent'], 'unknown')),
-            "omc_transcription": str(row.get(INPUT_COLUMNS['omc_transcription'], 'No transcription available'))[:5000]  # Limit length
+            "omc_transcription": omc_transcription
         }
         
         # Invoke LLM analysis
         insight: CallInsight = chain.invoke(analysis_input)
         
         # Ensure required fields are set
-        insight.call_id = analysis_input["call_id"]
+        insight.call_id = analysis_input["lead_id"]
         insight.call_date = analysis_input["call_date"]
         insight.omc_duration = analysis_input["omc_duration"]
         insight.omc_status = analysis_input["omc_status"]
@@ -123,7 +156,7 @@ def _analyze_single_call(row: Dict, chain) -> CallInsight:
         
         failed_insight = CallInsight(
             call_id=str(row.get(INPUT_COLUMNS['lead_id'], 'unknown')),
-            call_date=str(row.get(INPUT_COLUMNS['omc_call_date'], 'unknown')),
+            call_date=str(row.get(INPUT_COLUMNS['call_date'], 'unknown')),
             omc_duration=omc_duration,
             omc_status=str(row.get(INPUT_COLUMNS['omc_status'], 'unknown')),
             lgs_agent=str(row.get(INPUT_COLUMNS['lgs_agent'], 'unknown')),

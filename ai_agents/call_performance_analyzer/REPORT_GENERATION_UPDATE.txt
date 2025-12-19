@@ -1,0 +1,167 @@
+================================================================================
+REPORT GENERATION PROMPT - UPDATED
+================================================================================
+Date: December 19, 2024
+Update: Enhanced to include new Lead Quality analysis section
+
+================================================================================
+WHAT WAS ALREADY UPDATED
+================================================================================
+
+✅ Section 3: Call Pattern Analysis
+   - Already updated to "<5 min" and ">=5 min" (was done earlier)
+   - Line 41: "Short calls (<5 min) vs Long calls (>=5 min)"
+
+================================================================================
+NEW UPDATES APPLIED
+================================================================================
+
+ADDED: Section 4 - LEAD QUALITY IMPACT ANALYSIS
+------------------------------------------------
+New section to analyze the impact of the 6 new lead quality fields:
+
+4. LEAD QUALITY IMPACT ANALYSIS:
+   - How lead quality (company info, services, address) affects call duration
+   - Impact of call attempts vs. successful connections on outcomes
+   - Patterns in customer demographics and call success
+   - Service type correlations with call duration and outcomes
+
+This section will analyze:
+- Company name, address, services (LQ_Company_Name, LQ_Company_Address, LQ_Service)
+- Customer name (LQ_Customer_Name)
+- Call attempts vs connections (Calls Count, Connection Made Calls)
+
+RENUMBERED: Subsequent sections
+--------------------------------
+- Old Section 4 (LGS vs OMC) → New Section 5
+- Old Section 5 (Daily Trends) → New Section 6
+- Old Section 6 (Status/Outcome) → New Section 7
+- Old Section 7 (Recommendations) → New Section 8
+- Old Section 8 (Real Examples) → New Section 9
+
+ENHANCED: Section 8 - RECOMMENDATIONS
+--------------------------------------
+Added new subsection:
+- **D. Lead Quality Improvements** (how to better qualify and prepare leads)
+- **E. Long-term Strategic Changes** (was D)
+
+================================================================================
+UPDATED REPORT STRUCTURE
+================================================================================
+
+1. EXECUTIVE SUMMARY
+   - High-level overview
+   - Key metrics and trends
+   - Critical issues WITH PROOF
+   - Top recommendations WITH EXAMPLES
+
+2. AGENT-LEVEL PERFORMANCE
+   - Individual agent analysis
+   - Top performers and TRANSFERABLE TECHNIQUES
+   - Agents needing support
+
+3. CALL PATTERN ANALYSIS
+   - Short calls (<5 min) vs Long calls (>=5 min) ✅ UPDATED
+   - Why short calls fail WITH PROOF
+   - What makes long calls successful WITH PROOF
+
+4. LEAD QUALITY IMPACT ANALYSIS ✅ NEW
+   - Lead quality effects on call duration
+   - Call attempts vs connections impact
+   - Customer demographics patterns
+   - Service type correlations
+
+5. LGS vs OMC ANALYSIS
+   - LGS handoff quality
+   - Issues originating from LGS
+   - OMC performance issues
+
+6. DAILY TRENDS
+   - Performance by date
+   - Patterns over time
+
+7. STATUS/OUTCOME ANALYSIS
+   - Breakdown by call outcome
+   - Duration by status
+
+8. RECOMMENDATIONS
+   - A. Immediate Actions
+   - B. Training Recommendations
+   - C. Process Improvements
+   - D. Lead Quality Improvements ✅ NEW
+   - E. Long-term Strategic Changes
+
+9. REAL EXAMPLES
+   - A. Examples of Short Calls with Issues
+   - B. Examples of Successful Long Calls
+   - C. TRANSFERABLE WISDOM SECTION
+
+================================================================================
+WHY THESE UPDATES MATTER
+================================================================================
+
+1. COMPREHENSIVE ANALYSIS:
+   - Now covers ALL input fields (not just call transcripts)
+   - Analyzes lead quality impact on outcomes
+   - Provides insights on pre-call factors
+
+2. ACTIONABLE INSIGHTS:
+   - Can identify if poor lead quality causes short calls
+   - Can recommend improvements to lead generation process
+   - Can correlate service types with success rates
+
+3. STRATEGIC VALUE:
+   - Helps optimize the entire pipeline (not just agent performance)
+   - Identifies systemic issues in lead qualification
+   - Provides data-driven recommendations for lead quality
+
+================================================================================
+EXAMPLE INSIGHTS NOW POSSIBLE
+================================================================================
+
+With the new Lead Quality section, reports can now include:
+
+- "Calls with 5+ previous attempts have 40% shorter duration"
+- "Painting services have 2x longer calls than Plumbing"
+- "Leads from Washington DC area have higher success rates"
+- "Calls where connection was made on first attempt last 3 min longer"
+- "Companies with complete address info have better outcomes"
+
+These insights were NOT possible before because we weren't analyzing
+the lead quality fields systematically.
+
+================================================================================
+BACKWARD COMPATIBILITY
+================================================================================
+
+✅ All existing sections preserved
+✅ No content removed
+✅ Only additions and enhancements
+✅ Report structure remains clear and logical
+
+================================================================================
+TESTING
+================================================================================
+
+The updated prompt will be used when generating the final report after
+analyzing all calls. The report will now include:
+
+- All previous analysis (unchanged)
+- NEW: Lead Quality Impact section
+- ENHANCED: Recommendations with lead quality improvements
+
+================================================================================
+STATUS
+================================================================================
+
+✅ Report generation prompt updated
+✅ New Lead Quality section added
+✅ Recommendations section enhanced
+✅ All sections renumbered correctly
+✅ No linter errors
+✅ Ready for production
+
+================================================================================
+END OF UPDATE
+================================================================================
+
