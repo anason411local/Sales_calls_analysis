@@ -23,7 +23,7 @@ LOGS_DIR.mkdir(exist_ok=True)
 REPORTS_DIR.mkdir(exist_ok=True)
 
 # Input/Output files
-INPUT_FILE = INPUT_DIR / "method_3.csv"
+INPUT_FILE = INPUT_DIR / "mergeed_for_test_og.csv"
 OUTPUT_FILE = REPORTS_DIR / "call_performance_analysis_report.md"
 CHECKPOINT_FILE = OUTPUT_DIR / "analysis_checkpoint.json"
 
@@ -64,7 +64,7 @@ INPUT_COLUMNS = {
 
 # Gemini API Configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = "gemini-2.5-flash-lite"
+GEMINI_MODEL = "gemini-2.5-flash"
 
 # LangSmith Configuration
 LANGSMITH_TRACING = os.getenv("LANGSMITH_TRACING", "true").lower() == "true"

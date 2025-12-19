@@ -357,9 +357,9 @@ CATEGORY V: EMOTIONAL TONE & RAPPORT
     - Notable shifts and triggers
 
 16. EMPATHY RESPONSES: When customer shares frustration, did agent show empathy?
-    - Count frustrations expressed
-    - Count empathy responses
-    - Calculate empathy response rate
+    - Count frustrations expressed (return as STRING, e.g. "3", "Not Found", "0")
+    - Count empathy responses (return as NUMBER)
+    - Calculate empathy response rate (return as NUMBER)
 
 CATEGORY VI: OUTCOME AND TIMING MARKERS
 ----------------------------------------
@@ -452,7 +452,7 @@ You MUST return a JSON object with this EXACT structure:
     "sentiment_late_middle": "string (Positive/Neutral/Negative/Skeptical - 5:00-end-2min)",
     "sentiment_closing": "string (Positive/Neutral/Negative/Skeptical - final 2 min)",
     "notable_sentiment_shifts": "string (description)",
-    "customer_frustrations": "string (e.g. '3' or 'Not Found')",
+    "customer_frustrations": "string (MUST BE STRING - e.g. '3 frustrations', 'Not Found', '0', etc. NEVER use integer)",
     "empathy_responses": number,
     "empathy_response_rate": number
   }},

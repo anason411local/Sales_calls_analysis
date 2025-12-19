@@ -119,8 +119,8 @@ def _prepare_insights_summary(state: AnalysisState) -> str:
     
     summary = f"""
 TOTAL CALLS: {total_calls}
-SHORT CALLS (<2 min): {short_calls} ({short_pct:.1f}%)
-LONG CALLS (>=2 min): {long_calls} ({long_pct:.1f}%)
+SHORT CALLS (<5 min): {short_calls} ({short_pct:.1f}%)
+LONG CALLS (>=5 min): {long_calls} ({long_pct:.1f}%)
 
 TOP REASONS FOR SHORT CALLS:
 {_get_top_items(all_short_reasons, 10)}
@@ -260,8 +260,8 @@ def _generate_fallback_report(state: AnalysisState) -> str:
 ## Executive Summary
 
 **Total Calls Analyzed:** {total_calls}
-**Short Calls (<2 min):** {short_calls} ({short_pct:.1f}%)
-**Long Calls (>=2 min):** {long_calls} ({long_pct:.1f}%)
+**Short Calls (<5 min):** {short_calls} ({short_pct:.1f}%)
+**Long Calls (>=5 min):** {long_calls} ({long_pct:.1f}%)
 
 ## Key Findings
 

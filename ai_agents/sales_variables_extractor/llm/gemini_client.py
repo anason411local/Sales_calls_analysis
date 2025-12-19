@@ -95,7 +95,7 @@ class GeminiClient:
                     temperature=0.1,  # Lower temperature for consistent JSON
                     top_p=0.95,
                     top_k=40,
-                    max_output_tokens=16384,  # Increased to prevent truncation
+                    max_output_tokens=32768,  # Doubled to prevent truncation for long transcripts
                     response_mime_type="application/json"
                 )
             )
@@ -158,7 +158,7 @@ class GeminiClient:
                     temperature=0.1,  # Lower temperature for consistent JSON
                     top_p=0.95,
                     top_k=40,
-                    max_output_tokens=16384,  # Increased to prevent truncation
+                    max_output_tokens=32768,  # Doubled to prevent truncation for long transcripts
                     response_mime_type="application/json"
                 )
             )

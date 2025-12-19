@@ -1,0 +1,167 @@
+================================================================================
+SALES VARIABLES EXTRACTOR - BUG FIXES (December 19, 2024)
+================================================================================
+
+ISSUES IDENTIFIED:
+==================
+
+1. JSON TRUNCATION ERROR (Row 7 - ID: 8681436.0)
+   - Error: "Unterminated string starting at: line 53 column 5"
+   - Root Cause: Response exceeded max_output_tokens (16384)
+   - Impact: OMC variables missing for 1 row after max retries
+   - Status: CRITICAL - Prevented complete extraction
+
+2. PYDANTIC VALIDATION ERROR (Row 16 - ID: 14426562.0)
+   - Error: "Input should be a valid string [type=string_type, input_value=1, input_type=int]"
+   - Field: emotional_tone.customer_frustrations
+   - Root Cause: Gemini returned integer instead of string
+   - Impact: Initial extraction failed, succeeded on retry
+   - Status: MODERATE - Fixed by retry but caused delays
+
+3. JSON TRUNCATION ERROR (Row 6 - ID: 16279448.0)
+   - Error: "Unterminated string starting at: line 53 column 34"
+   - Root Cause: Response exceeded max_output_tokens
+   - Impact: Initial extraction failed, succeeded on retry
+   - Status: MODERATE - Fixed by retry but caused delays
+
+================================================================================
+FIXES IMPLEMENTED:
+==================
+
+FIX 1: DOUBLED MAX OUTPUT TOKENS
+---------------------------------
+File: ai_agents/sales_variables_extractor/llm/gemini_client.py
+
+BEFORE:
+    max_output_tokens=16384
+
+AFTER:
+    max_output_tokens=32768  # Doubled to prevent truncation for long transcripts
+
+Changes Applied:
+- Line 98: LGS extraction - increased from 16384 to 32768
+- Line 161: OMC extraction - increased from 16384 to 32768
+
+Expected Impact:
+✅ Prevents JSON truncation for long call transcripts
+✅ Allows complete extraction of all OMC variables
+✅ Reduces retry attempts
+✅ Should fix Row 7 (8681436.0) on next run
+
+
+FIX 2: CLARIFIED customer_frustrations TYPE IN PROMPT
+------------------------------------------------------
+File: ai_agents/sales_variables_extractor/prompts/prompt_templates.py
+
+BEFORE (Line 455):
+    "customer_frustrations": "string (e.g. '3' or 'Not Found')",
+
+AFTER:
+    "customer_frustrations": "string (MUST BE STRING - e.g. '3 frustrations', 'Not Found', '0', etc. NEVER use integer)",
+
+BEFORE (Lines 360-363):
+16. EMPATHY RESPONSES: When customer shares frustration, did agent show empathy?
+    - Count frustrations expressed
+    - Count empathy responses
+    - Calculate empathy response rate
+
+AFTER:
+16. EMPATHY RESPONSES: When customer shares frustration, did agent show empathy?
+    - Count frustrations expressed (return as STRING, e.g. "3", "Not Found", "0")
+    - Count empathy responses (return as NUMBER)
+    - Calculate empathy response rate (return as NUMBER)
+
+Expected Impact:
+✅ Prevents Pydantic validation errors for customer_frustrations
+✅ Gemini will return string format consistently
+✅ Reduces retry attempts for type mismatches
+
+
+================================================================================
+TESTING RECOMMENDATIONS:
+========================
+
+1. RE-RUN EXTRACTION WITH --fresh FLAG
+   Command: python main.py --run --fresh
+   
+   Expected Results:
+   - Row 7 (8681436.0) should now complete OMC extraction
+   - Row 16 (14426562.0) should succeed on first attempt
+   - Row 6 (16279448.0) should succeed on first attempt
+   - Overall OMC success rate: 100% (19/19)
+
+2. MONITOR FOR:
+   - No JSON truncation errors
+   - No customer_frustrations validation errors
+   - Reduced retry count (should be 0)
+   - All 19 rows with complete extraction
+
+3. CHECK OUTPUT:
+   - Verify all rows have omc_extraction_success = True
+   - Verify no omc_error_message values
+   - Verify extraction_complete = True for all rows
+
+================================================================================
+PERFORMANCE IMPACT:
+===================
+
+Token Usage:
+- BEFORE: max 16,384 tokens per call
+- AFTER: max 32,768 tokens per call
+- Impact: ~2x token consumption (but prevents failures)
+
+Cost Consideration:
+- Gemini 2.5 Flash pricing: Very low cost per token
+- Trade-off: Slightly higher cost vs. 100% success rate
+- Recommendation: Worth the cost for complete data extraction
+
+Processing Time:
+- Minimal impact (token generation is fast)
+- Reduces overall time by eliminating retries
+
+================================================================================
+VALIDATION CHECKLIST:
+=====================
+
+Before Next Run:
+☑ max_output_tokens increased to 32768 (LGS)
+☑ max_output_tokens increased to 32768 (OMC)
+☑ customer_frustrations prompt clarified
+☑ EMPATHY RESPONSES section updated
+
+After Next Run - Verify:
+☐ Row 7 (8681436.0) OMC extraction successful
+☐ Row 16 (14426562.0) no validation errors
+☐ Row 6 (16279448.0) no truncation errors
+☐ Total retries = 0
+☐ OMC success rate = 100% (19/19)
+☐ All rows have extraction_complete = True
+
+================================================================================
+ADDITIONAL NOTES:
+=================
+
+1. The JSON cleaning function (clean_json_string) is already in place
+   and will help with minor formatting issues.
+
+2. The retry mechanism (max 2 attempts) is still active as a safety net.
+
+3. If Row 7 still fails after these fixes, it may indicate:
+   - Transcript is exceptionally long (>32K tokens output)
+   - Need to investigate transcript length and consider chunking
+   - May need to use gemini-2.5-pro instead of gemini-2.5-flash
+
+4. Monitor logs for any new patterns of errors.
+
+================================================================================
+NEXT STEPS:
+===========
+
+1. Run: python main.py --run --fresh
+2. Monitor terminal output for errors
+3. Check final statistics (should be 19/19 successful)
+4. Verify output CSV has complete data for all rows
+5. If Row 7 still fails, investigate transcript length
+
+================================================================================
+

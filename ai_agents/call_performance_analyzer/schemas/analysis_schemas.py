@@ -25,7 +25,7 @@ class CallInsight(BaseModel):
     omc_status: Optional[str] = Field(default=None, description="Call outcome status")
     
     # Analysis
-    is_short_call: bool = Field(default=False, description="Whether call is under 2 minutes")
+    is_short_call: bool = Field(default=False, description="Whether call is under 5 minutes")
     call_category: str = Field(default="unknown", description="Short (<2min) or Long (>=2min)")
     
     # Patterns & Issues
