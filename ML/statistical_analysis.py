@@ -136,7 +136,7 @@ df_numeric_results = pd.DataFrame(numeric_results).sort_values('P_Value')
 
 # Save results
 df_numeric_results.to_csv('analysis_outputs/numeric_variables_tests.csv', index=False)
-print(f"\n✓ Numeric variable tests saved: analysis_outputs/numeric_variables_tests.csv")
+print(f"\n[OK] Numeric variable tests saved: analysis_outputs/numeric_variables_tests.csv")
 
 # Display top significant variables
 print("\nTop 20 Most Significant Numeric Variables (by p-value):")
@@ -191,7 +191,7 @@ df_categorical_results = pd.DataFrame(categorical_results).sort_values('P_Value'
 
 # Save results
 df_categorical_results.to_csv('analysis_outputs/categorical_variables_tests.csv', index=False)
-print(f"\n✓ Categorical variable tests saved: analysis_outputs/categorical_variables_tests.csv")
+print(f"\n[OK] Categorical variable tests saved: analysis_outputs/categorical_variables_tests.csv")
 
 # Display top significant variables
 print("\nTop 20 Most Significant Categorical Variables (by p-value):")

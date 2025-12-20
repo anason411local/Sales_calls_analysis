@@ -84,7 +84,7 @@ if len(top_numeric_vars) > 0:
                 fontsize=15, fontweight='bold', y=0.995)
     plt.tight_layout()
     plt.savefig('analysis_outputs/viz_05_distribution_comparison.png', dpi=300, bbox_inches='tight')
-    print("   ✓ Saved: viz_05_distribution_comparison.png")
+    print("   [OK] Saved: viz_05_distribution_comparison.png")
     plt.close()
 
 # ==================================================================================
@@ -120,7 +120,7 @@ plt.yticks(rotation=0, fontsize=11)
 
 plt.tight_layout()
 plt.savefig('analysis_outputs/viz_06_percentage_differences.png', dpi=300, bbox_inches='tight')
-print("   ✓ Saved: viz_06_percentage_differences.png")
+print("   [OK] Saved: viz_06_percentage_differences.png")
 plt.close()
 
 # ==================================================================================
@@ -195,7 +195,7 @@ for bar in bars3:
 plt.suptitle('Statistical Analysis Overview', fontsize=15, fontweight='bold', y=0.98)
 plt.tight_layout()
 plt.savefig('analysis_outputs/viz_07_statistical_overview.png', dpi=300, bbox_inches='tight')
-print("   ✓ Saved: viz_07_statistical_overview.png")
+print("   [OK] Saved: viz_07_statistical_overview.png")
 plt.close()
 
 # ==================================================================================
@@ -256,7 +256,7 @@ if len(top_10_numeric) > 0:
                 fontsize=16, fontweight='bold', y=0.995)
     plt.tight_layout()
     plt.savefig('analysis_outputs/viz_08_top10_detailed_distributions.png', dpi=300, bbox_inches='tight')
-    print("   ✓ Saved: viz_08_top10_detailed_distributions.png")
+    print("   [OK] Saved: viz_08_top10_detailed_distributions.png")
     plt.close()
 
 print("\n" + "="*100)

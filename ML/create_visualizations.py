@@ -81,7 +81,7 @@ ax2.grid(axis='x', alpha=0.3)
 
 plt.tight_layout()
 plt.savefig('analysis_outputs/viz_01_numeric_variables_significance.png', dpi=300, bbox_inches='tight')
-print("   ✓ Saved: viz_01_numeric_variables_significance.png")
+print("   [OK] Saved: viz_01_numeric_variables_significance.png")
 plt.close()
 
 # ==================================================================================
@@ -121,7 +121,7 @@ plt.text(0.98, 0.02, '*** p<0.001  ** p<0.01  * p<0.05',
 
 plt.tight_layout()
 plt.savefig('analysis_outputs/viz_02_correlation_analysis.png', dpi=300, bbox_inches='tight')
-print("   ✓ Saved: viz_02_correlation_analysis.png")
+print("   [OK] Saved: viz_02_correlation_analysis.png")
 plt.close()
 
 # ==================================================================================
@@ -169,7 +169,7 @@ plt.suptitle('Feature Importance: Comparison of Methods (Top 20)',
              fontsize=16, fontweight='bold', y=0.98)
 plt.tight_layout()
 plt.savefig('analysis_outputs/viz_03_feature_importance_comparison.png', dpi=300, bbox_inches='tight')
-print("   ✓ Saved: viz_03_feature_importance_comparison.png")
+print("   [OK] Saved: viz_03_feature_importance_comparison.png")
 plt.close()
 
 # ==================================================================================
@@ -250,7 +250,7 @@ ax3.invert_yaxis()
 plt.suptitle('Comprehensive Analysis: Top Important Variables', 
              fontsize=16, fontweight='bold', y=0.99)
 plt.savefig('analysis_outputs/viz_04_top_variables_combined.png', dpi=300, bbox_inches='tight')
-print("   ✓ Saved: viz_04_top_variables_combined.png")
+print("   [OK] Saved: viz_04_top_variables_combined.png")
 plt.close()
 
 print("\n" + "="*100)

@@ -2,7 +2,7 @@
 SALES CALL DURATION ANALYSIS - COMPREHENSIVE RESEARCH REPORT
 ====================================================================================================
 
-Report Generated: 2025-12-20 17:25:39
+Report Generated: 2025-12-20 18:40:04
 
 Analysis Focus: Understanding factors that contribute to longer call durations
 Comparison: Calls >4.88 minutes (293 seconds) vs <4.88 minutes

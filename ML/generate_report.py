@@ -211,7 +211,7 @@ report_text = "\n".join(report)
 with open('analysis_outputs/COMPREHENSIVE_ANALYSIS_REPORT.txt', 'w', encoding='utf-8') as f:
     f.write(report_text)
 
-print("\n✓ Comprehensive report saved: analysis_outputs/COMPREHENSIVE_ANALYSIS_REPORT.txt")
+print("\n[OK] Comprehensive report saved: analysis_outputs/COMPREHENSIVE_ANALYSIS_REPORT.txt")
 print("\n" + "="*100)
 print("REPORT GENERATION COMPLETE")
 print("="*100)

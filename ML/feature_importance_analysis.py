@@ -89,7 +89,7 @@ df_correlation = pd.DataFrame(correlation_results).sort_values('Abs_Correlation'
 
 # Save results
 df_correlation.to_csv('analysis_outputs/correlation_analysis.csv', index=False)
-print(f"\n✓ Correlation analysis saved: analysis_outputs/correlation_analysis.csv")
+print(f"\n[OK] Correlation analysis saved: analysis_outputs/correlation_analysis.csv")
 
 print("\nTop 25 Variables by Correlation Strength:")
 print("-" * 100)
@@ -145,7 +145,7 @@ feature_importance_rf = pd.DataFrame({
 
 # Save
 feature_importance_rf.to_csv('analysis_outputs/feature_importance_random_forest.csv', index=False)
-print(f"\n✓ Random Forest feature importance saved: analysis_outputs/feature_importance_random_forest.csv")
+print(f"\n[OK] Random Forest feature importance saved: analysis_outputs/feature_importance_random_forest.csv")
 
 print("\nTop 25 Most Important Features (Random Forest):")
 print("-" * 100)
@@ -179,7 +179,7 @@ feature_importance_gb = pd.DataFrame({
 
 # Save
 feature_importance_gb.to_csv('analysis_outputs/feature_importance_gradient_boosting.csv', index=False)
-print(f"\n✓ Gradient Boosting feature importance saved: analysis_outputs/feature_importance_gradient_boosting.csv")
+print(f"\n[OK] Gradient Boosting feature importance saved: analysis_outputs/feature_importance_gradient_boosting.csv")
 
 print("\nTop 25 Most Important Features (Gradient Boosting):")
 print("-" * 100)
@@ -236,7 +236,7 @@ combined = combined.sort_values('Combined_Score', ascending=False)
 
 # Save
 combined.to_csv('analysis_outputs/combined_feature_importance.csv', index=False)
-print(f"\n✓ Combined feature importance saved: analysis_outputs/combined_feature_importance.csv")
+print(f"\n[OK] Combined feature importance saved: analysis_outputs/combined_feature_importance.csv")
 
 print("\nTop 30 Most Important Variables (Combined Ranking):")
 print("-" * 100)
