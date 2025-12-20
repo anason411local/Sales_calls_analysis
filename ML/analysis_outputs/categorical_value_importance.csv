@@ -1,0 +1,579 @@
+Variable,Category_Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Importance_Score,Direction
+tone_assessment,Not Found in Transcript - No agent verbiage,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Not Found in Transcript - No customer verbiage,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,N/A - Recording Incomplete,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,N/A - No interaction,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,N/A - Call ended before closing segment,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Resistant/Hesitant,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Resistant/Positive,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Slightly Resistant,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Skeptical/Hesitant,0,2,2,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Skeptical/Interested,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Neutral/Slightly Positive,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Interested,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Not Captured - Recording Incomplete,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Skeptical/Neutral,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Positive/Decisive,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Positive/Interested,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Neutral/Slightly Skeptical,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Neutral to Skeptical,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Positive/Neutral,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Neutral/Positive,0,2,2,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Neutral/Skeptical,0,3,3,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Not Applicable - Invalid Range,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Fluctuating,0,2,2,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Not Applicable due to call duration,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Positive/Skeptical,0,5,5,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Neutral to Positive,0,3,3,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Skeptical/Negative,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Negative/Skeptical,0,5,5,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Declined,0,2,2,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Interested,0,8,8,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Positive,0,79,79,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Not Reached,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Not Found in Transcript - No customer verbiage,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,N/A - No interaction,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Invalid Range in Prompt,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Positive/Engaged,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Negative/Resistant,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Skeptical/Resistant,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Slightly Resistant,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Engaged/Slightly Skeptical,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Frustrated,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Neutral to Slightly Resistant,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Not Applicable - Impossible Range,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,"Interested, then slightly skeptical/questioning",0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Negative/Frustrated,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Fluctuated between Positive and Skeptical/Resistant,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_late_middle,Neutral to Slightly Positive,0,1,1,0.0,100.0,50.0,Favors Long Calls
+call_result_tag,Unknown - Recording Incomplete or Empty,0,1,1,0.0,100.0,50.0,Favors Long Calls
+call_result_tag,Unknown - No call content,0,1,1,0.0,100.0,50.0,Favors Long Calls
+call_result_tag,Sale Completed,0,3,3,0.0,100.0,50.0,Favors Long Calls
+call_result_tag,Unknown - No Transcript Content,0,1,1,0.0,100.0,50.0,Favors Long Calls
+call_result_tag,Early Disconnect - During Discovery,3,0,3,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Value Proposition / Objection Handling,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Close,2,0,2,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Introduction and Reason for Call,54,0,54,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Value Proposition/ROI Discussion,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Premature Closing Attempt,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,I/II - Introduction and Reason for Call,25,0,25,100.0,0.0,50.0,Favors Short Calls
+sentiment_closing,Neutral/Slightly Resistant,0,2,2,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Neutral/Slightly Negative,0,2,2,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Cooperative,0,2,2,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Declined,0,5,5,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Positive/Skeptical,0,5,5,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Interested but firm on partner,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Resistant/Negative,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,Cooperative/Abrupt,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_closing,N/A - No speech,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_closing,N/A - No customer verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_closing,Unknown,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_closing,Not Applicable - Call ended,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_closing,Neutral/Resistant,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Introduction/Hand-off,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Disconnect - During Discovery,5,0,5,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Discovery Phase (post-objection),1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,VII - Closing/Payment Gathering (Next Step Scheduling),1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Value Proposition and Price Disclosure,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,V/III - Value Proposition and partial Discovery,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,"Disconnect - After Discovery, Before Pitch",1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Attempted Closing/Information Gathering,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Attempting to secure next step (speaking to son),1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_closing,N/A - Call too short,2,0,2,100.0,0.0,50.0,Favors Short Calls
+sentiment_closing,Not Applicable - No customer verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,III - Discovery Phase,2,0,2,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Objection Handling/Information Send,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,II - Clear and Personalized Reason for the Call,5,0,5,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Post-Close,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Follow-up Scheduling Attempt,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Value Proposition / Soft Close Attempt,1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_frustrations,1 frustration (about needing time to think and receiving many similar calls),0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,2 frustrations (about medicine effects),0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,1 frustration (repeated),0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,1 (Customer mentioned work was 'un poco bajo'),0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,7 frustrations,0,3,3,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,"2 frustrations (audio quality, budget/timing)",0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,9 frustrations,0,3,3,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,8,0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,9,0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,8 frustrations,0,5,5,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,14 frustrations,0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,2 instances of timing concerns,1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_frustrations,4 technical frustrations,1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_frustrations,1 frustration (implied),1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_frustrations,2 concerns/resistance points,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Value Proposition and Soft Close Attempt,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,VII - Closing/Commitment Attempt,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,VI - Utilize ROI Calculation,0,2,2,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Closing/Next Step,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,No Stage Reached,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,"Soft Decline / Follow-up Scheduled (after Value Prop, before hard Close)",1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Pitch,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,IV - FOMO/Competitor Discussion,2,0,2,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Attempted Closing/Time Commitment,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Value Proposition (V),1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Objection Handling / Follow-up Scheduling,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Value Proposition/ROI,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,Value Proposition (V) / Next Steps,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,V/VI - Value Proposition,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,During Pitch/Value Prop,0,2,2,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Call Control & Engagement,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,IV - Highlight Competitor Success Using FOMO,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Value Proposition and Closing,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,V/VII - Value Proposition and Closing Attempt,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,V/VI - Value Proposition and ROI (during objection handling after value presentation),0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Closing/Discount Presentation,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Post-Price/Objection Handling,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Pricing,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Unknown - No Transcript Content,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Closing/Objection Handling,0,2,2,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Value Proposition and ROI (attempting to schedule next step),0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,No stages reached - empty transcript,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,VI. Utilize ROI Calculation,0,2,2,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,ROI,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Value Proposition / Overcoming Objections,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Attempting Close/Pricing Discussion,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Value Proposition / ROI,0,3,3,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Unknown - Recording Incomplete,0,2,2,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Not Applicable - No call content,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Closing/Follow-up Scheduling,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Value Proposition and ROI (with objection handling),0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,VI (Utilize ROI Calculation),0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,V/IV - Value Proposition and FOMO,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Value Proposition/Pitch,0,2,2,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Objection Handling (after Value Proposition),0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,V/IV - Value Proposition and FOMO/Competitor Discussion,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Closing/Commitment Attempt,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,No interaction occurred,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Value Proposition/Demonstration,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Discovery Phase / Objection Handling,0,1,1,0.0,100.0,50.0,Favors Long Calls
+script_adherence,N/A - No interaction,0,1,1,0.0,100.0,50.0,Favors Long Calls
+script_adherence,Not Found,0,1,1,0.0,100.0,50.0,Favors Long Calls
+script_adherence,Unstructured - No speech,1,0,1,100.0,0.0,50.0,Favors Short Calls
+script_adherence,N/A - No script followed due to empty transcript,1,0,1,100.0,0.0,50.0,Favors Short Calls
+disconnect_stage,No conversation occurred - Call ended at 00:00,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,No interaction - recording is empty,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Not Found,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Value Proposition/Objection Handling,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,V/VI - Value Proposition and ROI (transitioning),0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Value Proposition / Re-engagement,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Value Proposition / Attempted Close,0,1,1,0.0,100.0,50.0,Favors Long Calls
+disconnect_stage,Call Control & Engagement (Rescheduling),0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_frustrations,1 frustration (implied lack of need),1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_frustrations,1 frustration (technical issue),1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_frustrations,1 (mild comment),1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_frustrations,0 frustrations,1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_frustrations,1 (policy/business model objection),1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_frustrations,1 frustration expressed,1,0,1,100.0,0.0,50.0,Favors Short Calls
+discovery_quality,Not Found in Transcript - No questions asked,0,1,1,0.0,100.0,50.0,Favors Long Calls
+discovery_quality,N/A - No discovery,0,1,1,0.0,100.0,50.0,Favors Long Calls
+discovery_quality,Deep Discovery,0,2,2,0.0,100.0,50.0,Favors Long Calls
+discovery_quality,Not Applicable - No Discovery Questions,0,1,1,0.0,100.0,50.0,Favors Long Calls
+discovery_quality,N/A - No discovery questions asked,1,0,1,100.0,0.0,50.0,Favors Short Calls
+discovery_quality,Not Applicable,1,0,1,100.0,0.0,50.0,Favors Short Calls
+discovery_quality,Missing,1,0,1,100.0,0.0,50.0,Favors Short Calls
+discovery_quality,Not Applicable - No questions asked,1,0,1,100.0,0.0,50.0,Favors Short Calls
+script_adherence,Unstructured - No conversation in transcript,0,1,1,0.0,100.0,50.0,Favors Long Calls
+omc_agent_sentiment_style,Not Found in Transcript - No agent verbiage,0,1,1,0.0,100.0,50.0,Favors Long Calls
+omc_agent_sentiment_style,unknown,0,1,1,0.0,100.0,50.0,Favors Long Calls
+omc_agent_sentiment_style,N/A - No interaction,0,1,1,0.0,100.0,50.0,Favors Long Calls
+omc_agent_sentiment_style,Confident & Assumptive with Consultative elements,0,1,1,0.0,100.0,50.0,Favors Long Calls
+omc_agent_sentiment_style,"Confident & Assumptive, Urgent & Pressing",0,1,1,0.0,100.0,50.0,Favors Long Calls
+omc_agent_sentiment_style,Not Applicable - No Interaction,0,1,1,0.0,100.0,50.0,Favors Long Calls
+omc_agent_sentiment_style,Not Applicable - No Agent Speech,0,1,1,0.0,100.0,50.0,Favors Long Calls
+omc_agent_sentiment_style,Rushed & Pressing,1,0,1,100.0,0.0,50.0,Favors Short Calls
+omc_agent_sentiment_style,N/A - No agent verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,N/A - Call too short,4,0,4,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,Not Applicable - No customer verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,Resistant/Skeptical,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,Not Applicable,9,0,9,100.0,0.0,50.0,Favors Short Calls
+omc_agent_sentiment_style,Missing,3,0,3,100.0,0.0,50.0,Favors Short Calls
+omc_agent_sentiment_style,Script-Bound,1,0,1,100.0,0.0,50.0,Favors Short Calls
+omc_agent_sentiment_style,Not Applicable - No agent verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+omc_agent_sentiment_style,Hesitant & Apologetic,18,0,18,100.0,0.0,50.0,Favors Short Calls
+customer_sentiment_omc,Not Found in Transcript - No customer verbiage,0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_sentiment_omc,N/A - No customer interaction,0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_sentiment_omc,Interested with concerns,0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_sentiment_omc,"Interested, but hesitant at the close",0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_sentiment_omc,Neutral to Skeptical,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Positive/Skeptical,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Neutral to slightly interested,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Neutral/Slightly Negative,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Neutral/Cooperative,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Positive/Neutral,0,2,2,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Negative/Resistant,0,4,4,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Neutral/Slightly Positive,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Neutral/Interested,0,2,2,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,N/A - No speech,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,N/A - No customer verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,Unknown,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,Not Applicable - Call too short,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,Not Applicable - Call ended,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,Neutral/Resistant,1,0,1,100.0,0.0,50.0,Favors Short Calls
+signal_ratio,3:13,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,Not Found in Transcript - No customer verbiage,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,N/A - No interaction,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Positive/Cooperative,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Neutral to Positive,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Positive/Engaged,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_early_middle,Neutral to Slightly Positive,0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_sentiment_omc,"Interested, but Resistant",0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_sentiment_omc,Neutral to Resistant,0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_sentiment_omc,Interested with reservations,0,1,1,0.0,100.0,50.0,Favors Long Calls
+customer_sentiment_omc,N/A - No speech,1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_sentiment_omc,"Neutral, then Skeptical",1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_sentiment_omc,N/A - No customer verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_sentiment_omc,Unknown,1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_sentiment_omc,Declined,1,0,1,100.0,0.0,50.0,Favors Short Calls
+customer_sentiment_omc,Not Applicable - No customer verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+advanced_discovery_used,Not Found in Transcript,0,1,1,0.0,100.0,50.0,Favors Long Calls
+advanced_discovery_used,Yes - agent probed deeper with follow-up questions,0,1,1,0.0,100.0,50.0,Favors Long Calls
+advanced_discovery_used,Yes - agent probed deeper on Angie's List contract and effectiveness.,0,1,1,0.0,100.0,50.0,Favors Long Calls
+advanced_discovery_used,Yes - agent asked open-ended pain point question and probed deeper.,0,1,1,0.0,100.0,50.0,Favors Long Calls
+advanced_discovery_used,No - Not Found in Transcript,1,0,1,100.0,0.0,50.0,Favors Short Calls
+advanced_discovery_used,No - no questions asked,1,0,1,100.0,0.0,50.0,Favors Short Calls
+advanced_discovery_used,No - limited probing,1,0,1,100.0,0.0,50.0,Favors Short Calls
+advanced_discovery_used,No - agent did not probe deeper with follow-up questions to uncover pain points.,1,0,1,100.0,0.0,50.0,Favors Short Calls
+advanced_discovery_used,No - no open-ended pain point questions,1,0,1,100.0,0.0,50.0,Favors Short Calls
+advanced_discovery_used,No - no open-ended pain point questions or probing,2,0,2,100.0,0.0,50.0,Favors Short Calls
+advanced_discovery_used,Yes - asked about generating clients and probed on website effectiveness,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_progression,Not Found in Transcript - No customer verbiage,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_progression,N/A - No interaction,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_progression,Stable then Declined,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_progression,Fluctuated then Declined,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_progression,"Stable, then Declined",0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_progression,Stable to Improved,0,1,1,0.0,100.0,50.0,Favors Long Calls
+sentiment_progression,N/A - No speech,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_progression,N/A - No customer verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_progression,Not Applicable - No customer verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_progression,Missing,4,0,4,100.0,0.0,50.0,Favors Short Calls
+signal_ratio,15:03,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,9:02,0,5,5,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,6:05,0,7,7,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,3:04,0,9,9,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,1:07,0,4,4,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,4:02,0,11,11,0.0,100.0,50.0,Favors Long Calls
+TO_OMC_Disposiion,LBNS,0,1,1,0.0,100.0,50.0,Favors Long Calls
+TO_OMC_Disposiion,SALE,0,2,2,0.0,100.0,50.0,Favors Long Calls
+TO_OMC_Disposiion,WN,1,0,1,100.0,0.0,50.0,Favors Short Calls
+TO_OMC_Disposiion,DROP,1,0,1,100.0,0.0,50.0,Favors Short Calls
+TO_OMC_Disposiion,AC,1,0,1,100.0,0.0,50.0,Favors Short Calls
+TO_OMC_Disposiion,DNC,2,0,2,100.0,0.0,50.0,Favors Short Calls
+signal_ratio,5:04,0,3,3,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,Not Found in Transcript,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,10:04,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,3:06,0,5,5,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,4:05,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,5:06,0,4,4,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,7:03,0,5,5,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,7:00,0,3,3,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,23:03,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,8:01,0,3,3,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,22:07,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,9:07,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,6:06,0,3,3,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,5:03,0,10,10,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,12:02,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,4:01,0,7,7,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,10:00,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,4:07,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,2:09,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,5:02,0,7,7,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,16:00,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,7:02,0,4,4,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,6:03,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,7:14,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,6:08,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,4:06,0,3,3,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,9:00,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,2:07,0,5,5,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,6:02,0,4,4,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,3:05,0,6,6,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,0:10,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,7:04,0,4,4,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,3:08,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,0:09,0,3,3,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,20:04,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,9:06,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,5:05,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,11:00,0,3,3,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,2:06,0,3,3,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,0:08,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,9:09,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,16:03,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,0:12,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,9:14,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,7:06,0,3,3,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,2:08,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,16:06,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,4:03,0,13,13,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,2:12,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,11:03,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,0:11,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,15:01,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,15:05,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,8:07,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,6:07,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,10:02,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,8:03,0,3,3,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,7:01,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,4:04,0,4,4,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,15:00,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,20:07,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,11:04,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,6:04,0,6,6,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,8:00,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,9:03,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,27:06:00,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,5:08,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,12:01,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,18:02,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,12:07,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,15:06,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,11:11,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,6:00,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,5:07,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,10:03,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,15:02,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,7:05,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,8:06,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,4:09,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,14:08,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,12:00,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,1:09,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,11:01,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,1:08,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,22:02,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,9:01,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,10:05,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,20:03,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,11:07,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,41:09:00,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,34:09:00,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,1:10,0,2,2,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,7:11,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,35:08:00,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,10:01,0,1,1,0.0,100.0,50.0,Favors Long Calls
+signal_ratio,3:14,0,1,1,0.0,100.0,50.0,Favors Long Calls
+TO_OMC_Disposiion,BCC,5,0,5,100.0,0.0,50.0,Favors Short Calls
+TO_OMC_Disposiion,OOB,1,0,1,100.0,0.0,50.0,Favors Short Calls
+interruption_pattern,Cannot determine due to transcript format,0,1,1,0.0,100.0,50.0,Favors Long Calls
+tone_assessment,N/A - No interaction,0,1,1,0.0,100.0,50.0,Favors Long Calls
+tone_assessment,Warm & Professional,0,1,1,0.0,100.0,50.0,Favors Long Calls
+tone_assessment,"Warm, Professional, then Rushed & Pressing",0,1,1,0.0,100.0,50.0,Favors Long Calls
+tone_assessment,Professional and Warm,0,2,2,0.0,100.0,50.0,Favors Long Calls
+tone_assessment,Not Applicable - No Interaction,0,1,1,0.0,100.0,50.0,Favors Long Calls
+tone_assessment,Robotic & Script-Bound,0,1,1,0.0,100.0,50.0,Favors Long Calls
+tone_assessment,N/A - No speech,1,0,1,100.0,0.0,50.0,Favors Short Calls
+tone_assessment,N/A - No conversation,1,0,1,100.0,0.0,50.0,Favors Short Calls
+tone_assessment,Robotic & Rushed,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_late_middle,N/A - No speech,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_late_middle,N/A - No customer verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_late_middle,Unknown,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_late_middle,Not Applicable - Call ended,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_late_middle,Not Applicable - Call too short,2,0,2,100.0,0.0,50.0,Favors Short Calls
+sentiment_late_middle,N/A - Call too short,5,0,5,100.0,0.0,50.0,Favors Short Calls
+sentiment_late_middle,Not Applicable - No customer verbiage,1,0,1,100.0,0.0,50.0,Favors Short Calls
+sentiment_early_middle,Missing,190,2,192,98.95833333333334,1.0416666666666665,48.958333333333336,Favors Short Calls
+sentiment_late_middle,Fluctuated,1,63,64,1.5625,98.4375,48.4375,Favors Long Calls
+sentiment_late_middle,Resistant,1,24,25,4.0,96.0,46.0,Favors Long Calls
+script_adherence,Structured,4,82,86,4.651162790697675,95.34883720930233,45.34883720930233,Favors Long Calls
+customer_frustrations,6 frustrations,1,18,19,5.263157894736842,94.73684210526315,44.73684210526315,Favors Long Calls
+disconnect_stage,Closing/Payment Gathering,10,173,183,5.46448087431694,94.53551912568307,44.53551912568307,Favors Long Calls
+tone_assessment,Rushed,43,3,46,93.47826086956522,6.521739130434782,43.47826086956522,Favors Short Calls
+signal_ratio,2:04,1,13,14,7.142857142857142,92.85714285714286,42.85714285714286,Favors Long Calls
+call_result_tag,Disconnect - During Close Attempt,7,80,87,8.045977011494253,91.95402298850574,41.95402298850574,Favors Long Calls
+TO_OMC_Disposiion,NQTO,68,6,74,91.8918918918919,8.108108108108109,41.89189189189189,Favors Short Calls
+disconnect_stage,VII - Closing/Payment Gathering,4,44,48,8.333333333333332,91.66666666666666,41.66666666666666,Favors Long Calls
+roi_calculation_presented,Yes,24,261,285,8.421052631578947,91.57894736842105,41.578947368421055,Favors Long Calls
+customer_sentiment_omc,Fluctuated,4,38,42,9.523809523809524,90.47619047619048,40.47619047619048,Favors Long Calls
+TO_OMC_Disposiion,P2P,14,133,147,9.523809523809524,90.47619047619048,40.47619047619048,Favors Long Calls
+tone_assessment,Cold,38,4,42,90.47619047619048,9.523809523809524,40.476190476190474,Favors Short Calls
+disconnect_stage,Introduction,41,5,46,89.13043478260869,10.869565217391305,39.130434782608695,Favors Short Calls
+omc_agent_sentiment_style,Robotic & Script-Bound,98,12,110,89.0909090909091,10.909090909090908,39.09090909090909,Favors Short Calls
+disconnect_stage,Not Found in Transcript,1,8,9,11.11111111111111,88.88888888888889,38.888888888888886,Favors Long Calls
+disconnect_stage,Discovery Phase,200,25,225,88.88888888888889,11.11111111111111,38.888888888888886,Favors Short Calls
+signal_ratio,1:04,1,8,9,11.11111111111111,88.88888888888889,38.888888888888886,Favors Long Calls
+call_result_tag,Disconnect - During Discovery,197,25,222,88.73873873873875,11.26126126126126,38.73873873873874,Favors Short Calls
+sentiment_late_middle,Skeptical,12,87,99,12.121212121212121,87.87878787878788,37.878787878787875,Favors Long Calls
+signal_ratio,3:00,1,7,8,12.5,87.5,37.5,Favors Long Calls
+TO_OMC_Disposiion,A,7,1,8,87.5,12.5,37.5,Favors Short Calls
+signal_ratio,4:00,1,7,8,12.5,87.5,37.5,Favors Long Calls
+sentiment_late_middle,Negative,5,32,37,13.513513513513514,86.48648648648648,36.486486486486484,Favors Long Calls
+script_adherence,Unstructured,336,55,391,85.93350383631714,14.066496163682865,35.933503836317136,Favors Short Calls
+sentiment_late_middle,N/A - Call ended before this segment,6,1,7,85.71428571428571,14.285714285714285,35.714285714285715,Favors Short Calls
+sentiment_early_middle,N/A - Call ended before this segment,6,1,7,85.71428571428571,14.285714285714285,35.714285714285715,Favors Short Calls
+disconnect_stage,VII. Closing/Payment Gathering,1,6,7,14.285714285714285,85.71428571428571,35.71428571428571,Favors Long Calls
+signal_ratio,3:03,3,18,21,14.285714285714285,85.71428571428571,35.71428571428571,Favors Long Calls
+commitment_clarity,Vague,8,48,56,14.285714285714285,85.71428571428571,35.71428571428571,Favors Long Calls
+assumptive_language_used,Yes,48,285,333,14.414414414414415,85.58558558558559,35.58558558558559,Favors Long Calls
+sentiment_closing,Missing,112,19,131,85.49618320610686,14.50381679389313,35.49618320610687,Favors Short Calls
+tone_assessment,Warm/Professional,5,29,34,14.705882352941178,85.29411764705883,35.294117647058826,Favors Long Calls
+sentiment_progression,Fluctuated,36,206,242,14.87603305785124,85.12396694214877,35.12396694214877,Favors Long Calls
+sentiment_late_middle,Not Found,22,4,26,84.61538461538461,15.384615384615385,34.61538461538461,Favors Short Calls
+signal_ratio,3:01,2,11,13,15.384615384615385,84.61538461538461,34.61538461538461,Favors Long Calls
+sentiment_early_middle,Not Found,16,3,19,84.21052631578947,15.789473684210526,34.21052631578947,Favors Short Calls
+interruption_pattern,Frequent,7,36,43,16.27906976744186,83.72093023255815,33.720930232558146,Favors Long Calls
+sentiment_late_middle,Missing,354,69,423,83.68794326241135,16.312056737588655,33.687943262411345,Favors Short Calls
+disconnect_stage,Value Proposition and ROI,10,51,61,16.39344262295082,83.60655737704919,33.606557377049185,Favors Long Calls
+signal_ratio,2:02,5,25,30,16.666666666666664,83.33333333333334,33.33333333333334,Favors Long Calls
+customer_frustrations,5,1,5,6,16.666666666666664,83.33333333333334,33.33333333333334,Favors Long Calls
+signal_ratio,5:00,1,5,6,16.666666666666664,83.33333333333334,33.33333333333334,Favors Long Calls
+TO_OMC_Disposiion,LB,25,5,30,83.33333333333334,16.666666666666664,33.333333333333336,Favors Short Calls
+signal_ratio,0:01,90,18,108,83.33333333333334,16.666666666666664,33.333333333333336,Favors Short Calls
+sentiment_early_middle,Fluctuated,9,40,49,18.367346938775512,81.63265306122449,31.632653061224488,Favors Long Calls
+signal_ratio,0:02,66,15,81,81.48148148148148,18.51851851851852,31.48148148148148,Favors Short Calls
+call_result_tag,Unknown - Recording Incomplete,2,8,10,20.0,80.0,30.0,Favors Long Calls
+sentiment_closing,Negative/Resistant,3,12,15,20.0,80.0,30.0,Favors Long Calls
+call_result_tag,Hard Decline (Not Interested),4,1,5,80.0,20.0,30.0,Favors Short Calls
+signal_ratio,6:01,1,4,5,20.0,80.0,30.0,Favors Long Calls
+sentiment_early_middle,Positive,13,52,65,20.0,80.0,30.0,Favors Long Calls
+signal_ratio,0:00,224,56,280,80.0,20.0,30.0,Favors Short Calls
+call_result_tag,Early Disconnect - Before Discovery,169,43,212,79.71698113207547,20.28301886792453,29.71698113207547,Favors Short Calls
+customer_sentiment_omc,Interested,26,98,124,20.967741935483872,79.03225806451613,29.032258064516128,Favors Long Calls
+disconnect_stage,Discovery,26,7,33,78.78787878787878,21.21212121212121,28.78787878787879,Favors Short Calls
+advanced_discovery_used,No - peeling the onion,11,3,14,78.57142857142857,21.428571428571427,28.571428571428573,Favors Short Calls
+call_result_tag,Follow-up Scheduled,32,117,149,21.476510067114095,78.52348993288591,28.52348993288591,Favors Long Calls
+discovery_quality,Moderate Depth,116,421,537,21.601489757914337,78.39851024208566,28.398510242085663,Favors Long Calls
+signal_ratio,0:03,57,16,73,78.08219178082192,21.91780821917808,28.08219178082192,Favors Short Calls
+customer_frustrations,4 frustrations,15,51,66,22.727272727272727,77.27272727272727,27.272727272727266,Favors Long Calls
+commitment_clarity,Explicit,43,145,188,22.872340425531913,77.12765957446808,27.127659574468083,Favors Long Calls
+advanced_discovery_used,Yes,78,258,336,23.214285714285715,76.78571428571429,26.785714285714292,Favors Long Calls
+signal_ratio,0:04,26,8,34,76.47058823529412,23.52941176470588,26.47058823529412,Favors Short Calls
+omc_agent_sentiment_style,Professional,16,5,21,76.19047619047619,23.809523809523807,26.190476190476193,Favors Short Calls
+customer_frustrations,5 frustrations,10,32,42,23.809523809523807,76.19047619047619,26.19047619047619,Favors Long Calls
+signal_ratio,1:02,7,22,29,24.137931034482758,75.86206896551724,25.86206896551724,Favors Long Calls
+TO_OMC_Disposiion,CALLBK,21,66,87,24.137931034482758,75.86206896551724,25.86206896551724,Favors Long Calls
+discovery_quality,Surface-Level,429,142,571,75.13134851138354,24.86865148861646,25.13134851138354,Favors Short Calls
+TO_OMC_Disposiion,DISPO,3,1,4,75.0,25.0,25.0,Favors Short Calls
+signal_ratio,1:06,1,3,4,25.0,75.0,25.0,Favors Long Calls
+disconnect_stage,FOMO/Competitor Discussion,1,3,4,25.0,75.0,25.0,Favors Long Calls
+customer_sentiment_omc,Neutral/Skeptical,3,1,4,75.0,25.0,25.0,Favors Short Calls
+disconnect_stage,Follow-up Scheduling,1,3,4,25.0,75.0,25.0,Favors Long Calls
+customer_sentiment_omc,Not Found,1,3,4,25.0,75.0,25.0,Favors Long Calls
+disconnect_stage,V - Value Proposition,1,3,4,25.0,75.0,25.0,Favors Long Calls
+disconnect_stage,"After Discovery, Before Pitch",3,1,4,75.0,25.0,25.0,Favors Short Calls
+call_result_tag,Disconnect - Post-Price/ROI,23,68,91,25.274725274725274,74.72527472527473,24.72527472527473,Favors Long Calls
+sentiment_early_middle,Resistant,43,15,58,74.13793103448276,25.862068965517242,24.137931034482758,Favors Short Calls
+sentiment_closing,Positive,17,48,65,26.153846153846157,73.84615384615385,23.846153846153854,Favors Long Calls
+sentiment_early_middle,Skeptical,33,93,126,26.190476190476193,73.80952380952381,23.80952380952381,Favors Long Calls
+signal_ratio,2:05,3,8,11,27.27272727272727,72.72727272727273,22.727272727272734,Favors Long Calls
+customer_sentiment_omc,Neutral,216,82,298,72.48322147651007,27.516778523489933,22.483221476510067,Favors Short Calls
+interruption_pattern,Occasional,72,180,252,28.57142857142857,71.42857142857143,21.42857142857143,Favors Long Calls
+omc_agent_sentiment_style,Expert,2,5,7,28.57142857142857,71.42857142857143,21.42857142857143,Favors Long Calls
+sentiment_early_middle,Neutral/Skeptical,2,5,7,28.57142857142857,71.42857142857143,21.42857142857143,Favors Long Calls
+call_result_tag,Soft Decline,34,83,117,29.059829059829063,70.94017094017094,20.940170940170944,Favors Long Calls
+tone_assessment,Warm,32,77,109,29.357798165137616,70.64220183486239,20.64220183486239,Favors Long Calls
+customer_frustrations,3 frustrations,34,81,115,29.565217391304348,70.43478260869566,20.434782608695656,Favors Long Calls
+signal_ratio,0:05,19,8,27,70.37037037037037,29.629629629629626,20.370370370370374,Favors Short Calls
+sentiment_progression,Stable,229,97,326,70.24539877300614,29.754601226993866,20.245398773006134,Favors Short Calls
+advanced_discovery_used,Yes - peeling the onion,3,7,10,30.0,70.0,20.0,Favors Long Calls
+sentiment_closing,Not Found,7,3,10,70.0,30.0,20.0,Favors Short Calls
+sentiment_closing,Skeptical,47,107,154,30.519480519480517,69.48051948051948,19.480519480519476,Favors Long Calls
+omc_agent_sentiment_style,Urgent & Pressing,11,5,16,68.75,31.25,18.75,Favors Short Calls
+customer_frustrations,2,11,5,16,68.75,31.25,18.75,Favors Short Calls
+interruption_pattern,Missing,439,204,643,68.27371695178849,31.726283048211506,18.273716951788494,Favors Short Calls
+sentiment_early_middle,Negative,45,21,66,68.18181818181817,31.818181818181817,18.181818181818183,Favors Short Calls
+disconnect_stage,V/VI - Value Proposition and ROI,19,40,59,32.20338983050847,67.79661016949152,17.796610169491515,Favors Long Calls
+interruption_pattern,Rare,91,188,279,32.61648745519714,67.38351254480287,17.38351254480287,Favors Long Calls
+customer_frustrations,0,319,155,474,67.29957805907173,32.70042194092827,17.299578059071727,Favors Short Calls
+sentiment_early_middle,Neutral,154,310,464,33.189655172413794,66.8103448275862,16.810344827586206,Favors Long Calls
+call_result_tag,"Disconnect - After Discovery, Before Pitch",2,1,3,66.66666666666666,33.33333333333333,16.66666666666667,Favors Short Calls
+disconnect_stage,Closing/Next Steps,2,1,3,66.66666666666666,33.33333333333333,16.66666666666667,Favors Short Calls
+sentiment_early_middle,Skeptical/Negative,2,1,3,66.66666666666666,33.33333333333333,16.66666666666667,Favors Short Calls
+customer_frustrations,4,6,3,9,66.66666666666666,33.33333333333333,16.66666666666667,Favors Short Calls
+TO_OMC_Disposiion,DAIR,2,1,3,66.66666666666666,33.33333333333333,16.66666666666667,Favors Short Calls
+disconnect_stage,Value Proposition and Objection Handling,2,1,3,66.66666666666666,33.33333333333333,16.66666666666667,Favors Short Calls
+signal_ratio,1:05,3,6,9,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+sentiment_closing,Positive/Neutral,1,2,3,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+disconnect_stage,Disconnect - Post-Price/ROI,1,2,3,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+sentiment_closing,Fluctuated,9,18,27,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+sentiment_early_middle,Interested,1,2,3,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+customer_frustrations,6,1,2,3,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+sentiment_early_middle,Neutral/Positive,1,2,3,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+call_result_tag,Soft Decline (Not Now),2,4,6,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+disconnect_stage,Pitch/Value Prop,2,4,6,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+disconnect_stage,Value Proposition/FOMO,1,2,3,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+signal_ratio,2:03,7,14,21,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+signal_ratio,5:01,1,2,3,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+sentiment_progression,Improved,8,16,24,33.33333333333333,66.66666666666666,16.666666666666657,Favors Long Calls
+TO_OMC_Disposiion,VM,11,6,17,64.70588235294117,35.294117647058826,14.705882352941174,Favors Short Calls
+script_adherence,Not Found in Transcript,5,9,14,35.714285714285715,64.28571428571429,14.285714285714292,Favors Long Calls
+signal_ratio,2:01,10,18,28,35.714285714285715,64.28571428571429,14.285714285714292,Favors Long Calls
+signal_ratio,3:02,5,9,14,35.714285714285715,64.28571428571429,14.285714285714292,Favors Long Calls
+customer_frustrations,2 frustrations,59,106,165,35.75757575757576,64.24242424242425,14.24242424242425,Favors Long Calls
+sentiment_early_middle,Not Found in Transcript,62,35,97,63.91752577319587,36.08247422680412,13.917525773195877,Favors Short Calls
+script_adherence,Somewhat Structured,262,460,722,36.288088642659275,63.711911357340725,13.711911357340725,Favors Long Calls
+TO_OMC_Disposiion,N,7,4,11,63.63636363636363,36.36363636363637,13.636363636363633,Favors Short Calls
+sentiment_late_middle,Not Found in Transcript,75,43,118,63.559322033898304,36.440677966101696,13.559322033898304,Favors Short Calls
+assumptive_language_used,No,561,324,885,63.389830508474574,36.610169491525426,13.389830508474574,Favors Short Calls
+sentiment_closing,Negative/Skeptical,7,12,19,36.84210526315789,63.1578947368421,13.157894736842103,Favors Long Calls
+roi_calculation_presented,No,585,348,933,62.70096463022507,37.29903536977492,12.70096463022508,Favors Short Calls
+omc_agent_sentiment_style,Not Found,5,3,8,62.5,37.5,12.5,Favors Short Calls
+customer_frustrations,Not Found,5,3,8,62.5,37.5,12.5,Favors Short Calls
+sentiment_closing,Not Applicable,5,3,8,62.5,37.5,12.5,Favors Short Calls
+disconnect_stage,V. Value Proposition,5,3,8,62.5,37.5,12.5,Favors Short Calls
+signal_ratio,1:00,26,16,42,61.904761904761905,38.095238095238095,11.904761904761905,Favors Short Calls
+signal_ratio,2:00,7,11,18,38.88888888888889,61.111111111111114,11.111111111111114,Favors Long Calls
+customer_frustrations,1,17,11,28,60.71428571428571,39.285714285714285,10.714285714285715,Favors Short Calls
+TO_OMC_Disposiion,NP,26,17,43,60.46511627906976,39.53488372093023,10.465116279069768,Favors Short Calls
+advanced_discovery_used,No,509,337,846,60.16548463356975,39.83451536643026,10.16548463356974,Favors Short Calls
+disconnect_stage,Disconnect - During Close Attempt,2,3,5,40.0,60.0,10.0,Favors Long Calls
+tone_assessment,Not Found,2,3,5,40.0,60.0,10.0,Favors Long Calls
+signal_ratio,0:07,2,3,5,40.0,60.0,10.0,Favors Long Calls
+sentiment_early_middle,Declined,3,2,5,60.0,40.0,10.0,Favors Short Calls
+discovery_quality,Not Found in Transcript,57,38,95,60.0,40.0,10.0,Favors Short Calls
+sentiment_closing,Skeptical/Negative,2,3,5,40.0,60.0,10.0,Favors Long Calls
+disconnect_stage,Objection Handling,2,3,5,40.0,60.0,10.0,Favors Long Calls
+omc_agent_sentiment_style,Not Found in Transcript,56,38,94,59.57446808510638,40.42553191489361,9.574468085106389,Favors Short Calls
+commitment_clarity,Implied,15,22,37,40.54054054054054,59.45945945945946,9.45945945945946,Favors Long Calls
+omc_agent_sentiment_style,Confident & Assumptive,316,462,778,40.616966580976865,59.383033419023135,9.383033419023135,Favors Long Calls
+sentiment_closing,Neutral,151,104,255,59.21568627450981,40.78431372549019,9.215686274509807,Favors Short Calls
+disconnect_stage,Early Disconnect - Before Discovery,36,25,61,59.01639344262295,40.98360655737705,9.016393442622949,Favors Short Calls
+sentiment_early_middle,Negative/Skeptical,7,5,12,58.333333333333336,41.66666666666667,8.333333333333329,Favors Short Calls
+commitment_clarity,Missing,543,394,937,57.950907150480255,42.049092849519745,7.950907150480255,Favors Short Calls
+customer_sentiment_omc,Skeptical,11,15,26,42.30769230769231,57.692307692307686,7.692307692307686,Favors Long Calls
+TO_OMC_Disposiion,HU,185,136,321,57.63239875389408,42.36760124610592,7.63239875389408,Favors Short Calls
+call_result_tag,Disconnect - During Pitch/Value Prop,110,149,259,42.471042471042466,57.52895752895753,7.528957528957527,Favors Long Calls
+signal_ratio,0:06,4,3,7,57.14285714285714,42.857142857142854,7.142857142857146,Favors Short Calls
+signal_ratio,1:03,13,17,30,43.333333333333336,56.666666666666664,6.666666666666664,Favors Long Calls
+sentiment_late_middle,Neutral,106,137,243,43.62139917695473,56.37860082304527,6.378600823045268,Favors Long Calls
+disconnect_stage,Value Proposition,97,123,220,44.09090909090909,55.90909090909091,5.9090909090909065,Favors Long Calls
+TO_OMC_Disposiion,INCALL,5,4,9,55.55555555555556,44.44444444444444,5.555555555555557,Favors Short Calls
+sentiment_closing,Neutral/Skeptical,4,5,9,44.44444444444444,55.55555555555556,5.555555555555557,Favors Long Calls
+customer_sentiment_omc,Not Found in Transcript,29,35,64,45.3125,54.6875,4.6875,Favors Long Calls
+sentiment_late_middle,Not Applicable,15,18,33,45.45454545454545,54.54545454545454,4.54545454545454,Favors Long Calls
+sentiment_progression,Declined,294,246,540,54.44444444444444,45.55555555555556,4.444444444444443,Favors Short Calls
+TO_OMC_Disposiion,DISMX,52,61,113,46.017699115044245,53.98230088495575,3.982300884955748,Favors Long Calls
+TO_OMC_Disposiion,B,8,7,15,53.333333333333336,46.666666666666664,3.3333333333333357,Favors Short Calls
+omc_agent_sentiment_style,Consultative & Validating,80,72,152,52.63157894736842,47.368421052631575,2.631578947368425,Favors Short Calls
+sentiment_closing,Not Found in Transcript,42,38,80,52.5,47.5,2.5,Favors Short Calls
+sentiment_progression,Not Found in Transcript,32,35,67,47.76119402985074,52.23880597014925,2.238805970149251,Favors Long Calls
+tone_assessment,Not Found in Transcript,33,36,69,47.82608695652174,52.17391304347826,2.173913043478258,Favors Long Calls
+signal_ratio,1:01,19,20,39,48.717948717948715,51.28205128205128,1.2820512820512775,Favors Long Calls
+customer_sentiment_omc,Resistant,313,329,642,48.753894080996886,51.246105919003114,1.2461059190031136,Favors Long Calls
+sentiment_closing,Negative,113,118,231,48.917748917748916,51.082251082251084,1.0822510822510836,Favors Long Calls
+TO_OMC_Disposiion,NI,164,158,322,50.931677018633536,49.06832298136646,0.9316770186335432,Favors Short Calls
+customer_frustrations,1 frustration,101,99,200,50.5,49.5,0.5,Favors Short Calls
+sentiment_closing,Resistant,78,79,157,49.681528662420384,50.318471337579616,0.31847133757961643,Favors Long Calls
+tone_assessment,Professional,452,448,900,50.22222222222222,49.77777777777778,0.22222222222222143,Favors Short Calls
+signal_ratio,3:07,1,1,2,50.0,50.0,0.0,Neutral
+sentiment_progression,Not Found,3,3,6,50.0,50.0,0.0,Neutral
+signal_ratio,2:10,1,1,2,50.0,50.0,0.0,Neutral
+tone_assessment,Missing,1,1,2,50.0,50.0,0.0,Neutral
+customer_frustrations,7,1,1,2,50.0,50.0,0.0,Neutral
+customer_frustrations,Not Found in Transcript,1,1,2,50.0,50.0,0.0,Neutral
+discovery_quality,Not Found,3,3,6,50.0,50.0,0.0,Neutral
+customer_frustrations,3,17,17,34,50.0,50.0,0.0,Neutral
+sentiment_early_middle,Neutral to Skeptical,1,1,2,50.0,50.0,0.0,Neutral
+disconnect_stage,Follow-up Scheduled,1,1,2,50.0,50.0,0.0,Neutral
+disconnect_stage,V (Value Proposition),4,4,8,50.0,50.0,0.0,Neutral
+disconnect_stage,Early Disconnect - Before Introduction,1,1,2,50.0,50.0,0.0,Neutral
+sentiment_closing,Resistant/Skeptical,1,1,2,50.0,50.0,0.0,Neutral
+disconnect_stage,Other,1,1,2,50.0,50.0,0.0,Neutral
+disconnect_stage,Before Introduction,1,1,2,50.0,50.0,0.0,Neutral
+sentiment_closing,Skeptical/Resistant,1,1,2,50.0,50.0,0.0,Neutral
+sentiment_closing,Neutral/Positive,1,1,2,50.0,50.0,0.0,Neutral
+disconnect_stage,Value Proposition and FOMO,2,2,4,50.0,50.0,0.0,Neutral
+disconnect_stage,Disconnect - During Pitch/Value Prop,12,12,24,50.0,50.0,0.0,Neutral
+call_result_tag,Hard Decline,24,24,48,50.0,50.0,0.0,Neutral

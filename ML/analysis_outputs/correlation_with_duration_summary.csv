@@ -1,0 +1,4 @@
+Dataset,Top_Positive_Variable,Top_Positive_Correlation,Top_Negative_Variable,Top_Negative_Correlation,Avg_Abs_Correlation
+Short,total_call_duration,0.9745669884135862,call_duration_group,,0.2701720704933057
+Long,total_call_duration,0.9387423728311957,call_duration_group,,0.2273630859428924
+Combined,total_call_duration,0.9638053631918866,agent_talk_percentage,-0.06950361335936386,0.3321074950427138
