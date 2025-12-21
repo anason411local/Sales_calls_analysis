@@ -30,7 +30,15 @@ print("\nLoading analysis results...")
 # Level 1
 df_l1_importance = pd.read_csv('analysis_outputs/level1_variable/03_importance_combined.csv')
 df_l1_corr = pd.read_csv('analysis_outputs/level1_variable/02_correlation_with_target.csv')
-df_l1_shap = pd.read_csv('analysis_outputs/level1_variable/05_shap_importance.csv')
+
+# Try to load SHAP, but handle if it doesn't exist
+try:
+    df_l1_shap = pd.read_csv('analysis_outputs/level1_variable/05_shap_importance.csv')
+    has_shap = True
+except FileNotFoundError:
+    print("[WARNING] SHAP file not found - skipping SHAP analysis in report")
+    df_l1_shap = pd.DataFrame()
+    has_shap = False
 
 # Level 2
 df_l2_values = pd.read_csv('analysis_outputs/level2_value/07_categorical_value_analysis.csv')

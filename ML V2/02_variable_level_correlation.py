@@ -172,11 +172,12 @@ print("\n" + "="*100)
 print("CREATING HEATMAP 1/4: SHORT CALLS")
 print("="*100)
 
-fig, ax = plt.subplots(figsize=(24, 20))
+fig, ax = plt.subplots(figsize=(28, 24))
 
 sns.heatmap(corr_short,
-            annot=False,
+            annot=True,
             fmt='.2f',
+            annot_kws={'size': 8},  # Increased font size to 8
             cmap='RdBu_r',
             vmin=-1, vmax=1,
             center=0,
@@ -192,8 +193,8 @@ ax.set_title('LEVEL 1: VARIABLE-LEVEL CORRELATION HEATMAP\n' +
              'Analyzing relationships between 49 variables from Sections 1-6.6',
              fontsize=18, fontweight='bold', pad=30)
 
-plt.xticks(rotation=90, ha='right', fontsize=8)
-plt.yticks(rotation=0, fontsize=8)
+plt.xticks(rotation=90, ha='right', fontsize=9)
+plt.yticks(rotation=0, fontsize=9)
 plt.tight_layout()
 plt.savefig('analysis_outputs/level1_variable/heatmap_02_short_calls.png', dpi=300, bbox_inches='tight')
 print("[OK] Saved: heatmap_02_short_calls.png")
@@ -205,11 +206,12 @@ plt.close()
 
 print("\nCREATING HEATMAP 2/4: LONG CALLS")
 
-fig, ax = plt.subplots(figsize=(24, 20))
+fig, ax = plt.subplots(figsize=(28, 24))
 
 sns.heatmap(corr_long,
-            annot=False,
+            annot=True,
             fmt='.2f',
+            annot_kws={'size': 8},  # Increased font size to 8
             cmap='RdBu_r',
             vmin=-1, vmax=1,
             center=0,
@@ -225,8 +227,8 @@ ax.set_title('LEVEL 1: VARIABLE-LEVEL CORRELATION HEATMAP\n' +
              'Analyzing relationships between 49 variables from Sections 1-6.6',
              fontsize=18, fontweight='bold', pad=30)
 
-plt.xticks(rotation=90, ha='right', fontsize=8)
-plt.yticks(rotation=0, fontsize=8)
+plt.xticks(rotation=90, ha='right', fontsize=9)
+plt.yticks(rotation=0, fontsize=9)
 plt.tight_layout()
 plt.savefig('analysis_outputs/level1_variable/heatmap_02_long_calls.png', dpi=300, bbox_inches='tight')
 print("[OK] Saved: heatmap_02_long_calls.png")
@@ -238,11 +240,12 @@ plt.close()
 
 print("\nCREATING HEATMAP 3/4: COMBINED")
 
-fig, ax = plt.subplots(figsize=(24, 20))
+fig, ax = plt.subplots(figsize=(28, 24))
 
 sns.heatmap(corr_combined,
-            annot=False,
+            annot=True,
             fmt='.2f',
+            annot_kws={'size': 8},  # Increased font size to 8
             cmap='RdBu_r',
             vmin=-1, vmax=1,
             center=0,
@@ -258,8 +261,8 @@ ax.set_title('LEVEL 1: VARIABLE-LEVEL CORRELATION HEATMAP\n' +
              'Analyzing relationships between 49 variables from Sections 1-6.6',
              fontsize=18, fontweight='bold', pad=30)
 
-plt.xticks(rotation=90, ha='right', fontsize=8)
-plt.yticks(rotation=0, fontsize=8)
+plt.xticks(rotation=90, ha='right', fontsize=9)
+plt.yticks(rotation=0, fontsize=9)
 plt.tight_layout()
 plt.savefig('analysis_outputs/level1_variable/heatmap_02_combined.png', dpi=300, bbox_inches='tight')
 print("[OK] Saved: heatmap_02_combined.png")
@@ -271,11 +274,12 @@ plt.close()
 
 print("\nCREATING HEATMAP 4/4: DIFFERENCE")
 
-fig, ax = plt.subplots(figsize=(24, 20))
+fig, ax = plt.subplots(figsize=(28, 24))
 
 sns.heatmap(corr_diff,
-            annot=False,
+            annot=True,
             fmt='.2f',
+            annot_kws={'size': 8},  # Increased font size to 8
             cmap='RdBu_r',
             vmin=-1, vmax=1,
             center=0,
@@ -291,8 +295,8 @@ ax.set_title('LEVEL 1: CORRELATION DIFFERENCE HEATMAP\n' +
              'Shows how variable relationships change between successful vs unsuccessful calls',
              fontsize=18, fontweight='bold', pad=30)
 
-plt.xticks(rotation=90, ha='right', fontsize=8)
-plt.yticks(rotation=0, fontsize=8)
+plt.xticks(rotation=90, ha='right', fontsize=9)
+plt.yticks(rotation=0, fontsize=9)
 plt.tight_layout()
 plt.savefig('analysis_outputs/level1_variable/heatmap_02_difference.png', dpi=300, bbox_inches='tight')
 print("[OK] Saved: heatmap_02_difference.png")

@@ -1,5 +1,4 @@
 Variable,Type,Significant,Effect_Size_Value
-TO_OMC_Duration,Numerical,Yes,1.6633537671936194
 LQ_Company_Name,Categorical,No,0.9948778952290793
 LQ_Company_Address,Categorical,No,0.9026887901976107
 TO_Event_O,Categorical,No,0.8934781638841053

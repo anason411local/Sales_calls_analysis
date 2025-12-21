@@ -37,7 +37,8 @@ VARIABLE_SECTIONS = {
     
     # Section 2: Timings
     'timings': [
-        'TO_Event_O', 'timezone', 'season_status', 'season_month'
+        'TO_Event_O', 'timezone', 'season_status'
+        # Removed: 'season_month' (constant - only December)
     ],
     
     # Section 3: LGS Department
@@ -60,8 +61,9 @@ VARIABLE_SECTIONS = {
     
     # Section 6.1: OMC Department
     'omc_department': [
-        'TO_OMC_User', 'TO_OMC_Disposiion', 'TO_OMC_Duration', 'omc_agent_sentiment_style',
+        'TO_OMC_User', 'TO_OMC_Disposiion', 'omc_agent_sentiment_style',
         'omc_who_said_hello_first'
+        # Removed: 'TO_OMC_Duration' (perfect separator - essentially call duration itself)
     ],
     
     # Section 6.2: OMC Customer Engagement

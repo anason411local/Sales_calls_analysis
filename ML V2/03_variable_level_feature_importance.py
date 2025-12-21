@@ -18,9 +18,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import classification_report, roc_auc_score
+from sklearn.metrics import classification_report, roc_auc_score, accuracy_score, f1_score, log_loss, confusion_matrix
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -56,6 +56,20 @@ feature_cols = [c for c in df.columns if c not in ['target', 'call_duration_grou
 X = df[feature_cols].copy()
 y = df['target'].values
 
+# Remove constant/near-constant variables (auto-detection)
+print("\nChecking for constant/near-constant variables...")
+to_remove = []
+for col in X.columns:
+    nunique = X[col].nunique()
+    if nunique <= 1:
+        to_remove.append(col)
+        print(f"  [WARNING] {col}: Only {nunique} unique value(s) - removing")
+
+if to_remove:
+    X = X.drop(columns=to_remove)
+    feature_cols = [c for c in feature_cols if c not in to_remove]
+    print(f"\n[OK] Removed {len(to_remove)} constant variables")
+
 # Encode categorical variables
 label_encoders = {}
 for col in X.columns:
@@ -69,7 +83,7 @@ for col in X.columns:
     if X[col].isna().any():
         X[col].fillna(X[col].median(), inplace=True)
 
-print(f"\n[OK] Encoded {len(feature_cols)} variables for ML models")
+print(f"\n[OK] Final features: {len(feature_cols)} variables")
 print(f"[OK] Label encoded: {len(label_encoders)} categorical variables")
 
 # ==============================================================================
@@ -112,11 +126,43 @@ rf_model.fit(X_train, y_train)
 # Predictions
 y_pred_rf = rf_model.predict(X_test)
 y_proba_rf = rf_model.predict_proba(X_test)[:, 1]
+y_pred_rf_train = rf_model.predict(X_train)
+y_proba_rf_train = rf_model.predict_proba(X_train)[:, 1]
 
-# Metrics
-roc_auc_rf = roc_auc_score(y_test, y_proba_rf)
+# Comprehensive metrics
+roc_auc_rf_test = roc_auc_score(y_test, y_proba_rf)
+roc_auc_rf_train = roc_auc_score(y_train, y_proba_rf_train)
+acc_rf_test = accuracy_score(y_test, y_pred_rf)
+acc_rf_train = accuracy_score(y_train, y_pred_rf_train)
+f1_rf_test = f1_score(y_test, y_pred_rf)
+f1_rf_train = f1_score(y_train, y_pred_rf_train)
+logloss_rf_test = log_loss(y_test, y_proba_rf)
+logloss_rf_train = log_loss(y_train, y_proba_rf_train)
+
+# Cross-validation
+cv_scores_rf = cross_val_score(rf_model, X, y, cv=5, scoring='roc_auc', n_jobs=-1)
+
 print(f"\n[OK] Random Forest trained")
-print(f"   ROC-AUC: {roc_auc_rf:.4f}")
+print(f"\n   TEST SET METRICS:")
+print(f"   - ROC-AUC: {roc_auc_rf_test:.4f}")
+print(f"   - Accuracy: {acc_rf_test:.4f}")
+print(f"   - F1-Score: {f1_rf_test:.4f}")
+print(f"   - Log Loss: {logloss_rf_test:.4f}")
+print(f"\n   TRAIN SET METRICS:")
+print(f"   - ROC-AUC: {roc_auc_rf_train:.4f}")
+print(f"   - Accuracy: {acc_rf_train:.4f}")
+print(f"   - F1-Score: {f1_rf_train:.4f}")
+print(f"   - Log Loss: {logloss_rf_train:.4f}")
+print(f"\n   CROSS-VALIDATION (5-fold):")
+print(f"   - Mean ROC-AUC: {cv_scores_rf.mean():.4f} (+/- {cv_scores_rf.std() * 2:.4f})")
+print(f"\n   OVERFITTING CHECK:")
+overfit_roc = roc_auc_rf_train - roc_auc_rf_test
+if overfit_roc > 0.10:
+    print(f"   - [WARNING] HIGH OVERFITTING: Train-Test gap = {overfit_roc:.4f}")
+elif overfit_roc > 0.05:
+    print(f"   - [CAUTION] Moderate overfitting: Train-Test gap = {overfit_roc:.4f}")
+else:
+    print(f"   - [OK] Good generalization: Train-Test gap = {overfit_roc:.4f}")
 
 # Feature importance
 rf_importance = pd.DataFrame({
@@ -151,11 +197,43 @@ gb_model.fit(X_train, y_train)
 # Predictions
 y_pred_gb = gb_model.predict(X_test)
 y_proba_gb = gb_model.predict_proba(X_test)[:, 1]
+y_pred_gb_train = gb_model.predict(X_train)
+y_proba_gb_train = gb_model.predict_proba(X_train)[:, 1]
 
-# Metrics
-roc_auc_gb = roc_auc_score(y_test, y_proba_gb)
+# Comprehensive metrics
+roc_auc_gb_test = roc_auc_score(y_test, y_proba_gb)
+roc_auc_gb_train = roc_auc_score(y_train, y_proba_gb_train)
+acc_gb_test = accuracy_score(y_test, y_pred_gb)
+acc_gb_train = accuracy_score(y_train, y_pred_gb_train)
+f1_gb_test = f1_score(y_test, y_pred_gb)
+f1_gb_train = f1_score(y_train, y_pred_gb_train)
+logloss_gb_test = log_loss(y_test, y_proba_gb)
+logloss_gb_train = log_loss(y_train, y_proba_gb_train)
+
+# Cross-validation
+cv_scores_gb = cross_val_score(gb_model, X, y, cv=5, scoring='roc_auc')
+
 print(f"\n[OK] Gradient Boosting trained")
-print(f"   ROC-AUC: {roc_auc_gb:.4f}")
+print(f"\n   TEST SET METRICS:")
+print(f"   - ROC-AUC: {roc_auc_gb_test:.4f}")
+print(f"   - Accuracy: {acc_gb_test:.4f}")
+print(f"   - F1-Score: {f1_gb_test:.4f}")
+print(f"   - Log Loss: {logloss_gb_test:.4f}")
+print(f"\n   TRAIN SET METRICS:")
+print(f"   - ROC-AUC: {roc_auc_gb_train:.4f}")
+print(f"   - Accuracy: {acc_gb_train:.4f}")
+print(f"   - F1-Score: {f1_gb_train:.4f}")
+print(f"   - Log Loss: {logloss_gb_train:.4f}")
+print(f"\n   CROSS-VALIDATION (5-fold):")
+print(f"   - Mean ROC-AUC: {cv_scores_gb.mean():.4f} (+/- {cv_scores_gb.std() * 2:.4f})")
+print(f"\n   OVERFITTING CHECK:")
+overfit_roc = roc_auc_gb_train - roc_auc_gb_test
+if overfit_roc > 0.10:
+    print(f"   - [WARNING] HIGH OVERFITTING: Train-Test gap = {overfit_roc:.4f}")
+elif overfit_roc > 0.05:
+    print(f"   - [CAUTION] Moderate overfitting: Train-Test gap = {overfit_roc:.4f}")
+else:
+    print(f"   - [OK] Good generalization: Train-Test gap = {overfit_roc:.4f}")
 
 # Feature importance
 gb_importance = pd.DataFrame({
@@ -227,11 +305,24 @@ print("  - 03_model_gradient_boosting.pkl")
 
 # Save metrics
 metrics = {
-    'random_forest_roc_auc': float(roc_auc_rf),
-    'gradient_boosting_roc_auc': float(roc_auc_gb),
+    'random_forest_roc_auc_test': float(roc_auc_rf_test),
+    'random_forest_roc_auc_train': float(roc_auc_rf_train),
+    'random_forest_accuracy_test': float(acc_rf_test),
+    'random_forest_f1_test': float(f1_rf_test),
+    'random_forest_cv_mean': float(cv_scores_rf.mean()),
+    'random_forest_cv_std': float(cv_scores_rf.std()),
+    'random_forest_overfitting_gap': float(roc_auc_rf_train - roc_auc_rf_test),
+    'gradient_boosting_roc_auc_test': float(roc_auc_gb_test),
+    'gradient_boosting_roc_auc_train': float(roc_auc_gb_train),
+    'gradient_boosting_accuracy_test': float(acc_gb_test),
+    'gradient_boosting_f1_test': float(f1_gb_test),
+    'gradient_boosting_cv_mean': float(cv_scores_gb.mean()),
+    'gradient_boosting_cv_std': float(cv_scores_gb.std()),
+    'gradient_boosting_overfitting_gap': float(roc_auc_gb_train - roc_auc_gb_test),
     'n_features': len(feature_cols),
     'n_train': int(len(X_train)),
-    'n_test': int(len(X_test))
+    'n_test': int(len(X_test)),
+    'removed_variables': ['TO_OMC_Duration'] + to_remove if to_remove else ['TO_OMC_Duration']
 }
 
 import json
@@ -240,10 +331,210 @@ with open('analysis_outputs/level1_variable/03_model_metrics.json', 'w') as f:
 
 print("  - 03_model_metrics.json")
 
+# ==============================================================================
+# MODEL EVALUATION VISUALIZATIONS
+# ==============================================================================
+
+print("\n" + "="*100)
+print("CREATING MODEL EVALUATION VISUALIZATIONS")
+print("="*100)
+
+from sklearn.metrics import roc_curve, auc
+from sklearn.model_selection import learning_curve
+
+# ==============================
+# VIZ 1: CONFUSION MATRICES
+# ==============================
+
+print("\nCreating confusion matrices...")
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+# RF Confusion Matrix
+cm_rf = confusion_matrix(y_test, y_pred_rf)
+sns.heatmap(cm_rf, annot=True, fmt='d', cmap='Blues', ax=axes[0],
+            xticklabels=['Short', 'Long'], yticklabels=['Short', 'Long'],
+            cbar_kws={'label': 'Count'})
+axes[0].set_title(f'Random Forest Confusion Matrix\nTest ROC-AUC: {roc_auc_rf_test:.4f}',
+                  fontsize=12, fontweight='bold')
+axes[0].set_xlabel('Predicted', fontsize=11, fontweight='bold')
+axes[0].set_ylabel('Actual', fontsize=11, fontweight='bold')
+
+# GB Confusion Matrix
+cm_gb = confusion_matrix(y_test, y_pred_gb)
+sns.heatmap(cm_gb, annot=True, fmt='d', cmap='Greens', ax=axes[1],
+            xticklabels=['Short', 'Long'], yticklabels=['Short', 'Long'],
+            cbar_kws={'label': 'Count'})
+axes[1].set_title(f'Gradient Boosting Confusion Matrix\nTest ROC-AUC: {roc_auc_gb_test:.4f}',
+                  fontsize=12, fontweight='bold')
+axes[1].set_xlabel('Predicted', fontsize=11, fontweight='bold')
+axes[1].set_ylabel('Actual', fontsize=11, fontweight='bold')
+
+plt.suptitle('LEVEL 1: MODEL CONFUSION MATRICES\nDiagonal = Correct Predictions | Off-diagonal = Errors',
+             fontsize=14, fontweight='bold', y=1.02)
+plt.tight_layout()
+plt.savefig('analysis_outputs/level1_variable/03_eval_confusion_matrices.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: 03_eval_confusion_matrices.png")
+plt.close()
+
+# ==============================
+# VIZ 2: ROC CURVES
+# ==============================
+
+print("Creating ROC curves...")
+fig, ax = plt.subplots(figsize=(10, 8))
+
+# RF ROC Curve
+fpr_rf, tpr_rf, _ = roc_curve(y_test, y_proba_rf)
+ax.plot(fpr_rf, tpr_rf, label=f'Random Forest (AUC = {roc_auc_rf_test:.4f})',
+        linewidth=2.5, color='#4ECDC4')
+
+# GB ROC Curve  
+fpr_gb, tpr_gb, _ = roc_curve(y_test, y_proba_gb)
+ax.plot(fpr_gb, tpr_gb, label=f'Gradient Boosting (AUC = {roc_auc_gb_test:.4f})',
+        linewidth=2.5, color='#FF6B6B')
+
+# Diagonal (random classifier)
+ax.plot([0, 1], [0, 1], 'k--', linewidth=1.5, label='Random Classifier (AUC = 0.50)')
+
+ax.set_xlabel('False Positive Rate', fontsize=12, fontweight='bold')
+ax.set_ylabel('True Positive Rate', fontsize=12, fontweight='bold')
+ax.set_title('LEVEL 1: ROC CURVES - Model Comparison\nHigher curve = Better performance',
+             fontsize=14, fontweight='bold', pad=20)
+ax.legend(fontsize=11, loc='lower right')
+ax.grid(alpha=0.3)
+
+plt.tight_layout()
+plt.savefig('analysis_outputs/level1_variable/03_eval_roc_curves.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: 03_eval_roc_curves.png")
+plt.close()
+
+# ==============================
+# VIZ 3: LEARNING CURVES
+# ==============================
+
+print("Creating learning curves...")
+fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+
+# RF Learning Curve
+train_sizes, train_scores_rf, val_scores_rf = learning_curve(
+    rf_model, X, y, cv=5, n_jobs=-1,
+    train_sizes=np.linspace(0.1, 1.0, 10),
+    scoring='roc_auc', random_state=42
+)
+
+train_mean_rf = train_scores_rf.mean(axis=1)
+train_std_rf = train_scores_rf.std(axis=1)
+val_mean_rf = val_scores_rf.mean(axis=1)
+val_std_rf = val_scores_rf.std(axis=1)
+
+axes[0].plot(train_sizes, train_mean_rf, label='Training Score', 
+            linewidth=2.5, color='#4ECDC4', marker='o')
+axes[0].fill_between(train_sizes, train_mean_rf - train_std_rf, 
+                     train_mean_rf + train_std_rf, alpha=0.2, color='#4ECDC4')
+axes[0].plot(train_sizes, val_mean_rf, label='Cross-Validation Score',
+            linewidth=2.5, color='#FF6B6B', marker='o')
+axes[0].fill_between(train_sizes, val_mean_rf - val_std_rf,
+                     val_mean_rf + val_std_rf, alpha=0.2, color='#FF6B6B')
+
+axes[0].set_xlabel('Training Set Size', fontsize=11, fontweight='bold')
+axes[0].set_ylabel('ROC-AUC Score', fontsize=11, fontweight='bold')
+axes[0].set_title('Random Forest Learning Curve\nChecking overfitting and convergence',
+                  fontsize=12, fontweight='bold')
+axes[0].legend(fontsize=10)
+axes[0].grid(alpha=0.3)
+
+# GB Learning Curve
+train_sizes, train_scores_gb, val_scores_gb = learning_curve(
+    gb_model, X, y, cv=5,
+    train_sizes=np.linspace(0.1, 1.0, 10),
+    scoring='roc_auc', random_state=42
+)
+
+train_mean_gb = train_scores_gb.mean(axis=1)
+train_std_gb = train_scores_gb.std(axis=1)
+val_mean_gb = val_scores_gb.mean(axis=1)
+val_std_gb = val_scores_gb.std(axis=1)
+
+axes[1].plot(train_sizes, train_mean_gb, label='Training Score',
+            linewidth=2.5, color='#45B7D1', marker='o')
+axes[1].fill_between(train_sizes, train_mean_gb - train_std_gb,
+                     train_mean_gb + train_std_gb, alpha=0.2, color='#45B7D1')
+axes[1].plot(train_sizes, val_mean_gb, label='Cross-Validation Score',
+            linewidth=2.5, color='#F7DC6F', marker='o')
+axes[1].fill_between(train_sizes, val_mean_gb - val_std_gb,
+                     val_mean_gb + val_std_gb, alpha=0.2, color='#F7DC6F')
+
+axes[1].set_xlabel('Training Set Size', fontsize=11, fontweight='bold')
+axes[1].set_ylabel('ROC-AUC Score', fontsize=11, fontweight='bold')
+axes[1].set_title('Gradient Boosting Learning Curve\nChecking overfitting and convergence',
+                  fontsize=12, fontweight='bold')
+axes[1].legend(fontsize=10)
+axes[1].grid(alpha=0.3)
+
+plt.suptitle('LEVEL 1: LEARNING CURVES\nGap between training and validation = Overfitting level',
+             fontsize=14, fontweight='bold', y=1.02)
+plt.tight_layout()
+plt.savefig('analysis_outputs/level1_variable/03_eval_learning_curves.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: 03_eval_learning_curves.png")
+plt.close()
+
+# ==============================
+# VIZ 4: MODEL METRICS COMPARISON
+# ==============================
+
+print("Creating metrics comparison...")
+fig, ax = plt.subplots(figsize=(12, 8))
+
+metrics_comparison = {
+    'ROC-AUC (Test)': [roc_auc_rf_test, roc_auc_gb_test],
+    'Accuracy (Test)': [acc_rf_test, acc_gb_test],
+    'F1-Score (Test)': [f1_rf_test, f1_gb_test],
+    'CV Mean': [cv_scores_rf.mean(), cv_scores_gb.mean()]
+}
+
+x = np.arange(len(metrics_comparison))
+width = 0.35
+
+bars1 = ax.bar(x - width/2, [metrics_comparison[k][0] for k in metrics_comparison.keys()],
+               width, label='Random Forest', color='#98D8C8', alpha=0.8, edgecolor='black', linewidth=1.5)
+bars2 = ax.bar(x + width/2, [metrics_comparison[k][1] for k in metrics_comparison.keys()],
+               width, label='Gradient Boosting', color='#F7DC6F', alpha=0.8, edgecolor='black', linewidth=1.5)
+
+# Add value labels
+for bars in [bars1, bars2]:
+    for bar in bars:
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2., height,
+                f'{height:.4f}',
+                ha='center', va='bottom', fontsize=10, fontweight='bold')
+
+ax.set_xlabel('Metric', fontsize=13, fontweight='bold')
+ax.set_ylabel('Score', fontsize=13, fontweight='bold')
+ax.set_title('LEVEL 1: MODEL PERFORMANCE COMPARISON\nHigher is better for all metrics',
+             fontsize=14, fontweight='bold', pad=20)
+ax.set_xticks(x)
+ax.set_xticklabels(metrics_comparison.keys(), fontsize=11)
+ax.legend(fontsize=12)
+ax.set_ylim([0, 1.05])
+ax.grid(axis='y', alpha=0.3)
+
+plt.tight_layout()
+plt.savefig('analysis_outputs/level1_variable/03_eval_metrics_comparison.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: 03_eval_metrics_comparison.png")
+plt.close()
+
+print("\n[OK] Created 4 model evaluation visualizations")
+
 print("\n" + "="*100)
 print("LEVEL 1 FEATURE IMPORTANCE COMPLETE")
 print("="*100)
-print(f"\n[OK] Trained 2 ML models (RF: {roc_auc_rf:.4f}, GB: {roc_auc_gb:.4f})")
+print(f"\n[OK] Trained 2 ML models")
+print(f"   RF  - Test: {roc_auc_rf_test:.4f} | Train: {roc_auc_rf_train:.4f} | CV: {cv_scores_rf.mean():.4f}")
+print(f"   GB  - Test: {roc_auc_gb_test:.4f} | Train: {roc_auc_gb_train:.4f} | CV: {cv_scores_gb.mean():.4f}")
 print(f"[OK] Top variable: {df_combined.iloc[0]['Variable']}")
 print(f"[OK] Combined importance ranking created")
 

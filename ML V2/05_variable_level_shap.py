@@ -66,13 +66,27 @@ for col in X.columns:
 print(f"Features: {X.shape[1]}")
 print(f"Samples: {X.shape[0]}")
 
-# Sample for SHAP (faster computation)
+# Sample for SHAP (500 from EACH dataset for balanced representation)
 np.random.seed(42)
-sample_size = min(500, len(X))
-sample_indices = np.random.choice(len(X), sample_size, replace=False)
+
+# Get indices for each class
+short_indices = np.where(df['target'] == 0)[0]
+long_indices = np.where(df['target'] == 1)[0]
+
+# Sample 500 from each
+sample_size_per_class = 500
+short_sample = np.random.choice(short_indices, min(sample_size_per_class, len(short_indices)), replace=False)
+long_sample = np.random.choice(long_indices, min(sample_size_per_class, len(long_indices)), replace=False)
+
+# Combine samples
+sample_indices = np.concatenate([short_sample, long_sample])
+np.random.shuffle(sample_indices)  # Shuffle to mix them
+
 X_sample = X.iloc[sample_indices]
 
-print(f"SHAP sample size: {len(X_sample)}")
+print(f"SHAP sample size: {len(X_sample)} (500 short + 500 long calls)")
+print(f"  - Short calls: {sum(df.iloc[sample_indices]['target'] == 0)}")
+print(f"  - Long calls: {sum(df.iloc[sample_indices]['target'] == 1)}")
 
 # ==============================================================================
 # SHAP ANALYSIS: RANDOM FOREST
@@ -103,40 +117,48 @@ print(f"[OK] SHAP values calculated: {shap_values_rf.shape}")
 
 print("\nCreating Chart 1/5: Summary Plot (Beeswarm)...")
 
-fig, ax = plt.subplots(figsize=(14, 12))
+fig, ax = plt.subplots(figsize=(16, 16))
 
 shap.summary_plot(shap_values_rf, X_sample, 
                   feature_names=feature_cols,
                   max_display=30,
                   show=False)
 
-# Add reading guide
-guide_text = """
-HOW TO READ THIS SHAP SUMMARY PLOT:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Y-axis: Variables ranked by importance (top = most important)
-• X-axis: SHAP value (impact on prediction)
-  - Positive (right) = Pushes toward LONG calls
-  - Negative (left) = Pushes toward SHORT calls
-• Each dot = One call
-• Color: Feature value (Red = High, Blue = Low)
+# Add values at the LEFT side (away from the Low-High scale)
+# Get mean absolute SHAP for each feature
+mean_abs_shap = np.abs(shap_values_rf).mean(axis=0)
+feature_order = np.argsort(mean_abs_shap)[-30:][::-1]  # Top 30 features in order
 
-EXAMPLE: If "customer_talk_percentage" has:
-  - Red dots on the right = High percentage → Long calls
-  - Blue dots on the left = Low percentage → Short calls
-"""
+# Get current axis limits
+xlim = ax.get_xlim()
+ylim = ax.get_ylim()
 
-plt.text(1.02, 0.5, guide_text, transform=ax.transAxes,
-         fontsize=9, verticalalignment='center',
-         bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3),
-         family='monospace')
+# Add value labels on the FAR LEFT side (away from variable names AND color scale)
+for i, feat_idx in enumerate(feature_order):
+    value = mean_abs_shap[feat_idx]
+    # Position FAR left to avoid overlap with variable names
+    ax.text(xlim[0] - (xlim[1] - xlim[0]) * 0.40, 30 - i - 1, f'{value:.3f}', 
+            va='center', ha='right', fontsize=7, fontweight='bold',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='lightyellow', alpha=0.9, edgecolor='black', linewidth=0.5))
 
 plt.title('LEVEL 1: VARIABLE-LEVEL SHAP SUMMARY (Random Forest)\n' +
           'Shows which variables push calls toward Short vs Long duration\n' +
-          f'Based on {len(X_sample)} sample calls',
+          f'Based on {len(X_sample)} sample calls (500 short + 500 long)',
           fontsize=14, fontweight='bold', pad=20)
 
+# Add reading guide at bottom with spacing
+guide_text = """HOW TO READ THIS SHAP SUMMARY PLOT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Y-axis: Variables ranked by importance (top = most important) | X-axis: SHAP value (impact on prediction)
+• Positive (right) = Pushes toward LONG calls | Negative (left) = Pushes toward SHORT calls
+• Each dot = One call | Color: Feature value (Red = High, Blue = Low) | Values on LEFT = Mean |SHAP|
+EXAMPLE: If "customer_talk_percentage" has Red dots on right = High percentage → Long calls"""
+
+fig.text(0.5, -0.02, guide_text, ha='center', fontsize=9,
+         bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5, edgecolor='black'), family='monospace')
+
 plt.tight_layout()
+plt.subplots_adjust(bottom=0.12, left=0.25)  # More space for labels on LEFT
 plt.savefig('analysis_outputs/level1_variable/shap_05_rf_summary_beeswarm.png', 
             dpi=300, bbox_inches='tight')
 print("[OK] Saved: shap_05_rf_summary_beeswarm.png")
@@ -148,7 +170,7 @@ plt.close()
 
 print("\nCreating Chart 2/5: Bar Plot (Feature Importance)...")
 
-fig, ax = plt.subplots(figsize=(12, 10))
+fig, ax = plt.subplots(figsize=(14, 14))
 
 shap.summary_plot(shap_values_rf, X_sample,
                   feature_names=feature_cols,
@@ -156,29 +178,35 @@ shap.summary_plot(shap_values_rf, X_sample,
                   max_display=30,
                   show=False)
 
-# Add reading guide
-guide_text = """
-HOW TO READ THIS SHAP BAR PLOT:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Shows average absolute SHAP value
-• Higher value = More important variable
-• Answers: "Which variables matter most
-  for predicting call duration?"
-• This is model-based importance
-  (not just correlation)
-"""
+# Add values at the end of bars
+mean_abs_shap = np.abs(shap_values_rf).mean(axis=0)
+feature_order = np.argsort(mean_abs_shap)[-30:][::-1]
 
-plt.text(1.02, 0.5, guide_text, transform=ax.transAxes,
-         fontsize=9, verticalalignment='center',
-         bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.3),
-         family='monospace')
+xlim = ax.get_xlim()
+
+for i, feat_idx in enumerate(feature_order):
+    value = mean_abs_shap[feat_idx]
+    ax.text(value + xlim[1] * 0.01, 30 - i - 1, f'{value:.3f}', 
+            va='center', ha='left', fontsize=8, fontweight='bold',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='lightblue', alpha=0.6))
 
 plt.title('LEVEL 1: VARIABLE IMPORTANCE (Random Forest SHAP)\n' +
           'Mean |SHAP value| shows average impact on predictions\n' +
-          f'Based on {len(X_sample)} sample calls',
+          f'Based on {len(X_sample)} sample calls (500 short + 500 long)',
           fontsize=14, fontweight='bold', pad=20)
 
+# Add reading guide at bottom with spacing
+guide_text = """HOW TO READ THIS SHAP BAR PLOT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Shows average absolute SHAP value | Higher value = More important variable
+• Answers: "Which variables matter most for predicting call duration?"
+• This is model-based importance (not just correlation) | Values shown at end of bars"""
+
+fig.text(0.5, -0.02, guide_text, ha='center', fontsize=9,
+         bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.5, edgecolor='black'), family='monospace')
+
 plt.tight_layout()
+plt.subplots_adjust(bottom=0.10)  # More space for guide
 plt.savefig('analysis_outputs/level1_variable/shap_05_rf_importance_bar.png',
             dpi=300, bbox_inches='tight')
 print("[OK] Saved: shap_05_rf_importance_bar.png")
@@ -328,42 +356,139 @@ print(f"[OK] SHAP values calculated: {shap_values_gb.shape}")
 
 # Create GB summary plot
 print("\nCreating GB Summary Plot...")
-fig, ax = plt.subplots(figsize=(14, 12))
+fig, ax = plt.subplots(figsize=(16, 16))
 
 shap.summary_plot(shap_values_gb, X_sample,
                   feature_names=feature_cols,
                   max_display=30,
                   show=False)
 
-guide_text = """
-HOW TO READ THIS SHAP SUMMARY PLOT:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Y-axis: Variables ranked by importance
-• X-axis: SHAP value (impact on prediction)
-  - Positive (right) = LONG calls
-  - Negative (left) = SHORT calls
-• Each dot = One call
-• Color: Feature value (Red = High, Blue = Low)
+# Add values at the LEFT side (away from color scale)
+mean_abs_shap_gb = np.abs(shap_values_gb).mean(axis=0)
+feature_order_gb = np.argsort(mean_abs_shap_gb)[-30:][::-1]
 
-This is from Gradient Boosting model.
-Compare with Random Forest to find
-consistent patterns!
-"""
+xlim = ax.get_xlim()
 
-plt.text(1.02, 0.5, guide_text, transform=ax.transAxes,
-         fontsize=9, verticalalignment='center',
-         bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3),
-         family='monospace')
+for i, feat_idx in enumerate(feature_order_gb):
+    value = mean_abs_shap_gb[feat_idx]
+    # Position FAR left to avoid overlap with variable names
+    ax.text(xlim[0] - (xlim[1] - xlim[0]) * 0.40, 30 - i - 1, f'{value:.3f}', 
+            va='center', ha='right', fontsize=7, fontweight='bold',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='lightyellow', alpha=0.9, edgecolor='black', linewidth=0.5))
 
 plt.title('LEVEL 1: VARIABLE-LEVEL SHAP SUMMARY (Gradient Boosting)\n' +
           'Shows which variables push calls toward Short vs Long duration\n' +
-          f'Based on {len(X_sample)} sample calls',
+          f'Based on {len(X_sample)} sample calls (500 short + 500 long)',
           fontsize=14, fontweight='bold', pad=20)
 
+# Add reading guide at bottom with spacing
+guide_text = """HOW TO READ THIS SHAP SUMMARY PLOT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Y-axis: Variables ranked by importance | X-axis: SHAP value (impact on prediction)
+• Positive (right) = LONG calls | Negative (left) = SHORT calls | Each dot = One call
+• Color: Feature value (Red = High, Blue = Low) | Values on LEFT = Mean |SHAP|
+This is from Gradient Boosting model. Compare with Random Forest to find consistent patterns!"""
+
+fig.text(0.5, -0.02, guide_text, ha='center', fontsize=9,
+         bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5, edgecolor='black'), family='monospace')
+
 plt.tight_layout()
+plt.subplots_adjust(bottom=0.12, left=0.25)  # More space for labels on LEFT
 plt.savefig('analysis_outputs/level1_variable/shap_05_gb_summary_beeswarm.png',
             dpi=300, bbox_inches='tight')
 print("[OK] Saved: shap_05_gb_summary_beeswarm.png")
+plt.close()
+
+# ==============================================================================
+# GB BAR PLOT (FEATURE IMPORTANCE)
+# ==============================================================================
+
+print("\nCreating GB Bar Plot...")
+fig, ax = plt.subplots(figsize=(14, 14))
+
+shap.summary_plot(shap_values_gb, X_sample,
+                  feature_names=feature_cols,
+                  plot_type='bar',
+                  max_display=30,
+                  show=False)
+
+# Add values at the end of bars
+mean_abs_shap_gb_bar = np.abs(shap_values_gb).mean(axis=0)
+feature_order_gb_bar = np.argsort(mean_abs_shap_gb_bar)[-30:][::-1]
+
+xlim = ax.get_xlim()
+
+for i, feat_idx in enumerate(feature_order_gb_bar):
+    value = mean_abs_shap_gb_bar[feat_idx]
+    ax.text(value + xlim[1] * 0.01, 30 - i - 1, f'{value:.3f}', 
+            va='center', ha='left', fontsize=8, fontweight='bold',
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='lightblue', alpha=0.6))
+
+plt.title('LEVEL 1: VARIABLE IMPORTANCE (Gradient Boosting SHAP)\n' +
+          'Mean |SHAP value| shows average impact on predictions\n' +
+          f'Based on {len(X_sample)} sample calls (500 short + 500 long)',
+          fontsize=14, fontweight='bold', pad=20)
+
+# Add reading guide at bottom with spacing
+guide_text = """HOW TO READ THIS SHAP BAR PLOT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Shows average absolute SHAP value | Higher value = More important variable
+• Answers: "Which variables matter most for predicting call duration?"
+• This is from Gradient Boosting model | Values shown at end of bars"""
+
+fig.text(0.5, -0.02, guide_text, ha='center', fontsize=9,
+         bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.5, edgecolor='black'), family='monospace')
+
+plt.tight_layout()
+plt.subplots_adjust(bottom=0.10)
+plt.savefig('analysis_outputs/level1_variable/shap_05_gb_importance_bar.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: shap_05_gb_importance_bar.png")
+plt.close()
+
+# ==============================================================================
+# GB DEPENDENCE PLOTS (TOP 4 FEATURES)
+# ==============================================================================
+
+print("\nCreating GB Dependence Plots...")
+
+# Get top 4 features by mean |SHAP|
+mean_abs_shap_gb_dep = np.abs(shap_values_gb).mean(axis=0)
+top_4_indices_gb = np.argsort(mean_abs_shap_gb_dep)[-4:][::-1]
+top_4_features_gb = [feature_cols[i] for i in top_4_indices_gb]
+
+fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+axes = axes.flatten()
+
+for idx, (feat_idx, feat_name) in enumerate(zip(top_4_indices_gb, top_4_features_gb)):
+    ax = axes[idx]
+    plt.sca(ax)
+    
+    shap.dependence_plot(feat_idx, shap_values_gb, X_sample,
+                         feature_names=feature_cols,
+                         show=False,
+                         ax=ax)
+    
+    ax.set_title(f'{feat_name}\nShows how this variable affects predictions',
+                 fontsize=11, fontweight='bold')
+
+# Add reading guide
+fig.text(0.5, 0.02,
+         'HOW TO READ DEPENDENCE PLOTS:\n' +
+         'X-axis: Variable value | Y-axis: SHAP value (impact on prediction) | Color: Interaction variable\n' +
+         'Shows relationship between variable value and its impact. Helps identify thresholds and interactions.',
+         ha='center', fontsize=10,
+         bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.5))
+
+plt.suptitle('LEVEL 1: TOP 4 VARIABLE DEPENDENCE PLOTS (Gradient Boosting)\n' +
+             'Shows how variable values affect predictions and interactions',
+             fontsize=14, fontweight='bold', y=0.98)
+
+plt.tight_layout()
+plt.subplots_adjust(bottom=0.08, top=0.94)
+plt.savefig('analysis_outputs/level1_variable/shap_05_gb_dependence.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: shap_05_gb_dependence.png")
 plt.close()
 
 # ==============================================================================
@@ -396,11 +521,11 @@ for idx, row in shap_importance.head(20).iterrows():
 print("\n" + "="*100)
 print("LEVEL 1 SHAP ANALYSIS COMPLETE")
 print("="*100)
-print("\n[OK] Created 5 types of SHAP visualizations:")
+print("\n[OK] Created 8 types of SHAP visualizations:")
 print("   1. Summary plots (beeswarm) - RF & GB")
-print("   2. Bar plots (importance) - RF")
+print("   2. Bar plots (importance) - RF & GB")
 print("   3. Waterfall plots (individual explanations) - RF")
-print("   4. Dependence plots (interactions) - RF")
+print("   4. Dependence plots (interactions) - RF & GB")
 print("[OK] All charts include reading guides")
 print(f"[OK] Top variable: {shap_importance.iloc[0]['Variable']}")
 

@@ -7,7 +7,7 @@ Purpose: Perform statistical tests at the variable level
 - Compare 49 variables between Short vs Long calls
 - T-tests / Mann-Whitney U tests for numerical variables
 - Chi-square tests for categorical variables
-- Effect sizes (Cohen's D, Cramér's V)
+- Effect sizes (Cohen's D, Cramer's V)
 - Point-biserial correlation with target
 
 ==============================================================================
@@ -162,7 +162,7 @@ for var in categorical_vars:
     try:
         chi2, chi2_pval, dof, expected = chi2_contingency(contingency)
         
-        # Cramér's V (effect size)
+        # Cramer's V (effect size)
         n = contingency.sum().sum()
         min_dim = min(contingency.shape[0] - 1, contingency.shape[1] - 1)
         cramers_v = np.sqrt(chi2 / (n * min_dim)) if n > 0 and min_dim > 0 else 0
@@ -208,15 +208,15 @@ print("-" * 100)
 for idx, row in df_numerical_tests.head(10).iterrows():
     sig = "***" if row['Significant_MW'] == 'Yes' else ""
     print(f"  {row['Variable']}: Cohen's D = {row['Cohens_D']:.3f} ({row['Effect_Size']}) {sig}")
-    print(f"    Short: {row['Short_Mean']:.2f} ± {row['Short_Std']:.2f}")
-    print(f"    Long:  {row['Long_Mean']:.2f} ± {row['Long_Std']:.2f}")
+    print(f"    Short: {row['Short_Mean']:.2f} +/- {row['Short_Std']:.2f}")
+    print(f"    Long:  {row['Long_Mean']:.2f} +/- {row['Long_Std']:.2f}")
 
 # Top categorical variables
 print("\nTOP 10 CATEGORICAL VARIABLES (by effect size):")
 print("-" * 100)
 for idx, row in df_categorical_tests.head(10).iterrows():
     sig = "***" if row['Significant'] == 'Yes' else ""
-    print(f"  {row['Variable']}: Cramér's V = {row['Cramers_V']:.3f} ({row['Effect_Size']}) {sig}")
+    print(f"  {row['Variable']}: Cramer's V = {row['Cramers_V']:.3f} ({row['Effect_Size']}) {sig}")
     print(f"    Short mode: {row['Short_Mode']}")
     print(f"    Long mode:  {row['Long_Mode']}")
 
@@ -251,6 +251,186 @@ print("\n[OK] Saved CSV files:")
 print("  - 04_statistical_tests_numerical.csv")
 print("  - 04_statistical_tests_categorical.csv")
 print("  - 04_statistical_tests_combined.csv")
+
+# ==============================================================================
+# STATISTICAL VISUALIZATIONS
+# ==============================================================================
+
+print("\n" + "="*100)
+print("CREATING STATISTICAL VISUALIZATIONS")
+print("="*100)
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.style.use('seaborn-v0_8-darkgrid')
+sns.set_palette("husl")
+
+# ==============================
+# VIZ 1: P-VALUE DISTRIBUTION
+# ==============================
+
+print("\nCreating p-value distributions...")
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+# Numerical p-values
+axes[0].hist(df_numerical_tests['Mann_Whitney_PValue'], bins=20, 
+             color='#4ECDC4', alpha=0.7, edgecolor='black', linewidth=1.5)
+axes[0].axvline(0.05, color='red', linestyle='--', linewidth=2, label='p=0.05 threshold')
+axes[0].set_xlabel('P-Value (Mann-Whitney U Test)', fontsize=11, fontweight='bold')
+axes[0].set_ylabel('Frequency', fontsize=11, fontweight='bold')
+axes[0].set_title(f'Numerical Variables P-Value Distribution\n{n_sig_numerical}/{len(df_numerical_tests)} Significant',
+                  fontsize=12, fontweight='bold')
+axes[0].legend(fontsize=10)
+axes[0].grid(alpha=0.3)
+
+# Categorical p-values
+axes[1].hist(df_categorical_tests['Chi_Square_PValue'], bins=20,
+             color='#FF6B6B', alpha=0.7, edgecolor='black', linewidth=1.5)
+axes[1].axvline(0.05, color='red', linestyle='--', linewidth=2, label='p=0.05 threshold')
+axes[1].set_xlabel('P-Value (Chi-Square Test)', fontsize=11, fontweight='bold')
+axes[1].set_ylabel('Frequency', fontsize=11, fontweight='bold')
+axes[1].set_title(f'Categorical Variables P-Value Distribution\n{n_sig_categorical}/{len(df_categorical_tests)} Significant',
+                  fontsize=12, fontweight='bold')
+axes[1].legend(fontsize=10)
+axes[1].grid(alpha=0.3)
+
+plt.suptitle('LEVEL 1: P-VALUE DISTRIBUTIONS\nValues below red line = Statistically significant',
+             fontsize=14, fontweight='bold', y=1.02)
+plt.tight_layout()
+plt.savefig('analysis_outputs/level1_variable/04_stat_pvalue_distributions.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: 04_stat_pvalue_distributions.png")
+plt.close()
+
+# ==============================
+# VIZ 2: EFFECT SIZE VS P-VALUE
+# ==============================
+
+print("Creating effect size vs p-value scatter...")
+fig, axes = plt.subplots(1, 2, figsize=(16, 7))
+
+# Numerical
+axes[0].scatter(df_numerical_tests['Abs_Cohens_D'], 
+                -np.log10(df_numerical_tests['Mann_Whitney_PValue']),
+                s=100, alpha=0.6, c=df_numerical_tests['Abs_Cohens_D'],
+                cmap='viridis', edgecolors='black', linewidth=1)
+axes[0].axhline(-np.log10(0.05), color='red', linestyle='--', linewidth=2, label='p=0.05')
+axes[0].set_xlabel('Effect Size (|Cohen\'s D|)', fontsize=11, fontweight='bold')
+axes[0].set_ylabel('-log10(p-value)', fontsize=11, fontweight='bold')
+axes[0].set_title('Numerical Variables: Effect Size vs Significance\nTop-right = Large effect + Significant',
+                  fontsize=12, fontweight='bold')
+axes[0].legend(fontsize=10)
+axes[0].grid(alpha=0.3)
+
+# Categorical
+axes[1].scatter(df_categorical_tests['Cramers_V'],
+                -np.log10(df_categorical_tests['Chi_Square_PValue']),
+                s=100, alpha=0.6, c=df_categorical_tests['Cramers_V'],
+                cmap='plasma', edgecolors='black', linewidth=1)
+axes[1].axhline(-np.log10(0.05), color='red', linestyle='--', linewidth=2, label='p=0.05')
+axes[1].set_xlabel('Effect Size (Cramer\'s V)', fontsize=11, fontweight='bold')
+axes[1].set_ylabel('-log10(p-value)', fontsize=11, fontweight='bold')
+axes[1].set_title('Categorical Variables: Effect Size vs Significance\nTop-right = Large effect + Significant',
+                  fontsize=12, fontweight='bold')
+axes[1].legend(fontsize=10)
+axes[1].grid(alpha=0.3)
+
+plt.suptitle('LEVEL 1: EFFECT SIZE vs STATISTICAL SIGNIFICANCE\nBest variables are in top-right (large effect + low p-value)',
+             fontsize=14, fontweight='bold', y=1.00)
+plt.tight_layout()
+plt.savefig('analysis_outputs/level1_variable/04_stat_effect_vs_pvalue.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: 04_stat_effect_vs_pvalue.png")
+plt.close()
+
+# ==============================
+# VIZ 3: MEAN DIFFERENCES (NUMERICAL)
+# ==============================
+
+print("Creating mean differences plot...")
+fig, ax = plt.subplots(figsize=(12, 10))
+
+df_num_sorted = df_numerical_tests.sort_values('Mean_Diff', ascending=False).head(20)
+
+colors = ['#4ECDC4' if sig == 'Yes' else '#FF6B6B' for sig in df_num_sorted['Significant_MW']]
+bars = ax.barh(range(len(df_num_sorted)), df_num_sorted['Mean_Diff'],
+               color=colors, alpha=0.8, edgecolor='black', linewidth=1.5)
+
+ax.set_yticks(range(len(df_num_sorted)))
+ax.set_yticklabels(df_num_sorted['Variable'], fontsize=10)
+ax.set_xlabel('Mean Difference (Long - Short calls)', fontsize=12, fontweight='bold')
+ax.set_title('LEVEL 1: TOP 20 NUMERICAL VARIABLES BY MEAN DIFFERENCE\n' +
+             'POSITIVE = Higher in Long Calls | NEGATIVE = Higher in Short Calls\n' +
+             'TEAL = Significant | RED = Not Significant',
+             fontsize=13, fontweight='bold', pad=20)
+ax.invert_yaxis()
+ax.axvline(0, color='black', linestyle='-', linewidth=1)
+ax.grid(axis='x', alpha=0.3)
+
+# Add value labels
+for i, (bar, val) in enumerate(zip(bars, df_num_sorted['Mean_Diff'])):
+    x_pos = val + (abs(val) * 0.05 if val > 0 else -abs(val) * 0.05)
+    ax.text(x_pos, i, f'{val:.2f}',
+            va='center', ha='left' if val > 0 else 'right',
+            fontsize=9, fontweight='bold')
+
+plt.tight_layout()
+plt.savefig('analysis_outputs/level1_variable/04_stat_mean_differences.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: 04_stat_mean_differences.png")
+plt.close()
+
+# ==============================
+# VIZ 4: SIGNIFICANCE SUMMARY
+# ==============================
+
+print("Creating significance summary...")
+fig, ax = plt.subplots(figsize=(10, 8))
+
+summary_data = {
+    'Numerical\nVariables': [n_sig_numerical, len(df_numerical_tests) - n_sig_numerical],
+    'Categorical\nVariables': [n_sig_categorical, len(df_categorical_tests) - n_sig_categorical]
+}
+
+x = np.arange(len(summary_data))
+width = 0.6
+
+bottoms = [0] * len(summary_data)
+colors_sig = ['#4ECDC4', '#45B7D1']
+colors_nonsig = ['#FF6B6B', '#F7DC6F']
+
+sig_counts = [summary_data[k][0] for k in summary_data.keys()]
+nonsig_counts = [summary_data[k][1] for k in summary_data.keys()]
+
+bars1 = ax.bar(x, sig_counts, width, label='Significant (p<0.05)',
+               color='#4ECDC4', alpha=0.8, edgecolor='black', linewidth=1.5)
+bars2 = ax.bar(x, nonsig_counts, width, bottom=sig_counts, label='Not Significant',
+               color='#FF6B6B', alpha=0.8, edgecolor='black', linewidth=1.5)
+
+# Add value labels
+for i, (sig, nonsig, total) in enumerate(zip(sig_counts, nonsig_counts, 
+                                              [sig_counts[j] + nonsig_counts[j] for j in range(len(sig_counts))])):
+    ax.text(i, sig/2, f'{sig}\n({sig/total*100:.1f}%)',
+            ha='center', va='center', fontsize=11, fontweight='bold', color='white')
+    ax.text(i, sig + nonsig/2, f'{nonsig}\n({nonsig/total*100:.1f}%)',
+            ha='center', va='center', fontsize=11, fontweight='bold', color='white')
+
+ax.set_ylabel('Number of Variables', fontsize=12, fontweight='bold')
+ax.set_title('LEVEL 1: STATISTICAL SIGNIFICANCE SUMMARY\nHow many variables show significant differences?',
+             fontsize=14, fontweight='bold', pad=20)
+ax.set_xticks(x)
+ax.set_xticklabels(summary_data.keys(), fontsize=11, fontweight='bold')
+ax.legend(fontsize=11)
+ax.grid(axis='y', alpha=0.3)
+
+plt.tight_layout()
+plt.savefig('analysis_outputs/level1_variable/04_stat_significance_summary.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: 04_stat_significance_summary.png")
+plt.close()
+
+print("\n[OK] Created 4 statistical visualizations")
 
 print("\n" + "="*100)
 print("LEVEL 1 STATISTICAL TESTS COMPLETE")

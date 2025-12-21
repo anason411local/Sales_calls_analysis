@@ -1,7 +1,22 @@
 {
-  "random_forest_roc_auc": 1.0,
-  "gradient_boosting_roc_auc": 0.9999999999999999,
-  "n_features": 49,
+  "random_forest_roc_auc_test": 0.9259115927072583,
+  "random_forest_roc_auc_train": 0.9755028983838151,
+  "random_forest_accuracy_test": 0.8327868852459016,
+  "random_forest_f1_test": 0.825938566552901,
+  "random_forest_cv_mean": 0.917321723254879,
+  "random_forest_cv_std": 0.05148949578025256,
+  "random_forest_overfitting_gap": 0.049591305676556785,
+  "gradient_boosting_roc_auc_test": 0.9431114551083591,
+  "gradient_boosting_roc_auc_train": 0.999990402702599,
+  "gradient_boosting_accuracy_test": 0.8622950819672132,
+  "gradient_boosting_f1_test": 0.8551724137931035,
+  "gradient_boosting_cv_mean": 0.921408867695301,
+  "gradient_boosting_cv_std": 0.02577560348098012,
+  "gradient_boosting_overfitting_gap": 0.05687894759423984,
+  "n_features": 47,
   "n_train": 913,
-  "n_test": 305
+  "n_test": 305,
+  "removed_variables": [
+    "TO_OMC_Duration"
+  ]
 }

@@ -21,7 +21,6 @@ forbidden_industry,7,0.5747126436781609
 omc_agent_sentiment_style,3,0.24630541871921183
 timeline_mentions_final_2min,2,0.16420361247947454
 customer_talk_percentage,2,0.16420361247947454
-season_month,1,0.08210180623973727
 total_buying_signals,1,0.08210180623973727
 total_discovery_questions,1,0.08210180623973727
 objections_acknowledged,1,0.08210180623973727

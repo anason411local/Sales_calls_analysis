@@ -5,13 +5,13 @@ LQ_Customer_Name,Nick ,4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls
 LQ_Customer_Name,Alex ,7,2,9,77.78,22.22,-55.56,1.791,0.1808,No,Favors Short Calls,27.78
 LQ_Customer_Name,Daniel ,6,2,8,75.0,25.0,-50.0,1.1324,0.2873,No,Favors Short Calls,25.0
 LQ_Customer_Name,Jose ,7,4,11,63.64,36.36,-27.27,0.367,0.5447,No,Favors Short Calls,13.64
+LQ_Customer_Name,Joe ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
 LQ_Customer_Name,Robert ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
 LQ_Customer_Name,Chris ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
+LQ_Customer_Name,Brandon ,2,3,5,40.0,60.0,20.0,0.0,1.0,No,Favors Long Calls,10.0
 LQ_Customer_Name,Michael ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
 LQ_Customer_Name,David ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
-LQ_Customer_Name,Brandon ,2,3,5,40.0,60.0,20.0,0.0,1.0,No,Favors Long Calls,10.0
-LQ_Customer_Name,Joe ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
 LQ_Customer_Name,Luis ,3,4,7,42.86,57.14,14.29,0.0,1.0,No,Favors Long Calls,7.14
-LQ_Customer_Name,Juan ,3,3,6,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0
-LQ_Customer_Name, ,104,104,208,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0
 LQ_Customer_Name,Victor ,3,3,6,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0
+LQ_Customer_Name, ,104,104,208,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0
+LQ_Customer_Name,Juan ,3,3,6,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0

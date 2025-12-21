@@ -1,6 +1,0 @@
-Variable,Bin,Value_Range,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Direction,Importance_Score
-TO_OMC_Duration,High,"[392.00, 753.00]",0,243,243,0.0,100.0,100.0,Favors Long Calls,50.0
-TO_OMC_Duration,Very High,"[759.00, 3612.00]",0,244,244,0.0,100.0,100.0,Favors Long Calls,50.0
-TO_OMC_Duration,Low,"[108.00, 221.00]",245,0,245,100.0,0.0,-100.0,Favors Short Calls,50.0
-TO_OMC_Duration,Very Low,"[9.00, 107.00]",245,0,245,100.0,0.0,-100.0,Favors Short Calls,50.0
-TO_OMC_Duration,Medium,"[222.00, 391.00]",119,122,241,49.38,50.62,1.24,Neutral,0.62

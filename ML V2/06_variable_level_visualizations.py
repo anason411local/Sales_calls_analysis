@@ -37,12 +37,24 @@ df_importance = pd.read_csv('analysis_outputs/level1_variable/03_importance_comb
 df_corr_target = pd.read_csv('analysis_outputs/level1_variable/02_correlation_with_target.csv')
 df_stats_num = pd.read_csv('analysis_outputs/level1_variable/04_statistical_tests_numerical.csv')
 df_stats_cat = pd.read_csv('analysis_outputs/level1_variable/04_statistical_tests_categorical.csv')
-df_shap = pd.read_csv('analysis_outputs/level1_variable/05_shap_importance.csv')
+
+# Try to load SHAP, but handle if it doesn't exist
+try:
+    df_shap = pd.read_csv('analysis_outputs/level1_variable/05_shap_importance.csv')
+    has_shap = True
+    print("[OK] All results loaded (including SHAP)")
+except FileNotFoundError:
+    print("[WARNING] SHAP file not found - creating visualizations without SHAP data")
+    # Create a dummy dataframe with same structure
+    df_shap = pd.DataFrame({
+        'Variable': df_importance['Variable'],
+        'SHAP_Avg': 0.0
+    })
+    has_shap = False
+    print("[OK] Results loaded (SHAP data not available)")
 
 with open('analysis_outputs/level1_variable/01_metadata.json', 'r') as f:
     metadata = json.load(f)
-
-print("[OK] All results loaded")
 
 # ==============================================================================
 # VIZ 1: TOP 20 VARIABLES BY COMBINED IMPORTANCE
@@ -212,11 +224,11 @@ scatter = ax.scatter(df_compare['Abs_Correlation'],
 # Label top 10 points
 top_10 = df_compare.nlargest(10, 'Combined_Score')
 for idx, row in top_10.iterrows():
-    ax.annotate(row['Variable'][:20], 
+    ax.annotate(row['Variable'], 
                 xy=(row['Abs_Correlation'], row['Combined_Score']),
                 xytext=(5, 5), textcoords='offset points',
-                fontsize=8, fontweight='bold',
-                bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.5))
+                fontsize=7, fontweight='normal',
+                bbox=dict(boxstyle='round,pad=0.4', facecolor='yellow', alpha=0.7, edgecolor='black', linewidth=0.5))
 
 ax.set_xlabel('Absolute Correlation with Target', fontsize=13, fontweight='bold')
 ax.set_ylabel('Combined Importance Score', fontsize=13, fontweight='bold')
@@ -252,25 +264,30 @@ df_stats_combined = pd.concat([
     )
 ], ignore_index=True)
 
-# Top 20 by effect size
-top_20_effect = df_stats_combined.nlargest(20, 'Effect_Size')
+# Top 40 by effect size
+top_40_effect = df_stats_combined.nlargest(40, 'Effect_Size')
 
-fig, ax = plt.subplots(figsize=(14, 10))
+fig, ax = plt.subplots(figsize=(14, 16))
 
-colors = ['#4ECDC4' if s == 'Yes' else '#FF6B6B' for s in top_20_effect['Significant']]
+colors = ['#4ECDC4' if s == 'Yes' else '#FF6B6B' for s in top_40_effect['Significant']]
 
-bars = ax.barh(range(len(top_20_effect)), top_20_effect['Effect_Size'],
+bars = ax.barh(range(len(top_40_effect)), top_40_effect['Effect_Size'],
               color=colors, alpha=0.8, edgecolor='black', linewidth=1.5)
 
-ax.set_yticks(range(len(top_20_effect)))
-ax.set_yticklabels(top_20_effect['Variable'], fontsize=11)
+ax.set_yticks(range(len(top_40_effect)))
+ax.set_yticklabels(top_40_effect['Variable'], fontsize=9)
 ax.set_xlabel('Effect Size (Cohen\'s D / Cramér\'s V)', fontsize=13, fontweight='bold')
-ax.set_title('LEVEL 1: TOP 20 VARIABLES BY EFFECT SIZE\n' +
+ax.set_title('LEVEL 1: TOP 40 VARIABLES BY EFFECT SIZE\n' +
              'TEAL = Statistically Significant (p<0.05) | RED = Not Significant\n' +
              'Shows practical significance of differences between Short vs Long calls',
              fontsize=13, fontweight='bold', pad=25)
 ax.invert_yaxis()
 ax.grid(axis='x', alpha=0.3)
+
+# Add value labels at end of bars
+for i, (bar, val) in enumerate(zip(bars, top_40_effect['Effect_Size'])):
+    ax.text(val + 0.02, i, f'{val:.3f}', 
+            va='center', fontsize=8, fontweight='bold')
 
 # Add legend
 from matplotlib.patches import Patch
@@ -281,10 +298,17 @@ legend_elements = [
 ax.legend(handles=legend_elements, loc='lower right', fontsize=10)
 
 plt.tight_layout()
-plt.savefig('analysis_outputs/level1_variable/viz_06_effect_sizes.png',
-            dpi=300, bbox_inches='tight')
-print("[OK] Saved: viz_06_effect_sizes.png")
-plt.close()
+
+# Save with error handling for Windows file locks
+try:
+    plt.savefig('analysis_outputs/level1_variable/viz_06_effect_sizes.png',
+                dpi=300, bbox_inches='tight')
+    print("[OK] Saved: viz_06_effect_sizes.png")
+except Exception as e:
+    print(f"[WARNING] Could not save viz_06_effect_sizes.png: {e}")
+    print("[WARNING] File may be open in another program. Close it and retry.")
+finally:
+    plt.close()
 
 # ==============================================================================
 # VIZ 5: MODEL COMPARISON (RF vs GB)

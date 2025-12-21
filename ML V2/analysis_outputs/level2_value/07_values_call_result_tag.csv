@@ -1,8 +1,8 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
 call_result_tag,Disconnect - During Close Attempt,7,80,87,8.05,91.95,83.91,64.1698,0.0,Yes,Favors Long Calls,41.95
 call_result_tag,Disconnect - During Discovery,197,25,222,88.74,11.26,-77.48,161.0746,0.0,Yes,Favors Short Calls,38.74
-call_result_tag,Hard Decline (Not Interested),4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
 call_result_tag,Unknown - Recording Incomplete,2,8,10,20.0,80.0,60.0,2.5207,0.1124,No,Favors Long Calls,30.0
+call_result_tag,Hard Decline (Not Interested),4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
 call_result_tag,Early Disconnect - Before Discovery,169,43,212,79.72,20.28,-59.43,89.2346,0.0,Yes,Favors Short Calls,29.72
 call_result_tag,Follow-up Scheduled,32,117,149,21.48,78.52,57.05,53.9563,0.0,Yes,Favors Long Calls,28.52
 call_result_tag,Disconnect - Post-Price/ROI,23,68,91,25.27,74.73,49.45,22.9926,0.0,Yes,Favors Long Calls,24.73

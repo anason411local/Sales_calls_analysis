@@ -70,8 +70,8 @@ call_result_tag,Follow-up Scheduled,32,117,149,21.48,78.52,57.05,53.9563,0.0,Yes
 total_buying_signals,0.0,488,134,622,78.46,21.54,-56.91,409.4115,0.0,Yes,Favors Short Calls,28.46
 ready_to_transfer,YES,8,26,34,23.53,76.47,52.94,8.7441,0.0031,Yes,Favors Long Calls,26.47
 omc_agent_sentiment_style,Professional,16,5,21,76.19,23.81,-52.38,4.8454,0.0277,Yes,Favors Short Calls,26.19
-total_objections,5.0,14,44,58,24.14,75.86,51.72,15.225,0.0001,Yes,Favors Long Calls,25.86
 TO_OMC_Disposiion,CALLBK,21,66,87,24.14,75.86,51.72,23.9646,0.0,Yes,Favors Long Calls,25.86
+total_objections,5.0,14,44,58,24.14,75.86,51.72,15.225,0.0001,Yes,Favors Long Calls,25.86
 technical_quality_issues,"Start-of-Call Latency, Audio Stability, Intelligibility",7,22,29,24.14,75.86,51.72,6.9235,0.0085,Yes,Favors Long Calls,25.86
 TO_User_M,ADELALUCAS,20,62,82,24.39,75.61,51.22,21.9798,0.0,Yes,Favors Long Calls,25.61
 call_result_tag,Disconnect - Post-Price/ROI,23,68,91,25.27,74.73,49.45,22.9926,0.0,Yes,Favors Long Calls,24.73
