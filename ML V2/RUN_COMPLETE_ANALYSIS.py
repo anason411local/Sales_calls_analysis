@@ -94,6 +94,7 @@ def main():
             ('Phase 1: Level 1', '03_variable_level_feature_importance.py'),
             ('Phase 1: Level 1', '04_variable_level_statistical_tests.py'),
             ('Phase 1: Level 1', '05_variable_level_shap.py'),
+            ('Phase 1: Level 1', '05b_variable_level_lime.py'),
             ('Phase 1: Level 1', '06_variable_level_visualizations.py'),
             
             # PHASE 2: LEVEL 2 (VALUE-LEVEL)

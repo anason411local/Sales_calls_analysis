@@ -42,7 +42,7 @@ df_stats_cat = pd.read_csv('analysis_outputs/level1_variable/04_statistical_test
 try:
     df_shap = pd.read_csv('analysis_outputs/level1_variable/05_shap_importance.csv')
     has_shap = True
-    print("[OK] All results loaded (including SHAP)")
+    print("[OK] SHAP results loaded")
 except FileNotFoundError:
     print("[WARNING] SHAP file not found - creating visualizations without SHAP data")
     # Create a dummy dataframe with same structure
@@ -51,7 +51,28 @@ except FileNotFoundError:
         'SHAP_Avg': 0.0
     })
     has_shap = False
-    print("[OK] Results loaded (SHAP data not available)")
+
+# Try to load LIME, but handle if it doesn't exist
+try:
+    df_lime = pd.read_csv('analysis_outputs/level1_variable/05b_lime_importance.csv')
+    has_lime = True
+    print("[OK] LIME results loaded")
+except FileNotFoundError:
+    print("[WARNING] LIME file not found - creating visualizations without LIME data")
+    df_lime = pd.DataFrame({
+        'Variable': df_importance['Variable'],
+        'LIME_Avg': 0.0
+    })
+    has_lime = False
+
+if has_shap and has_lime:
+    print("[OK] All results loaded (including SHAP and LIME)")
+elif has_shap:
+    print("[OK] Results loaded (SHAP data available, LIME not available)")
+elif has_lime:
+    print("[OK] Results loaded (LIME data available, SHAP not available)")
+else:
+    print("[OK] Results loaded (XAI data not available)")
 
 with open('analysis_outputs/level1_variable/01_metadata.json', 'r') as f:
     metadata = json.load(f)
