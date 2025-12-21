@@ -1,0 +1,4 @@
+Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
+customer_language,Spanish,12,7,19,63.16,36.84,-26.32,0.8554,0.355,No,Favors Short Calls,13.16
+customer_language,Unknown,54,38,92,58.7,41.3,-17.39,2.6455,0.1038,No,Favors Short Calls,8.7
+customer_language,English,502,540,1042,48.18,51.82,3.65,9.0922,0.0026,Yes,Neutral,1.82

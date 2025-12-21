@@ -1,0 +1,90 @@
+====================================================================================================
+LEVEL 1: VARIABLE-LEVEL PREPROCESSING
+====================================================================================================
+
+Defined 49 variables across 11 sections
+  lead_quality: 6 variables
+  timings: 4 variables
+  lgs_department: 8 variables
+  customer: 7 variables
+  technical_quality: 2 variables
+  omc_department: 5 variables
+  omc_engagement: 3 variables
+  omc_opening: 5 variables
+  omc_objections: 6 variables
+  omc_pace: 1 variables
+  omc_outcome: 2 variables
+
+====================================================================================================
+LOADING RAW DATA
+====================================================================================================
+
+Short calls (<4.88 min): 609 rows, 124 columns
+Long calls (>4.88 min): 609 rows, 124 columns
+
+====================================================================================================
+FILTERING TO 49 SPECIFIED VARIABLES
+====================================================================================================
+
+Available variables: 49/49
+Short calls filtered: (609, 49)
+Long calls filtered: (609, 49)
+
+====================================================================================================
+CREATING BINARY TARGET
+====================================================================================================
+
+Combined dataset: (1218, 51)
+  Short calls: 609 (50.0%)
+  Long calls: 609 (50.0%)
+
+====================================================================================================
+IDENTIFYING VARIABLE TYPES
+====================================================================================================
+
+Categorical variables: 45
+Numerical variables: 4
+
+Categorical: ['LQ_Company_Name', 'LQ_Company_Address', 'LQ_Service', 'LQ_Customer_Name', 'Calls Count', 'Connection Made Calls', 'TO_Event_O', 'timezone', 'season_status', 'season_month'] ...
+Numerical: ['TO_length_in_sec', 'TO_OMC_Duration', 'customer_talk_percentage', 'time_to_reason_seconds']
+
+====================================================================================================
+DATA QUALITY CHECKS
+====================================================================================================
+
+Variables with missing values: 31/49
+
+Top 10 variables by missing %:
+  technical_quality_issues: 552 (45.3%)
+  LQ_Company_Name: 367 (30.1%)
+  customer_marketing_experience: 214 (17.6%)
+  ready_for_customers: 202 (16.6%)
+  customer_sentiment_lgs: 156 (12.8%)
+  LQ_Service: 139 (11.4%)
+  timezone: 127 (10.4%)
+  customer_knows_marketing: 102 (8.4%)
+  customer_availability: 97 (8.0%)
+  who_said_hello_first_lgs: 92 (7.6%)
+
+====================================================================================================
+SAVING PREPROCESSED DATA
+====================================================================================================
+
+[OK] Saved datasets:
+  - 01_short_calls_original.csv
+  - 01_long_calls_original.csv
+  - 01_combined_original.csv
+  - 01_metadata.json
+  - 01_missing_values_summary.csv
+
+====================================================================================================
+LEVEL 1 PREPROCESSING COMPLETE
+====================================================================================================
+Traceback (most recent call last):
+  File "D:\Sales_calls_analysis\ML V2\01_variable_level_preprocessing.py", line 263, in <module>
+    print(f"\n\u2705 Prepared {len(available_in_short)} variables for variable-level analysis")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 2: character maps to <undefined>

@@ -1,0 +1,324 @@
+================================================================================
+TWO-LEVEL ANALYSIS - COMPLETE SOLUTION
+================================================================================
+
+DATE: Dec 21, 2025
+LOCATION: D:\Sales_calls_analysis\ML V2\
+
+================================================================================
+PROBLEM IDENTIFIED & FIXED
+================================================================================
+
+ISSUE:
+Previous analysis mixed up two different levels:
+1. VARIABLE-LEVEL: How important is "timezone" as a whole?
+2. VALUE-LEVEL: Which timezone (Eastern/Central/Pacific) matters most?
+
+The old correlation heatmap showed 150 encoded features, making it impossible
+to understand the 49 original variables.
+
+SOLUTION:
+Created TWO separate levels of analysis as requested.
+
+================================================================================
+LEVEL 1: VARIABLE-LEVEL ANALYSIS (49 Variables)
+================================================================================
+
+What It Does:
+- Analyzes the 49 original variables from Sections 1-6.6
+- Shows overall importance of each variable
+- Clean 49x49 correlation heatmaps (not 150x150)
+
+Files Created:
+- 09_clean_correlation_49x49.py
+- 09_correlation_49x49_short_calls.csv
+- 09_correlation_49x49_long_calls.csv
+- 09_correlation_49x49_combined.csv
+- 09_correlation_49x49_difference.csv
+- 09_correlation_with_target.csv
+
+Visualizations:
+- heatmap_09_clean_49x49_short_calls.png (CLEAN 49x49)
+- heatmap_09_clean_49x49_long_calls.png (CLEAN 49x49)
+- heatmap_09_clean_49x49_combined.png (CLEAN 49x49)
+- heatmap_09_clean_49x49_difference.png (CLEAN 49x49)
+
+Key Features:
+✓ Uses original 49 variables (not encoded versions)
+✓ Spearman correlation (non-linear)
+✓ Target-ordered label encoding for categorical variables
+✓ Clean, readable heatmaps
+
+================================================================================
+LEVEL 2: VALUE-LEVEL ANALYSIS (347 Specific Values)
+================================================================================
+
+What It Does:
+- Digs into each variable to analyze specific values
+- Answers questions like:
+  * Which timezone (Eastern/Central/Pacific) leads to longer calls?
+  * Which month has highest % of long calls?
+  * Which sentiment leads to longer calls?
+
+Files Created:
+- 08_value_level_analysis.py
+- 08_value_level_analysis_all.csv (347 categorical values)
+- 08_value_level_analysis_numerical.csv (20 numerical bins)
+
+Visualizations:
+- viz_08_top_discriminative_values.png
+- viz_09_value_breakdown_top_variables.png
+- viz_10_key_questions.png (Answers: timezone/month/sentiment)
+- viz_11_variable_importance_summary.png
+
+Key Features:
+✓ Analyzes ALL 49 variables
+✓ 347 specific values analyzed for categorical variables
+✓ Chi-square tests for significance
+✓ Percentage comparisons (Short vs Long calls)
+✓ Importance scores (deviation from 50-50 split)
+
+================================================================================
+ANSWERS TO YOUR KEY QUESTIONS
+================================================================================
+
+1. WHICH TIMEZONE LEADS TO LONGER CALLS?
+   - Mountain: 55.1% Long Calls (49/89 calls)
+   - Central: 53.8% Long Calls (149/277 calls)
+   - Eastern: 48.2% Long Calls (329/682 calls)
+   - Pacific: 49.4% Long Calls (82/166 calls)
+   
+   Answer: Mountain timezone has highest % of long calls!
+
+2. WHICH MONTH HAS HIGHEST % OF LONG CALLS?
+   - December: 50.0% Long Calls (609/1217 calls)
+   
+   Answer: Only December data available (balanced split)
+
+3. WHICH SENTIMENT LEADS TO LONGER CALLS?
+   
+   Customer Sentiment (OMC):
+   - Fluctuated: 90.5% Long Calls (38/42 calls) ⭐
+   - Interested: 79.0% Long Calls (98/124 calls) ⭐
+   - Neutral: 55.9% Long Calls (273/488 calls)
+   
+   OMC Agent Sentiment Style:
+   - Expert: 71.4% Long Calls (5/7 calls)
+   - Confident & Assumptive: 59.4% Long Calls (462/778 calls)
+   
+   Answer: "Fluctuated" and "Interested" customer sentiments strongly 
+   predict longer calls!
+
+================================================================================
+HOW TO READ VALUE-LEVEL RESULTS
+================================================================================
+
+CSV File: 08_value_level_analysis_all.csv
+
+Columns Explained:
+- Variable: The variable name (e.g., timezone)
+- Value: Specific value (e.g., Eastern)
+- Count_Short: Number of short calls with this value
+- Count_Long: Number of long calls with this value
+- Pct_Short: % of calls with this value that are short
+- Pct_Long: % of calls with this value that are long
+- Direction: Favors Long/Short/Neutral
+- Importance_Score: How far from 50-50 split (higher = more important)
+- P_Value: Statistical significance
+- Significant: Yes if p < 0.05
+
+Example Row:
+Variable: timezone
+Value: Mountain
+Pct_Long: 55.1%
+Direction: Favors Long Calls
+Importance_Score: 5.1
+P_Value: 0.3421
+
+Interpretation:
+Mountain timezone has 55.1% long calls (5.1 points above 50%), 
+slightly favoring longer calls, but not statistically significant.
+
+================================================================================
+COMPARISON: OLD vs NEW CORRELATION HEATMAPS
+================================================================================
+
+OLD HEATMAP (WRONG):
+- 150x150 matrix
+- Encoded features: timezone_Central, timezone_Pacific, etc.
+- Impossible to read
+- Can't answer "which timezone matters?"
+- Only shows encoded dummy variables
+
+NEW HEATMAP (CORRECT):
+- 49x49 matrix
+- Original variables: timezone, season_month, etc.
+- Clean and readable
+- Shows variable-level relationships
+- Use VALUE-LEVEL analysis to dig deeper
+
+When to Use Each:
+- VARIABLE-LEVEL (49x49): "Is timezone important overall?"
+- VALUE-LEVEL (347 values): "Which specific timezone (Eastern/Central) matters?"
+
+================================================================================
+TECHNICAL DETAILS
+================================================================================
+
+Value-Level Analysis Method:
+1. For each categorical variable (e.g., timezone)
+2. Get all unique values (Eastern, Central, Pacific, Other)
+3. For each value:
+   - Count short calls with this value
+   - Count long calls with this value
+   - Calculate percentages
+   - Chi-square test for significance
+4. Rank by importance score
+
+Correlation Method (49x49):
+1. Load original 49 variables
+2. Categorical variables: Target-ordered label encoding
+   (Order values by their correlation with target)
+3. Numerical variables: Keep as-is
+4. Calculate Spearman correlation (non-linear)
+5. Create clean 49x49 heatmap
+
+Numerical Binning:
+1. Create 5 bins: Very Low, Low, Medium, High, Very High
+2. Analyze each bin like categorical values
+3. Find which ranges favor long vs short calls
+
+================================================================================
+HOW TO RUN THE NEW ANALYSIS
+================================================================================
+
+Option 1 - Run Complete Pipeline (Recommended):
+    cd "D:\Sales_calls_analysis\ML V2"
+    python RUN_COMPLETE_ANALYSIS_V2.py
+
+Option 2 - Run Only New Scripts:
+    cd "D:\Sales_calls_analysis\ML V2"
+    python 08_value_level_analysis.py
+    python 09_clean_correlation_49x49.py
+    python 10_value_level_visualizations.py
+
+Option 3 - Run Individual Analysis:
+    # Value-level only
+    python 08_value_level_analysis.py
+    
+    # Clean correlation only
+    python 09_clean_correlation_49x49.py
+
+================================================================================
+ALL NEW FILES CREATED
+================================================================================
+
+SCRIPTS (3 new):
+✓ 08_value_level_analysis.py
+✓ 09_clean_correlation_49x49.py
+✓ 10_value_level_visualizations.py
+
+CSV FILES (7 new):
+✓ 08_value_level_analysis_all.csv (347 values)
+✓ 08_value_level_analysis_numerical.csv (20 bins)
+✓ 09_correlation_49x49_short_calls.csv
+✓ 09_correlation_49x49_long_calls.csv
+✓ 09_correlation_49x49_combined.csv
+✓ 09_correlation_49x49_difference.csv
+✓ 09_correlation_with_target.csv
+
+PNG VISUALIZATIONS (8 new):
+✓ heatmap_09_clean_49x49_short_calls.png (CLEAN!)
+✓ heatmap_09_clean_49x49_long_calls.png (CLEAN!)
+✓ heatmap_09_clean_49x49_combined.png (CLEAN!)
+✓ heatmap_09_clean_49x49_difference.png (CLEAN!)
+✓ viz_08_top_discriminative_values.png
+✓ viz_09_value_breakdown_top_variables.png
+✓ viz_10_key_questions.png (Answers timezone/month/sentiment!)
+✓ viz_11_variable_importance_summary.png
+
+UPDATED:
+✓ RUN_COMPLETE_ANALYSIS_V2.py (now includes new scripts)
+
+================================================================================
+STATISTICS
+================================================================================
+
+Variables Analyzed:
+- Total Variables: 49 (from Sections 1-6.6)
+- Categorical Variables: 43
+- Numerical Variables: 6
+
+Value-Level Results:
+- Categorical Values: 347 analyzed
+- Numerical Bins: 20 analyzed
+- Total Insights: 367 value-level results
+
+Correlation Analysis:
+- Matrix Size: 49x49 (clean!)
+- Method: Spearman (non-linear)
+- Encoding: Target-ordered label encoding
+
+Coverage:
+✓ 100% of specified 49 variables analyzed
+✓ Both variable-level AND value-level complete
+✓ All questions answered (timezone/month/sentiment)
+
+================================================================================
+WHAT'S DIFFERENT FROM BEFORE
+================================================================================
+
+BEFORE (WRONG):
+❌ Only one level of analysis
+❌ 150x150 correlation heatmap (unreadable)
+❌ Couldn't answer "which timezone?" questions
+❌ Mixed encoded features with original variables
+❌ No value-level breakdown
+
+AFTER (CORRECT):
+✅ TWO levels of analysis (variable + value)
+✅ 49x49 correlation heatmap (clean & readable)
+✅ Answers "which timezone/month/sentiment?" questions
+✅ Separate analysis for original variables
+✅ Complete value-level breakdown for all 49 variables
+✅ 347 specific values analyzed
+✅ Visualizations answering key questions
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Review the new clean 49x49 correlation heatmaps
+2. Check value-level CSV files for detailed insights
+3. Look at viz_10_key_questions.png for answers
+4. Explore viz_09_value_breakdown_top_variables.png
+5. Use 08_value_level_analysis_all.csv for specific values
+
+Key Files to Review:
+📊 heatmap_09_clean_49x49_combined.png - CLEAN correlation
+📊 viz_10_key_questions.png - Answers to your questions
+📊 08_value_level_analysis_all.csv - 347 value-level insights
+📊 viz_09_value_breakdown_top_variables.png - Top 12 variables
+
+================================================================================
+SUMMARY
+================================================================================
+
+✅ LEVEL 1: Variable-level analysis (49x49 correlation)
+✅ LEVEL 2: Value-level analysis (347 specific values)
+✅ Answered: Which timezone leads to longer calls?
+✅ Answered: Which month has highest % of long calls?
+✅ Answered: Which sentiment leads to longer calls?
+✅ Clean, readable correlation heatmaps (49x49, not 150x150)
+✅ All 49 variables from Sections 1-6.6 covered
+✅ Both CSV files and visualizations created
+✅ Tested and verified working
+
+The analysis now properly separates:
+- VARIABLE-LEVEL: How important is the variable?
+- VALUE-LEVEL: Which specific values within that variable matter?
+
+This is the correct two-level approach you requested!
+
+================================================================================
+

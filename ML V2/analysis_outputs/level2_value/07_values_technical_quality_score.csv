@@ -1,0 +1,17 @@
+Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
+technical_quality_score,4.6,1,8,9,11.11,88.89,77.78,4.0298,0.0447,Yes,Favors Long Calls,38.89
+technical_quality_score,1.8,6,2,8,75.0,25.0,-50.0,1.1324,0.2873,No,Favors Short Calls,25.0
+technical_quality_score,0.0,26,10,36,72.22,27.78,-44.44,6.4404,0.0112,Yes,Favors Short Calls,22.22
+technical_quality_score,3.2,7,17,24,29.17,70.83,41.67,3.4428,0.0635,No,Favors Long Calls,20.83
+technical_quality_score,2.4,4,2,6,66.67,33.33,-33.33,0.1675,0.6824,No,Favors Short Calls,16.67
+technical_quality_score,2.8,3,5,8,37.5,62.5,25.0,0.1258,0.7228,No,Favors Long Calls,12.5
+technical_quality_score,3.8,24,35,59,40.68,59.32,18.64,1.7812,0.182,No,Favors Long Calls,9.32
+technical_quality_score,2.6,7,10,17,41.18,58.82,17.65,0.2386,0.6252,No,Favors Long Calls,8.82
+technical_quality_score,3.6,43,33,76,56.58,43.42,-13.16,1.1367,0.2863,No,Favors Short Calls,6.58
+technical_quality_score,4.2,54,67,121,44.63,55.37,10.74,1.3213,0.2503,No,Favors Long Calls,5.37
+technical_quality_score,4.0,32,38,70,45.71,54.29,8.57,0.3789,0.5382,No,Neutral,4.29
+technical_quality_score,3.0,23,27,50,46.0,54.0,8.0,0.1877,0.6648,No,Neutral,4.0
+technical_quality_score,5.0,243,222,465,52.26,47.74,-4.52,1.3914,0.2382,No,Neutral,2.26
+technical_quality_score,3.4,11,12,23,47.83,52.17,4.35,0.0,1.0,No,Neutral,2.17
+technical_quality_score,4.4,98,92,190,51.58,48.42,-3.16,0.1559,0.693,No,Neutral,1.58
+technical_quality_score,2.0,3,3,6,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0

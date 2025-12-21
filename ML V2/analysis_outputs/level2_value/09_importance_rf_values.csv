@@ -1,0 +1,101 @@
+Value_Feature,RF_Importance
+total_buying_signals_0.0,0.2948724444543244
+call_result_tag_Disconnect - During Discovery,0.1406270205058393
+total_discovery_questions_0.0,0.10968049140079911
+call_result_tag_Early Disconnect - Before Discover,0.058663649218618226
+TO_OMC_Disposiion_P2P,0.05430189786269781
+total_discovery_questions_1.0,0.041871746853354604
+call_result_tag_Disconnect - During Close Attempt,0.036499365185803614
+call_result_tag_Follow-up Scheduled,0.03196980857242278
+customer_sentiment_omc_Interested,0.02370910405639391
+total_discovery_questions_2.0,0.02333315989223393
+omc_agent_sentiment_style_Robotic & Script-Bound,0.021276833224267096
+total_buying_signals_4.0,0.02079751179734966
+total_buying_signals_3.0,0.017218589477489287
+price_mentions_final_2min_2.0,0.01428970990985696
+total_interruptions_3.0,0.010556887720801591
+TO_OMC_Disposiion_NQTO,0.010291576845624482
+total_discovery_questions_11.0,0.009252862601308937
+total_discovery_questions_10.0,0.007812418944259176
+timeline_mentions_final_2min_3.0,0.006854199140084476
+total_buying_signals_6.0,0.006122073404401417
+objections_rebutted_4.0,0.005485328948375917
+objections_rebutted_3.0,0.00541018075458221
+customer_sentiment_omc_Fluctuated,0.005397683257427959
+total_buying_signals_5.0,0.004411145734336928
+price_mentions_final_2min_3.0,0.004308096593111563
+total_discovery_questions_9.0,0.0036724882206789614
+total_objections_5.0,0.0034731453807030567
+total_interruptions_4.0,0.0032984413718470025
+total_discovery_questions_13.0,0.0032189958864619027
+total_discovery_questions_8.0,0.0028058580624609453
+commitment_type_Customer to Discuss with Partner,0.0027393333739495675
+price_mentions_final_2min_4.0,0.0024024511337396547
+total_objections_6.0,0.0018617622286448035
+ready_to_transfer_YES,0.0015700920373220215
+total_buying_signals_7.0,0.001539427668209305
+contract_mentions_final_2min_1.0,0.0012921326569721246
+objections_rebutted_5.0,0.001238030331964205
+timeline_mentions_final_2min_5.0,0.0010992487138501515
+TO_OMC_Disposiion_LB,0.0007613700281869004
+objections_acknowledged_4.0,0.000705083802849984
+customer_sentiment_lgs_Overwhelmed/Stressed,0.0006392878199016457
+total_discovery_questions_15.0,0.0005631276614830126
+total_discovery_questions_14.0,0.000540575826350665
+price_mentions_final_2min_6.0,0.000479848053776378
+total_discovery_questions_12.0,0.0004355667508329934
+total_interruptions_5.0,0.00024218162299308795
+omc_agent_sentiment_style_Hesitant & Apologetic,0.0002168566687048305
+omc_agent_sentiment_style_Professional,0.0001619084077977557
+price_mentions_final_2min_5.0,2.89999345536229e-05
+total_objections_8.0,0.0
+LQ_Customer_Name_James ,0.0
+total_interruptions_10.0,0.0
+total_buying_signals_8.0,0.0
+total_buying_signals_10.0,0.0
+total_buying_signals_11.0,0.0
+LQ_Service_Home Renovation,0.0
+objections_rebutted_7.0,0.0
+price_mentions_final_2min_7.0,0.0
+commitment_type_Customer Agreed to Think It Over (,0.0
+total_interruptions_8.0,0.0
+total_discovery_questions_17.0,0.0
+total_discovery_questions_18.0,0.0
+total_discovery_questions_16.0,0.0
+total_buying_signals_9.0,0.0
+total_buying_signals_15.0,0.0
+total_buying_signals_12.0,0.0
+TO_OMC_Disposiion_BCC,0.0
+technical_quality_issues_Dead Air Detected,0.0
+total_interruptions_6.0,0.0
+objections_rebutted_6.0,0.0
+total_interruptions_9.0,0.0
+contract_mentions_final_2min_2.0,0.0
+objections_acknowledged_5.0,0.0
+forbidden_industry_unknown,0.0
+is_decision_maker_Not Confirmed/Gatekeeper,0.0
+TO_OMC_Disposiion_A,0.0
+objections_acknowledged_6.0,0.0
+LQ_Customer_Name_Mike ,0.0
+technical_quality_score_4.6,0.0
+total_objections_7.0,0.0
+timeline_mentions_final_2min_6.0,0.0
+objections_acknowledged_7.0,0.0
+price_mentions_final_2min_8.0,0.0
+commitment_type_Follow-up Scheduled,0.0
+Calls Count_8,0.0
+LQ_Service_HANDYMAN,0.0
+call_result_tag_Hard Decline (Not Interested),0.0
+"LQ_Company_Address_Toronto, ON, ",0.0
+"LQ_Company_Address_San Diego, CA, ",0.0
+LQ_Service_CAR MECHANIC,0.0
+LQ_Service_Air Conditioning Services,0.0
+timeline_mentions_final_2min_9.0,0.0
+LQ_Customer_Name_Nick ,0.0
+contract_mentions_final_2min_3.0,0.0
+LQ_Service_Junk Removal  Hauling,0.0
+call_result_tag_Unknown - Recording Incomplete,0.0
+LQ_Service_Moving Services,0.0
+LQ_Service_remodeler,0.0
+LQ_Customer_Name_Alex ,0.0
+total_interruptions_7.0,0.0

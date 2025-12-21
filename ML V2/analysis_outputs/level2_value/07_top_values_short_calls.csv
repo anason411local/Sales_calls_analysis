@@ -1,0 +1,21 @@
+Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
+LQ_Service,Home Renovation,5,0,5,100.0,0.0,-100.0,3.2132,0.073,No,Favors Short Calls,50.0
+TO_OMC_Disposiion,BCC,5,0,5,100.0,0.0,-100.0,3.2132,0.073,No,Favors Short Calls,50.0
+omc_agent_sentiment_style,Hesitant & Apologetic,18,0,18,100.0,0.0,-100.0,16.2964,0.0001,Yes,Favors Short Calls,50.0
+TO_OMC_Disposiion,NQTO,68,6,74,91.89,8.11,-83.78,53.5364,0.0,Yes,Favors Short Calls,41.89
+total_discovery_questions,1.0,80,9,89,89.89,10.11,-79.78,59.3963,0.0,Yes,Favors Short Calls,39.89
+omc_agent_sentiment_style,Robotic & Script-Bound,98,12,110,89.09,10.91,-78.18,72.2026,0.0,Yes,Favors Short Calls,39.09
+LQ_Customer_Name,Mike ,8,1,9,88.89,11.11,-77.78,4.0298,0.0447,Yes,Favors Short Calls,38.89
+call_result_tag,Disconnect - During Discovery,197,25,222,88.74,11.26,-77.48,161.0746,0.0,Yes,Favors Short Calls,38.74
+TO_OMC_Disposiion,A,7,1,8,87.5,12.5,-75.0,3.1457,0.0761,No,Favors Short Calls,37.5
+TO_OMC_Disposiion,LB,25,5,30,83.33,16.67,-66.67,12.3372,0.0004,Yes,Favors Short Calls,33.33
+forbidden_industry,unknown,5,1,6,83.33,16.67,-66.67,1.5074,0.2195,No,Favors Short Calls,33.33
+is_decision_maker,Not Confirmed/Gatekeeper,5,1,6,83.33,16.67,-66.67,1.5074,0.2195,No,Favors Short Calls,33.33
+total_discovery_questions,0.0,228,49,277,82.31,17.69,-64.62,148.0532,0.0,Yes,Favors Short Calls,32.31
+total_discovery_questions,2.0,51,12,63,80.95,19.05,-61.9,24.1709,0.0,Yes,Favors Short Calls,30.95
+LQ_Customer_Name,Nick ,4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
+LQ_Service,Air Conditioning Services,4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
+LQ_Company_Address,"Toronto, ON, ",4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
+call_result_tag,Hard Decline (Not Interested),4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
+LQ_Service,HANDYMAN,4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
+Calls Count,8,4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0

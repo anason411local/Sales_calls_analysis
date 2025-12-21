@@ -1,0 +1,21 @@
+Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
+objections_rebutted,7.0,0,9,9,0.0,100.0,100.0,7.164,0.0074,Yes,Favors Long Calls,50.0
+price_mentions_final_2min,7.0,0,7,7,0.0,100.0,100.0,5.1726,0.0229,Yes,Favors Long Calls,50.0
+total_buying_signals,11.0,0,9,9,0.0,100.0,100.0,7.164,0.0074,Yes,Favors Long Calls,50.0
+total_buying_signals,7.0,0,24,24,0.0,100.0,100.0,22.4847,0.0,Yes,Favors Long Calls,50.0
+total_buying_signals,8.0,0,10,10,0.0,100.0,100.0,8.1671,0.0043,Yes,Favors Long Calls,50.0
+total_objections,8.0,0,11,11,0.0,100.0,100.0,9.1738,0.0025,Yes,Favors Long Calls,50.0
+total_buying_signals,10.0,0,8,8,0.0,100.0,100.0,6.1655,0.013,Yes,Favors Long Calls,50.0
+total_interruptions,8.0,0,9,9,0.0,100.0,100.0,7.164,0.0074,Yes,Favors Long Calls,50.0
+commitment_type,Customer Agreed to Think It Over (Specific Timeline),0,11,11,0.0,100.0,100.0,9.1738,0.0025,Yes,Favors Long Calls,50.0
+total_discovery_questions,15.0,0,16,16,0.0,100.0,100.0,14.2497,0.0002,Yes,Favors Long Calls,50.0
+total_discovery_questions,14.0,0,24,24,0.0,100.0,100.0,22.4847,0.0,Yes,Favors Long Calls,50.0
+total_discovery_questions,17.0,0,8,8,0.0,100.0,100.0,6.1655,0.013,Yes,Favors Long Calls,50.0
+total_discovery_questions,18.0,0,6,6,0.0,100.0,100.0,4.1873,0.0407,Yes,Favors Long Calls,50.0
+total_discovery_questions,16.0,0,7,7,0.0,100.0,100.0,5.1726,0.0229,Yes,Favors Long Calls,50.0
+total_buying_signals,9.0,0,14,14,0.0,100.0,100.0,12.2118,0.0005,Yes,Favors Long Calls,50.0
+total_buying_signals,15.0,0,7,7,0.0,100.0,100.0,5.1726,0.0229,Yes,Favors Long Calls,50.0
+total_buying_signals,12.0,0,5,5,0.0,100.0,100.0,3.2132,0.073,No,Favors Long Calls,50.0
+technical_quality_issues,Dead Air Detected,0,5,5,0.0,100.0,100.0,3.2132,0.073,No,Favors Long Calls,50.0
+total_interruptions,9.0,0,8,8,0.0,100.0,100.0,6.1655,0.013,Yes,Favors Long Calls,50.0
+total_interruptions,10.0,0,11,11,0.0,100.0,100.0,9.1738,0.0025,Yes,Favors Long Calls,50.0

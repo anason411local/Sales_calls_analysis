@@ -1,0 +1,280 @@
+====================================================================================================
+VALUE-LEVEL ANALYSIS - ANALYZING SPECIFIC VALUES WITHIN EACH VARIABLE
+====================================================================================================
+
+Loading original data (49 variables + target)...
+Data shape: (1218, 50)
+Total variables: 49 (excluding target)
+
+====================================================================================================
+IDENTIFYING VARIABLE TYPES
+====================================================================================================
+
+Categorical variables: 45
+Numerical variables: 4
+
+====================================================================================================
+VALUE-LEVEL ANALYSIS: CATEGORICAL VARIABLES
+====================================================================================================
+
+Analyzing: LQ_Company_Name
+
+Analyzing: LQ_Company_Address
+
+Analyzing: LQ_Service
+
+Analyzing: LQ_Customer_Name
+
+Analyzing: Calls Count
+
+Analyzing: Connection Made Calls
+
+Analyzing: TO_Event_O
+
+Analyzing: timezone
+
+Analyzing: season_status
+
+Analyzing: season_month
+
+Analyzing: TO_User_M
+
+Analyzing: lgs_sentiment_style
+
+Analyzing: lgs_agent_gender
+
+Analyzing: is_decision_maker
+
+Analyzing: ready_for_customers
+
+Analyzing: forbidden_industry
+
+Analyzing: ready_to_transfer
+
+Analyzing: customer_sentiment_lgs
+
+Analyzing: customer_sentiment_omc
+
+Analyzing: customer_language
+
+Analyzing: customer_knows_marketing
+
+Analyzing: customer_availability
+
+Analyzing: who_said_hello_first_lgs
+
+Analyzing: customer_marketing_experience
+
+Analyzing: technical_quality_score
+
+Analyzing: technical_quality_issues
+
+Analyzing: TO_OMC_User
+
+Analyzing: TO_OMC_Disposiion
+
+Analyzing: omc_agent_sentiment_style
+
+Analyzing: omc_who_said_hello_first
+
+Analyzing: total_discovery_questions
+
+Analyzing: total_buying_signals
+
+Analyzing: location_mentioned
+
+Analyzing: business_type_mentioned
+
+Analyzing: within_45_seconds
+
+Analyzing: call_structure_framed
+
+Analyzing: total_objections
+
+Analyzing: objections_acknowledged
+
+Analyzing: price_mentions_final_2min
+
+Analyzing: timeline_mentions_final_2min
+
+Analyzing: contract_mentions_final_2min
+
+Analyzing: objections_rebutted
+
+Analyzing: total_interruptions
+
+Analyzing: commitment_type
+
+Analyzing: call_result_tag
+
+[OK] Saved: 08_value_level_analysis_all.csv (347 rows)
+
+====================================================================================================
+VALUE-LEVEL ANALYSIS: NUMERICAL VARIABLES (BINNING)
+====================================================================================================
+
+Analyzing: TO_length_in_sec
+
+Analyzing: TO_OMC_Duration
+
+Analyzing: customer_talk_percentage
+
+Analyzing: time_to_reason_seconds
+
+[OK] Saved: 08_value_level_analysis_numerical.csv (20 rows)
+
+====================================================================================================
+TOP VALUE-LEVEL INSIGHTS
+====================================================================================================
+
+TOP 20 VALUES MOST ASSOCIATED WITH LONG CALLS:
+----------------------------------------------------------------------------------------------------
+  total_interruptions: 8.0
+    -> 100.0% Long Calls | 9 total calls | p=0.0074
+  total_interruptions: 10.0
+    -> 100.0% Long Calls | 11 total calls | p=0.0025
+  total_interruptions: 9.0
+    -> 100.0% Long Calls | 8 total calls | p=0.0130
+  objections_rebutted: 7.0
+    -> 100.0% Long Calls | 9 total calls | p=0.0074
+  LQ_Customer_Name: James 
+    -> 100.0% Long Calls | 7 total calls | p=0.0229
+  total_buying_signals: 7.0
+    -> 100.0% Long Calls | 24 total calls | p=0.0000
+  total_discovery_questions: 17.0
+    -> 100.0% Long Calls | 8 total calls | p=0.0130
+  total_discovery_questions: 15.0
+    -> 100.0% Long Calls | 16 total calls | p=0.0002
+  total_discovery_questions: 18.0
+    -> 100.0% Long Calls | 6 total calls | p=0.0407
+  total_discovery_questions: 16.0
+    -> 100.0% Long Calls | 7 total calls | p=0.0229
+  total_discovery_questions: 14.0
+    -> 100.0% Long Calls | 24 total calls | p=0.0000
+  total_buying_signals: 9.0
+    -> 100.0% Long Calls | 14 total calls | p=0.0005
+  commitment_type: Customer Agreed to Think It Over (Specific Timeline)
+    -> 100.0% Long Calls | 11 total calls | p=0.0025
+  technical_quality_issues: Dead Air Detected
+    -> 100.0% Long Calls | 5 total calls | p=0.0730
+  total_buying_signals: 10.0
+    -> 100.0% Long Calls | 8 total calls | p=0.0130
+  total_buying_signals: 11.0
+    -> 100.0% Long Calls | 9 total calls | p=0.0074
+  total_buying_signals: 12.0
+    -> 100.0% Long Calls | 5 total calls | p=0.0730
+  total_buying_signals: 15.0
+    -> 100.0% Long Calls | 7 total calls | p=0.0229
+  total_objections: 8.0
+    -> 100.0% Long Calls | 11 total calls | p=0.0025
+  price_mentions_final_2min: 7.0
+    -> 100.0% Long Calls | 7 total calls | p=0.0229
+
+TOP 20 VALUES MOST ASSOCIATED WITH SHORT CALLS:
+----------------------------------------------------------------------------------------------------
+  LQ_Service: Home Renovation
+    -> 100.0% Short Calls | 5 total calls | p=0.0730
+  TO_OMC_Disposiion: BCC
+    -> 100.0% Short Calls | 5 total calls | p=0.0730
+  omc_agent_sentiment_style: Hesitant & Apologetic
+    -> 100.0% Short Calls | 18 total calls | p=0.0001
+  TO_OMC_Disposiion: NQTO
+    -> 91.9% Short Calls | 74 total calls | p=0.0000
+  total_discovery_questions: 1.0
+    -> 89.9% Short Calls | 89 total calls | p=0.0000
+  omc_agent_sentiment_style: Robotic & Script-Bound
+    -> 89.1% Short Calls | 110 total calls | p=0.0000
+  LQ_Customer_Name: Mike 
+    -> 88.9% Short Calls | 9 total calls | p=0.0447
+  call_result_tag: Disconnect - During Discovery
+    -> 88.7% Short Calls | 222 total calls | p=0.0000
+  TO_OMC_Disposiion: A
+    -> 87.5% Short Calls | 8 total calls | p=0.0761
+  forbidden_industry: unknown
+    -> 83.3% Short Calls | 6 total calls | p=0.2195
+  is_decision_maker: Not Confirmed/Gatekeeper
+    -> 83.3% Short Calls | 6 total calls | p=0.2195
+  TO_OMC_Disposiion: LB
+    -> 83.3% Short Calls | 30 total calls | p=0.0004
+  total_discovery_questions: 0.0
+    -> 82.3% Short Calls | 277 total calls | p=0.0000
+  total_discovery_questions: 2.0
+    -> 81.0% Short Calls | 63 total calls | p=0.0000
+  LQ_Service: Air Conditioning Services
+    -> 80.0% Short Calls | 5 total calls | p=0.3701
+  Calls Count: 8
+    -> 80.0% Short Calls | 5 total calls | p=0.3701
+  LQ_Company_Address: Toronto, ON, 
+    -> 80.0% Short Calls | 5 total calls | p=0.3701
+  LQ_Customer_Name: Nick 
+    -> 80.0% Short Calls | 5 total calls | p=0.3701
+  call_result_tag: Hard Decline (Not Interested)
+    -> 80.0% Short Calls | 5 total calls | p=0.3701
+  LQ_Service: HANDYMAN
+    -> 80.0% Short Calls | 5 total calls | p=0.3701
+
+====================================================================================================
+ANSWERING KEY QUESTIONS
+====================================================================================================
+
+1. WHICH TIMEZONE LEADS TO LONGER CALLS?
+----------------------------------------------------------------------------------------------------
+  Mountain: 55.1% Long Calls (49/89 calls)
+  Central: 53.8% Long Calls (149/277 calls)
+  Eastern: 51.1% Long Calls (244/477 calls)
+  Pacific: 47.0% Long Calls (77/164 calls)
+  unknown: 41.7% Long Calls (35/84 calls)
+
+2. WHICH MONTH HAS HIGHEST % OF LONG CALLS?
+----------------------------------------------------------------------------------------------------
+  December: 50.0% Long Calls (609/1217 calls)
+
+3. WHICH CUSTOMER_SENTIMENT_LGS LEADS TO LONGER CALLS?
+----------------------------------------------------------------------------------------------------
+  Not Skeptical/Cautious: 60.0% Long Calls (3/5 calls)
+  Angry/Frustrated: 60.0% Long Calls (3/5 calls)
+  Happy/Optimistic: 58.8% Long Calls (237/403 calls)
+  Mixed Emotional Signals: 56.5% Long Calls (26/46 calls)
+  Neutral: 50.0% Long Calls (9/18 calls)
+  Not Angry/Frustrated: 49.1% Long Calls (138/281 calls)
+  Not Happy/Optimistic: 46.7% Long Calls (14/30 calls)
+  Skeptical/Cautious: 46.0% Long Calls (86/187 calls)
+  unknown: 39.6% Long Calls (21/53 calls)
+  Overwhelmed/Stressed: 20.0% Long Calls (6/30 calls)
+
+3. WHICH CUSTOMER_SENTIMENT_OMC LEADS TO LONGER CALLS?
+----------------------------------------------------------------------------------------------------
+  Fluctuated: 90.5% Long Calls (38/42 calls)
+  Interested: 79.0% Long Calls (98/124 calls)
+  Skeptical: 57.7% Long Calls (15/26 calls)
+  Not Found in Transcript: 54.7% Long Calls (35/64 calls)
+  Resistant: 51.2% Long Calls (329/642 calls)
+  Neutral: 27.5% Long Calls (82/298 calls)
+
+3. WHICH LGS_SENTIMENT_STYLE LEADS TO LONGER CALLS?
+----------------------------------------------------------------------------------------------------
+  Confident & Assumptive: 59.3% Long Calls (16/27 calls)
+  Consultative & Validating: 54.3% Long Calls (426/784 calls)
+  Hesitant & Apologetic: 46.9% Long Calls (69/147 calls)
+  N/A - No Interaction: 39.3% Long Calls (57/145 calls)
+  Robotic & Script-Bound: 37.2% Long Calls (35/94 calls)
+
+3. WHICH OMC_AGENT_SENTIMENT_STYLE LEADS TO LONGER CALLS?
+----------------------------------------------------------------------------------------------------
+  Expert: 71.4% Long Calls (5/7 calls)
+  Confident & Assumptive: 59.4% Long Calls (462/778 calls)
+  Consultative & Validating: 47.4% Long Calls (72/152 calls)
+  Not Found in Transcript: 40.4% Long Calls (38/94 calls)
+  Not Found: 37.5% Long Calls (3/8 calls)
+  Urgent & Pressing: 31.2% Long Calls (5/16 calls)
+  Professional: 23.8% Long Calls (5/21 calls)
+  Robotic & Script-Bound: 10.9% Long Calls (12/110 calls)
+  Hesitant & Apologetic: 0.0% Long Calls (0/18 calls)
+
+====================================================================================================
+VALUE-LEVEL ANALYSIS COMPLETE
+====================================================================================================
+
+Generated Files:
+  - 08_value_level_analysis_all.csv (all categorical values)
+  - 08_value_level_analysis_numerical.csv (numerical bins)

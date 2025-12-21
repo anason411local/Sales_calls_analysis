@@ -1,0 +1,4 @@
+Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
+customer_availability,unknown,45,28,73,61.64,38.36,-23.29,3.7304,0.0534,No,Favors Short Calls,11.64
+customer_availability,busy,48,36,84,57.14,42.86,-14.29,1.5472,0.2136,No,Favors Short Calls,7.14
+customer_availability,available,459,505,964,47.61,52.39,4.77,10.0731,0.0015,Yes,Neutral,2.39

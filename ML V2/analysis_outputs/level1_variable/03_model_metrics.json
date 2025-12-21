@@ -1,0 +1,7 @@
+{
+  "random_forest_roc_auc": 1.0,
+  "gradient_boosting_roc_auc": 0.9999999999999999,
+  "n_features": 49,
+  "n_train": 913,
+  "n_test": 305
+}

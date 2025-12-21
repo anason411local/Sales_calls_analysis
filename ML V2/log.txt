@@ -1,0 +1,1516 @@
+====================================================================================================
+DATA EXPLORATION AND PREPROCESSING - V2 ANALYSIS
+====================================================================================================
+
+Total columns selected for analysis: 49
+  - lead_quality: 6 columns
+  - timings: 4 columns
+  - lgs_department: 8 columns
+  - customer: 7 columns
+  - technical_quality: 2 columns
+  - omc_department: 5 columns
+  - omc_engagement: 3 columns
+  - omc_opening: 5 columns
+  - omc_objections: 6 columns
+  - omc_pace: 1 columns
+  - omc_outcome: 2 columns
+
+====================================================================================================
+LOADING DATA
+====================================================================================================
+
+Original data:
+  Short calls (<4.88 min): 609 rows, 124 columns
+  Long calls (>4.88 min): 609 rows, 124 columns
+
+Filtered data:
+  Short calls: 609 rows, 50 columns
+  Long calls: 609 rows, 50 columns
+  Combined: 1218 rows, 50 columns
+
+====================================================================================================
+DATA EXPLORATION - UNDERSTANDING EACH VARIABLE
+====================================================================================================
+
+Variable types:
+  Numeric variables: 16
+  Categorical variables: 33
+
+====================================================================================================
+DETAILED COLUMN-BY-COLUMN ANALYSIS
+====================================================================================================
+
+Column Analysis Summary (Top 20 by Missing %):
+----------------------------------------------------------------------------------------------------
+                       Column Data_Type  Missing_Pct  Unique_Values
+     technical_quality_issues    object    45.320197             64
+              LQ_Company_Name    object    30.131363            843
+customer_marketing_experience    object    17.569787             13
+          ready_for_customers    object    16.584565              6
+       customer_sentiment_lgs    object    12.807882             13
+                   LQ_Service    object    11.412151            544
+                     timezone    object    10.426929              5
+     customer_knows_marketing    object     8.374384              3
+        customer_availability    object     7.963875              3
+     who_said_hello_first_lgs    object     7.553366              3
+            is_decision_maker    object     7.389163              9
+                season_status    object     6.650246              3
+            ready_to_transfer    object     6.650246              6
+             lgs_agent_gender    object     5.418719              3
+            customer_language    object     5.336617              3
+       time_to_reason_seconds   float64     3.448276             82
+      technical_quality_score   float64     3.284072             20
+          lgs_sentiment_style    object     0.821018             12
+           forbidden_industry    object     0.574713              7
+    omc_agent_sentiment_style    object     0.246305             20
+
+====================================================================================================
+CATEGORICAL VARIABLE ANALYSIS - VALUE DISTRIBUTIONS
+====================================================================================================
+
+Analyzing: LQ_Company_Name
+--------------------------------------------------------------------------------
+  Unique values: 843
+  Missing: 367 (30.1%)
+  Top 10 values:
+    Junk Removal Service: 3 (0.2%)
+    Electrical Services: 2 (0.2%)
+    Snow Removal: 2 (0.2%)
+    G-S Professional Painting: 2 (0.2%)
+    Father  daughter's outdoor services: 2 (0.2%)
+    Chroma Crew: 2 (0.2%)
+    Handyman Service: 2 (0.2%)
+    Jireh Contracting Solutions: 1 (0.1%)
+    Falcon Transport: 1 (0.1%)
+    ALWAYS OUTDOORS POOL MGT LLC: 1 (0.1%)
+
+Analyzing: LQ_Company_Address
+--------------------------------------------------------------------------------
+  Unique values: 994
+  Missing: 0 (0.0%)
+  Top 10 values:
+    -: 133 (10.9%)
+    Calgary, AB, : 12 (1.0%)
+    Houston, TX, : 7 (0.6%)
+    Houston TX, , : 5 (0.4%)
+    Victoria, BC, : 5 (0.4%)
+    Toronto, ON, : 5 (0.4%)
+    San Diego, CA, : 5 (0.4%)
+    Phoenix, AZ, : 4 (0.3%)
+    dallas, tx, : 4 (0.3%)
+    Ottawa, ON, , : 4 (0.3%)
+
+Analyzing: LQ_Service
+--------------------------------------------------------------------------------
+  Unique values: 544
+  Missing: 139 (11.4%)
+  Top 10 values:
+    Junk Removal: 50 (4.1%)
+    Handyman: 47 (3.9%)
+    Handyman Services: 47 (3.9%)
+    Construction: 27 (2.2%)
+    Mechanic: 26 (2.1%)
+    Landscaping: 23 (1.9%)
+    Junk Removal Services: 23 (1.9%)
+    JUNK REMOVAL: 18 (1.5%)
+    Remodeling: 18 (1.5%)
+    Renovations  Home Improvements: 14 (1.1%)
+
+Analyzing: LQ_Customer_Name
+--------------------------------------------------------------------------------
+  Unique values: 794
+  Missing: 0 (0.0%)
+  Top 10 values:
+     : 208 (17.1%)
+    Jose : 11 (0.9%)
+    Mike : 9 (0.7%)
+    Alex : 9 (0.7%)
+    Daniel : 8 (0.7%)
+    James : 7 (0.6%)
+    Luis : 7 (0.6%)
+    Juan : 6 (0.5%)
+    Victor : 6 (0.5%)
+    David : 5 (0.4%)
+
+Analyzing: TO_Event_O
+--------------------------------------------------------------------------------
+  Unique values: 975
+  Missing: 0 (0.0%)
+  Top 10 values:
+    12/9/2025 11:40: 4 (0.3%)
+    12/9/2025 7:47: 4 (0.3%)
+    12/11/2025 8:18: 4 (0.3%)
+    12/9/2025 7:37: 4 (0.3%)
+    12/11/2025 8:16: 4 (0.3%)
+    12/15/2025 15:27: 4 (0.3%)
+    12/8/2025 9:43: 3 (0.2%)
+    12/9/2025 7:53: 3 (0.2%)
+    12/9/2025 10:57: 3 (0.2%)
+    12/12/2025 7:30: 3 (0.2%)
+
+Analyzing: timezone
+--------------------------------------------------------------------------------
+  Unique values: 5
+  Missing: 127 (10.4%)
+  Top 10 values:
+    Eastern: 477 (39.2%)
+    Central: 277 (22.7%)
+    Pacific: 164 (13.5%)
+    Mountain: 89 (7.3%)
+    unknown: 84 (6.9%)
+
+Analyzing: season_status
+--------------------------------------------------------------------------------
+  Unique values: 3
+  Missing: 81 (6.7%)
+  Top 10 values:
+    Low season: 852 (70.0%)
+    unknown: 143 (11.7%)
+    High season: 142 (11.7%)
+
+Analyzing: season_month
+--------------------------------------------------------------------------------
+  Unique values: 1
+  Missing: 1 (0.1%)
+  Top 10 values:
+    December: 1217 (99.9%)
+
+Analyzing: TO_User_M
+--------------------------------------------------------------------------------
+  Unique values: 22
+  Missing: 0 (0.0%)
+  Top 10 values:
+    IVYSONGKIP: 97 (8.0%)
+    MARKCASEYALEGADO25: 92 (7.6%)
+    GREGPHILIPSALAZAR: 91 (7.5%)
+    JERECHOCALOPE: 89 (7.3%)
+    ADELALUCAS: 82 (6.7%)
+    NOELMAULEONHULGUIN: 81 (6.7%)
+    MARIAIRENECABIGON: 79 (6.5%)
+    CLIFFORDBOLARDE: 76 (6.2%)
+    KARLBABONALES: 68 (5.6%)
+    DEODATORUGGEROUY: 61 (5.0%)
+
+Analyzing: lgs_sentiment_style
+--------------------------------------------------------------------------------
+  Unique values: 12
+  Missing: 10 (0.8%)
+  Top 10 values:
+    Consultative & Validating: 784 (64.4%)
+    Hesitant & Apologetic: 147 (12.1%)
+    N/A - No Interaction: 145 (11.9%)
+    Robotic & Script-Bound: 94 (7.7%)
+    Confident & Assumptive: 27 (2.2%)
+    Urgent & Pressing: 3 (0.2%)
+    Robotic: 2 (0.2%)
+    Consultative: 2 (0.2%)
+    Consultative & Validating: My manager, Chris asked me to look for someone who can take my customers.: 1 (0.1%)
+    Consultative & Validating - "That's wonderful.": 1 (0.1%)
+
+Analyzing: lgs_agent_gender
+--------------------------------------------------------------------------------
+  Unique values: 3
+  Missing: 66 (5.4%)
+  Top 10 values:
+    Male: 521 (42.8%)
+    Female: 440 (36.1%)
+    unknown: 191 (15.7%)
+
+Analyzing: is_decision_maker
+--------------------------------------------------------------------------------
+  Unique values: 9
+  Missing: 90 (7.4%)
+  Top 10 values:
+    Yes: 919 (75.5%)
+    No: 75 (6.2%)
+    unknown: 57 (4.7%)
+    Explicit Confirmation: 50 (4.1%)
+    Implicit/Assumed: 18 (1.5%)
+    Not Confirmed/Gatekeeper: 6 (0.5%)
+    YES: 1 (0.1%)
+    Explicit Confirmation - you are the owner of the business, right? Yes.: 1 (0.1%)
+    Explicit Confirmation: You're sitting with the owner of the hotel.: 1 (0.1%)
+
+Analyzing: ready_for_customers
+--------------------------------------------------------------------------------
+  Unique values: 6
+  Missing: 202 (16.6%)
+  Top 10 values:
+    Yes: 461 (37.8%)
+    unknown: 249 (20.4%)
+    UNKNOWN: 230 (18.9%)
+    No: 44 (3.6%)
+    YES: 31 (2.5%)
+    NO: 1 (0.1%)
+
+Analyzing: forbidden_industry
+--------------------------------------------------------------------------------
+  Unique values: 7
+  Missing: 7 (0.6%)
+  Top 10 values:
+    No: 1151 (94.5%)
+    PASS: 50 (4.1%)
+    unknown: 6 (0.5%)
+    Handyman Services - PASS: 1 (0.1%)
+    Yes: 1 (0.1%)
+    Industry Identified: Hotel. Status: FAIL: 1 (0.1%)
+    Flooring - PASS: 1 (0.1%)
+
+Analyzing: ready_to_transfer
+--------------------------------------------------------------------------------
+  Unique values: 6
+  Missing: 81 (6.7%)
+  Top 10 values:
+    No: 507 (41.6%)
+    Yes: 505 (41.5%)
+    NO: 49 (4.0%)
+    unknown: 41 (3.4%)
+    YES: 34 (2.8%)
+    NO (Did not agree/Hung up): 1 (0.1%)
+
+Analyzing: customer_sentiment_lgs
+--------------------------------------------------------------------------------
+  Unique values: 13
+  Missing: 156 (12.8%)
+  Top 10 values:
+    Happy/Optimistic: 403 (33.1%)
+    Not Angry/Frustrated: 281 (23.1%)
+    Skeptical/Cautious: 187 (15.4%)
+    unknown: 53 (4.4%)
+    Mixed Emotional Signals: 46 (3.8%)
+    Overwhelmed/Stressed: 30 (2.5%)
+    Not Happy/Optimistic: 30 (2.5%)
+    Neutral: 18 (1.5%)
+    Not Skeptical/Cautious: 5 (0.4%)
+    Angry/Frustrated: 5 (0.4%)
+
+Analyzing: customer_sentiment_omc
+--------------------------------------------------------------------------------
+  Unique values: 22
+  Missing: 0 (0.0%)
+  Top 10 values:
+    Resistant: 642 (52.7%)
+    Neutral: 298 (24.5%)
+    Interested: 124 (10.2%)
+    Not Found in Transcript: 64 (5.3%)
+    Fluctuated: 42 (3.4%)
+    Skeptical: 26 (2.1%)
+    Neutral/Skeptical: 4 (0.3%)
+    Not Found: 4 (0.3%)
+    Declined: 1 (0.1%)
+    Not Applicable - No customer verbiage: 1 (0.1%)
+
+Analyzing: customer_language
+--------------------------------------------------------------------------------
+  Unique values: 3
+  Missing: 65 (5.3%)
+  Top 10 values:
+    English: 1042 (85.6%)
+    Unknown: 92 (7.6%)
+    Spanish: 19 (1.6%)
+
+Analyzing: customer_knows_marketing
+--------------------------------------------------------------------------------
+  Unique values: 3
+  Missing: 102 (8.4%)
+  Top 10 values:
+    Yes: 937 (76.9%)
+    No: 98 (8.0%)
+    unknown: 81 (6.7%)
+
+Analyzing: customer_availability
+--------------------------------------------------------------------------------
+  Unique values: 3
+  Missing: 97 (8.0%)
+  Top 10 values:
+    available: 964 (79.1%)
+    busy: 84 (6.9%)
+    unknown: 73 (6.0%)
+
+Analyzing: who_said_hello_first_lgs
+--------------------------------------------------------------------------------
+  Unique values: 3
+  Missing: 92 (7.6%)
+  Top 10 values:
+    Agent: 865 (71.0%)
+    Customer: 195 (16.0%)
+    unknown: 66 (5.4%)
+
+Analyzing: customer_marketing_experience
+--------------------------------------------------------------------------------
+  Unique values: 13
+  Missing: 214 (17.6%)
+  Top 10 values:
+    Novice: 397 (32.6%)
+    NOVICE: 216 (17.7%)
+    NOVICE (Job Seeker): 99 (8.1%)
+    Transactional: 91 (7.5%)
+    unknown: 53 (4.4%)
+    SKEPTIC (Burned): 38 (3.1%)
+    Skeptic: 36 (3.0%)
+    SKEPTIC: 29 (2.4%)
+    Transactional (Buyer): 18 (1.5%)
+    TRANSACTIONAL (Buyer): 17 (1.4%)
+
+Analyzing: technical_quality_issues
+--------------------------------------------------------------------------------
+  Unique values: 64
+  Missing: 552 (45.3%)
+  Top 10 values:
+    Start-of-Call Latency: 234 (19.2%)
+    Start-of-Call Latency, Intelligibility: 71 (5.8%)
+    Intelligibility: 56 (4.6%)
+    Start-of-Call Latency, Silence/Dead Air Indicators: 33 (2.7%)
+    Audio Stability, Intelligibility: 30 (2.5%)
+    Start-of-Call Latency, Audio Stability, Intelligibility: 29 (2.4%)
+    Start-of-Call Latency, Audio Stability: 26 (2.1%)
+    Start-of-Call Latency, Audio Stability, Intelligibility, Silence/Dead Air Indicators: 20 (1.6%)
+    Start-of-Call Latency, Audio Stability, Silence/Dead Air Indicators: 17 (1.4%)
+    Silence/Dead Air Indicators: 15 (1.2%)
+
+Analyzing: TO_OMC_User
+--------------------------------------------------------------------------------
+  Unique values: 11
+  Missing: 0 (0.0%)
+  Top 10 values:
+    ARTURODELEON: 167 (13.7%)
+    ERNESTOALFAROCORONA: 155 (12.7%)
+    DARWINSANCHEZ24: 146 (12.0%)
+    ISMAELMALENCOCORDOVA: 128 (10.5%)
+    MANUELRAMIREZ: 121 (9.9%)
+    RAFAELVALDOVINOS: 118 (9.7%)
+    ISIREABELLO: 111 (9.1%)
+    MARYANNPERALTA: 97 (8.0%)
+    MICHAELANGELORAMOS: 80 (6.6%)
+    JOHNMENARDESCOTE25: 65 (5.3%)
+
+Analyzing: TO_OMC_Disposiion
+--------------------------------------------------------------------------------
+  Unique values: 23
+  Missing: 0 (0.0%)
+  Top 10 values:
+    NI: 322 (26.4%)
+    HU: 321 (26.4%)
+    P2P: 147 (12.1%)
+    DISMX: 113 (9.3%)
+    CALLBK: 87 (7.1%)
+    NQTO: 74 (6.1%)
+    NP: 43 (3.5%)
+    LB: 30 (2.5%)
+    VM: 17 (1.4%)
+    B: 15 (1.2%)
+
+Analyzing: omc_agent_sentiment_style
+--------------------------------------------------------------------------------
+  Unique values: 20
+  Missing: 3 (0.2%)
+  Top 10 values:
+    Confident & Assumptive: 778 (63.9%)
+    Consultative & Validating: 152 (12.5%)
+    Robotic & Script-Bound: 110 (9.0%)
+    Not Found in Transcript: 94 (7.7%)
+    Professional: 21 (1.7%)
+    Hesitant & Apologetic: 18 (1.5%)
+    Urgent & Pressing: 16 (1.3%)
+    Not Found: 8 (0.7%)
+    Expert: 7 (0.6%)
+    Not Applicable - No agent verbiage: 1 (0.1%)
+
+Analyzing: omc_who_said_hello_first
+--------------------------------------------------------------------------------
+  Unique values: 7
+  Missing: 0 (0.0%)
+  Top 10 values:
+    Agent: 1019 (83.7%)
+    unknown: 117 (9.6%)
+    Customer: 62 (5.1%)
+    Not Found in Transcript: 17 (1.4%)
+    N/A - No conversation: 1 (0.1%)
+    Agent (Assistant) then Customer: 1 (0.1%)
+    Not Found: 1 (0.1%)
+
+Analyzing: location_mentioned
+--------------------------------------------------------------------------------
+  Unique values: 2
+  Missing: 0 (0.0%)
+  Top 10 values:
+    Yes: 636 (52.2%)
+    No: 582 (47.8%)
+
+Analyzing: business_type_mentioned
+--------------------------------------------------------------------------------
+  Unique values: 2
+  Missing: 0 (0.0%)
+  Top 10 values:
+    Yes: 846 (69.5%)
+    No: 372 (30.5%)
+
+Analyzing: within_45_seconds
+--------------------------------------------------------------------------------
+  Unique values: 3
+  Missing: 0 (0.0%)
+  Top 10 values:
+    Yes: 654 (53.7%)
+    No: 563 (46.2%)
+    No - business type was incorrect: 1 (0.1%)
+
+Analyzing: call_structure_framed
+--------------------------------------------------------------------------------
+  Unique values: 2
+  Missing: 0 (0.0%)
+  Top 10 values:
+    Yes: 769 (63.1%)
+    No: 449 (36.9%)
+
+Analyzing: commitment_type
+--------------------------------------------------------------------------------
+  Unique values: 29
+  Missing: 0 (0.0%)
+  Top 10 values:
+    No Commitment Secured: 957 (78.6%)
+    Follow-up Call Scheduled: 108 (8.9%)
+    Customer to Review Materials: 39 (3.2%)
+    Customer to Discuss with Partner: 39 (3.2%)
+    Email/Information Send Agreed: 24 (2.0%)
+    Customer Agreed to Think It Over (Specific Timeline): 11 (0.9%)
+    Follow-up Scheduled: 10 (0.8%)
+    Customer to Discuss with Partner; Email/Information Send Agreed: 3 (0.2%)
+    Follow-up Call Scheduled; Email/Information Send Agreed: 3 (0.2%)
+    Customer to Review Materials; Follow-up Call Scheduled: 2 (0.2%)
+
+Analyzing: call_result_tag
+--------------------------------------------------------------------------------
+  Unique values: 17
+  Missing: 0 (0.0%)
+  Top 10 values:
+    Disconnect - During Pitch/Value Prop: 259 (21.3%)
+    Disconnect - During Discovery: 222 (18.2%)
+    Early Disconnect - Before Discovery: 212 (17.4%)
+    Follow-up Scheduled: 149 (12.2%)
+    Soft Decline: 117 (9.6%)
+    Disconnect - Post-Price/ROI: 91 (7.5%)
+    Disconnect - During Close Attempt: 87 (7.1%)
+    Hard Decline: 48 (3.9%)
+    Unknown - Recording Incomplete: 10 (0.8%)
+    Soft Decline (Not Now): 6 (0.5%)
+
+====================================================================================================
+TOP 30 MOST DISCRIMINATIVE CATEGORICAL VALUES
+====================================================================================================
+         Column                                                                          Value  Count_Short  Count_Long  Pct_Long Favor_Direction
+commitment_type                             Email/Information Send Agreed; Follow-up Scheduled            0           1     100.0            Long
+commitment_type                     Customer to Discuss with Partner; Follow-up Call Scheduled            0           1     100.0            Long
+commitment_type                          Customer to Discuss with Partner; Follow-up Scheduled            0           1     100.0            Long
+commitment_type Follow-up Call Scheduled; Customer Agreed to Think It Over (Specific Timeline)            0           1     100.0            Long
+commitment_type                                                          Customer to Text Back            0           1     100.0            Long
+commitment_type                                    Email/Information Send Agreed (for reports)            0           1     100.0            Long
+commitment_type                                               Customer Agreed to Think It Over            0           1     100.0            Long
+commitment_type                          Customer Agreed to Proceed with Information Gathering            0           1     100.0            Long
+commitment_type                        Follow-up Call Scheduled; Email/Information Send Agreed            0           3     100.0            Long
+commitment_type                                                                   Soft Decline            1           0       0.0           Short
+commitment_type                     Follow-up Call Scheduled; Customer to Discuss with Partner            0           2     100.0            Long
+LQ_Company_Name                                               Calgary Luxury Windows And Doors            1           0       0.0           Short
+LQ_Company_Name                                                                   Wells Towing            1           0       0.0           Short
+LQ_Company_Name                                                     Gutierrez Brothers Masonry            0           1     100.0            Long
+LQ_Company_Name                                                          Done Right Renovation            1           0       0.0           Short
+LQ_Company_Name                                                   Les Construction Mag Et Fils            1           0       0.0           Short
+LQ_Company_Name                                                            Construction 45 LLC            0           1     100.0            Long
+LQ_Company_Name                                                              Cason Contracting            0           1     100.0            Long
+LQ_Company_Name                                                                THE SHINE SQUAD            0           1     100.0            Long
+LQ_Company_Name                                                      Impala Moving and Hauling            0           1     100.0            Long
+LQ_Company_Name                                                            RF Lemos Remodeling            0           1     100.0            Long
+LQ_Company_Name                                                       Clean Texas Junk Removal            0           1     100.0            Long
+LQ_Company_Name                                                                 Super Electric            1           0       0.0           Short
+LQ_Company_Name                                                       Vazquez Sons Landscaping            1           0       0.0           Short
+LQ_Company_Name                                                            Jl General Electric            1           0       0.0           Short
+LQ_Company_Name                                                                  Junk Cleanups            1           0       0.0           Short
+LQ_Company_Name                                                         EJ'S HANDYMAN SERVICES            0           1     100.0            Long
+LQ_Company_Name                                                        Oildale Window Cleaning            0           1     100.0            Long
+LQ_Company_Name                                                        The Restoration Wizards            1           0       0.0           Short
+LQ_Company_Name                                                          Budget Bugs and Weeds            1           0       0.0           Short
+
+====================================================================================================
+NUMERIC VARIABLE ANALYSIS - DISTRIBUTIONS
+====================================================================================================
+
+Calls Count:
+  Short calls: Mean=2.13, Median=1.00, Std=1.93
+  Long calls:  Mean=1.93, Median=1.00, Std=1.51
+  Difference:  -0.20 (-9.2%)
+
+Connection Made Calls:
+  Short calls: Mean=1.24, Median=1.00, Std=0.56
+  Long calls:  Mean=1.16, Median=1.00, Std=0.43
+  Difference:  -0.08 (-6.3%)
+
+TO_length_in_sec:
+  Short calls: Mean=164.58, Median=145.00, Std=81.49
+  Long calls:  Mean=200.44, Median=170.00, Std=109.16
+  Difference:  35.86 (21.8%)
+
+technical_quality_score:
+  Short calls: Mean=4.14, Median=4.40, Std=1.16
+  Long calls:  Mean=4.23, Median=4.40, Std=0.90
+  Difference:  0.09 (2.2%)
+
+TO_OMC_Duration:
+  Short calls: Mean=142.26, Median=135.00, Std=76.08
+  Long calls:  Mean=817.03, Median=609.00, Std=568.64
+  Difference:  674.77 (474.3%)
+
+customer_talk_percentage:
+  Short calls: Mean=32.43, Median=37.50, Std=18.65
+  Long calls:  Mean=39.49, Median=44.44, Std=14.54
+  Difference:  7.06 (21.8%)
+
+total_discovery_questions:
+  Short calls: Mean=2.47, Median=1.00, Std=2.79
+  Long calls:  Mean=8.20, Median=8.00, Std=5.28
+  Difference:  5.73 (231.6%)
+
+total_buying_signals:
+  Short calls: Mean=0.33, Median=0.00, Std=0.79
+  Long calls:  Mean=3.69, Median=2.00, Std=5.33
+  Difference:  3.36 (1018.8%)
+
+time_to_reason_seconds:
+  Short calls: Mean=14.76, Median=13.00, Std=15.41
+  Long calls:  Mean=21.20, Median=14.00, Std=33.02
+  Difference:  6.44 (43.6%)
+
+total_objections:
+  Short calls: Mean=1.25, Median=1.00, Std=1.45
+  Long calls:  Mean=2.60, Median=2.00, Std=2.26
+  Difference:  1.35 (108.1%)
+
+objections_acknowledged:
+  Short calls: Mean=0.48, Median=0.00, Std=0.95
+  Long calls:  Mean=1.27, Median=1.00, Std=1.60
+  Difference:  0.79 (165.0%)
+
+price_mentions_final_2min:
+  Short calls: Mean=0.25, Median=0.00, Std=0.83
+  Long calls:  Mean=1.36, Median=0.00, Std=2.06
+  Difference:  1.11 (435.1%)
+
+timeline_mentions_final_2min:
+  Short calls: Mean=0.31, Median=0.00, Std=1.03
+  Long calls:  Mean=1.08, Median=0.00, Std=1.80
+  Difference:  0.77 (244.6%)
+
+contract_mentions_final_2min:
+  Short calls: Mean=0.01, Median=0.00, Std=0.16
+  Long calls:  Mean=0.09, Median=0.00, Std=0.43
+  Difference:  0.08 (715.6%)
+
+objections_rebutted:
+  Short calls: Mean=0.44, Median=0.00, Std=0.84
+  Long calls:  Mean=1.62, Median=1.00, Std=1.90
+  Difference:  1.18 (269.8%)
+
+total_interruptions:
+  Short calls: Mean=0.50, Median=0.00, Std=1.03
+  Long calls:  Mean=2.73, Median=1.00, Std=4.71
+  Difference:  2.23 (446.6%)
+
+====================================================================================================
+SAVING PROCESSED DATA
+====================================================================================================
+
+[OK] Saved: 01_short_calls_data.csv ((609, 50))
+[OK] Saved: 01_long_calls_data.csv ((609, 50))
+[OK] Saved: 01_combined_data.csv ((1218, 50))
+
+====================================================================================================
+PREPROCESSING RECOMMENDATIONS
+====================================================================================================
+
+1. HIGH CARDINALITY CATEGORICAL VARIABLES (>50 unique values):
+   - LQ_Company_Name: 843 unique values
+   - LQ_Company_Address: 994 unique values
+   - LQ_Service: 544 unique values
+   - LQ_Customer_Name: 794 unique values
+   - TO_Event_O: 975 unique values
+   - technical_quality_issues: 64 unique values
+   Recommendation: Use Target Encoding or Group Rare Categories
+
+2. LOW CARDINALITY CATEGORICAL VARIABLES (2-10 unique values):
+   - timezone: 5 unique values
+   - season_status: 3 unique values
+   - lgs_agent_gender: 3 unique values
+   - is_decision_maker: 9 unique values
+   - ready_for_customers: 6 unique values
+   - forbidden_industry: 7 unique values
+   - ready_to_transfer: 6 unique values
+   - customer_language: 3 unique values
+   - customer_knows_marketing: 3 unique values
+   - customer_availability: 3 unique values
+   - who_said_hello_first_lgs: 3 unique values
+   - omc_who_said_hello_first: 7 unique values
+   - location_mentioned: 2 unique values
+   - business_type_mentioned: 2 unique values
+   - within_45_seconds: 3 unique values
+   - call_structure_framed: 2 unique values
+   Recommendation: Use One-Hot Encoding
+
+3. MEDIUM CARDINALITY CATEGORICAL VARIABLES (11-50 unique values):
+   - TO_User_M: 22 unique values
+   - lgs_sentiment_style: 12 unique values
+   - customer_sentiment_lgs: 13 unique values
+   - customer_sentiment_omc: 22 unique values
+   - customer_marketing_experience: 13 unique values
+   - TO_OMC_User: 11 unique values
+   - TO_OMC_Disposiion: 23 unique values
+   - omc_agent_sentiment_style: 20 unique values
+   - commitment_type: 29 unique values
+   - call_result_tag: 17 unique values
+   Recommendation: Use Frequency Encoding or Target Encoding
+
+4. HIGH MISSING VALUE COLUMNS (>30% missing):
+   - LQ_Company_Name: 30.1% missing
+   - technical_quality_issues: 45.3% missing
+   Recommendation: Consider creating 'Missing' indicator or imputation strategy
+
+====================================================================================================
+DATA EXPLORATION AND PREPROCESSING COMPLETE
+====================================================================================================
+
+Next steps:
+  1. Review the column analysis and distribution files
+  2. Proceed to intelligent encoding and correlation analysis
+  3. Build comprehensive statistical analysis
+====================================================================================================
+INTELLIGENT ENCODING AND PREPROCESSING
+====================================================================================================
+
+Loaded data:
+  Short: (609, 50)
+  Long: (609, 50)
+  Combined: (1218, 50)
+
+Variable types:
+  Numeric: 16
+  Categorical: 33
+
+====================================================================================================
+ENCODING STRATEGY
+====================================================================================================
+
+Low Cardinality (One-Hot): 17 columns
+  - timezone: 5 unique values
+  - season_status: 3 unique values
+  - season_month: 1 unique values
+  - lgs_agent_gender: 3 unique values
+  - is_decision_maker: 9 unique values
+  - ready_for_customers: 6 unique values
+  - forbidden_industry: 7 unique values
+  - ready_to_transfer: 6 unique values
+  - customer_language: 3 unique values
+  - customer_knows_marketing: 3 unique values
+  - customer_availability: 3 unique values
+  - who_said_hello_first_lgs: 3 unique values
+  - omc_who_said_hello_first: 7 unique values
+  - location_mentioned: 2 unique values
+  - business_type_mentioned: 2 unique values
+  - within_45_seconds: 3 unique values
+  - call_structure_framed: 2 unique values
+
+Medium Cardinality (Target + Frequency): 10 columns
+  - TO_User_M: 22 unique values
+  - lgs_sentiment_style: 12 unique values
+  - customer_sentiment_lgs: 13 unique values
+  - customer_sentiment_omc: 22 unique values
+  - customer_marketing_experience: 13 unique values
+  - TO_OMC_User: 11 unique values
+  - TO_OMC_Disposiion: 23 unique values
+  - omc_agent_sentiment_style: 20 unique values
+  - commitment_type: 29 unique values
+  - call_result_tag: 17 unique values
+
+High Cardinality (Target Encoding): 6 columns
+  - LQ_Company_Name: 843 unique values
+  - LQ_Company_Address: 994 unique values
+  - LQ_Service: 544 unique values
+  - LQ_Customer_Name: 794 unique values
+  - TO_Event_O: 975 unique values
+  - technical_quality_issues: 64 unique values
+
+====================================================================================================
+ENCODING: LOW CARDINALITY (ONE-HOT)
+====================================================================================================
+
+One-Hot Encoding: timezone
+  Created 6 binary columns
+
+One-Hot Encoding: season_status
+  Created 4 binary columns
+
+One-Hot Encoding: season_month
+  Created 2 binary columns
+
+One-Hot Encoding: lgs_agent_gender
+  Created 4 binary columns
+
+One-Hot Encoding: is_decision_maker
+  Created 10 binary columns
+
+One-Hot Encoding: ready_for_customers
+  Created 7 binary columns
+
+One-Hot Encoding: forbidden_industry
+  Created 8 binary columns
+
+One-Hot Encoding: ready_to_transfer
+  Created 7 binary columns
+
+One-Hot Encoding: customer_language
+  Created 4 binary columns
+
+One-Hot Encoding: customer_knows_marketing
+  Created 4 binary columns
+
+One-Hot Encoding: customer_availability
+  Created 4 binary columns
+
+One-Hot Encoding: who_said_hello_first_lgs
+  Created 4 binary columns
+
+One-Hot Encoding: omc_who_said_hello_first
+  Created 7 binary columns
+
+One-Hot Encoding: location_mentioned
+  Created 2 binary columns
+
+One-Hot Encoding: business_type_mentioned
+  Created 2 binary columns
+
+One-Hot Encoding: within_45_seconds
+  Created 3 binary columns
+
+One-Hot Encoding: call_structure_framed
+  Created 2 binary columns
+
+Total one-hot encoded columns created: 80
+
+====================================================================================================
+ENCODING: MEDIUM CARDINALITY (TARGET + FREQUENCY)
+====================================================================================================
+
+Processing: TO_User_M
+  Created target encoding: TO_User_M_target_enc
+  Created frequency encoding: TO_User_M_freq_enc
+
+Processing: lgs_sentiment_style
+  Created target encoding: lgs_sentiment_style_target_enc
+  Created frequency encoding: lgs_sentiment_style_freq_enc
+
+Processing: customer_sentiment_lgs
+  Created target encoding: customer_sentiment_lgs_target_enc
+  Created frequency encoding: customer_sentiment_lgs_freq_enc
+
+Processing: customer_sentiment_omc
+  Created target encoding: customer_sentiment_omc_target_enc
+  Created frequency encoding: customer_sentiment_omc_freq_enc
+
+Processing: customer_marketing_experience
+  Created target encoding: customer_marketing_experience_target_enc
+  Created frequency encoding: customer_marketing_experience_freq_enc
+
+Processing: TO_OMC_User
+  Created target encoding: TO_OMC_User_target_enc
+  Created frequency encoding: TO_OMC_User_freq_enc
+
+Processing: TO_OMC_Disposiion
+  Created target encoding: TO_OMC_Disposiion_target_enc
+  Created frequency encoding: TO_OMC_Disposiion_freq_enc
+
+Processing: omc_agent_sentiment_style
+  Created target encoding: omc_agent_sentiment_style_target_enc
+  Created frequency encoding: omc_agent_sentiment_style_freq_enc
+
+Processing: commitment_type
+  Created target encoding: commitment_type_target_enc
+  Created frequency encoding: commitment_type_freq_enc
+
+Processing: call_result_tag
+  Created target encoding: call_result_tag_target_enc
+  Created frequency encoding: call_result_tag_freq_enc
+
+Total target encoded columns: 10
+Total frequency encoded columns: 10
+
+====================================================================================================
+ENCODING: HIGH CARDINALITY (TARGET + RARE CATEGORY GROUPING)
+====================================================================================================
+
+Processing: LQ_Company_Name
+  Grouping 843 rare categories (count < 5)
+  Final unique categories: 2
+  Created: LQ_Company_Name_target_enc, LQ_Company_Name_freq_enc
+
+Processing: LQ_Company_Address
+  Grouping 987 rare categories (count < 5)
+  Final unique categories: 8
+  Created: LQ_Company_Address_target_enc, LQ_Company_Address_freq_enc
+
+Processing: LQ_Service
+  Grouping 515 rare categories (count < 5)
+  Final unique categories: 31
+  Created: LQ_Service_target_enc, LQ_Service_freq_enc
+
+Processing: LQ_Customer_Name
+  Grouping 778 rare categories (count < 5)
+  Final unique categories: 17
+  Created: LQ_Customer_Name_target_enc, LQ_Customer_Name_freq_enc
+
+Processing: TO_Event_O
+  Grouping 975 rare categories (count < 5)
+  Final unique categories: 1
+  Created: TO_Event_O_target_enc, TO_Event_O_freq_enc
+
+Processing: technical_quality_issues
+  Grouping 47 rare categories (count < 5)
+  Final unique categories: 19
+  Created: technical_quality_issues_target_enc, technical_quality_issues_freq_enc
+
+====================================================================================================
+HANDLING MISSING VALUES IN NUMERIC COLUMNS
+====================================================================================================
+
+technical_quality_score: 40 missing (3.3%)
+  Created: technical_quality_score_is_missing
+  Imputed with median: 4.40
+
+customer_talk_percentage: 2 missing (0.2%)
+  Created: customer_talk_percentage_is_missing
+  Imputed with median: 41.20
+
+total_discovery_questions: 1 missing (0.1%)
+  Created: total_discovery_questions_is_missing
+  Imputed with median: 5.00
+
+total_buying_signals: 1 missing (0.1%)
+  Created: total_buying_signals_is_missing
+  Imputed with median: 0.00
+
+time_to_reason_seconds: 42 missing (3.4%)
+  Created: time_to_reason_seconds_is_missing
+  Imputed with median: 13.00
+
+total_objections: 1 missing (0.1%)
+  Created: total_objections_is_missing
+  Imputed with median: 2.00
+
+objections_acknowledged: 1 missing (0.1%)
+  Created: objections_acknowledged_is_missing
+  Imputed with median: 0.00
+
+price_mentions_final_2min: 1 missing (0.1%)
+  Created: price_mentions_final_2min_is_missing
+  Imputed with median: 0.00
+
+timeline_mentions_final_2min: 2 missing (0.2%)
+  Created: timeline_mentions_final_2min_is_missing
+  Imputed with median: 0.00
+
+contract_mentions_final_2min: 1 missing (0.1%)
+  Created: contract_mentions_final_2min_is_missing
+  Imputed with median: 0.00
+
+objections_rebutted: 1 missing (0.1%)
+  Created: objections_rebutted_is_missing
+  Imputed with median: 0.00
+
+total_interruptions: 1 missing (0.1%)
+  Created: total_interruptions_is_missing
+  Imputed with median: 0.00
+
+====================================================================================================
+FINAL ENCODED DATASET
+====================================================================================================
+
+Final dataset shape: (1218, 150)
+  Total features: 150
+
+Feature breakdown:
+  Original numeric: 28
+  One-hot encoded: 80
+  Target encoded: 16
+  Frequency encoded: 16
+  Label encoded: 10
+
+====================================================================================================
+SPLITTING ENCODED DATA
+====================================================================================================
+
+Encoded datasets:
+  Short: (609, 151)
+  Long: (609, 151)
+
+====================================================================================================
+SAVING ENCODED DATA
+====================================================================================================
+
+[OK] Saved: 02_short_calls_encoded.csv
+[OK] Saved: 02_long_calls_encoded.csv
+[OK] Saved: 02_combined_encoded.csv
+[OK] Saved: 02_encoding_info.json
+
+====================================================================================================
+ENCODING SUMMARY
+====================================================================================================
+
+Original columns: 49
+Final features: 150
+Feature expansion ratio: 3.06x
+
+====================================================================================================
+INTELLIGENT ENCODING COMPLETE
+====================================================================================================
+
+Ready for:
+  1. Correlation analysis (all variables now numeric)
+  2. Statistical testing
+  3. Machine learning feature importance
+  4. Second-order contribution analysis
+====================================================================================================
+COMPREHENSIVE STATISTICAL ANALYSIS
+====================================================================================================
+
+Loaded encoded data:
+  Short: (609, 151)
+  Long: (609, 151)
+  Combined: (1218, 151)
+
+Total features for analysis: 150
+
+====================================================================================================
+STATISTICAL TESTING - ALL FEATURES
+====================================================================================================
+  Processed 50 features...
+  Processed 100 features...
+  Processed 150 features...
+
+[OK] Statistical analysis complete: 150 features analyzed
+[OK] Saved: 03_statistical_analysis_all_features.csv
+
+====================================================================================================
+STATISTICAL SUMMARY
+====================================================================================================
+
+Statistical Significance:
+  Significant (p<0.05): 67 (44.7%)
+  Highly Significant (p<0.001): 44 (29.3%)
+
+Effect Sizes:
+  Large effect (|d|>0.8): 5
+  Medium effect (0.5<|d|<=0.8): 15
+
+Correlations:
+  Strong (|r|>0.3): 12
+  Moderate (0.1<|r|<=0.3): 32
+
+====================================================================================================
+TOP 50 MOST IMPORTANT FEATURES (by Combined Score)
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+                                 Feature  Short_Mean  Long_Mean  Pct_Difference       P_Value  Cohens_D  Correlation Effect_Size Significant
+                         TO_OMC_Duration  142.262726 817.034483      474.313811 1.676358e-200  1.663354     0.639743       Large         Yes
+               total_discovery_questions    2.472906   8.195402      231.407703  1.066119e-96  1.355149     0.561252       Large         Yes
+              call_result_tag_target_enc    0.343211   0.656789       91.365799  1.537032e-81  1.350672     0.559980       Large         Yes
+            TO_OMC_Disposiion_target_enc    0.410763   0.589237       43.449169  2.356832e-41  0.931427     0.422461       Large         Yes
+                    total_buying_signals    0.330049   3.686371     1016.915423 1.054397e-103  0.882020     0.403790       Large         Yes
+                     objections_rebutted    0.436782   1.612479      269.172932  1.050967e-43  0.799991     0.371650      Medium         Yes
+       customer_sentiment_omc_target_enc    0.439589   0.560411       27.485376  3.193088e-31  0.740814     0.347595      Medium         Yes
+    omc_agent_sentiment_style_target_enc    0.442405   0.557595       26.036994  2.425315e-27  0.721030     0.339395      Medium         Yes
+                        total_objections    1.247947   2.596059      108.026316  1.217159e-30  0.710632     0.335053      Medium         Yes
+               price_mentions_final_2min    0.254516   1.359606      434.193548  1.469489e-40  0.703354     0.332002      Medium         Yes
+                     total_interruptions    0.499179   2.724138      445.723684  4.996891e-51  0.652524     0.310401      Medium         Yes
+              commitment_type_target_enc    0.452035   0.547965       21.221873  3.412380e-24  0.650954     0.309726      Medium         Yes
+                call_result_tag_freq_enc    0.162746   0.127838      -21.449813  9.991541e-20 -0.627532    -0.299599      Medium         Yes
+                 objections_acknowledged    0.477833   1.264368      164.604811  9.139795e-26  0.597607     0.286512      Medium         Yes
+         omc_agent_sentiment_style_label    5.277504   1.957307      -62.912259  2.064189e-22 -0.578383    -0.278019      Medium         Yes
+                commitment_type_freq_enc    0.708749   0.546913      -22.834078  1.444763e-20 -0.554276    -0.267275      Medium         Yes
+                   commitment_type_label   24.878489  21.801314      -12.368821  5.095359e-21 -0.542900    -0.262170      Medium         Yes
+      omc_agent_sentiment_style_freq_enc    0.370678   0.506258       36.576167  5.793292e-19  0.523694     0.253502      Medium         Yes
+            timeline_mentions_final_2min    0.313629   1.077176      243.455497  2.956134e-27  0.520529     0.252067      Medium         Yes
+                    TO_User_M_target_enc    0.469682   0.530318       12.909882  5.345767e-17  0.507714     0.246243      Medium         Yes
+                customer_talk_percentage   32.432332  39.496149       21.780172  1.199813e-13  0.422587     0.206892       Small         Yes
+                   LQ_Service_target_enc    0.482759   0.517241        7.142762  1.092486e-07  0.377652     0.185694       Small         Yes
+                        TO_length_in_sec  164.577997 200.436782       21.788323  1.707673e-10  0.372276     0.183140       Small         Yes
+                   call_result_tag_label    4.213465   5.316913       26.188620  1.055444e-07  0.365024     0.179689       Small         Yes
+       customer_sentiment_lgs_target_enc    0.485234   0.514766        6.085975  2.818934e-08  0.348597     0.171847       Small         Yes
+                   location_mentioned_No    0.558292   0.397373      -28.823529  1.918502e-08 -0.326150    -0.161078       Small         Yes
+                  location_mentioned_Yes    0.441708   0.602627       36.431227  1.918502e-08  0.326150     0.161078       Small         Yes
+          lgs_sentiment_style_target_enc    0.487057   0.512943        5.314952  6.007238e-07  0.325768     0.160894       Small         Yes
+     technical_quality_issues_target_enc    0.489194   0.510806        4.417826  4.418125e-05  0.297004     0.147009       Small         Yes
+               call_structure_framed_Yes    0.563218   0.699507       24.198251  8.327964e-07  0.285129     0.141251       Small         Yes
+                call_structure_framed_No    0.436782   0.300493      -31.203008  8.327964e-07 -0.285129    -0.141251       Small         Yes
+       time_to_reason_seconds_is_missing    0.059113   0.009852      -83.333333  2.491235e-06 -0.272245    -0.134987       Small         Yes
+               lgs_sentiment_style_label    4.627258   3.733990      -19.304471  5.434569e-06 -0.270228    -0.134005       Small         Yes
+                  TO_OMC_User_target_enc    0.491236   0.508764        3.567981  7.830655e-06  0.266913     0.132390       Small         Yes
+        omc_who_said_hello_first_unknown    0.134647   0.057471      -57.317073  4.920225e-06 -0.263961    -0.130952       Small         Yes
+             LQ_Customer_Name_target_enc    0.491158   0.508842        3.600371  1.106078e-02  0.268122     0.132979       Small         Yes
+            contract_mentions_final_2min    0.011494   0.093596      714.285714  9.901466e-08  0.256500     0.127311       Small         Yes
+customer_marketing_experience_target_enc    0.491951   0.508049        3.272210  5.185847e-05  0.255611     0.126877       Small         Yes
+                  time_to_reason_seconds   14.658456  21.119869       44.079758  7.488739e-04  0.253080     0.125640       Small         Yes
+         customer_sentiment_lgs_freq_enc    0.194774   0.220157       13.031922  1.438695e-05  0.239777     0.119132       Small         Yes
+            lgs_sentiment_style_freq_enc    0.419029   0.480149       14.585934  2.616896e-05  0.234982     0.116783       Small         Yes
+              business_type_mentioned_No    0.356322   0.254516      -28.571429  1.155431e-04 -0.222217    -0.110519       Small         Yes
+             business_type_mentioned_Yes    0.643678   0.745484       15.816327  1.155431e-04  0.222217     0.110519       Small         Yes
+          omc_who_said_hello_first_Agent    0.796388   0.876847       10.103093  1.471170e-04  0.218747     0.108813       Small         Yes
+            customer_sentiment_lgs_label    5.528736   4.683087      -15.295515  1.228294e-04 -0.196672    -0.097944  Negligible         Yes
+                 ready_for_customers_Yes    0.333333   0.423645       27.093596  1.162786e-03  0.186865     0.093103  Negligible         Yes
+         customer_availability_available    0.753695   0.829228       10.021786  1.183238e-03  0.186578     0.092961  Negligible         Yes
+                   ready_to_transfer_YES    0.013136   0.042693      225.000000  1.751560e-03  0.180005     0.089713  Negligible         Yes
+               customer_language_English    0.824302   0.886700        7.569721  1.965328e-03  0.178026     0.088735  Negligible         Yes
+                LQ_Company_Name_freq_enc    0.594939   0.562966       -5.374085  2.223408e-03 -0.175892    -0.087680  Negligible         Yes
+
+[OK] Saved: 03_top_50_features.csv
+
+====================================================================================================
+FEATURE CATEGORIES BREAKDOWN
+====================================================================================================
+
+Feature type breakdown:
+  Original numeric: 16
+  One-hot encoded: 80
+  Target encoded: 16
+  Frequency encoded: 16
+  Missing indicators: 12
+  Label encoded: 10
+
+Top 10 Original Numeric Features:
+  TO_OMC_Duration: p=0.000000, d=1.663, r=0.640
+  total_discovery_questions: p=0.000000, d=1.355, r=0.561
+  total_buying_signals: p=0.000000, d=0.882, r=0.404
+  objections_rebutted: p=0.000000, d=0.800, r=0.372
+  total_objections: p=0.000000, d=0.711, r=0.335
+  price_mentions_final_2min: p=0.000000, d=0.703, r=0.332
+  total_interruptions: p=0.000000, d=0.653, r=0.310
+  objections_acknowledged: p=0.000000, d=0.598, r=0.287
+  timeline_mentions_final_2min: p=0.000000, d=0.521, r=0.252
+  customer_talk_percentage: p=0.000000, d=0.423, r=0.207
+
+Top 10 Target Encoded Features:
+  call_result_tag: p=0.000000, d=1.351, r=0.560
+  TO_OMC_Disposiion: p=0.000000, d=0.931, r=0.422
+  customer_sentiment_omc: p=0.000000, d=0.741, r=0.348
+  omc_agent_sentiment_style: p=0.000000, d=0.721, r=0.339
+  commitment_type: p=0.000000, d=0.651, r=0.310
+  TO_User_M: p=0.000000, d=0.508, r=0.246
+  LQ_Service: p=0.000000, d=0.378, r=0.186
+  customer_sentiment_lgs: p=0.000000, d=0.349, r=0.172
+  lgs_sentiment_style: p=0.000001, d=0.326, r=0.161
+  technical_quality_issues: p=0.000044, d=0.297, r=0.147
+
+Top 10 One-Hot Encoded Features:
+  location_mentioned_No: p=0.000000, d=-0.326, r=-0.161
+  location_mentioned_Yes: p=0.000000, d=0.326, r=0.161
+  call_structure_framed_Yes: p=0.000001, d=0.285, r=0.141
+  call_structure_framed_No: p=0.000001, d=-0.285, r=-0.141
+  omc_who_said_hello_first_unknown: p=0.000005, d=-0.264, r=-0.131
+  business_type_mentioned_No: p=0.000116, d=-0.222, r=-0.111
+  business_type_mentioned_Yes: p=0.000116, d=0.222, r=0.111
+  omc_who_said_hello_first_Agent: p=0.000147, d=0.219, r=0.109
+  ready_for_customers_Yes: p=0.001163, d=0.187, r=0.093
+  customer_availability_available: p=0.001183, d=0.187, r=0.093
+
+====================================================================================================
+ANALYSIS BY VARIABLE SECTION
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+          Section  Total_Features  Significant_Features  Avg_P_Value  Avg_Abs_Cohens_D  Avg_Abs_Correlation                         Top_Feature  Top_Feature_Score
+      OMC Outcome               6                     6 1.759074e-08          0.681893             0.313073          call_result_tag_target_enc           0.968728
+   OMC Engagement               6                     3 1.321477e-01          0.475913             0.211637           total_discovery_questions           0.970740
+         OMC Pace               2                     1 1.588542e-01          0.354915             0.169533                 total_interruptions           0.637024
+   OMC Objections              12                     6 1.455009e-01          0.329688             0.157373                 objections_rebutted           0.710075
+   OMC Department              17                     9 8.943708e-02          0.346124             0.156667                     TO_OMC_Duration           1.106084
+      OMC Opening              11                     8 1.578894e-01          0.208400             0.103309               location_mentioned_No           0.470530
+     Lead Quality              10                     5 1.756759e-01          0.156283             0.077630               LQ_Service_target_enc           0.497171
+         Customer              25                    14 1.228204e-01          0.155733             0.076712   customer_sentiment_omc_target_enc           0.680943
+Technical Quality               4                     1 3.448001e-01          0.123820             0.061539 technical_quality_issues_target_enc           0.455391
+   LGS Department              50                    18 2.406564e-01          0.116446             0.057835                TO_User_M_target_enc           0.563885
+          Timings              14                     0 3.769444e-01          0.047631             0.027791                    timezone_Missing           0.314618
+
+[OK] Saved: 03_section_analysis.csv
+
+====================================================================================================
+COMPREHENSIVE STATISTICAL ANALYSIS COMPLETE
+====================================================================================================
+
+Key findings:
+  - 67 features show significant differences (p<0.05)
+  - 5 features have large effect sizes (|d|>0.8)
+  - 12 features have strong correlations (|r|>0.3)
+
+Most important section: OMC Outcome
+  with average |r| = 0.313
+====================================================================================================
+COMPREHENSIVE FEATURE IMPORTANCE & SECOND-ORDER ANALYSIS
+====================================================================================================
+
+Data loaded: (1218, 151)
+Training set: 852, Test set: 366
+
+====================================================================================================
+RANDOM FOREST FEATURE IMPORTANCE
+====================================================================================================
+
+Random Forest Performance:
+  Training Accuracy: 0.9977
+  Test Accuracy: 0.9809
+  Overfitting Gap: 0.0168
+
+[OK] Saved: 04_feature_importance_random_forest.csv
+
+====================================================================================================
+GRADIENT BOOSTING FEATURE IMPORTANCE
+====================================================================================================
+
+Gradient Boosting Performance:
+  Training Accuracy: 0.9988
+  Test Accuracy: 0.9973
+  Overfitting Gap: 0.0016
+
+[OK] Saved: 04_feature_importance_gradient_boosting.csv
+
+====================================================================================================
+COMBINED FEATURE RANKING (Stats + RF + GB)
+====================================================================================================
+
+[OK] Saved: 04_combined_feature_ranking.csv
+
+Top 30 Features by Combined Score:
+                             Feature  Final_Score  RF_Importance  GB_Importance  Correlation
+                     TO_OMC_Duration     1.000000       0.340573   9.997679e-01     0.639743
+           total_discovery_questions     0.546629       0.105297   3.101560e-05     0.561252
+          call_result_tag_target_enc     0.521958       0.072375   8.894019e-10     0.559980
+                total_buying_signals     0.475265       0.091914   2.652830e-06     0.403790
+        TO_OMC_Disposiion_target_enc     0.437035       0.029896   7.407801e-08     0.422461
+                 objections_rebutted     0.408819       0.018506   0.000000e+00     0.371650
+           price_mentions_final_2min     0.398414       0.025439   3.482216e-09     0.332002
+   customer_sentiment_omc_target_enc     0.396528       0.014568   0.000000e+00     0.347595
+            call_result_tag_freq_enc     0.396266       0.039763   0.000000e+00    -0.299599
+                 total_interruptions     0.395880       0.033483   7.688366e-06     0.310401
+omc_agent_sentiment_style_target_enc     0.389490       0.009346   6.836644e-08     0.339395
+                    total_objections     0.386503       0.007588   1.017958e-07     0.335053
+          commitment_type_target_enc     0.377039       0.008179   0.000000e+00     0.309726
+             objections_acknowledged     0.367542       0.007600   0.000000e+00     0.286512
+     omc_agent_sentiment_style_label     0.363311       0.006357   6.706950e-16    -0.278019
+        timeline_mentions_final_2min     0.362368       0.018888   7.715422e-19     0.252067
+               commitment_type_label     0.357803       0.007290   0.000000e+00    -0.262170
+            commitment_type_freq_enc     0.357372       0.003985   0.000000e+00    -0.267275
+  omc_agent_sentiment_style_freq_enc     0.353996       0.006719   0.000000e+00     0.253502
+                TO_User_M_target_enc     0.353914       0.010464   2.215647e-05     0.246243
+            customer_talk_percentage     0.337887       0.009573   4.034070e-05     0.206892
+                    TO_length_in_sec     0.329630       0.010979   8.577576e-06     0.183140
+               call_result_tag_label     0.327562       0.010003   0.000000e+00     0.179689
+               LQ_Service_target_enc     0.325442       0.003918   0.000000e+00     0.185694
+   customer_sentiment_lgs_target_enc     0.319440       0.003114   2.835873e-16     0.171847
+               location_mentioned_No     0.313647       0.000955   2.225808e-16    -0.161078
+              location_mentioned_Yes     0.313558       0.000834   0.000000e+00     0.161078
+      lgs_sentiment_style_target_enc     0.313214       0.000463   1.596112e-07     0.160894
+ technical_quality_issues_target_enc     0.308964       0.002079   1.873086e-16     0.147009
+              TO_OMC_User_target_enc     0.306767       0.006856   9.018989e-13     0.132390
+
+====================================================================================================
+SECOND-ORDER ANALYSIS: NUMERICAL BINNING
+====================================================================================================
+
+[OK] Saved: 05_numerical_binning_analysis.csv
+
+Top 20 Most Discriminative Bins:
+                    Variable Bin  Count_Short  Count_Long   Pct_Long    Direction
+             TO_OMC_Duration   1          245           0   0.000000 Favors Short
+             TO_OMC_Duration   0          245           0   0.000000 Favors Short
+             TO_OMC_Duration   3            0         243 100.000000  Favors Long
+             TO_OMC_Duration   4            0         244 100.000000  Favors Long
+        total_buying_signals   2            5         213  97.706422  Favors Long
+   total_discovery_questions   3           14         219  93.991416  Favors Long
+         objections_rebutted   2           17         143  89.375000  Favors Long
+         total_interruptions   2           29         201  87.391304  Favors Long
+   price_mentions_final_2min   1           21         130  86.092715  Favors Long
+   total_discovery_questions   0          418          94  18.359375 Favors Short
+            total_objections   3           46         171  78.801843  Favors Long
+     objections_acknowledged   2           31         113  78.472222  Favors Long
+        total_buying_signals   1           47         164  77.725118  Favors Long
+timeline_mentions_final_2min   1           47         160  77.294686  Favors Long
+   total_discovery_questions   2           47         154  76.616915  Favors Long
+        total_buying_signals   0          557         231  29.314721 Favors Short
+     objections_acknowledged   1           40          85  68.000000  Favors Long
+         objections_rebutted   1           51         108  67.924528  Favors Long
+    customer_talk_percentage   0          175          85  32.692308 Favors Short
+    customer_talk_percentage   4           43          86  66.666667  Favors Long
+
+====================================================================================================
+SECOND-ORDER ANALYSIS: CATEGORICAL VALUE IMPORTANCE
+====================================================================================================
+
+[OK] Saved: 05_categorical_value_importance.csv
+
+Top 20 Most Discriminative Categorical Values:
+                Variable                                                                              Value  Count_Short  Count_Long  Pct_Long    Direction
+technical_quality_issues                                                                            unknown            0           1     100.0  Favors Long
+technical_quality_issues                                                        Unstable, Dead Air Detected            0           1     100.0  Favors Long
+technical_quality_issues                                                                  No data to assess            0           1     100.0  Favors Long
+technical_quality_issues                                                              Predictive Dialer Lag            0           1     100.0  Favors Long
+technical_quality_issues                                           Start-of-Call Latency, Dead Air Detected            0           1     100.0  Favors Long
+technical_quality_issues                      Intelligibility, Silence/Dead Air, Environmental Distractions            0           1     100.0  Favors Long
+technical_quality_issues                                                  Intelligibility, Silence/Dead Air            0           1     100.0  Favors Long
+technical_quality_issues                  Start-of-Call Latency,Intelligibility,Silence/Dead Air Indicators            1           0       0.0 Favors Short
+technical_quality_issues                              Intelligibility, Dead Air, Environmental Distractions            1           0       0.0 Favors Short
+technical_quality_issues                                         Audio Stability, Silence/Dead Air Detected            1           0       0.0 Favors Short
+technical_quality_issues Start-of-Call Latency, Audio Stability, Intelligibility, Silence/Dead Air Detected            1           0       0.0 Favors Short
+technical_quality_issues                                   Audio Stability,Intelligibility,Silence/Dead Air            1           0       0.0 Favors Short
+technical_quality_issues                                                   No interaction to assess quality            1           0       0.0 Favors Short
+technical_quality_issues                                              No interaction to assess call quality            1           0       0.0 Favors Short
+technical_quality_issues  Start-of-Call Latency,Audio Stability,Intelligibility,Silence/Dead Air Indicators            1           0       0.0 Favors Short
+technical_quality_issues                                             Audio Stability, Start-of-Call Latency            1           0       0.0 Favors Short
+technical_quality_issues                              Start-of-Call Latency,Audio Stability,Intelligibility            1           0       0.0 Favors Short
+       TO_OMC_Disposiion                                                                               SALE            0           2     100.0  Favors Long
+       TO_OMC_Disposiion                                                                                 WN            1           0       0.0 Favors Short
+       TO_OMC_Disposiion                                                                               DROP            1           0       0.0 Favors Short
+
+====================================================================================================
+COMPREHENSIVE FEATURE IMPORTANCE & SECOND-ORDER ANALYSIS COMPLETE
+====================================================================================================
+
+Key ML Results:
+  Random Forest Test Accuracy: 0.9809
+  Gradient Boosting Test Accuracy: 0.9973
+
+Top 3 Features:
+  1. TO_OMC_Duration: Score=1.0000, r=0.640
+  2. total_discovery_questions: Score=0.5466, r=0.561
+  3. call_result_tag_target_enc: Score=0.5220, r=0.560
+====================================================================================================
+SHAP ANALYSIS - FEATURE CONTRIBUTION & INTERACTIONS
+====================================================================================================
+
+Data loaded: (1218, 151)
+Training: 852, Test: 366
+
+Using top 50 features for SHAP analysis
+
+====================================================================================================
+SHAP ANALYSIS - RANDOM FOREST
+====================================================================================================
+
+Training Random Forest model...
+Test Accuracy: 0.9945
+
+Calculating SHAP values (this may take a few minutes)...
+[OK] SHAP values calculated for 300 samples
+
+[OK] Saved: 05_shap_importance_random_forest.csv
+
+Top 20 Features by SHAP Importance:
+--------------------------------------------------------------------------------
+                             Feature  Mean_Abs_SHAP
+                     TO_OMC_Duration       0.212519
+           total_discovery_questions       0.071652
+                total_buying_signals       0.050556
+          call_result_tag_target_enc       0.033676
+            call_result_tag_freq_enc       0.020587
+           price_mentions_final_2min       0.017299
+                 total_interruptions       0.016679
+        TO_OMC_Disposiion_target_enc       0.014429
+                 objections_rebutted       0.013783
+   customer_sentiment_omc_target_enc       0.010564
+                TO_User_M_target_enc       0.008557
+        timeline_mentions_final_2min       0.007710
+              TO_OMC_User_target_enc       0.006831
+                    TO_length_in_sec       0.005776
+          commitment_type_target_enc       0.005583
+     omc_agent_sentiment_style_label       0.005527
+omc_agent_sentiment_style_target_enc       0.005186
+               call_result_tag_label       0.005019
+                    total_objections       0.004170
+                TO_OMC_User_freq_enc       0.003545
+
+====================================================================================================
+SHAP ANALYSIS - GRADIENT BOOSTING
+====================================================================================================
+
+Training Gradient Boosting model...
+Test Accuracy: 0.9973
+
+Calculating SHAP values...
+[OK] SHAP values calculated
+
+[OK] Saved: 05_shap_importance_gradient_boosting.csv
+
+Top 20 Features by SHAP Importance:
+--------------------------------------------------------------------------------
+                            Feature  Mean_Abs_SHAP
+                    TO_OMC_Duration      10.448047
+          total_discovery_questions       0.117588
+             time_to_reason_seconds       0.061002
+               TO_OMC_User_freq_enc       0.047649
+                total_interruptions       0.041652
+           customer_talk_percentage       0.019539
+               TO_User_M_target_enc       0.011955
+                   TO_length_in_sec       0.006826
+technical_quality_issues_target_enc       0.002985
+                   total_objections       0.002780
+       customer_sentiment_lgs_label       0.002546
+             TO_OMC_User_target_enc       0.002059
+           call_result_tag_freq_enc       0.001215
+     omc_who_said_hello_first_Agent       0.000599
+       lgs_sentiment_style_freq_enc       0.000016
+                objections_rebutted       0.000007
+    customer_sentiment_lgs_freq_enc       0.000005
+         call_result_tag_target_enc       0.000005
+              commitment_type_label       0.000002
+       TO_OMC_Disposiion_target_enc       0.000001
+
+====================================================================================================
+COMBINED SHAP IMPORTANCE
+====================================================================================================
+
+[OK] Saved: 05_shap_combined_importance.csv
+
+Top 25 Features by Combined SHAP:
+--------------------------------------------------------------------------------
+                             Feature  Mean_Abs_SHAP_RF  Mean_Abs_SHAP_GB  Combined_SHAP_Score
+                     TO_OMC_Duration          0.212519      1.044805e+01             1.000000
+           total_discovery_questions          0.071652      1.175881e-01             0.174206
+                total_buying_signals          0.050556      0.000000e+00             0.118946
+          call_result_tag_target_enc          0.033676      5.247192e-06             0.079230
+            call_result_tag_freq_enc          0.020587      1.215260e-03             0.048494
+                 total_interruptions          0.016679      4.165174e-02             0.041234
+           price_mentions_final_2min          0.017299      0.000000e+00             0.040700
+        TO_OMC_Disposiion_target_enc          0.014429      1.030618e-06             0.033948
+                 objections_rebutted          0.013783      7.446419e-06             0.032428
+   customer_sentiment_omc_target_enc          0.010564      0.000000e+00             0.024854
+                TO_User_M_target_enc          0.008557      1.195503e-02             0.020704
+        timeline_mentions_final_2min          0.007710      2.812167e-07             0.018139
+              TO_OMC_User_target_enc          0.006831      2.058671e-03             0.016171
+                    TO_length_in_sec          0.005776      6.826244e-03             0.013916
+          commitment_type_target_enc          0.005583      0.000000e+00             0.013136
+     omc_agent_sentiment_style_label          0.005527      7.491114e-18             0.013003
+omc_agent_sentiment_style_target_enc          0.005186      0.000000e+00             0.012202
+               call_result_tag_label          0.005019      0.000000e+00             0.011808
+                TO_OMC_User_freq_enc          0.003545      4.764867e-02             0.010620
+                    total_objections          0.004170      2.779793e-03             0.009945
+              time_to_reason_seconds          0.002308      6.100232e-02             0.008349
+            customer_talk_percentage          0.002536      1.953902e-02             0.006903
+      omc_who_said_hello_first_Agent          0.002244      5.993398e-04             0.005307
+               commitment_type_label          0.002196      1.558351e-06             0.005167
+  omc_agent_sentiment_style_freq_enc          0.002028      0.000000e+00             0.004771
+
+====================================================================================================
+CREATING SHAP VISUALIZATIONS
+====================================================================================================
+
+1. Creating SHAP summary plot (Random Forest)...
+   [OK] Saved: shap_viz_01_summary_random_forest.png
+
+2. Creating SHAP summary plot (Gradient Boosting)...
+   [OK] Saved: shap_viz_02_summary_gradient_boosting.png
+
+3. Creating SHAP importance bar plots...
+   [OK] Saved: shap_viz_03_importance_comparison.png
+
+4. Creating SHAP waterfall plot (example prediction)...
+====================================================================================================
+CREATING CORRELATION HEATMAPS
+====================================================================================================
+
+Loaded data:
+  Short: (609, 151)
+  Long: (609, 151)
+  Combined: (1218, 151)
+
+Numeric features: 150
+
+====================================================================================================
+CREATING HEATMAP 1: SHORT CALLS (<4.88 min)
+====================================================================================================
+
+Calculating correlation matrix using SPEARMAN method...
+(Spearman captures non-linear monotonic relationships)
+Correlation matrix shape: (150, 150)
+[OK] Saved: correlation_matrix_short_calls.csv
+
+====================================================================================================
+                            SALES CALL ANALYSIS - MASTER ORCHESTRATOR V2                            
+====================================================================================================
+
+Analysis Start Time: 2025-12-21 13:45:39
+Working Directory: d:\Sales_calls_analysis\ML V2
+Python Version: 3.12.9
+
+[OK] Data files found
+[OK] Output directory ready
+
+====================================================================================================
+STEP 1/8: Data Exploration & Column Analysis
+====================================================================================================
+
+Running: 01_data_exploration_and_preprocessing.py
+Purpose: Data Exploration & Column Analysis
+----------------------------------------------------------------------------------------------------
+
+[OK] 01_data_exploration_and_preprocessing.py completed successfully in 1.65 seconds
+
+====================================================================================================
+
+====================================================================================================
+STEP 2/8: Intelligent Categorical Encoding
+====================================================================================================
+
+Running: 02_intelligent_encoding_and_preprocessing.py
+Purpose: Intelligent Categorical Encoding
+----------------------------------------------------------------------------------------------------
+
+[OK] 02_intelligent_encoding_and_preprocessing.py completed successfully in 1.17 seconds
+
+====================================================================================================
+
+====================================================================================================
+STEP 3/8: Statistical Testing & Correlation Analysis
+====================================================================================================
+
+Running: 03_comprehensive_statistical_analysis.py
+Purpose: Statistical Testing & Correlation Analysis
+----------------------------------------------------------------------------------------------------
+
+[OK] 03_comprehensive_statistical_analysis.py completed successfully in 1.09 seconds
+
+====================================================================================================
+
+====================================================================================================
+STEP 4/8: ML Feature Importance & Second-Order Analysis
+====================================================================================================
+
+Running: 04_feature_importance_and_second_order.py
+Purpose: ML Feature Importance & Second-Order Analysis
+----------------------------------------------------------------------------------------------------
+
+[OK] 04_feature_importance_and_second_order.py completed successfully in 2.36 seconds
+
+====================================================================================================
+
+====================================================================================================
+STEP 5/8: SHAP Analysis - Feature Interactions & Contributions
+====================================================================================================
+
+Running: 05_shap_analysis.py
+Purpose: SHAP Analysis - Feature Interactions & Contributions
+----------------------------------------------------------------------------------------------------
+
+[ERROR] Error in 05_shap_analysis.py
+
+====================================================================================================
+
+====================================================================================================
+STEP 6/8: Correlation Heatmaps - Individual & Combined Datasets
+====================================================================================================
+
+Running: 05b_correlation_heatmaps.py
+Purpose: Correlation Heatmaps - Individual & Combined Datasets
+----------------------------------------------------------------------------------------------------

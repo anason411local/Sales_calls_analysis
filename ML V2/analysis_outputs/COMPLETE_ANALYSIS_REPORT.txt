@@ -1,0 +1,209 @@
+====================================================================================================
+COMPLETE TWO-LEVEL ANALYSIS REPORT
+Sales Call Duration Analysis: Why Not All OMC Calls Go Above 4.88 Minutes
+====================================================================================================
+
+Generated: 2025-12-21 16:33:44
+Analysis Framework: Two-Level Approach (Variable-Level + Value-Level)
+
+====================================================================================================
+EXECUTIVE SUMMARY
+====================================================================================================
+
+This analysis answers 'Why not all OMC calls go above 4.88 minutes' using a
+TWO-LEVEL approach:
+
+LEVEL 1 (VARIABLE-LEVEL): Which of the 49 variables matter most?
+LEVEL 2 (VALUE-LEVEL): Which specific values within those variables matter?
+
+Total Variables Analyzed: 49 (from Sections 1-6.6)
+Total Specific Values Analyzed: 347
+Significant Values Found: 139
+
+====================================================================================================
+LEVEL 1: VARIABLE-LEVEL KEY FINDINGS
+====================================================================================================
+
+TOP 10 MOST IMPORTANT VARIABLES:
+----------------------------------------------------------------------------------------------------
+  1. TO_OMC_Duration
+     Combined Score: 1.0000
+     RF Importance: 0.5128 | GB Importance: 1.0000
+  2. LQ_Company_Address
+     Combined Score: 0.2936
+     RF Importance: 0.0039 | GB Importance: 0.0000
+  3. TO_Event_O
+     Combined Score: 0.2931
+     RF Importance: 0.0057 | GB Importance: 0.0000
+  4. total_discovery_questions
+     Combined Score: 0.2928
+     RF Importance: 0.1254 | GB Importance: 0.0000
+  5. total_buying_signals
+     Combined Score: 0.2900
+     RF Importance: 0.1103 | GB Importance: 0.0000
+  6. LQ_Company_Name
+     Combined Score: 0.2715
+     RF Importance: 0.0041 | GB Importance: 0.0000
+  7. LQ_Customer_Name
+     Combined Score: 0.2711
+     RF Importance: 0.0026 | GB Importance: 0.0000
+  8. LQ_Service
+     Combined Score: 0.2318
+     RF Importance: 0.0043 | GB Importance: 0.0000
+  9. call_result_tag
+     Combined Score: 0.1992
+     RF Importance: 0.0136 | GB Importance: 0.0000
+  10. total_interruptions
+     Combined Score: 0.1725
+     RF Importance: 0.0342 | GB Importance: 0.0000
+
+====================================================================================================
+LEVEL 2: VALUE-LEVEL KEY FINDINGS
+====================================================================================================
+
+TOP 20 SPECIFIC VALUES ASSOCIATED WITH LONG CALLS:
+----------------------------------------------------------------------------------------------------
+  objections_rebutted = 7.0
+     100.0% Long Calls | 9 calls | p=0.0074
+  price_mentions_final_2min = 7.0
+     100.0% Long Calls | 7 calls | p=0.0229
+  total_buying_signals = 11.0
+     100.0% Long Calls | 9 calls | p=0.0074
+  total_buying_signals = 7.0
+     100.0% Long Calls | 24 calls | p=0.0000
+  total_buying_signals = 8.0
+     100.0% Long Calls | 10 calls | p=0.0043
+  total_objections = 8.0
+     100.0% Long Calls | 11 calls | p=0.0025
+  total_buying_signals = 10.0
+     100.0% Long Calls | 8 calls | p=0.0130
+  total_interruptions = 8.0
+     100.0% Long Calls | 9 calls | p=0.0074
+  commitment_type = Customer Agreed to Think It Over (Specific Timeline)
+     100.0% Long Calls | 11 calls | p=0.0025
+  total_discovery_questions = 15.0
+     100.0% Long Calls | 16 calls | p=0.0002
+  total_discovery_questions = 14.0
+     100.0% Long Calls | 24 calls | p=0.0000
+  total_discovery_questions = 17.0
+     100.0% Long Calls | 8 calls | p=0.0130
+  total_discovery_questions = 18.0
+     100.0% Long Calls | 6 calls | p=0.0407
+  total_discovery_questions = 16.0
+     100.0% Long Calls | 7 calls | p=0.0229
+  total_buying_signals = 9.0
+     100.0% Long Calls | 14 calls | p=0.0005
+  total_buying_signals = 15.0
+     100.0% Long Calls | 7 calls | p=0.0229
+  total_buying_signals = 12.0
+     100.0% Long Calls | 5 calls | p=0.0730
+  technical_quality_issues = Dead Air Detected
+     100.0% Long Calls | 5 calls | p=0.0730
+  total_interruptions = 9.0
+     100.0% Long Calls | 8 calls | p=0.0130
+  total_interruptions = 10.0
+     100.0% Long Calls | 11 calls | p=0.0025
+
+TOP 20 SPECIFIC VALUES ASSOCIATED WITH SHORT CALLS:
+----------------------------------------------------------------------------------------------------
+  LQ_Service = Home Renovation
+     100.0% Short Calls | 5 calls | p=0.0730
+  TO_OMC_Disposiion = BCC
+     100.0% Short Calls | 5 calls | p=0.0730
+  omc_agent_sentiment_style = Hesitant & Apologetic
+     100.0% Short Calls | 18 calls | p=0.0001
+  TO_OMC_Disposiion = NQTO
+     91.9% Short Calls | 74 calls | p=0.0000
+  total_discovery_questions = 1.0
+     89.9% Short Calls | 89 calls | p=0.0000
+  omc_agent_sentiment_style = Robotic & Script-Bound
+     89.1% Short Calls | 110 calls | p=0.0000
+  LQ_Customer_Name = Mike 
+     88.9% Short Calls | 9 calls | p=0.0447
+  call_result_tag = Disconnect - During Discovery
+     88.7% Short Calls | 222 calls | p=0.0000
+  TO_OMC_Disposiion = A
+     87.5% Short Calls | 8 calls | p=0.0761
+  TO_OMC_Disposiion = LB
+     83.3% Short Calls | 30 calls | p=0.0004
+  forbidden_industry = unknown
+     83.3% Short Calls | 6 calls | p=0.2195
+  is_decision_maker = Not Confirmed/Gatekeeper
+     83.3% Short Calls | 6 calls | p=0.2195
+  total_discovery_questions = 0.0
+     82.3% Short Calls | 277 calls | p=0.0000
+  total_discovery_questions = 2.0
+     81.0% Short Calls | 63 calls | p=0.0000
+  LQ_Customer_Name = Nick 
+     80.0% Short Calls | 5 calls | p=0.3701
+  LQ_Service = Air Conditioning Services
+     80.0% Short Calls | 5 calls | p=0.3701
+  LQ_Company_Address = Toronto, ON, 
+     80.0% Short Calls | 5 calls | p=0.3701
+  call_result_tag = Hard Decline (Not Interested)
+     80.0% Short Calls | 5 calls | p=0.3701
+  LQ_Service = HANDYMAN
+     80.0% Short Calls | 5 calls | p=0.3701
+  Calls Count = 8
+     80.0% Short Calls | 5 calls | p=0.3701
+
+====================================================================================================
+ANSWERS TO KEY QUESTIONS
+====================================================================================================
+
+1. WHICH TIMEZONE LEADS TO LONGER CALLS?
+----------------------------------------------------------------------------------------------------
+  Mountain: 55.1% Long Calls
+  Central: 53.8% Long Calls
+  Eastern: 51.1% Long Calls
+  Pacific: 47.0% Long Calls
+  unknown: 41.7% Long Calls
+
+2. WHICH MONTH HAS HIGHEST % OF LONG CALLS?
+----------------------------------------------------------------------------------------------------
+  December: 50.0% Long Calls
+
+3. WHICH CUSTOMER SENTIMENT (OMC) LEADS TO LONGER CALLS?
+----------------------------------------------------------------------------------------------------
+  Fluctuated: 90.5% Long Calls
+  Interested: 79.0% Long Calls
+  Skeptical: 57.7% Long Calls
+  Not Found in Transcript: 54.7% Long Calls
+  Resistant: 51.2% Long Calls
+  Neutral: 27.5% Long Calls
+
+====================================================================================================
+ACTIONABLE INSIGHTS
+====================================================================================================
+
+1. FOCUS ON HIGH-IMPACT VARIABLES:
+   Top 3: TO_OMC_Duration, LQ_Company_Address, TO_Event_O
+   These variables have the strongest relationship with call duration.
+
+2. OPTIMIZE FOR HIGH-PERFORMING VALUES:
+   Best value: objections_rebutted = 7.0
+   Achieves 100.0% long calls
+
+3. AVOID LOW-PERFORMING VALUES:
+   Worst value: LQ_Service = Home Renovation
+   Only 0.0% long calls
+
+====================================================================================================
+METHODOLOGY
+====================================================================================================
+
+LEVEL 1 (VARIABLE-LEVEL):
+  - 49x49 Spearman correlation matrices
+  - Random Forest & Gradient Boosting models
+  - SHAP analysis (all chart types)
+  - Statistical tests (t-test, Mann-Whitney, Chi-square)
+
+LEVEL 2 (VALUE-LEVEL):
+  - Categorical value analysis (specific values)
+  - Numerical binning (range analysis)
+  - ML models on one-hot encoded values
+  - Value-specific SHAP analysis
+
+====================================================================================================
+END OF REPORT
+====================================================================================================

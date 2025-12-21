@@ -1,0 +1,7 @@
+{
+  "rf_roc_auc": 0.8838794289645683,
+  "gb_roc_auc": 0.9078517371861025,
+  "n_value_features": 100,
+  "n_train": 913,
+  "n_test": 305
+}

@@ -1,0 +1,8 @@
+{
+  "analysis_date": "2025-12-21 16:33:44",
+  "total_variables": 49,
+  "total_values_analyzed": 347,
+  "significant_values": 139,
+  "top_variable": "TO_OMC_Duration",
+  "top_value": "objections_rebutted = 7.0"
+}

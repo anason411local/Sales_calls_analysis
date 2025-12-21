@@ -1,0 +1,4 @@
+Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
+season_status,unknown,65,78,143,45.45,54.55,9.09,1.1409,0.2855,No,Neutral,4.55
+season_status,High season,73,69,142,51.41,48.59,-2.82,0.0717,0.7888,No,Neutral,1.41
+season_status,Low season,426,426,852,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0

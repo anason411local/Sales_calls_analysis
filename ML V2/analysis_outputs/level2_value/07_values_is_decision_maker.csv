@@ -1,0 +1,7 @@
+Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
+is_decision_maker,Not Confirmed/Gatekeeper,5,1,6,83.33,16.67,-66.67,1.5074,0.2195,No,Favors Short Calls,33.33
+is_decision_maker,unknown,36,21,57,63.16,36.84,-26.32,3.6074,0.0575,No,Favors Short Calls,13.16
+is_decision_maker,Explicit Confirmation,21,29,50,42.0,58.0,16.0,1.022,0.3121,No,Favors Long Calls,8.0
+is_decision_maker,No,43,32,75,57.33,42.67,-14.67,1.4208,0.2333,No,Favors Short Calls,7.33
+is_decision_maker,Implicit/Assumed,8,10,18,44.44,55.56,11.11,0.0564,0.8123,No,Favors Long Calls,5.56
+is_decision_maker,Yes,442,477,919,48.1,51.9,3.81,5.1241,0.0236,Yes,Neutral,1.9

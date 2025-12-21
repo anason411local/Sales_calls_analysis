@@ -1,0 +1,6 @@
+Variable,Bin,Value_Range,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Direction,Importance_Score
+customer_talk_percentage,Very Low,"[0.00, 25.00]",175,85,260,67.31,32.69,-34.62,Favors Short Calls,17.31
+customer_talk_percentage,Very High,"[50.34, 84.60]",43,86,129,33.33,66.67,33.33,Favors Long Calls,16.67
+customer_talk_percentage,High,"[44.83, 50.00]",141,216,357,39.5,60.5,21.01,Favors Long Calls,10.5
+customer_talk_percentage,Medium,"[37.33, 44.80]",129,113,242,53.31,46.69,-6.61,Neutral,3.31
+customer_talk_percentage,Low,"[25.49, 37.14]",121,107,228,53.07,46.93,-6.14,Neutral,3.07

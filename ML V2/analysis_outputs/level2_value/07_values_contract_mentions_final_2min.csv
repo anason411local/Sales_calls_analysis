@@ -1,0 +1,5 @@
+Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
+contract_mentions_final_2min,1.0,2,27,29,6.9,93.1,86.21,20.3465,0.0,Yes,Favors Long Calls,43.1
+contract_mentions_final_2min,2.0,1,5,6,16.67,83.33,66.67,1.5074,0.2195,No,Favors Long Calls,33.33
+contract_mentions_final_2min,3.0,1,4,5,20.0,80.0,60.0,0.8033,0.3701,No,Favors Long Calls,30.0
+contract_mentions_final_2min,0.0,605,570,1175,51.49,48.51,-2.98,27.8676,0.0,Yes,Neutral,1.49
