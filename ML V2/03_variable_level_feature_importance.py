@@ -17,7 +17,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report, roc_auc_score, accuracy_score, f1_score, log_loss, confusion_matrix
@@ -175,59 +176,60 @@ for idx, row in rf_importance.head(10).iterrows():
     print(f"  {row['Variable']}: {row['RF_Importance']:.4f}")
 
 # ==============================================================================
-# GRADIENT BOOSTING MODEL
+# XGBOOST MODEL
 # ==============================================================================
 
 print("\n" + "="*100)
-print("TRAINING GRADIENT BOOSTING MODEL")
+print("TRAINING XGBOOST MODEL")
 print("="*100)
 
-gb_model = GradientBoostingClassifier(
+xgb_model = XGBClassifier(
     n_estimators=200,
     max_depth=5,
     learning_rate=0.1,
-    min_samples_split=20,
-    min_samples_leaf=10,
-    random_state=42
+    min_child_weight=10,
+    random_state=42,
+    eval_metric='logloss',
+    use_label_encoder=False
 )
 
 print("Training...")
-gb_model.fit(X_train, y_train)
+xgb_model.fit(X_train, y_train)
 
 # Predictions
-y_pred_gb = gb_model.predict(X_test)
-y_proba_gb = gb_model.predict_proba(X_test)[:, 1]
-y_pred_gb_train = gb_model.predict(X_train)
-y_proba_gb_train = gb_model.predict_proba(X_train)[:, 1]
+y_pred_xgb = xgb_model.predict(X_test)
+y_proba_xgb = xgb_model.predict_proba(X_test)[:, 1]
+y_pred_xgb_train = xgb_model.predict(X_train)
+y_proba_xgb_train = xgb_model.predict_proba(X_train)[:, 1]
 
 # Comprehensive metrics
-roc_auc_gb_test = roc_auc_score(y_test, y_proba_gb)
-roc_auc_gb_train = roc_auc_score(y_train, y_proba_gb_train)
-acc_gb_test = accuracy_score(y_test, y_pred_gb)
-acc_gb_train = accuracy_score(y_train, y_pred_gb_train)
-f1_gb_test = f1_score(y_test, y_pred_gb)
-f1_gb_train = f1_score(y_train, y_pred_gb_train)
-logloss_gb_test = log_loss(y_test, y_proba_gb)
-logloss_gb_train = log_loss(y_train, y_proba_gb_train)
+roc_auc_xgb_test = roc_auc_score(y_test, y_proba_xgb)
+roc_auc_xgb_train = roc_auc_score(y_train, y_proba_xgb_train)
+acc_xgb_test = accuracy_score(y_test, y_pred_xgb)
+acc_xgb_train = accuracy_score(y_train, y_pred_xgb_train)
+f1_xgb_test = f1_score(y_test, y_pred_xgb)
+f1_xgb_train = f1_score(y_train, y_pred_xgb_train)
+logloss_xgb_test = log_loss(y_test, y_proba_xgb)
+logloss_xgb_train = log_loss(y_train, y_proba_xgb_train)
 
 # Cross-validation
-cv_scores_gb = cross_val_score(gb_model, X, y, cv=5, scoring='roc_auc')
+cv_scores_xgb = cross_val_score(xgb_model, X, y, cv=5, scoring='roc_auc')
 
-print(f"\n[OK] Gradient Boosting trained")
+print(f"\n[OK] XGBoost trained")
 print(f"\n   TEST SET METRICS:")
-print(f"   - ROC-AUC: {roc_auc_gb_test:.4f}")
-print(f"   - Accuracy: {acc_gb_test:.4f}")
-print(f"   - F1-Score: {f1_gb_test:.4f}")
-print(f"   - Log Loss: {logloss_gb_test:.4f}")
+print(f"   - ROC-AUC: {roc_auc_xgb_test:.4f}")
+print(f"   - Accuracy: {acc_xgb_test:.4f}")
+print(f"   - F1-Score: {f1_xgb_test:.4f}")
+print(f"   - Log Loss: {logloss_xgb_test:.4f}")
 print(f"\n   TRAIN SET METRICS:")
-print(f"   - ROC-AUC: {roc_auc_gb_train:.4f}")
-print(f"   - Accuracy: {acc_gb_train:.4f}")
-print(f"   - F1-Score: {f1_gb_train:.4f}")
-print(f"   - Log Loss: {logloss_gb_train:.4f}")
+print(f"   - ROC-AUC: {roc_auc_xgb_train:.4f}")
+print(f"   - Accuracy: {acc_xgb_train:.4f}")
+print(f"   - F1-Score: {f1_xgb_train:.4f}")
+print(f"   - Log Loss: {logloss_xgb_train:.4f}")
 print(f"\n   CROSS-VALIDATION (5-fold):")
-print(f"   - Mean ROC-AUC: {cv_scores_gb.mean():.4f} (+/- {cv_scores_gb.std() * 2:.4f})")
+print(f"   - Mean ROC-AUC: {cv_scores_xgb.mean():.4f} (+/- {cv_scores_xgb.std() * 2:.4f})")
 print(f"\n   OVERFITTING CHECK:")
-overfit_roc = roc_auc_gb_train - roc_auc_gb_test
+overfit_roc = roc_auc_xgb_train - roc_auc_xgb_test
 if overfit_roc > 0.10:
     print(f"   - [WARNING] HIGH OVERFITTING: Train-Test gap = {overfit_roc:.4f}")
 elif overfit_roc > 0.05:
@@ -236,14 +238,14 @@ else:
     print(f"   - [OK] Good generalization: Train-Test gap = {overfit_roc:.4f}")
 
 # Feature importance
-gb_importance = pd.DataFrame({
+xgb_importance = pd.DataFrame({
     'Variable': feature_cols,
-    'GB_Importance': gb_model.feature_importances_
-}).sort_values('GB_Importance', ascending=False)
+    'XGB_Importance': xgb_model.feature_importances_
+}).sort_values('XGB_Importance', ascending=False)
 
 print(f"\nTop 10 features:")
-for idx, row in gb_importance.head(10).iterrows():
-    print(f"  {row['Variable']}: {row['GB_Importance']:.4f}")
+for idx, row in xgb_importance.head(10).iterrows():
+    print(f"  {row['Variable']}: {row['XGB_Importance']:.4f}")
 
 # ==============================================================================
 # COMBINE IMPORTANCE SCORES
@@ -254,18 +256,18 @@ print("COMBINING IMPORTANCE SCORES")
 print("="*100)
 
 # Merge all importance scores
-df_combined = rf_importance.merge(gb_importance, on='Variable')
+df_combined = rf_importance.merge(xgb_importance, on='Variable')
 df_combined = df_combined.merge(df_target_corr[['Variable', 'Abs_Correlation']], on='Variable')
 
 # Normalize scores
-for col in ['RF_Importance', 'GB_Importance', 'Abs_Correlation']:
+for col in ['RF_Importance', 'XGB_Importance', 'Abs_Correlation']:
     max_val = df_combined[col].max()
     df_combined[f'{col}_Norm'] = df_combined[col] / max_val if max_val > 0 else 0
 
 # Combined score (weighted average)
 df_combined['Combined_Score'] = (
     df_combined['RF_Importance_Norm'] * 0.35 +
-    df_combined['GB_Importance_Norm'] * 0.35 +
+    df_combined['XGB_Importance_Norm'] * 0.35 +
     df_combined['Abs_Correlation_Norm'] * 0.30
 )
 
@@ -275,7 +277,7 @@ print("\nTOP 20 VARIABLES BY COMBINED IMPORTANCE:")
 print("-" * 100)
 for idx, row in df_combined.head(20).iterrows():
     print(f"  {idx+1}. {row['Variable']}: {row['Combined_Score']:.4f} " +
-          f"(RF={row['RF_Importance']:.3f}, GB={row['GB_Importance']:.3f}, Corr={row['Abs_Correlation']:.3f})")
+          f"(RF={row['RF_Importance']:.3f}, XGB={row['XGB_Importance']:.3f}, Corr={row['Abs_Correlation']:.3f})")
 
 # ==============================================================================
 # SAVE RESULTS
@@ -287,21 +289,21 @@ print("="*100)
 
 # Save importance scores
 rf_importance.to_csv('analysis_outputs/level1_variable/03_importance_random_forest.csv', index=False)
-gb_importance.to_csv('analysis_outputs/level1_variable/03_importance_gradient_boosting.csv', index=False)
+xgb_importance.to_csv('analysis_outputs/level1_variable/03_importance_xgboost.csv', index=False)
 df_combined.to_csv('analysis_outputs/level1_variable/03_importance_combined.csv', index=False)
 
 print("\n[OK] Saved CSV files:")
 print("  - 03_importance_random_forest.csv")
-print("  - 03_importance_gradient_boosting.csv")
+print("  - 03_importance_xgboost.csv")
 print("  - 03_importance_combined.csv")
 
 # Save models
 import joblib
 joblib.dump(rf_model, 'analysis_outputs/level1_variable/03_model_random_forest.pkl')
-joblib.dump(gb_model, 'analysis_outputs/level1_variable/03_model_gradient_boosting.pkl')
+joblib.dump(xgb_model, 'analysis_outputs/level1_variable/03_model_xgboost.pkl')
 
 print("  - 03_model_random_forest.pkl")
-print("  - 03_model_gradient_boosting.pkl")
+print("  - 03_model_xgboost.pkl")
 
 # Save metrics
 metrics = {
@@ -312,13 +314,13 @@ metrics = {
     'random_forest_cv_mean': float(cv_scores_rf.mean()),
     'random_forest_cv_std': float(cv_scores_rf.std()),
     'random_forest_overfitting_gap': float(roc_auc_rf_train - roc_auc_rf_test),
-    'gradient_boosting_roc_auc_test': float(roc_auc_gb_test),
-    'gradient_boosting_roc_auc_train': float(roc_auc_gb_train),
-    'gradient_boosting_accuracy_test': float(acc_gb_test),
-    'gradient_boosting_f1_test': float(f1_gb_test),
-    'gradient_boosting_cv_mean': float(cv_scores_gb.mean()),
-    'gradient_boosting_cv_std': float(cv_scores_gb.std()),
-    'gradient_boosting_overfitting_gap': float(roc_auc_gb_train - roc_auc_gb_test),
+    'xgboost_roc_auc_test': float(roc_auc_xgb_test),
+    'xgboost_roc_auc_train': float(roc_auc_xgb_train),
+    'xgboost_accuracy_test': float(acc_xgb_test),
+    'xgboost_f1_test': float(f1_xgb_test),
+    'xgboost_cv_mean': float(cv_scores_xgb.mean()),
+    'xgboost_cv_std': float(cv_scores_xgb.std()),
+    'xgboost_overfitting_gap': float(roc_auc_xgb_train - roc_auc_xgb_test),
     'n_features': len(feature_cols),
     'n_train': int(len(X_train)),
     'n_test': int(len(X_test)),
@@ -359,12 +361,12 @@ axes[0].set_title(f'Random Forest Confusion Matrix\nTest ROC-AUC: {roc_auc_rf_te
 axes[0].set_xlabel('Predicted', fontsize=11, fontweight='bold')
 axes[0].set_ylabel('Actual', fontsize=11, fontweight='bold')
 
-# GB Confusion Matrix
-cm_gb = confusion_matrix(y_test, y_pred_gb)
-sns.heatmap(cm_gb, annot=True, fmt='d', cmap='Greens', ax=axes[1],
+# XGBoost Confusion Matrix
+cm_xgb = confusion_matrix(y_test, y_pred_xgb)
+sns.heatmap(cm_xgb, annot=True, fmt='d', cmap='Greens', ax=axes[1],
             xticklabels=['Short', 'Long'], yticklabels=['Short', 'Long'],
             cbar_kws={'label': 'Count'})
-axes[1].set_title(f'Gradient Boosting Confusion Matrix\nTest ROC-AUC: {roc_auc_gb_test:.4f}',
+axes[1].set_title(f'XGBoost Confusion Matrix\nTest ROC-AUC: {roc_auc_xgb_test:.4f}',
                   fontsize=12, fontweight='bold')
 axes[1].set_xlabel('Predicted', fontsize=11, fontweight='bold')
 axes[1].set_ylabel('Actual', fontsize=11, fontweight='bold')
@@ -389,9 +391,9 @@ fpr_rf, tpr_rf, _ = roc_curve(y_test, y_proba_rf)
 ax.plot(fpr_rf, tpr_rf, label=f'Random Forest (AUC = {roc_auc_rf_test:.4f})',
         linewidth=2.5, color='#4ECDC4')
 
-# GB ROC Curve  
-fpr_gb, tpr_gb, _ = roc_curve(y_test, y_proba_gb)
-ax.plot(fpr_gb, tpr_gb, label=f'Gradient Boosting (AUC = {roc_auc_gb_test:.4f})',
+# XGBoost ROC Curve  
+fpr_xgb, tpr_xgb, _ = roc_curve(y_test, y_proba_xgb)
+ax.plot(fpr_xgb, tpr_xgb, label=f'XGBoost (AUC = {roc_auc_xgb_test:.4f})',
         linewidth=2.5, color='#FF6B6B')
 
 # Diagonal (random classifier)
@@ -445,30 +447,30 @@ axes[0].set_title('Random Forest Learning Curve\nChecking overfitting and conver
 axes[0].legend(fontsize=10)
 axes[0].grid(alpha=0.3)
 
-# GB Learning Curve
-train_sizes, train_scores_gb, val_scores_gb = learning_curve(
-    gb_model, X, y, cv=5,
+# XGBoost Learning Curve
+train_sizes, train_scores_xgb, val_scores_xgb = learning_curve(
+    xgb_model, X, y, cv=5,
     train_sizes=np.linspace(0.1, 1.0, 10),
     scoring='roc_auc', random_state=42
 )
 
-train_mean_gb = train_scores_gb.mean(axis=1)
-train_std_gb = train_scores_gb.std(axis=1)
-val_mean_gb = val_scores_gb.mean(axis=1)
-val_std_gb = val_scores_gb.std(axis=1)
+train_mean_xgb = train_scores_xgb.mean(axis=1)
+train_std_xgb = train_scores_xgb.std(axis=1)
+val_mean_xgb = val_scores_xgb.mean(axis=1)
+val_std_xgb = val_scores_xgb.std(axis=1)
 
-axes[1].plot(train_sizes, train_mean_gb, label='Training Score',
+axes[1].plot(train_sizes, train_mean_xgb, label='Training Score',
             linewidth=2.5, color='#45B7D1', marker='o')
-axes[1].fill_between(train_sizes, train_mean_gb - train_std_gb,
-                     train_mean_gb + train_std_gb, alpha=0.2, color='#45B7D1')
-axes[1].plot(train_sizes, val_mean_gb, label='Cross-Validation Score',
+axes[1].fill_between(train_sizes, train_mean_xgb - train_std_xgb,
+                     train_mean_xgb + train_std_xgb, alpha=0.2, color='#45B7D1')
+axes[1].plot(train_sizes, val_mean_xgb, label='Cross-Validation Score',
             linewidth=2.5, color='#F7DC6F', marker='o')
-axes[1].fill_between(train_sizes, val_mean_gb - val_std_gb,
-                     val_mean_gb + val_std_gb, alpha=0.2, color='#F7DC6F')
+axes[1].fill_between(train_sizes, val_mean_xgb - val_std_xgb,
+                     val_mean_xgb + val_std_xgb, alpha=0.2, color='#F7DC6F')
 
 axes[1].set_xlabel('Training Set Size', fontsize=11, fontweight='bold')
 axes[1].set_ylabel('ROC-AUC Score', fontsize=11, fontweight='bold')
-axes[1].set_title('Gradient Boosting Learning Curve\nChecking overfitting and convergence',
+axes[1].set_title('XGBoost Learning Curve\nChecking overfitting and convergence',
                   fontsize=12, fontweight='bold')
 axes[1].legend(fontsize=10)
 axes[1].grid(alpha=0.3)
@@ -489,10 +491,10 @@ print("Creating metrics comparison...")
 fig, ax = plt.subplots(figsize=(12, 8))
 
 metrics_comparison = {
-    'ROC-AUC (Test)': [roc_auc_rf_test, roc_auc_gb_test],
-    'Accuracy (Test)': [acc_rf_test, acc_gb_test],
-    'F1-Score (Test)': [f1_rf_test, f1_gb_test],
-    'CV Mean': [cv_scores_rf.mean(), cv_scores_gb.mean()]
+    'ROC-AUC (Test)': [roc_auc_rf_test, roc_auc_xgb_test],
+    'Accuracy (Test)': [acc_rf_test, acc_xgb_test],
+    'F1-Score (Test)': [f1_rf_test, f1_xgb_test],
+    'CV Mean': [cv_scores_rf.mean(), cv_scores_xgb.mean()]
 }
 
 x = np.arange(len(metrics_comparison))
@@ -501,7 +503,7 @@ width = 0.35
 bars1 = ax.bar(x - width/2, [metrics_comparison[k][0] for k in metrics_comparison.keys()],
                width, label='Random Forest', color='#98D8C8', alpha=0.8, edgecolor='black', linewidth=1.5)
 bars2 = ax.bar(x + width/2, [metrics_comparison[k][1] for k in metrics_comparison.keys()],
-               width, label='Gradient Boosting', color='#F7DC6F', alpha=0.8, edgecolor='black', linewidth=1.5)
+               width, label='XGBoost', color='#F7DC6F', alpha=0.8, edgecolor='black', linewidth=1.5)
 
 # Add value labels
 for bars in [bars1, bars2]:
@@ -534,7 +536,7 @@ print("LEVEL 1 FEATURE IMPORTANCE COMPLETE")
 print("="*100)
 print(f"\n[OK] Trained 2 ML models")
 print(f"   RF  - Test: {roc_auc_rf_test:.4f} | Train: {roc_auc_rf_train:.4f} | CV: {cv_scores_rf.mean():.4f}")
-print(f"   GB  - Test: {roc_auc_gb_test:.4f} | Train: {roc_auc_gb_train:.4f} | CV: {cv_scores_gb.mean():.4f}")
+print(f"   XGB - Test: {roc_auc_xgb_test:.4f} | Train: {roc_auc_xgb_train:.4f} | CV: {cv_scores_xgb.mean():.4f}")
 print(f"[OK] Top variable: {df_combined.iloc[0]['Variable']}")
 print(f"[OK] Combined importance ranking created")
 

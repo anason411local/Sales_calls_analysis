@@ -40,7 +40,7 @@ print("="*100)
 
 print("\nLoading models and data...")
 rf_model = joblib.load('analysis_outputs/level1_variable/03_model_random_forest.pkl')
-gb_model = joblib.load('analysis_outputs/level1_variable/03_model_gradient_boosting.pkl')
+xgb_model = joblib.load('analysis_outputs/level1_variable/03_model_xgboost.pkl')
 
 df = pd.read_csv('analysis_outputs/level1_variable/01_combined_original.csv')
 
@@ -236,8 +236,8 @@ if len(short_idx) > 0:
 else:
     example_short_idx = np.argmin(proba_sample)
 
-# Create waterfall plots
-fig, axes = plt.subplots(2, 1, figsize=(14, 14))
+# Create waterfall plots - INCREASED TO 25 VARIABLES
+fig, axes = plt.subplots(2, 1, figsize=(16, 40))  # Increased height for 25 variables
 
 # Get expected value
 expected_value = explainer_rf.expected_value
@@ -251,12 +251,12 @@ shap.waterfall_plot(
                      base_values=expected_value,
                      data=X_sample.iloc[example_long_idx],
                      feature_names=feature_cols),
-    max_display=15,
+    max_display=25,  # CHANGED FROM 15 TO 25
     show=False
 )
-axes[0].set_title(f'EXAMPLE: LONG CALL Prediction (Actual: {"Long" if y_sample[example_long_idx] == 1 else "Short"})\n' +
+axes[0].set_title(f'RANDOM FOREST - LONG CALL Prediction (Actual: {"Long" if y_sample[example_long_idx] == 1 else "Short"})\n' +
                   f'Predicted Probability: {proba_sample[example_long_idx]:.1%}',
-                  fontsize=12, fontweight='bold')
+                  fontsize=11, fontweight='bold')  # Slightly smaller font
 
 # Short call example
 plt.sca(axes[1])
@@ -265,26 +265,26 @@ shap.waterfall_plot(
                      base_values=expected_value,
                      data=X_sample.iloc[example_short_idx],
                      feature_names=feature_cols),
-    max_display=15,
+    max_display=25,  # CHANGED FROM 15 TO 25
     show=False
 )
-axes[1].set_title(f'EXAMPLE: SHORT CALL Prediction (Actual: {"Long" if y_sample[example_short_idx] == 1 else "Short"})\n' +
+axes[1].set_title(f'RANDOM FOREST - SHORT CALL Prediction (Actual: {"Long" if y_sample[example_short_idx] == 1 else "Short"})\n' +
                   f'Predicted Probability: {proba_sample[example_short_idx]:.1%}',
-                  fontsize=12, fontweight='bold')
+                  fontsize=11, fontweight='bold')  # Slightly smaller font
 
 # Add overall guide
-fig.text(0.5, 0.02, 
+fig.text(0.5, 0.01, 
          'HOW TO READ WATERFALL PLOTS:\n' +
          'Start from base value (E[f(x)]) → Each bar shows one variable\'s contribution → End at final prediction (f(x))\n' +
          'RED = Pushes toward Long calls | BLUE = Pushes toward Short calls | Bar length = Strength of effect',
-         ha='center', fontsize=10,
+         ha='center', fontsize=9,  # Slightly smaller font
          bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.5))
 
 plt.tight_layout()
-plt.subplots_adjust(bottom=0.08)
+plt.subplots_adjust(bottom=0.02)  # Less bottom margin
 plt.savefig('analysis_outputs/level1_variable/shap_05_rf_waterfall.png',
             dpi=300, bbox_inches='tight')
-print("[OK] Saved: shap_05_rf_waterfall.png")
+print("[OK] Saved: shap_05_rf_waterfall.png (25 variables)")
 plt.close()
 
 # ==============================================================================
@@ -333,50 +333,50 @@ print("[OK] Saved: shap_05_rf_dependence.png")
 plt.close()
 
 # ==============================================================================
-# SHAP ANALYSIS: GRADIENT BOOSTING (REPEAT)
+# SHAP ANALYSIS: XGBOOST (REPEAT)
 # ==============================================================================
 
 print("\n" + "="*100)
-print("SHAP ANALYSIS: GRADIENT BOOSTING")
+print("SHAP ANALYSIS: XGBOOST")
 print("="*100)
 
 print("Creating SHAP explainer...")
-explainer_gb = shap.TreeExplainer(gb_model)
+explainer_xgb = shap.TreeExplainer(xgb_model)
 
 print("Calculating SHAP values...")
-shap_values_gb = explainer_gb.shap_values(X_sample)
+shap_values_xgb = explainer_xgb.shap_values(X_sample)
 
 # Handle binary classification
-if isinstance(shap_values_gb, np.ndarray) and len(shap_values_gb.shape) == 3:
-    shap_values_gb = shap_values_gb[:, :, 1]
-elif isinstance(shap_values_gb, list):
-    shap_values_gb = shap_values_gb[1]
+if isinstance(shap_values_xgb, np.ndarray) and len(shap_values_xgb.shape) == 3:
+    shap_values_xgb = shap_values_xgb[:, :, 1]
+elif isinstance(shap_values_xgb, list):
+    shap_values_xgb = shap_values_xgb[1]
 
-print(f"[OK] SHAP values calculated: {shap_values_gb.shape}")
+print(f"[OK] SHAP values calculated: {shap_values_xgb.shape}")
 
-# Create GB summary plot
-print("\nCreating GB Summary Plot...")
+# Create XGBoost summary plot
+print("\nCreating XGBoost Summary Plot...")
 fig, ax = plt.subplots(figsize=(16, 16))
 
-shap.summary_plot(shap_values_gb, X_sample,
+shap.summary_plot(shap_values_xgb, X_sample,
                   feature_names=feature_cols,
                   max_display=30,
                   show=False)
 
 # Add values at the LEFT side (away from color scale)
-mean_abs_shap_gb = np.abs(shap_values_gb).mean(axis=0)
-feature_order_gb = np.argsort(mean_abs_shap_gb)[-30:][::-1]
+mean_abs_shap_xgb = np.abs(shap_values_xgb).mean(axis=0)
+feature_order_xgb = np.argsort(mean_abs_shap_xgb)[-30:][::-1]
 
 xlim = ax.get_xlim()
 
-for i, feat_idx in enumerate(feature_order_gb):
-    value = mean_abs_shap_gb[feat_idx]
+for i, feat_idx in enumerate(feature_order_xgb):
+    value = mean_abs_shap_xgb[feat_idx]
     # Position FAR left to avoid overlap with variable names
     ax.text(xlim[0] - (xlim[1] - xlim[0]) * 0.40, 30 - i - 1, f'{value:.3f}', 
             va='center', ha='right', fontsize=7, fontweight='bold',
             bbox=dict(boxstyle='round,pad=0.3', facecolor='lightyellow', alpha=0.9, edgecolor='black', linewidth=0.5))
 
-plt.title('LEVEL 1: VARIABLE-LEVEL SHAP SUMMARY (Gradient Boosting)\n' +
+plt.title('LEVEL 1: VARIABLE-LEVEL SHAP SUMMARY (XGBoost)\n' +
           'Shows which variables push calls toward Short vs Long duration\n' +
           f'Based on {len(X_sample)} sample calls (500 short + 500 long)',
           fontsize=14, fontweight='bold', pad=20)
@@ -387,44 +387,44 @@ guide_text = """HOW TO READ THIS SHAP SUMMARY PLOT:
 • Y-axis: Variables ranked by importance | X-axis: SHAP value (impact on prediction)
 • Positive (right) = LONG calls | Negative (left) = SHORT calls | Each dot = One call
 • Color: Feature value (Red = High, Blue = Low) | Values on LEFT = Mean |SHAP|
-This is from Gradient Boosting model. Compare with Random Forest to find consistent patterns!"""
+This is from XGBoost model. Compare with Random Forest to find consistent patterns!"""
 
 fig.text(0.5, -0.02, guide_text, ha='center', fontsize=9,
          bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5, edgecolor='black'), family='monospace')
 
 plt.tight_layout()
 plt.subplots_adjust(bottom=0.12, left=0.25)  # More space for labels on LEFT
-plt.savefig('analysis_outputs/level1_variable/shap_05_gb_summary_beeswarm.png',
+plt.savefig('analysis_outputs/level1_variable/shap_05_xgb_summary_beeswarm.png',
             dpi=300, bbox_inches='tight')
-print("[OK] Saved: shap_05_gb_summary_beeswarm.png")
+print("[OK] Saved: shap_05_xgb_summary_beeswarm.png")
 plt.close()
 
 # ==============================================================================
-# GB BAR PLOT (FEATURE IMPORTANCE)
+# XGBOOST BAR PLOT (FEATURE IMPORTANCE)
 # ==============================================================================
 
-print("\nCreating GB Bar Plot...")
+print("\nCreating XGBoost Bar Plot...")
 fig, ax = plt.subplots(figsize=(14, 14))
 
-shap.summary_plot(shap_values_gb, X_sample,
+shap.summary_plot(shap_values_xgb, X_sample,
                   feature_names=feature_cols,
                   plot_type='bar',
                   max_display=30,
                   show=False)
 
 # Add values at the end of bars
-mean_abs_shap_gb_bar = np.abs(shap_values_gb).mean(axis=0)
-feature_order_gb_bar = np.argsort(mean_abs_shap_gb_bar)[-30:][::-1]
+mean_abs_shap_xgb_bar = np.abs(shap_values_xgb).mean(axis=0)
+feature_order_xgb_bar = np.argsort(mean_abs_shap_xgb_bar)[-30:][::-1]
 
 xlim = ax.get_xlim()
 
-for i, feat_idx in enumerate(feature_order_gb_bar):
-    value = mean_abs_shap_gb_bar[feat_idx]
+for i, feat_idx in enumerate(feature_order_xgb_bar):
+    value = mean_abs_shap_xgb_bar[feat_idx]
     ax.text(value + xlim[1] * 0.01, 30 - i - 1, f'{value:.3f}', 
             va='center', ha='left', fontsize=8, fontweight='bold',
             bbox=dict(boxstyle='round,pad=0.3', facecolor='lightblue', alpha=0.6))
 
-plt.title('LEVEL 1: VARIABLE IMPORTANCE (Gradient Boosting SHAP)\n' +
+plt.title('LEVEL 1: VARIABLE IMPORTANCE (XGBoost SHAP)\n' +
           'Mean |SHAP value| shows average impact on predictions\n' +
           f'Based on {len(X_sample)} sample calls (500 short + 500 long)',
           fontsize=14, fontweight='bold', pad=20)
@@ -434,37 +434,111 @@ guide_text = """HOW TO READ THIS SHAP BAR PLOT:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 • Shows average absolute SHAP value | Higher value = More important variable
 • Answers: "Which variables matter most for predicting call duration?"
-• This is from Gradient Boosting model | Values shown at end of bars"""
+• This is from XGBoost model | Values shown at end of bars"""
 
 fig.text(0.5, -0.02, guide_text, ha='center', fontsize=9,
          bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.5, edgecolor='black'), family='monospace')
 
 plt.tight_layout()
 plt.subplots_adjust(bottom=0.10)
-plt.savefig('analysis_outputs/level1_variable/shap_05_gb_importance_bar.png',
+plt.savefig('analysis_outputs/level1_variable/shap_05_xgb_importance_bar.png',
             dpi=300, bbox_inches='tight')
-print("[OK] Saved: shap_05_gb_importance_bar.png")
+print("[OK] Saved: shap_05_xgb_importance_bar.png")
 plt.close()
 
 # ==============================================================================
-# GB DEPENDENCE PLOTS (TOP 4 FEATURES)
+# XGBOOST WATERFALL PLOTS (25 VARIABLES)
 # ==============================================================================
 
-print("\nCreating GB Dependence Plots...")
+print("\nCreating XGBoost Waterfall Plots (25 variables)...")
+
+# Get predictions for XGBoost
+proba_sample_xgb = xgb_model.predict_proba(X_sample)[:, 1]
+
+# High confidence long call
+long_idx_xgb = np.where((y_sample == 1) & (proba_sample_xgb > 0.7))[0]
+if len(long_idx_xgb) > 0:
+    example_long_idx_xgb = long_idx_xgb[0]
+else:
+    example_long_idx_xgb = np.argmax(proba_sample_xgb)
+
+# High confidence short call
+short_idx_xgb = np.where((y_sample == 0) & (proba_sample_xgb < 0.3))[0]
+if len(short_idx_xgb) > 0:
+    example_short_idx_xgb = short_idx_xgb[0]
+else:
+    example_short_idx_xgb = np.argmin(proba_sample_xgb)
+
+# Create waterfall plots - 25 VARIABLES
+fig, axes = plt.subplots(2, 1, figsize=(16, 40))  # Increased height for 25 variables
+
+# Get expected value
+expected_value_xgb = explainer_xgb.expected_value
+if isinstance(expected_value_xgb, (list, np.ndarray)):
+    expected_value_xgb = expected_value_xgb[1] if len(expected_value_xgb) > 1 else expected_value_xgb[0]
+
+# Long call example
+plt.sca(axes[0])
+shap.waterfall_plot(
+    shap.Explanation(values=shap_values_xgb[example_long_idx_xgb],
+                     base_values=expected_value_xgb,
+                     data=X_sample.iloc[example_long_idx_xgb],
+                     feature_names=feature_cols),
+    max_display=25,  # 25 VARIABLES
+    show=False
+)
+axes[0].set_title(f'XGBOOST - LONG CALL Prediction (Actual: {"Long" if y_sample[example_long_idx_xgb] == 1 else "Short"})\n' +
+                  f'Predicted Probability: {proba_sample_xgb[example_long_idx_xgb]:.1%}',
+                  fontsize=11, fontweight='bold')
+
+# Short call example
+plt.sca(axes[1])
+shap.waterfall_plot(
+    shap.Explanation(values=shap_values_xgb[example_short_idx_xgb],
+                     base_values=expected_value_xgb,
+                     data=X_sample.iloc[example_short_idx_xgb],
+                     feature_names=feature_cols),
+    max_display=25,  # 25 VARIABLES
+    show=False
+)
+axes[1].set_title(f'XGBOOST - SHORT CALL Prediction (Actual: {"Long" if y_sample[example_short_idx_xgb] == 1 else "Short"})\n' +
+                  f'Predicted Probability: {proba_sample_xgb[example_short_idx_xgb]:.1%}',
+                  fontsize=11, fontweight='bold')
+
+# Add overall guide
+fig.text(0.5, 0.01, 
+         'HOW TO READ WATERFALL PLOTS:\n' +
+         'Start from base value (E[f(x)]) → Each bar shows one variable\'s contribution → End at final prediction (f(x))\n' +
+         'RED = Pushes toward Long calls | BLUE = Pushes toward Short calls | Bar length = Strength of effect',
+         ha='center', fontsize=9,
+         bbox=dict(boxstyle='round', facecolor='lightyellow', alpha=0.5))
+
+plt.tight_layout()
+plt.subplots_adjust(bottom=0.02)
+plt.savefig('analysis_outputs/level1_variable/shap_05_xgb_waterfall.png',
+            dpi=300, bbox_inches='tight')
+print("[OK] Saved: shap_05_xgb_waterfall.png (25 variables)")
+plt.close()
+
+# ==============================================================================
+# XGBOOST DEPENDENCE PLOTS (TOP 4 FEATURES)
+# ==============================================================================
+
+print("\nCreating XGBoost Dependence Plots...")
 
 # Get top 4 features by mean |SHAP|
-mean_abs_shap_gb_dep = np.abs(shap_values_gb).mean(axis=0)
-top_4_indices_gb = np.argsort(mean_abs_shap_gb_dep)[-4:][::-1]
-top_4_features_gb = [feature_cols[i] for i in top_4_indices_gb]
+mean_abs_shap_xgb_dep = np.abs(shap_values_xgb).mean(axis=0)
+top_4_indices_xgb = np.argsort(mean_abs_shap_xgb_dep)[-4:][::-1]
+top_4_features_xgb = [feature_cols[i] for i in top_4_indices_xgb]
 
 fig, axes = plt.subplots(2, 2, figsize=(16, 12))
 axes = axes.flatten()
 
-for idx, (feat_idx, feat_name) in enumerate(zip(top_4_indices_gb, top_4_features_gb)):
+for idx, (feat_idx, feat_name) in enumerate(zip(top_4_indices_xgb, top_4_features_xgb)):
     ax = axes[idx]
     plt.sca(ax)
     
-    shap.dependence_plot(feat_idx, shap_values_gb, X_sample,
+    shap.dependence_plot(feat_idx, shap_values_xgb, X_sample,
                          feature_names=feature_cols,
                          show=False,
                          ax=ax)
@@ -480,15 +554,15 @@ fig.text(0.5, 0.02,
          ha='center', fontsize=10,
          bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.5))
 
-plt.suptitle('LEVEL 1: TOP 4 VARIABLE DEPENDENCE PLOTS (Gradient Boosting)\n' +
+plt.suptitle('LEVEL 1: TOP 4 VARIABLE DEPENDENCE PLOTS (XGBoost)\n' +
              'Shows how variable values affect predictions and interactions',
              fontsize=14, fontweight='bold', y=0.98)
 
 plt.tight_layout()
 plt.subplots_adjust(bottom=0.08, top=0.94)
-plt.savefig('analysis_outputs/level1_variable/shap_05_gb_dependence.png',
+plt.savefig('analysis_outputs/level1_variable/shap_05_xgb_dependence.png',
             dpi=300, bbox_inches='tight')
-print("[OK] Saved: shap_05_gb_dependence.png")
+print("[OK] Saved: shap_05_xgb_dependence.png")
 plt.close()
 
 # ==============================================================================
@@ -501,13 +575,13 @@ print("="*100)
 
 # Calculate mean absolute SHAP values
 mean_abs_shap_rf = np.abs(shap_values_rf).mean(axis=0)
-mean_abs_shap_gb = np.abs(shap_values_gb).mean(axis=0)
+mean_abs_shap_xgb = np.abs(shap_values_xgb).mean(axis=0)
 
 shap_importance = pd.DataFrame({
     'Variable': feature_cols,
     'SHAP_RF': mean_abs_shap_rf,
-    'SHAP_GB': mean_abs_shap_gb,
-    'SHAP_Avg': (mean_abs_shap_rf + mean_abs_shap_gb) / 2
+    'SHAP_XGB': mean_abs_shap_xgb,
+    'SHAP_Avg': (mean_abs_shap_rf + mean_abs_shap_xgb) / 2
 }).sort_values('SHAP_Avg', ascending=False)
 
 shap_importance.to_csv('analysis_outputs/level1_variable/05_shap_importance.csv', index=False)
@@ -516,16 +590,16 @@ print("[OK] Saved: 05_shap_importance.csv")
 print("\nTOP 20 VARIABLES BY SHAP IMPORTANCE:")
 print("-" * 100)
 for idx, row in shap_importance.head(20).iterrows():
-    print(f"  {row['Variable']}: {row['SHAP_Avg']:.4f} (RF={row['SHAP_RF']:.4f}, GB={row['SHAP_GB']:.4f})")
+    print(f"  {row['Variable']}: {row['SHAP_Avg']:.4f} (RF={row['SHAP_RF']:.4f}, XGB={row['SHAP_XGB']:.4f})")
 
 print("\n" + "="*100)
 print("LEVEL 1 SHAP ANALYSIS COMPLETE")
 print("="*100)
 print("\n[OK] Created 8 types of SHAP visualizations:")
-print("   1. Summary plots (beeswarm) - RF & GB")
-print("   2. Bar plots (importance) - RF & GB")
-print("   3. Waterfall plots (individual explanations) - RF")
-print("   4. Dependence plots (interactions) - RF & GB")
+print("   1. Summary plots (beeswarm) - RF & XGBoost")
+print("   2. Bar plots (importance) - RF & XGBoost")
+print("   3. Waterfall plots (25 variables) - RF & XGBoost")
+print("   4. Dependence plots (interactions) - RF & XGBoost")
 print("[OK] All charts include reading guides")
 print(f"[OK] Top variable: {shap_importance.iloc[0]['Variable']}")
 

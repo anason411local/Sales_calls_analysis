@@ -96,7 +96,7 @@ ax.set_yticks(range(len(top_20)))
 ax.set_yticklabels(top_20['Variable'], fontsize=11)
 ax.set_xlabel('Combined Importance Score', fontsize=13, fontweight='bold')
 ax.set_title('LEVEL 1: TOP 20 MOST IMPORTANT VARIABLES\n' +
-             'Combined Score: 35% Random Forest + 35% Gradient Boosting + 30% Correlation\n' +
+             'Combined Score: 35% Random Forest + 35% XGBoost + 30% Correlation\n' +
              'Shows which VARIABLES (not specific values) matter most for call duration',
              fontsize=13, fontweight='bold', pad=25)
 ax.invert_yaxis()
@@ -348,14 +348,14 @@ width = 0.35
 
 bars1 = ax.barh(x - width/2, df_model_compare['RF_Importance'], width,
                label='Random Forest', color='#98D8C8', alpha=0.8, edgecolor='black')
-bars2 = ax.barh(x + width/2, df_model_compare['GB_Importance'], width,
-               label='Gradient Boosting', color='#F7DC6F', alpha=0.8, edgecolor='black')
+bars2 = ax.barh(x + width/2, df_model_compare['XGB_Importance'], width,
+               label='XGBoost', color='#F7DC6F', alpha=0.8, edgecolor='black')
 
 ax.set_yticks(x)
 ax.set_yticklabels(df_model_compare['Variable'], fontsize=10)
 ax.set_xlabel('Feature Importance', fontsize=13, fontweight='bold')
 ax.set_title('LEVEL 1: MODEL COMPARISON - TOP 20 VARIABLES\n' +
-             'Comparing Random Forest vs Gradient Boosting feature importance\n' +
+             'Comparing Random Forest vs XGBoost feature importance\n' +
              'Consistent ranking = More reliable',
              fontsize=13, fontweight='bold', pad=20)
 ax.invert_yaxis()

@@ -3,7 +3,7 @@ COMPLETE TWO-LEVEL ANALYSIS REPORT
 Sales Call Duration Analysis: Why Not All OMC Calls Go Above 4.88 Minutes
 ====================================================================================================
 
-Generated: 2025-12-22 00:17:19
+Generated: 2025-12-22 15:58:03
 Analysis Framework: Two-Level Approach (Variable-Level + Value-Level)
 
 ====================================================================================================
@@ -28,34 +28,34 @@ TOP 10 MOST IMPORTANT VARIABLES:
 ----------------------------------------------------------------------------------------------------
   1. total_buying_signals
      Combined Score: 0.9063
-     RF Importance: 0.2077 | GB Importance: 0.3832
+     RF Importance: 0.2077 | XGB Importance: 0.2370
   2. total_discovery_questions
-     Combined Score: 0.7585
-     RF Importance: 0.2171 | GB Importance: 0.2133
+     Combined Score: 0.6555
+     RF Importance: 0.2171 | XGB Importance: 0.0622
   3. TO_Event_O
-     Combined Score: 0.3461
-     RF Importance: 0.0184 | GB Importance: 0.0199
+     Combined Score: 0.3464
+     RF Importance: 0.0184 | XGB Importance: 0.0125
   4. LQ_Company_Address
-     Combined Score: 0.3266
-     RF Importance: 0.0113 | GB Importance: 0.0092
+     Combined Score: 0.3358
+     RF Importance: 0.0113 | XGB Importance: 0.0120
   5. LQ_Company_Name
-     Combined Score: 0.3121
-     RF Importance: 0.0123 | GB Importance: 0.0167
+     Combined Score: 0.3190
+     RF Importance: 0.0123 | XGB Importance: 0.0150
   6. LQ_Customer_Name
-     Combined Score: 0.2983
-     RF Importance: 0.0091 | GB Importance: 0.0065
+     Combined Score: 0.3081
+     RF Importance: 0.0091 | XGB Importance: 0.0107
   7. total_interruptions
-     Combined Score: 0.2778
-     RF Importance: 0.0679 | GB Importance: 0.0159
+     Combined Score: 0.3040
+     RF Importance: 0.0679 | XGB Importance: 0.0275
   8. call_result_tag
-     Combined Score: 0.2622
-     RF Importance: 0.0287 | GB Importance: 0.0220
+     Combined Score: 0.2873
+     RF Importance: 0.0287 | XGB Importance: 0.0306
   9. LQ_Service
-     Combined Score: 0.2618
-     RF Importance: 0.0116 | GB Importance: 0.0077
-  10. TO_OMC_Disposiion
-     Combined Score: 0.2445
-     RF Importance: 0.0338 | GB Importance: 0.0569
+     Combined Score: 0.2706
+     RF Importance: 0.0116 | XGB Importance: 0.0107
+  10. price_mentions_final_2min
+     Combined Score: 0.2703
+     RF Importance: 0.0583 | XGB Importance: 0.0270
 
 ====================================================================================================
 LEVEL 2: VALUE-LEVEL KEY FINDINGS
@@ -190,7 +190,7 @@ METHODOLOGY
 
 LEVEL 1 (VARIABLE-LEVEL):
   - 49x49 Spearman correlation matrices
-  - Random Forest & Gradient Boosting models
+  - Random Forest & XGBoost models
   - SHAP analysis (all chart types)
   - Statistical tests (t-test, Mann-Whitney, Chi-square)
 

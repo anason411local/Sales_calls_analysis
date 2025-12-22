@@ -84,7 +84,7 @@ report_lines.append("-" * 100)
 for idx, row in df_l1_importance.head(10).iterrows():
     report_lines.append(f"  {idx+1}. {row['Variable']}")
     report_lines.append(f"     Combined Score: {row['Combined_Score']:.4f}")
-    report_lines.append(f"     RF Importance: {row['RF_Importance']:.4f} | GB Importance: {row['GB_Importance']:.4f}")
+    report_lines.append(f"     RF Importance: {row['RF_Importance']:.4f} | XGB Importance: {row['XGB_Importance']:.4f}")
 
 # LEVEL 2 FINDINGS
 report_lines.append("\n" + "="*100)
@@ -161,7 +161,7 @@ report_lines.append("="*100)
 
 report_lines.append("\nLEVEL 1 (VARIABLE-LEVEL):")
 report_lines.append("  - 49x49 Spearman correlation matrices")
-report_lines.append("  - Random Forest & Gradient Boosting models")
+report_lines.append("  - Random Forest & XGBoost models")
 report_lines.append("  - SHAP analysis (all chart types)")
 report_lines.append("  - Statistical tests (t-test, Mann-Whitney, Chi-square)")
 

@@ -44,7 +44,7 @@ print("="*100)
 
 print("\nLoading models and data...")
 rf_model = joblib.load('analysis_outputs/level1_variable/03_model_random_forest.pkl')
-gb_model = joblib.load('analysis_outputs/level1_variable/03_model_gradient_boosting.pkl')
+xgb_model = joblib.load('analysis_outputs/level1_variable/03_model_xgboost.pkl')
 
 df = pd.read_csv('analysis_outputs/level1_variable/01_combined_original.csv')
 
@@ -181,27 +181,27 @@ for idx, label in zip(example_indices, example_labels):
 print("[OK] Generated 4 RF explanations")
 
 # ==============================================================================
-# GENERATE LIME EXPLANATIONS - GRADIENT BOOSTING
+# GENERATE LIME EXPLANATIONS - XGBOOST
 # ==============================================================================
 
 print("\n" + "="*100)
-print("GENERATING LIME EXPLANATIONS - GRADIENT BOOSTING")
+print("GENERATING LIME EXPLANATIONS - XGBOOST")
 print("="*100)
 
-proba_gb = gb_model.predict_proba(X_sample)[:, 1]
-pred_gb = (proba_gb > 0.5).astype(int)
+proba_xgb = xgb_model.predict_proba(X_sample)[:, 1]
+pred_xgb = (proba_xgb > 0.5).astype(int)
 
 # Use same indices for consistency
-lime_explanations_gb = []
+lime_explanations_xgb = []
 for idx, label in zip(example_indices, example_labels):
-    print(f"  Explaining: {label} (actual={y_sample[idx]}, pred_proba={proba_gb[idx]:.3f})")
+    print(f"  Explaining: {label} (actual={y_sample[idx]}, pred_proba={proba_xgb[idx]:.3f})")
     exp = explainer.explain_instance(
         X_sample[idx],
-        gb_model.predict_proba,
+        xgb_model.predict_proba,
         num_features=15,
         num_samples=5000
     )
-    lime_explanations_gb.append((exp, label, idx))
+    lime_explanations_xgb.append((exp, label, idx))
 
 print("[OK] Generated 4 GB explanations")
 
@@ -260,12 +260,12 @@ plt.close()
 # VISUALIZATION 2: INDIVIDUAL LIME EXPLANATIONS (GB)
 # ==============================================================================
 
-print("VIZ 2: Individual LIME Explanations (Gradient Boosting)...")
+print("VIZ 2: Individual LIME Explanations (XGBoost)...")
 
 fig, axes = plt.subplots(2, 2, figsize=(18, 14))
 axes = axes.flatten()
 
-for i, (exp, label, idx) in enumerate(lime_explanations_gb):
+for i, (exp, label, idx) in enumerate(lime_explanations_xgb):
     ax = axes[i]
     
     exp_list = exp.as_list()
@@ -280,7 +280,7 @@ for i, (exp, label, idx) in enumerate(lime_explanations_gb):
     ax.set_yticklabels(features, fontsize=9)
     ax.set_xlabel('LIME Weight (Impact on Prediction)', fontsize=10, fontweight='bold')
     ax.set_title(f'{label}\nActual: {"Long" if y_sample[idx] == 1 else "Short"} | ' +
-                 f'Pred: {"Long" if pred_gb[idx] == 1 else "Short"} ({proba_gb[idx]:.1%})',
+                 f'Pred: {"Long" if pred_xgb[idx] == 1 else "Short"} ({proba_xgb[idx]:.1%})',
                  fontsize=11, fontweight='bold')
     ax.axvline(0, color='black', linestyle='-', linewidth=1)
     ax.grid(axis='x', alpha=0.3)
@@ -293,7 +293,7 @@ for i, (exp, label, idx) in enumerate(lime_explanations_gb):
                 va='center', ha='left' if weight > 0 else 'right',
                 fontsize=8, fontweight='bold')
 
-plt.suptitle('LEVEL 1: LIME EXPLANATIONS FOR KEY PREDICTIONS (Gradient Boosting)\n' +
+plt.suptitle('LEVEL 1: LIME EXPLANATIONS FOR KEY PREDICTIONS (XGBoost)\n' +
              'POSITIVE (Blue) = Pushes toward LONG calls | NEGATIVE (Yellow) = Pushes toward SHORT calls',
              fontsize=14, fontweight='bold', y=0.995)
 plt.tight_layout()
@@ -315,7 +315,7 @@ np.random.seed(42)
 random_sample_indices = np.arange(len(X_sample))  # Use ALL samples
 
 lime_weights_rf = []
-lime_weights_gb = []
+lime_weights_xgb = []
 
 for i, sample_idx in enumerate(random_sample_indices):
     if (i + 1) % 100 == 0:
@@ -331,25 +331,25 @@ for i, sample_idx in enumerate(random_sample_indices):
     weights_rf = dict(exp_rf.as_list())
     lime_weights_rf.append(weights_rf)
     
-    # GB
-    exp_gb = explainer.explain_instance(
+    # XGBoost
+    exp_xgb = explainer.explain_instance(
         X_sample[sample_idx],
-        gb_model.predict_proba,
+        xgb_model.predict_proba,
         num_features=len(feature_names),
         num_samples=1000
     )
-    weights_gb = dict(exp_gb.as_list())
-    lime_weights_gb.append(weights_gb)
+    weights_xgb = dict(exp_xgb.as_list())
+    lime_weights_xgb.append(weights_xgb)
 
 # Aggregate: Calculate mean absolute weight for each feature
 feature_importance_rf = {}
-feature_importance_gb = {}
+feature_importance_xgb = {}
 
 for feature in feature_names:
     weights_rf_list = []
-    weights_gb_list = []
+    weights_xgb_list = []
     
-    for weights_rf, weights_gb in zip(lime_weights_rf, lime_weights_gb):
+    for weights_rf, weights_xgb in zip(lime_weights_rf, lime_weights_xgb):
         # LIME returns features with conditions (e.g., "age <= 5")
         # We need to match by feature name prefix
         for key, val in weights_rf.items():
@@ -357,21 +357,21 @@ for feature in feature_names:
                 weights_rf_list.append(abs(val))
                 break
         
-        for key, val in weights_gb.items():
+        for key, val in weights_xgb.items():
             if feature in key:
-                weights_gb_list.append(abs(val))
+                weights_xgb_list.append(abs(val))
                 break
     
     feature_importance_rf[feature] = np.mean(weights_rf_list) if weights_rf_list else 0
-    feature_importance_gb[feature] = np.mean(weights_gb_list) if weights_gb_list else 0
+    feature_importance_xgb[feature] = np.mean(weights_xgb_list) if weights_xgb_list else 0
 
 # Create DataFrame
 df_lime_importance = pd.DataFrame({
     'Variable': list(feature_importance_rf.keys()),
     'LIME_RF': list(feature_importance_rf.values()),
-    'LIME_GB': list(feature_importance_gb.values())
+    'LIME_XGB': list(feature_importance_xgb.values())
 })
-df_lime_importance['LIME_Avg'] = (df_lime_importance['LIME_RF'] + df_lime_importance['LIME_GB']) / 2
+df_lime_importance['LIME_Avg'] = (df_lime_importance['LIME_RF'] + df_lime_importance['LIME_XGB']) / 2
 df_lime_importance = df_lime_importance.sort_values('LIME_Avg', ascending=False)
 
 # Save
@@ -387,8 +387,8 @@ width = 0.35
 
 bars1 = ax.barh(x - width/2, top_20['LIME_RF'], width,
                 label='Random Forest', color='#98D8C8', alpha=0.8, edgecolor='black', linewidth=1.5)
-bars2 = ax.barh(x + width/2, top_20['LIME_GB'], width,
-                label='Gradient Boosting', color='#F7DC6F', alpha=0.8, edgecolor='black', linewidth=1.5)
+bars2 = ax.barh(x + width/2, top_20['LIME_XGB'], width,
+                label='XGBoost', color='#F7DC6F', alpha=0.8, edgecolor='black', linewidth=1.5)
 
 ax.set_yticks(x)
 ax.set_yticklabels(top_20['Variable'], fontsize=10)
