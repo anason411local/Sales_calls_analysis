@@ -1,21 +1,21 @@
 CALL PERFORMANCE ANALYSIS TASK
 
-Analyze the following call data comprehensively:
+Analyze call data comprehensively:
 
 LEAD QUALITY:
-- Company name: {company_name}
-- Company address: {company_address}
-- Company services offered: {company_service}
-- Company owner name: {customer_name}
-- Call attempts to company phone number: {calls_count}
-- Established call connection to company phone number: {connection_made_calls}
+- Company name: {LQ_Company_Name}
+- Company address: {LQ_Company_Address}
+- Company services offered: {LQ_Service}
+- Company owner name: {LQ_Customer_Name}
+- Call attempts to company phone number: {Calls_Count}
+- Established call connection to company phone number: {Connection_Made_Calls}
 
 CALL INFORMATION:
-- Call ID/Lead ID: {lead_id}
-- Call Date: {call_date}
-- LGS Call Duration: {lgs_duration} seconds
-- OMC Call Duration: {omc_duration} seconds
-- Call Status/Outcome: {omc_status}
+- Call ID/Lead ID: {TO_Lead_ID}
+- Call Date: {TO_Event_O}
+- LGS Call Duration: {TO_length_in_sec} seconds
+- OMC Call Duration: {TO_OMC_Duration} seconds
+- Call Status/Outcome: {TO_OMC_Disposiion} 
 [P2P - Promise to Pay
 HU- Hung Up
 A- Answering Machine
@@ -30,20 +30,70 @@ LB- Language Barrier
 AC- Already a Customer
 NP-No Pitch No Price
 SW-Sold Website]
+- High / Low Season of the business: {season_status}
 
 LGS (LEAD GENERATION) DATA:
-- LGS Agent: {lgs_agent}
+- LGS Agent: {TO_User_M}
 - LGS Transcription: {lgs_transcription}
+- LGS Opener Agent Gender: {lgs_agent_gender}
+- LGS Opener Agent call duration before transfer to OMC: {TO_length_in_sec}
+- Is the LGS Opener speaking with Company Owner: {is_decision_maker}
+- Can Customer accept more work: {ready_for_customers}
+- Is customer Services considered forbidden industry: {forbidden_industry}
+- Did customer agreed to be transferred to OMC: {ready_to_transfer}
+- Customer Sentiment on LGS call : {customer_sentiment_lgs}
+- Customer language: {customer_language}
+- Who greet first on LGS call: {who_said_hello_first_lgs}
+- LGS Opener Agent Sentiment Style: {lgs_sentiment_style}
+ [expert & confident, 
+consultative & validating, 
+robotic & scriptbound,
+hesitant & apologetic, 
+urgent & pressing]
+
 
 OMC (OUTBOUND MARKETING) DATA:
-- OMC Agent: {omc_agent}
-- OMC Transcription:
-{omc_transcription}
+- OMC Agent: {TO_OMC_User}
+- OMC Transcription: {omc_transcription}
+- Timestamp of the call: {TO_Event_O}
+- US Time Zone: {timezone} [	
+Central Standard Time (GMT-6)	
+Mountain Standard Time (GMT-7)
+Pacific Standard Time (GMT-8)		
+Alaska Standard Time (GMT-9)
+Hawaii-Aleutian Standard Time (GMT-10)]
+
+- Customer Sentiment on OMC call: {customer_sentiment_omc}
+- Customer knows he speak with marketing company: {customer_knows_marketing}
+- Customer availability to speak on the phone: {customer_availability}
+- Customer marketing knowledge and understanding: {customer_marketing_experience}
+- Call quality: {technical_quality_score}
+- OMC Closer Agent call disposition: {TO_OMC_Disposiion}
+- OMC Closer Agent call duration: {TO_OMC_Duration}
+- OMC Closer Agent Sentiment: {omc_agent_sentiment_style}
+- Who greet first on OMC call: {omc_who_said_hello_first}
+- Customer talk percentage on the OMC Call: {customer_talk_percentage}
+- Total discovery questions asked: {total_discovery_questions}
+- Total buying signals from customer: {total_buying_signals}
+- Time in seconds to state clear reason for the call: {time_to_reason_seconds}
+- Business type mentioned: {business_type_mentioned}
+- Location mentioned: {location_mentioned}
+- Within 45 seconds: {within_45_seconds}
+- Was agenda communicated: {call_structure_framed}
+- Total Objections: {total_objections}
+- Number of objections acknowledged: {objections_acknowledged}
+- Price mentions in final 2 min: {price_mentions_final_2min}
+- Timeline mentions in final 2 min: {timeline_mentions_final_2min}
+- Contract mentions in final 2 min: {contract_mentions_final_2min}
+- How many objections were rebutted: {objections_rebutted}
+- Total number of interruptions: {total_interruptions}
+- Commitment from customer: {commitment_type}
+- Call result tag: {call_result_tag} [early disconnect – before discovery”, “disconnect – post‑price”]
 
 ANALYSIS REQUIREMENTS:
 
 1. LGS HANDOFF QUALITY ANALYSIS:
-- How does the Lead quality affect the LGS and OMC conversation longevity?
+- How does the Lead quality affect the LGS and OMC conversation longevity? 
 - How does the number of call attempts vs. connection make impact conversation longevity?
 - How is the time of the day and timezone affecting the connectivity and call duration?
 - How is the month of the year the call is made affecting the call duration based on the high/low season for that industry and services company is offering?
@@ -52,10 +102,10 @@ ANALYSIS REQUIREMENTS:
 - How is the LGS Agent call duration affecting the OMC call duration?
 - How is the customer sentiment affecting the OMC call duration?
 - How is the customer language spoken [English, Spanish] affecting the OMC call duration?
-- How does the if "Customer knows it is a marketing call or it is a job?" affects the OMC call duration?
+- How does the if “Customer knows it is a marketing call or it is a job?” affects the OMC call duration?
 - How does who greet first [customer, agent] affect the OMC call duration?
-- How does "Affluence : How experience is the customer about marketing" affect the OMC call duration?
-- How does "Quality of the call - Agent's background noise" affect the OMC call duration?
+- How does “Affluence : How experience is the customer about marketing” affect the OMC call duration?
+- How does “Quality of the call - Agent's background noise” affect the OMC call duration?
 - Is there a pattern between the OMC Agent and the duration of the OMC calls?
 - How is the OMC Agent sentiment affecting the OMC call duration?
 - Is there a pattern between Call Disposition and OMC call duration?
@@ -77,6 +127,8 @@ ANALYSIS REQUIREMENTS:
 - How does Outcome tag for when in the process the call ended affect the OMC call duration?
 - How does Whether the call disposition selected by the agent matches the actual result affect the OMC call duration?
 
+
+
 2. OMC CALL ANALYSIS:
    - Is this a SHORT call (<5 minutes) or LONG call (>=5 minutes)?
    - If SHORT: Why did it end so quickly? What went wrong?
@@ -87,6 +139,7 @@ ANALYSIS REQUIREMENTS:
    - How were objections handled?
 - What impact on the OMC call duration does it has the OMC Agent name?
 - What impact on the OMC call duration does the Call disposition has?
+
 
 3. PATTERN IDENTIFICATION:
    - For SHORT calls: List specific reasons for early termination
@@ -123,3 +176,6 @@ IMPORTANT:
 - For failed calls: Show exactly where and why it failed (with quotes)
 
 Provide your analysis in the structured format requested.
+
+
+

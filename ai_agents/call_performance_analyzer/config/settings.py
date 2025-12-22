@@ -23,7 +23,7 @@ LOGS_DIR.mkdir(exist_ok=True)
 REPORTS_DIR.mkdir(exist_ok=True)
 
 # Input/Output files
-INPUT_FILE = INPUT_DIR / "mergeed_for_test_og.csv"
+INPUT_FILE = INPUT_DIR / "mergeed_for_test.csv"
 OUTPUT_FILE = REPORTS_DIR / "call_performance_analysis_report.md"
 CHECKPOINT_FILE = OUTPUT_DIR / "analysis_checkpoint.json"
 
@@ -32,15 +32,15 @@ PROMPTS_DIR = Path(__file__).resolve().parent.parent / "prompts"
 SYSTEM_INSTRUCTIONS_FILE = PROMPTS_DIR / "system_instructions.txt"
 ANALYSIS_PROMPT_FILE = PROMPTS_DIR / "analysis_prompt.txt"
 
-# Input columns - Updated for new dataset structure
+# Input columns - Updated for new dataset structure with extracted variables
 INPUT_COLUMNS = {
     # Lead Quality Information
     "company_name": "LQ_Company_Name",
     "company_address": "LQ_Company_Address",
     "company_service": "LQ_Service",
     "customer_name": "LQ_Customer_Name",
-    "calls_count": "Calls Count",
-    "connection_made_calls": "Connection Made Calls",
+    "calls_count": "Calls Count",  # CSV column name with space
+    "connection_made_calls": "Connection Made Calls",  # CSV column name with space
     
     # Call Information
     "lead_id": "TO_Lead_ID",
@@ -59,7 +59,46 @@ INPUT_COLUMNS = {
     "omc_agent": "TO_OMC_User",
     "omc_transcription_1": "TO_OMC_Transcription_VICI",
     "omc_transcription_2": "TO_OMC_Transcription_VICI(32000-64000)Words",
-    "omc_transcription_3": "TO_OMC_Transcription_VICI(64000+ Words)"
+    "omc_transcription_3": "TO_OMC_Transcription_VICI(64000+ Words)",
+    
+    # NEW: LGS Extracted Variables
+    "season_status": "season_status",
+    "lgs_agent_gender": "lgs_agent_gender",
+    "is_decision_maker": "is_decision_maker",
+    "ready_for_customers": "ready_for_customers",
+    "forbidden_industry": "forbidden_industry",
+    "ready_to_transfer": "ready_to_transfer",
+    "customer_sentiment_lgs": "customer_sentiment",
+    "customer_language": "customer_language",
+    "who_said_hello_first_lgs": "who_said_hello_first",
+    "lgs_sentiment_style": "lgs_sentiment_style",
+    
+    # NEW: OMC Extracted Variables
+    "timezone": "timezone",
+    "customer_sentiment_omc": "customer_sentiment_omc",
+    "customer_knows_marketing": "customer_knows_marketing",
+    "customer_availability": "customer_availability",
+    "customer_marketing_experience": "customer_marketing_experience",
+    "technical_quality_score": "technical_quality_score",
+    "omc_agent_sentiment_style": "omc_agent_sentiment_style",
+    "omc_who_said_hello_first": "omc_who_said_hello_first",
+    "customer_talk_percentage": "customer_talk_percentage",
+    "total_discovery_questions": "total_discovery_questions",
+    "total_buying_signals": "total_buying_signals",
+    "time_to_reason_seconds": "time_to_reason_seconds",
+    "location_mentioned": "location_mentioned",
+    "business_type_mentioned": "business_type_mentioned",
+    "within_45_seconds": "within_45_seconds",
+    "call_structure_framed": "call_structure_framed",
+    "total_objections": "total_objections",
+    "objections_acknowledged": "objections_acknowledged",
+    "price_mentions_final_2min": "price_mentions_final_2min",
+    "timeline_mentions_final_2min": "timeline_mentions_final_2min",
+    "contract_mentions_final_2min": "contract_mentions_final_2min",
+    "objections_rebutted": "objections_rebutted",
+    "total_interruptions": "total_interruptions",
+    "commitment_type": "commitment_type",
+    "call_result_tag": "call_result_tag"
 }
 
 # Gemini API Configuration

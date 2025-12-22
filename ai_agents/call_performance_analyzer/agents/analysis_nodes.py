@@ -66,12 +66,12 @@ def _analyze_single_call(row: Dict, chain) -> CallInsight:
     try:
         from config.settings import INPUT_COLUMNS
         
-        call_id = row.get(INPUT_COLUMNS['lead_id'], 'unknown')
+        call_id = row.get('TO_Lead_ID', 'unknown')
         logger.info(f"Analyzing call ID: {call_id}")
         
         # Handle missing values and convert duration safely
-        omc_duration_raw = row.get(INPUT_COLUMNS['omc_duration'], 0)
-        lgs_duration_raw = row.get(INPUT_COLUMNS['lgs_duration'], 0)
+        omc_duration_raw = row.get('TO_OMC_Duration', 0)
+        lgs_duration_raw = row.get('TO_length_in_sec', 0)
         
         if pd.isna(omc_duration_raw) or omc_duration_raw == '' or omc_duration_raw == '-':
             omc_duration = 0
@@ -91,51 +91,97 @@ def _analyze_single_call(row: Dict, chain) -> CallInsight:
             except (ValueError, TypeError):
                 lgs_duration = 0
         
-        # Concatenate LGS transcription parts
-        lgs_trans_1 = str(row.get(INPUT_COLUMNS['lgs_transcription_1'], ''))
-        lgs_trans_2 = str(row.get(INPUT_COLUMNS['lgs_transcription_2'], ''))
-        lgs_trans_3 = str(row.get(INPUT_COLUMNS['lgs_transcription_3'], ''))
+        # Concatenate LGS transcription parts - using exact CSV column names
+        lgs_trans_1 = str(row.get('TO_Transcription_VICI(0-32000) Words', ''))
+        lgs_trans_2 = str(row.get('TO_Transcription_VICI(32001-64000) Words', ''))
+        lgs_trans_3 = str(row.get('TO_Transcription_VICI(64000+ Words)', ''))
         lgs_transcription = f"{lgs_trans_1} {lgs_trans_2} {lgs_trans_3}".strip()
-        if not lgs_transcription or lgs_transcription == 'nan nan nan':
+        if not lgs_transcription or lgs_transcription == 'nan nan nan' or lgs_transcription == '- - -':
             lgs_transcription = 'No transcription available'
         
-        # Concatenate OMC transcription parts
-        omc_trans_1 = str(row.get(INPUT_COLUMNS['omc_transcription_1'], ''))
-        omc_trans_2 = str(row.get(INPUT_COLUMNS['omc_transcription_2'], ''))
-        omc_trans_3 = str(row.get(INPUT_COLUMNS['omc_transcription_3'], ''))
+        # Concatenate OMC transcription parts - using exact CSV column names
+        omc_trans_1 = str(row.get('TO_OMC_Transcription_VICI', ''))
+        omc_trans_2 = str(row.get('TO_OMC_Transcription_VICI(32000-64000)Words', ''))
+        omc_trans_3 = str(row.get('TO_OMC_Transcription_VICI(64000+ Words)', ''))
         omc_transcription = f"{omc_trans_1} {omc_trans_2} {omc_trans_3}".strip()
-        if not omc_transcription or omc_transcription == 'nan nan nan':
+        if not omc_transcription or omc_transcription == 'nan nan nan' or omc_transcription == '- - -':
             omc_transcription = 'No transcription available'
         
-        # Prepare input for LLM
+        # Prepare input for LLM with all variables
         analysis_input = {
-            "company_name": str(row.get(INPUT_COLUMNS['company_name'], 'unknown')),
-            "company_address": str(row.get(INPUT_COLUMNS['company_address'], 'unknown')),
-            "company_service": str(row.get(INPUT_COLUMNS['company_service'], 'unknown')),
-            "customer_name": str(row.get(INPUT_COLUMNS['customer_name'], 'unknown')),
-            "calls_count": str(row.get(INPUT_COLUMNS['calls_count'], 'unknown')),
-            "connection_made_calls": str(row.get(INPUT_COLUMNS['connection_made_calls'], 'unknown')),
-            "lead_id": str(call_id),
-            "call_date": str(row.get(INPUT_COLUMNS['call_date'], 'unknown')),
-            "lgs_duration": lgs_duration,
-            "omc_duration": omc_duration,
-            "omc_status": str(row.get(INPUT_COLUMNS['omc_status'], 'unknown')),
-            "lgs_agent": str(row.get(INPUT_COLUMNS['lgs_agent'], 'unknown')),
+            # Lead Quality
+            "LQ_Company_Name": str(row.get('LQ_Company_Name', 'unknown')),
+            "LQ_Company_Address": str(row.get('LQ_Company_Address', 'unknown')),
+            "LQ_Service": str(row.get('LQ_Service', 'unknown')),
+            "LQ_Customer_Name": str(row.get('LQ_Customer_Name', 'unknown')),
+            "Calls_Count": str(row.get('Calls Count', 'unknown')),  # CSV has space
+            "Connection_Made_Calls": str(row.get('Connection Made Calls', 'unknown')),  # CSV has space
+            
+            # Call Information
+            "TO_Lead_ID": str(call_id),
+            "TO_Event_O": str(row.get('TO_Event_O', 'unknown')),
+            "TO_length_in_sec": lgs_duration,
+            "TO_OMC_Duration": omc_duration,
+            "TO_OMC_Disposiion": str(row.get('TO_OMC_Disposiion', 'unknown')),
+            
+            # LGS Data
+            "TO_User_M": str(row.get('TO_User_M', 'unknown')),
             "lgs_transcription": lgs_transcription,
-            "omc_agent": str(row.get(INPUT_COLUMNS['omc_agent'], 'unknown')),
-            "omc_transcription": omc_transcription
+            
+            # LGS Extracted Variables
+            "season_status": str(row.get('season_status', 'unknown')),
+            "lgs_agent_gender": str(row.get('lgs_agent_gender', 'unknown')),
+            "is_decision_maker": str(row.get('is_decision_maker', 'unknown')),
+            "ready_for_customers": str(row.get('ready_for_customers', 'unknown')),
+            "forbidden_industry": str(row.get('forbidden_industry', 'unknown')),
+            "ready_to_transfer": str(row.get('ready_to_transfer', 'unknown')),
+            "customer_sentiment_lgs": str(row.get('customer_sentiment_lgs', 'unknown')),
+            "customer_language": str(row.get('customer_language', 'unknown')),
+            "who_said_hello_first_lgs": str(row.get('who_said_hello_first_lgs', 'unknown')),
+            "lgs_sentiment_style": str(row.get('lgs_sentiment_style', 'unknown')),
+            
+            # OMC Data
+            "TO_OMC_User": str(row.get('TO_OMC_User', 'unknown')),
+            "omc_transcription": omc_transcription,
+            
+            # OMC Extracted Variables
+            "timezone": str(row.get('timezone', 'unknown')),
+            "customer_sentiment_omc": str(row.get('customer_sentiment_omc', 'unknown')),
+            "customer_knows_marketing": str(row.get('customer_knows_marketing', 'unknown')),
+            "customer_availability": str(row.get('customer_availability', 'unknown')),
+            "customer_marketing_experience": str(row.get('customer_marketing_experience', 'unknown')),
+            "technical_quality_score": str(row.get('technical_quality_score', 'unknown')),
+            "omc_agent_sentiment_style": str(row.get('omc_agent_sentiment_style', 'unknown')),
+            "omc_who_said_hello_first": str(row.get('omc_who_said_hello_first', 'unknown')),
+            "customer_talk_percentage": str(row.get('customer_talk_percentage', 'unknown')),
+            "total_discovery_questions": str(row.get('total_discovery_questions', 'unknown')),
+            "total_buying_signals": str(row.get('total_buying_signals', 'unknown')),
+            "time_to_reason_seconds": str(row.get('time_to_reason_seconds', 'unknown')),
+            "location_mentioned": str(row.get('location_mentioned', 'unknown')),
+            "business_type_mentioned": str(row.get('business_type_mentioned', 'unknown')),
+            "within_45_seconds": str(row.get('within_45_seconds', 'unknown')),
+            "call_structure_framed": str(row.get('call_structure_framed', 'unknown')),
+            "total_objections": str(row.get('total_objections', 'unknown')),
+            "objections_acknowledged": str(row.get('objections_acknowledged', 'unknown')),
+            "price_mentions_final_2min": str(row.get('price_mentions_final_2min', 'unknown')),
+            "timeline_mentions_final_2min": str(row.get('timeline_mentions_final_2min', 'unknown')),
+            "contract_mentions_final_2min": str(row.get('contract_mentions_final_2min', 'unknown')),
+            "objections_rebutted": str(row.get('objections_rebutted', 'unknown')),
+            "total_interruptions": str(row.get('total_interruptions', 'unknown')),
+            "commitment_type": str(row.get('commitment_type', 'unknown')),
+            "call_result_tag": str(row.get('call_result_tag', 'unknown'))
         }
         
         # Invoke LLM analysis
         insight: CallInsight = chain.invoke(analysis_input)
         
         # Ensure required fields are set
-        insight.call_id = analysis_input["lead_id"]
-        insight.call_date = analysis_input["call_date"]
-        insight.omc_duration = analysis_input["omc_duration"]
-        insight.omc_status = analysis_input["omc_status"]
-        insight.lgs_agent = analysis_input["lgs_agent"]
-        insight.omc_agent = analysis_input["omc_agent"]
+        insight.call_id = analysis_input["TO_Lead_ID"]
+        insight.call_date = analysis_input["TO_Event_O"]
+        insight.omc_duration = analysis_input["TO_OMC_Duration"]
+        insight.omc_status = analysis_input["TO_OMC_Disposiion"]
+        insight.lgs_agent = analysis_input["TO_User_M"]
+        insight.omc_agent = analysis_input["TO_OMC_User"]
         insight.is_short_call = insight.omc_duration < CALL_DURATION_THRESHOLD
         insight.call_category = "short" if insight.is_short_call else "long"
         insight.analysis_success = True
