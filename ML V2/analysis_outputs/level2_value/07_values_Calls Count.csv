@@ -1,6 +1,9 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-Calls Count,4,4,2,6,66.67,33.33,-33.33,0.0,1.0,No,Favors Short Calls,16.67
-Calls Count,2,16,9,25,64.0,36.0,-28.0,0.0063,0.9366,No,Favors Short Calls,14.0
-Calls Count,1,57,36,93,61.29,38.71,-22.58,0.0,1.0,No,Favors Short Calls,11.29
-Calls Count,6,4,3,7,57.14,42.86,-14.29,0.0,1.0,No,Favors Short Calls,7.14
-Calls Count,3,7,8,15,46.67,53.33,6.67,0.8923,0.3449,No,Neutral,3.33
+Calls Count,8,4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
+Calls Count,5,27,15,42,64.29,35.71,-28.57,2.9838,0.0841,No,Favors Short Calls,14.29
+Calls Count,4,29,38,67,43.28,56.72,13.43,1.0108,0.3147,No,Favors Long Calls,6.72
+Calls Count,6,12,13,25,48.0,52.0,4.0,0.0,1.0,No,Neutral,2.0
+Calls Count,2,126,118,244,51.64,48.36,-3.28,0.2511,0.6163,No,Neutral,1.64
+Calls Count,1,334,352,686,48.69,51.31,2.62,0.9645,0.3261,No,Neutral,1.31
+Calls Count,3,57,59,116,49.14,50.86,1.72,0.0095,0.9222,No,Neutral,0.86
+Calls Count,7,11,11,22,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0

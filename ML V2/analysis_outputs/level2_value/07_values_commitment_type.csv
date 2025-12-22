@@ -1,6 +1,8 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-commitment_type,Customer to Discuss with Partner,0,5,5,0.0,100.0,100.0,5.7289,0.0167,Yes,Favors Long Calls,50.0
-commitment_type,Customer to Review Materials,1,4,5,20.0,80.0,60.0,2.1322,0.1442,No,Favors Long Calls,30.0
-commitment_type,Email/Information Send Agreed,4,1,5,80.0,20.0,-60.0,0.1652,0.6844,No,Favors Short Calls,30.0
-commitment_type,Follow-up Call Scheduled,4,10,14,28.57,71.43,42.86,5.511,0.0189,Yes,Favors Long Calls,21.43
-commitment_type,No Commitment Secured,86,36,122,70.49,29.51,-40.98,18.6684,0.0,Yes,Favors Short Calls,20.49
+commitment_type,Customer Agreed to Think It Over (Specific Timeline),0,11,11,0.0,100.0,100.0,9.1738,0.0025,Yes,Favors Long Calls,50.0
+commitment_type,Customer to Discuss with Partner,2,37,39,5.13,94.87,89.74,30.6215,0.0,Yes,Favors Long Calls,44.87
+commitment_type,Follow-up Scheduled,2,8,10,20.0,80.0,60.0,2.5207,0.1124,No,Favors Long Calls,30.0
+commitment_type,Customer to Review Materials,10,29,39,25.64,74.36,48.72,8.5825,0.0034,Yes,Favors Long Calls,24.36
+commitment_type,Follow-up Call Scheduled,31,77,108,28.7,71.3,42.59,20.5743,0.0,Yes,Favors Long Calls,21.3
+commitment_type,No Commitment Secured,545,412,957,56.95,43.05,-13.9,84.9655,0.0,Yes,Favors Short Calls,6.95
+commitment_type,Email/Information Send Agreed,13,11,24,54.17,45.83,-8.33,0.0425,0.8367,No,Neutral,4.17

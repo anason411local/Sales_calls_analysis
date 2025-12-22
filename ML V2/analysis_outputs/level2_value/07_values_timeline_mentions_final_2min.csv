@@ -1,5 +1,10 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-timeline_mentions_final_2min,3,2,5,7,28.57,71.43,42.86,2.0213,0.1551,No,Favors Long Calls,21.43
-timeline_mentions_final_2min,0,82,36,118,69.49,30.51,-38.98,12.6031,0.0004,Yes,Favors Short Calls,19.49
-timeline_mentions_final_2min,1,4,7,11,36.36,63.64,27.27,2.0731,0.1499,No,Favors Long Calls,13.64
-timeline_mentions_final_2min,2,3,5,8,37.5,62.5,25.0,1.0939,0.2956,No,Favors Long Calls,12.5
+timeline_mentions_final_2min,5.0,2,17,19,10.53,89.47,78.95,10.4793,0.0012,Yes,Favors Long Calls,39.47
+timeline_mentions_final_2min,6.0,1,6,7,14.29,85.71,71.43,2.2989,0.1295,No,Favors Long Calls,35.71
+timeline_mentions_final_2min,9.0,1,4,5,20.0,80.0,60.0,0.8033,0.3701,No,Favors Long Calls,30.0
+timeline_mentions_final_2min,3.0,14,54,68,20.59,79.41,58.82,23.6903,0.0,Yes,Favors Long Calls,29.41
+timeline_mentions_final_2min,2.0,18,52,70,25.71,74.29,48.57,16.5057,0.0,Yes,Favors Long Calls,24.29
+timeline_mentions_final_2min,1.0,32,86,118,27.12,72.88,45.76,26.3587,0.0,Yes,Favors Long Calls,22.88
+timeline_mentions_final_2min,4.0,7,18,25,28.0,72.0,44.0,4.0838,0.0433,Yes,Favors Long Calls,22.0
+timeline_mentions_final_2min,0.0,530,361,891,59.48,40.52,-18.97,117.9887,0.0,Yes,Favors Short Calls,9.48
+timeline_mentions_final_2min,7.0,4,3,7,57.14,42.86,-14.29,0.0,1.0,No,Favors Short Calls,7.14

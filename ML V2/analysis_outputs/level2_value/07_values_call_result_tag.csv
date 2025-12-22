@@ -1,9 +1,12 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-call_result_tag,Disconnect - During Close Attempt,0,5,5,0.0,100.0,100.0,5.7289,0.0167,Yes,Favors Long Calls,50.0
-call_result_tag,Disconnect - During Discovery,25,2,27,92.59,7.41,-85.19,11.9525,0.0005,Yes,Favors Short Calls,42.59
-call_result_tag,Early Disconnect - Before Discovery,31,3,34,91.18,8.82,-82.35,14.8227,0.0001,Yes,Favors Short Calls,41.18
-call_result_tag,Follow-up Scheduled,5,14,19,26.32,73.68,47.37,9.5476,0.002,Yes,Favors Long Calls,23.68
-call_result_tag,Hard Decline,5,3,8,62.5,37.5,-25.0,0.0,1.0,No,Favors Short Calls,12.5
-call_result_tag,Soft Decline,8,12,20,40.0,60.0,20.0,3.4173,0.0645,No,Favors Long Calls,10.0
-call_result_tag,Disconnect - Post-Price/ROI,5,6,11,45.45,54.55,9.09,0.6362,0.4251,No,Neutral,4.55
-call_result_tag,Disconnect - During Pitch/Value Prop,14,15,29,48.28,51.72,3.45,1.9167,0.1662,No,Neutral,1.72
+call_result_tag,Disconnect - During Close Attempt,7,80,87,8.05,91.95,83.91,64.1698,0.0,Yes,Favors Long Calls,41.95
+call_result_tag,Disconnect - During Discovery,197,25,222,88.74,11.26,-77.48,161.0746,0.0,Yes,Favors Short Calls,38.74
+call_result_tag,Unknown - Recording Incomplete,2,8,10,20.0,80.0,60.0,2.5207,0.1124,No,Favors Long Calls,30.0
+call_result_tag,Hard Decline (Not Interested),4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
+call_result_tag,Early Disconnect - Before Discovery,169,43,212,79.72,20.28,-59.43,89.2346,0.0,Yes,Favors Short Calls,29.72
+call_result_tag,Follow-up Scheduled,32,117,149,21.48,78.52,57.05,53.9563,0.0,Yes,Favors Long Calls,28.52
+call_result_tag,Disconnect - Post-Price/ROI,23,68,91,25.27,74.73,49.45,22.9926,0.0,Yes,Favors Long Calls,24.73
+call_result_tag,Soft Decline,34,83,117,29.06,70.94,41.88,21.785,0.0,Yes,Favors Long Calls,20.94
+call_result_tag,Soft Decline (Not Now),2,4,6,33.33,66.67,33.33,0.1675,0.6824,No,Favors Long Calls,16.67
+call_result_tag,Disconnect - During Pitch/Value Prop,110,149,259,42.47,57.53,15.06,7.081,0.0078,Yes,Favors Long Calls,7.53
+call_result_tag,Hard Decline,24,24,48,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0

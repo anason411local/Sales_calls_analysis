@@ -1,4 +1,4 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-lgs_agent_gender,Male,50,20,70,71.43,28.57,-42.86,4.7782,0.0288,Yes,Favors Short Calls,21.43
-lgs_agent_gender,unknown,12,11,23,52.17,47.83,-4.35,0.5487,0.4589,No,Neutral,2.17
-lgs_agent_gender,Female,23,25,48,47.92,52.08,4.17,4.457,0.0348,Yes,Neutral,2.08
+lgs_agent_gender,Female,204,236,440,46.36,53.64,7.27,3.4193,0.0644,No,Neutral,3.64
+lgs_agent_gender,Male,271,250,521,52.02,47.98,-4.03,1.3416,0.2467,No,Neutral,2.02
+lgs_agent_gender,unknown,98,93,191,51.31,48.69,-2.62,0.0993,0.7526,No,Neutral,1.31

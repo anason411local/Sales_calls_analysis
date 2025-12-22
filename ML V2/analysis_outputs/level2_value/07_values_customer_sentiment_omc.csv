@@ -1,4 +1,7 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-customer_sentiment_omc,Neutral,44,1,45,97.78,2.22,-95.56,33.4477,0.0,Yes,Favors Short Calls,47.78
-customer_sentiment_omc,Interested,2,10,12,16.67,83.33,66.67,8.9733,0.0027,Yes,Favors Long Calls,33.33
-customer_sentiment_omc,Resistant,45,39,84,53.57,46.43,-7.14,3.9224,0.0476,Yes,Neutral,3.57
+customer_sentiment_omc,Fluctuated,4,38,42,9.52,90.48,80.95,26.8546,0.0,Yes,Favors Long Calls,40.48
+customer_sentiment_omc,Interested,26,98,124,20.97,79.03,58.06,45.2611,0.0,Yes,Favors Long Calls,29.03
+customer_sentiment_omc,Neutral,216,82,298,72.48,27.52,-44.97,78.5862,0.0,Yes,Favors Short Calls,22.48
+customer_sentiment_omc,Skeptical,11,15,26,42.31,57.69,15.38,0.3537,0.552,No,Favors Long Calls,7.69
+customer_sentiment_omc,Not Found in Transcript,29,35,64,45.31,54.69,9.38,0.4123,0.5208,No,Neutral,4.69
+customer_sentiment_omc,Resistant,313,329,642,48.75,51.25,2.49,0.7411,0.3893,No,Neutral,1.25

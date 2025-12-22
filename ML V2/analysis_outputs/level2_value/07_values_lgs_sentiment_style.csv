@@ -1,5 +1,6 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-lgs_sentiment_style,Hesitant & Apologetic,14,5,19,73.68,26.32,-47.37,0.8698,0.351,No,Favors Short Calls,23.68
-lgs_sentiment_style,Robotic & Script-Bound,12,5,17,70.59,29.41,-41.18,0.3252,0.5685,No,Favors Short Calls,20.59
-lgs_sentiment_style,N/A - No Interaction,11,7,18,61.11,38.89,-22.22,0.0,1.0,No,Favors Short Calls,11.11
-lgs_sentiment_style,Consultative & Validating,52,41,93,55.91,44.09,-11.83,2.2944,0.1298,No,Favors Short Calls,5.91
+lgs_sentiment_style,Robotic & Script-Bound,59,35,94,62.77,37.23,-25.53,6.0983,0.0135,Yes,Favors Short Calls,12.77
+lgs_sentiment_style,N/A - No Interaction,88,57,145,60.69,39.31,-21.38,7.0457,0.0079,Yes,Favors Short Calls,10.69
+lgs_sentiment_style,Confident & Assumptive,11,16,27,40.74,59.26,18.52,0.606,0.4363,No,Favors Long Calls,9.26
+lgs_sentiment_style,Consultative & Validating,358,426,784,45.66,54.34,8.67,16.0691,0.0001,Yes,Neutral,4.34
+lgs_sentiment_style,Hesitant & Apologetic,78,69,147,53.06,46.94,-6.12,0.4951,0.4816,No,Neutral,3.06

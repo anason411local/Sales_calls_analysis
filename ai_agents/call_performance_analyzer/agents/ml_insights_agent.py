@@ -104,7 +104,7 @@ class MLInsightsAgent:
             # Step 2: REASONING - Analyze each component
             logger.info("Analyzing ML components...")
             
-            correlation_insights = self._analyze_correlations(ml_data.get('correlation'))
+            correlation_insights = self._analyze_correlations(ml_data.get('correlation'), ml_data)
             importance_insights = self._analyze_feature_importance(ml_data.get('importance'))
             shap_insights = self._analyze_shap(ml_data.get('shap'))
             statistical_insights = self._analyze_statistical_tests(ml_data.get('statistical'))
@@ -135,75 +135,134 @@ class MLInsightsAgent:
     
     def _load_ml_data(self) -> Dict:
         """
-        REASONING: Load all ML analysis outputs
+        REASONING: Load ALL ML analysis outputs (comprehensive data loading)
         
         Returns:
             Dictionary with all ML data
         """
-        logger.info("Loading ML data files...")
+        logger.info("Loading ML data files (comprehensive mode - all files)...")
         
         ml_data = {}
         
         try:
-            # Load correlation data
+            # ===== CORRELATION DATA =====
+            # Main correlation with target
             corr_file = self.ml_data_path / "02_correlation_with_target.csv"
             if corr_file.exists():
                 ml_data['correlation'] = pd.read_csv(corr_file)
                 logger.info(f"Loaded correlation data: {len(ml_data['correlation'])} variables")
             
-            # Load feature importance
+            # Long calls correlation
+            corr_long_file = self.ml_data_path / "02_correlation_long_calls.csv"
+            if corr_long_file.exists():
+                ml_data['correlation_long_calls'] = pd.read_csv(corr_long_file)
+                logger.info(f"Loaded long calls correlation: {len(ml_data['correlation_long_calls'])} variables")
+            
+            # Short calls correlation
+            corr_short_file = self.ml_data_path / "02_correlation_short_calls.csv"
+            if corr_short_file.exists():
+                ml_data['correlation_short_calls'] = pd.read_csv(corr_short_file)
+                logger.info(f"Loaded short calls correlation: {len(ml_data['correlation_short_calls'])} variables")
+            
+            # ===== FEATURE IMPORTANCE DATA =====
+            # Combined importance
             importance_file = self.ml_data_path / "03_importance_combined.csv"
             if importance_file.exists():
                 ml_data['importance'] = pd.read_csv(importance_file)
-                logger.info(f"Loaded feature importance: {len(ml_data['importance'])} variables")
+                logger.info(f"Loaded combined feature importance: {len(ml_data['importance'])} variables")
             
-            # Load SHAP importance
+            # Random Forest importance
+            importance_rf_file = self.ml_data_path / "03_importance_random_forest.csv"
+            if importance_rf_file.exists():
+                ml_data['importance_rf'] = pd.read_csv(importance_rf_file)
+                logger.info(f"Loaded Random Forest importance: {len(ml_data['importance_rf'])} variables")
+            
+            # XGBoost importance
+            importance_xgb_file = self.ml_data_path / "03_importance_xgboost.csv"
+            if importance_xgb_file.exists():
+                ml_data['importance_xgb'] = pd.read_csv(importance_xgb_file)
+                logger.info(f"Loaded XGBoost importance: {len(ml_data['importance_xgb'])} variables")
+            
+            # ===== SHAP DATA =====
             shap_file = self.ml_data_path / "05_shap_importance.csv"
             if shap_file.exists():
                 ml_data['shap'] = pd.read_csv(shap_file)
                 logger.info(f"Loaded SHAP data: {len(ml_data['shap'])} variables")
             
-            # Load statistical tests
+            # ===== STATISTICAL TESTS DATA =====
+            # Numerical tests
             stat_num_file = self.ml_data_path / "04_statistical_tests_numerical.csv"
-            stat_cat_file = self.ml_data_path / "04_statistical_tests_categorical.csv"
+            if stat_num_file.exists():
+                ml_data['statistical_numerical'] = pd.read_csv(stat_num_file)
+                logger.info(f"Loaded numerical statistical tests: {len(ml_data['statistical_numerical'])} variables")
             
-            if stat_num_file.exists() and stat_cat_file.exists():
+            # Categorical tests
+            stat_cat_file = self.ml_data_path / "04_statistical_tests_categorical.csv"
+            if stat_cat_file.exists():
+                ml_data['statistical_categorical'] = pd.read_csv(stat_cat_file)
+                logger.info(f"Loaded categorical statistical tests: {len(ml_data['statistical_categorical'])} variables")
+            
+            # Combined statistical tests
+            stat_combined_file = self.ml_data_path / "04_statistical_tests_combined.csv"
+            if stat_combined_file.exists():
+                ml_data['statistical'] = pd.read_csv(stat_combined_file)
+                logger.info(f"Loaded combined statistical tests: {len(ml_data['statistical'])} variables")
+            elif stat_num_file.exists() and stat_cat_file.exists():
+                # Fallback: combine if combined file doesn't exist
                 stat_num = pd.read_csv(stat_num_file)
                 stat_cat = pd.read_csv(stat_cat_file)
                 ml_data['statistical'] = pd.concat([stat_num, stat_cat], ignore_index=True)
-                logger.info(f"Loaded statistical tests: {len(ml_data['statistical'])} variables")
+                logger.info(f"Combined statistical tests: {len(ml_data['statistical'])} variables")
             
-            # Load LIME importance
+            # ===== LIME DATA =====
             lime_file = self.ml_data_path / "05b_lime_importance.csv"
             if lime_file.exists():
                 ml_data['lime'] = pd.read_csv(lime_file)
                 logger.info(f"Loaded LIME data: {len(ml_data['lime'])} variables")
             
-            # Load metadata
+            # LIME summary JSON
+            lime_summary_file = self.ml_data_path / "05b_lime_summary.json"
+            if lime_summary_file.exists():
+                with open(lime_summary_file, 'r') as f:
+                    ml_data['lime_summary'] = json.load(f)
+                logger.info("Loaded LIME summary JSON")
+            
+            # ===== METADATA & METRICS =====
+            # Metadata
             metadata_file = self.ml_data_path / "01_metadata.json"
             if metadata_file.exists():
                 with open(metadata_file, 'r') as f:
                     ml_data['metadata'] = json.load(f)
                 logger.info("Loaded metadata")
             
-            # Load model metrics
+            # Model metrics
             metrics_file = self.ml_data_path / "03_model_metrics.json"
             if metrics_file.exists():
                 with open(metrics_file, 'r') as f:
                     ml_data['model_metrics'] = json.load(f)
                 logger.info("Loaded model metrics")
             
+            # ===== ORIGINAL DATA (for context) =====
+            # Missing values summary
+            missing_file = self.ml_data_path / "01_missing_values_summary.csv"
+            if missing_file.exists():
+                ml_data['missing_values'] = pd.read_csv(missing_file)
+                logger.info(f"Loaded missing values summary: {len(ml_data['missing_values'])} variables")
+            
+            logger.info(f"Comprehensive ML data loading complete: {len(ml_data)} data sources loaded")
+            
         except Exception as e:
             logger.error(f"Error loading ML data: {str(e)}")
         
         return ml_data
     
-    def _analyze_correlations(self, corr_df: Optional[pd.DataFrame]) -> List[MLInsight]:
+    def _analyze_correlations(self, corr_df: Optional[pd.DataFrame], ml_data: Dict = None) -> List[MLInsight]:
         """
-        REASONING: Analyze correlation patterns
+        REASONING: Analyze correlation patterns (enhanced with long/short call data)
         
         Args:
             corr_df: Correlation dataframe
+            ml_data: Full ML data dictionary for additional context
             
         Returns:
             List of correlation insights
@@ -214,14 +273,40 @@ class MLInsightsAgent:
             return insights
         
         try:
+            # Check if required columns exist
+            required_cols = ['Variable', 'Correlation', 'Abs_Correlation', 'P_Value', 'Direction']
+            if not all(col in corr_df.columns for col in required_cols):
+                logger.warning(f"Correlation dataframe missing required columns. Has: {corr_df.columns.tolist()}")
+                return insights
+            
             # Top positive correlations
             top_positive = corr_df[corr_df['Direction'] == 'Positive'].nlargest(5, 'Abs_Correlation')
             
             for _, row in top_positive.iterrows():
+                # Check if we have long/short call specific data
+                additional_context = ""
+                if ml_data:
+                    if 'correlation_long_calls' in ml_data and 'correlation_short_calls' in ml_data:
+                        try:
+                            var_name = row['Variable']
+                            long_corr = ml_data['correlation_long_calls']
+                            short_corr = ml_data['correlation_short_calls']
+                            
+                            # Find this variable in long/short correlations
+                            long_match = long_corr[long_corr['Variable'] == var_name]
+                            short_match = short_corr[short_corr['Variable'] == var_name]
+                            
+                            if not long_match.empty and not short_match.empty:
+                                long_val = long_match.iloc[0].get('Correlation', 0)
+                                short_val = short_match.iloc[0].get('Correlation', 0)
+                                additional_context = f" | Long calls: {long_val:.3f}, Short calls: {short_val:.3f}"
+                        except Exception as e:
+                            logger.debug(f"Could not add long/short context for {var_name}: {str(e)}")
+                
                 insights.append(MLInsight(
                     category="correlation",
                     insight=f"{row['Variable']} shows strong positive correlation with call duration",
-                    evidence=f"Correlation: {row['Correlation']:.3f}, p-value: {row['P_Value']:.4f}",
+                    evidence=f"Correlation: {row['Correlation']:.3f}, p-value: {row['P_Value']:.4f}{additional_context}",
                     recommendation=f"Focus on optimizing {row['Variable']} to increase call duration",
                     importance_score=float(row['Abs_Correlation']),
                     visualization_path="ML V2/analysis_outputs/level1_variable/heatmap_02_combined.png"
@@ -534,23 +619,63 @@ Generate comprehensive recommendations:""")
             return "Recommendations unavailable - see individual insights for guidance"
     
     def _select_key_visualizations(self) -> List[str]:
-        """Select key visualizations to include in report"""
+        """Select ALL visualizations to include in report (comprehensive analysis)"""
         visualizations = []
         
-        # Priority visualizations
-        priority_viz = [
-            "shap_05_rf_waterfall.png",  # SHAP waterfall (user requested)
-            "viz_06_top_20_variables.png",  # Feature importance (user requested)
-            "shap_05_rf_summary_beeswarm.png",  # SHAP summary
-            "viz_06_correlation_vs_importance.png",  # Correlation vs importance
-            "viz_06_effect_sizes.png",  # Effect sizes
-            "03_eval_roc_curves.png"  # Model performance
-        ]
+        # Get ALL PNG files from the ML data directory
+        try:
+            if self.ml_data_path.exists():
+                all_png_files = sorted(self.ml_data_path.glob("*.png"))
+                
+                # Priority order for better organization
+                priority_order = [
+                    "shap_05_rf_waterfall.png",  # SHAP waterfall (user requested)
+                    "viz_06_top_20_variables.png",  # Feature importance (user requested)
+                    "shap_05_rf_summary_beeswarm.png",  # SHAP summary
+                    "viz_06_correlation_vs_importance.png",  # Correlation vs importance
+                    "viz_06_effect_sizes.png",  # Effect sizes
+                    "03_eval_roc_curves.png",  # Model performance
+                    "03_eval_confusion_matrices.png",  # Confusion matrices
+                    "03_eval_learning_curves.png",  # Learning curves
+                    "03_eval_metrics_comparison.png",  # Metrics comparison
+                    "heatmap_02_long_calls.png",  # Long calls correlation heatmap
+                    "heatmap_02_short_calls.png",  # Short calls correlation heatmap
+                    "shap_05_xgb_waterfall.png",  # XGBoost SHAP waterfall
+                    "shap_05_xgb_summary_beeswarm.png",  # XGBoost SHAP summary
+                    "shap_05_rf_importance_bar.png",  # RF SHAP importance
+                    "shap_05_xgb_importance_bar.png",  # XGBoost SHAP importance
+                    "shap_05_rf_dependence.png",  # RF SHAP dependence
+                    "shap_05_xgb_dependence.png",  # XGBoost SHAP dependence
+                    "lime_05b_aggregated_importance.png",  # LIME aggregated
+                    "lime_05b_rf_individual_explanations.png",  # LIME RF explanations
+                    "lime_05b_gb_individual_explanations.png",  # LIME GB explanations
+                    "lime_05b_lime_vs_shap.png",  # LIME vs SHAP comparison
+                    "04_stat_effect_vs_pvalue.png",  # Effect vs p-value
+                    "04_stat_mean_differences.png",  # Mean differences
+                    "04_stat_pvalue_distributions.png",  # P-value distributions
+                    "04_stat_significance_summary.png",  # Significance summary
+                    "viz_06_model_comparison.png",  # Model comparison
+                    "viz_06_section_analysis.png"  # Section analysis
+                ]
+                
+                # Add priority files first (if they exist)
+                for priority_file in priority_order:
+                    viz_path = self.ml_data_path / priority_file
+                    if viz_path.exists():
+                        visualizations.append(str(viz_path))
+                
+                # Add any remaining PNG files not in priority list
+                for png_file in all_png_files:
+                    viz_path_str = str(png_file)
+                    if viz_path_str not in visualizations:
+                        visualizations.append(viz_path_str)
+                
+                logger.info(f"Selected {len(visualizations)} visualizations for comprehensive analysis")
+            else:
+                logger.warning(f"ML data path does not exist: {self.ml_data_path}")
         
-        for viz in priority_viz:
-            viz_path = self.ml_data_path / viz
-            if viz_path.exists():
-                visualizations.append(str(viz_path))
+        except Exception as e:
+            logger.error(f"Error selecting visualizations: {str(e)}")
         
         return visualizations
     

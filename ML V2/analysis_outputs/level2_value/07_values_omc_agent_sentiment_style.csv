@@ -1,6 +1,10 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-omc_agent_sentiment_style,Robotic & Script-Bound,13,1,14,92.86,7.14,-85.71,5.084,0.0241,Yes,Favors Short Calls,42.86
-omc_agent_sentiment_style,Consultative & Validating,11,4,15,73.33,26.67,-46.67,0.531,0.4662,No,Favors Short Calls,23.33
-omc_agent_sentiment_style,Not Found in Transcript,8,3,11,72.73,27.27,-45.45,0.237,0.6264,No,Favors Short Calls,22.73
-omc_agent_sentiment_style,Professional,4,2,6,66.67,33.33,-33.33,0.0,1.0,No,Favors Short Calls,16.67
-omc_agent_sentiment_style,Confident & Assumptive,54,49,103,52.43,47.57,-4.85,9.0825,0.0026,Yes,Neutral,2.43
+omc_agent_sentiment_style,Hesitant & Apologetic,18,0,18,100.0,0.0,-100.0,16.2964,0.0001,Yes,Favors Short Calls,50.0
+omc_agent_sentiment_style,Robotic & Script-Bound,98,12,110,89.09,10.91,-78.18,72.2026,0.0,Yes,Favors Short Calls,39.09
+omc_agent_sentiment_style,Professional,16,5,21,76.19,23.81,-52.38,4.8454,0.0277,Yes,Favors Short Calls,26.19
+omc_agent_sentiment_style,Expert,2,5,7,28.57,71.43,42.86,0.5747,0.4484,No,Favors Long Calls,21.43
+omc_agent_sentiment_style,Urgent & Pressing,11,5,16,68.75,31.25,-37.5,1.5833,0.2083,No,Favors Short Calls,18.75
+omc_agent_sentiment_style,Not Found,5,3,8,62.5,37.5,-25.0,0.1258,0.7228,No,Favors Short Calls,12.5
+omc_agent_sentiment_style,Not Found in Transcript,56,38,94,59.57,40.43,-19.15,3.3316,0.068,No,Favors Short Calls,9.57
+omc_agent_sentiment_style,Confident & Assumptive,316,462,778,40.62,59.38,18.77,74.8085,0.0,Yes,Favors Long Calls,9.38
+omc_agent_sentiment_style,Consultative & Validating,80,72,152,52.63,47.37,-5.26,0.3683,0.5439,No,Neutral,2.63

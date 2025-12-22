@@ -1,3 +1,4 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-customer_language,Unknown,9,5,14,64.29,35.71,-28.57,0.0,1.0,No,Favors Short Calls,14.29
-customer_language,English,75,53,128,58.59,41.41,-17.19,1.6469,0.1994,No,Favors Short Calls,8.59
+customer_language,Spanish,12,7,19,63.16,36.84,-26.32,0.8554,0.355,No,Favors Short Calls,13.16
+customer_language,Unknown,54,38,92,58.7,41.3,-17.39,2.6455,0.1038,No,Favors Short Calls,8.7
+customer_language,English,502,540,1042,48.18,51.82,3.65,9.0922,0.0026,Yes,Neutral,1.82

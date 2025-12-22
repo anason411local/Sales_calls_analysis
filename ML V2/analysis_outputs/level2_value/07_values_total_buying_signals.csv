@@ -1,6 +1,15 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-total_buying_signals,4,0,8,8,0.0,100.0,100.0,10.771,0.001,Yes,Favors Long Calls,50.0
-total_buying_signals,0,77,10,87,88.51,11.49,-77.01,59.3229,0.0,Yes,Favors Short Calls,38.51
-total_buying_signals,3,3,8,11,27.27,72.73,45.45,4.3348,0.0373,Yes,Favors Long Calls,22.73
-total_buying_signals,2,3,8,11,27.27,72.73,45.45,4.3348,0.0373,Yes,Favors Long Calls,22.73
-total_buying_signals,1,12,10,22,54.55,45.45,-9.09,0.2161,0.642,No,Neutral,4.55
+total_buying_signals,11.0,0,9,9,0.0,100.0,100.0,7.164,0.0074,Yes,Favors Long Calls,50.0
+total_buying_signals,7.0,0,24,24,0.0,100.0,100.0,22.4847,0.0,Yes,Favors Long Calls,50.0
+total_buying_signals,8.0,0,10,10,0.0,100.0,100.0,8.1671,0.0043,Yes,Favors Long Calls,50.0
+total_buying_signals,10.0,0,8,8,0.0,100.0,100.0,6.1655,0.013,Yes,Favors Long Calls,50.0
+total_buying_signals,9.0,0,14,14,0.0,100.0,100.0,12.2118,0.0005,Yes,Favors Long Calls,50.0
+total_buying_signals,15.0,0,7,7,0.0,100.0,100.0,5.1726,0.0229,Yes,Favors Long Calls,50.0
+total_buying_signals,12.0,0,5,5,0.0,100.0,100.0,3.2132,0.073,No,Favors Long Calls,50.0
+total_buying_signals,6.0,1,31,32,3.12,96.88,93.75,26.9904,0.0,Yes,Favors Long Calls,46.88
+total_buying_signals,4.0,2,52,54,3.7,96.3,92.59,46.5257,0.0,Yes,Favors Long Calls,46.3
+total_buying_signals,5.0,2,35,37,5.41,94.59,89.19,28.5427,0.0,Yes,Favors Long Calls,44.59
+total_buying_signals,3.0,14,67,81,17.28,82.72,65.43,35.7609,0.0,Yes,Favors Long Calls,32.72
+total_buying_signals,0.0,488,134,622,78.46,21.54,-56.91,409.4115,0.0,Yes,Favors Short Calls,28.46
+total_buying_signals,2.0,33,97,130,25.38,74.62,49.23,34.1787,0.0,Yes,Favors Long Calls,24.62
+total_buying_signals,1.0,69,97,166,41.57,58.43,16.87,5.0845,0.0241,Yes,Favors Long Calls,8.43

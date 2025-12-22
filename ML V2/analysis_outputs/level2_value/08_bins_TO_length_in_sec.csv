@@ -1,6 +1,6 @@
 Variable,Bin,Value_Range,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Direction,Importance_Score
-TO_length_in_sec,Low,"[108.00, 129.00]",23,5,28,82.14,17.86,-64.29,Favors Short Calls,32.14
-TO_length_in_sec,Very Low,"[0.00, 107.00]",22,12,34,64.71,35.29,-29.41,Favors Short Calls,14.71
-TO_length_in_sec,High,"[157.00, 223.00]",20,11,31,64.52,35.48,-29.03,Favors Short Calls,14.52
-TO_length_in_sec,Very High,"[226.00, 643.00]",14,17,31,45.16,54.84,9.68,Neutral,4.84
-TO_length_in_sec,Medium,"[130.00, 154.00]",16,15,31,51.61,48.39,-3.23,Neutral,1.61
+TO_length_in_sec,Very High,"[235.00, 1070.00]",87,155,242,35.95,64.05,28.1,Favors Long Calls,14.05
+TO_length_in_sec,Very Low,"[0.00, 113.00]",153,91,244,62.7,37.3,-25.41,Favors Short Calls,12.7
+TO_length_in_sec,High,"[175.00, 234.00]",109,133,242,45.04,54.96,9.92,Neutral,4.96
+TO_length_in_sec,Medium,"[141.00, 174.00]",132,115,247,53.44,46.56,-6.88,Neutral,3.44
+TO_length_in_sec,Low,"[114.00, 140.00]",128,115,243,52.67,47.33,-5.35,Neutral,2.67

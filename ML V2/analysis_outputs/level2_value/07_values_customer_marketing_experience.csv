@@ -1,8 +1,12 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-customer_marketing_experience,SKEPTIC (Burned),7,2,9,77.78,22.22,-55.56,0.4813,0.4878,No,Favors Short Calls,27.78
-customer_marketing_experience,NOVICE (Job Seeker),7,3,10,70.0,30.0,-40.0,0.062,0.8034,No,Favors Short Calls,20.0
-customer_marketing_experience,NOVICE,16,9,25,64.0,36.0,-28.0,0.0063,0.9366,No,Favors Short Calls,14.0
-customer_marketing_experience,unknown,7,4,11,63.64,36.36,-27.27,0.0,1.0,No,Favors Short Calls,13.64
-customer_marketing_experience,SKEPTIC,4,3,7,57.14,42.86,-14.29,0.0,1.0,No,Favors Short Calls,7.14
-customer_marketing_experience,Transactional,5,4,9,55.56,44.44,-11.11,0.0001,0.9909,No,Favors Short Calls,5.56
-customer_marketing_experience,Novice,23,20,43,53.49,46.51,-6.98,1.1056,0.293,No,Neutral,3.49
+customer_marketing_experience,unknown,33,20,53,62.26,37.74,-24.53,2.8406,0.0919,No,Favors Short Calls,12.26
+customer_marketing_experience,Expert,2,3,5,40.0,60.0,20.0,0.0,1.0,No,Favors Long Calls,10.0
+customer_marketing_experience,Skeptic,21,15,36,58.33,41.67,-16.67,0.7156,0.3976,No,Favors Short Calls,8.33
+customer_marketing_experience,Transactional (Buyer),8,10,18,44.44,55.56,11.11,0.0564,0.8123,No,Favors Long Calls,5.56
+customer_marketing_experience,Novice,177,220,397,44.58,55.42,10.83,6.5919,0.0102,Yes,Favors Long Calls,5.42
+customer_marketing_experience,SKEPTIC,16,13,29,55.17,44.83,-10.34,0.1413,0.707,No,Favors Short Calls,5.17
+customer_marketing_experience,TRANSACTIONAL (Buyer),8,9,17,47.06,52.94,5.88,0.0,1.0,No,Neutral,2.94
+customer_marketing_experience,NOVICE (Job Seeker),47,52,99,47.47,52.53,5.05,0.1759,0.6749,No,Neutral,2.53
+customer_marketing_experience,NOVICE,103,113,216,47.69,52.31,4.63,0.4558,0.4996,No,Neutral,2.31
+customer_marketing_experience,Transactional,45,46,91,49.45,50.55,1.1,0.0,1.0,No,Neutral,0.55
+customer_marketing_experience,SKEPTIC (Burned),19,19,38,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0

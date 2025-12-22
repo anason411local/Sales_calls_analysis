@@ -1,5 +1,6 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-ready_for_customers,UNKNOWN,15,5,20,75.0,25.0,-50.0,1.2162,0.2701,No,Favors Short Calls,25.0
-ready_for_customers,No,2,4,6,33.33,66.67,33.33,1.0131,0.3142,No,Favors Long Calls,16.67
-ready_for_customers,unknown,28,14,42,66.67,33.33,-33.33,0.4255,0.5142,No,Favors Short Calls,16.67
-ready_for_customers,Yes,22,27,49,44.9,55.1,10.2,7.1362,0.0076,Yes,Favors Long Calls,5.1
+ready_for_customers,YES,12,19,31,38.71,61.29,22.58,1.1916,0.275,No,Favors Long Calls,11.29
+ready_for_customers,unknown,140,109,249,56.22,43.78,-12.45,4.5433,0.033,Yes,Favors Short Calls,6.22
+ready_for_customers,Yes,203,258,461,44.03,55.97,11.93,10.1774,0.0014,Yes,Favors Long Calls,5.97
+ready_for_customers,No,21,23,44,47.73,52.27,4.55,0.0236,0.878,No,Neutral,2.27
+ready_for_customers,UNKNOWN,117,113,230,50.87,49.13,-1.74,0.0482,0.8262,No,Neutral,0.87

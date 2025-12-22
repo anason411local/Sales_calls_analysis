@@ -1,2 +1,17 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-LQ_Customer_Name, ,13,5,18,72.22,27.78,-44.44,0.5707,0.45,No,Favors Short Calls,22.22
+LQ_Customer_Name,James ,0,7,7,0.0,100.0,100.0,5.1726,0.0229,Yes,Favors Long Calls,50.0
+LQ_Customer_Name,Mike ,8,1,9,88.89,11.11,-77.78,4.0298,0.0447,Yes,Favors Short Calls,38.89
+LQ_Customer_Name,Nick ,4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
+LQ_Customer_Name,Alex ,7,2,9,77.78,22.22,-55.56,1.791,0.1808,No,Favors Short Calls,27.78
+LQ_Customer_Name,Daniel ,6,2,8,75.0,25.0,-50.0,1.1324,0.2873,No,Favors Short Calls,25.0
+LQ_Customer_Name,Jose ,7,4,11,63.64,36.36,-27.27,0.367,0.5447,No,Favors Short Calls,13.64
+LQ_Customer_Name,Joe ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
+LQ_Customer_Name,Robert ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
+LQ_Customer_Name,Chris ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
+LQ_Customer_Name,Brandon ,2,3,5,40.0,60.0,20.0,0.0,1.0,No,Favors Long Calls,10.0
+LQ_Customer_Name,Michael ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
+LQ_Customer_Name,David ,3,2,5,60.0,40.0,-20.0,0.0,1.0,No,Favors Short Calls,10.0
+LQ_Customer_Name,Luis ,3,4,7,42.86,57.14,14.29,0.0,1.0,No,Favors Long Calls,7.14
+LQ_Customer_Name,Victor ,3,3,6,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0
+LQ_Customer_Name, ,104,104,208,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0
+LQ_Customer_Name,Juan ,3,3,6,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0

@@ -1,8 +1,8 @@
 {
-  "total_categorical_values": 185,
-  "total_numerical_bins": 10,
-  "significant_values": 46,
-  "large_effect_values": 73,
-  "long_favoring": 48,
-  "short_favoring": 110
+  "total_categorical_values": 346,
+  "total_numerical_bins": 15,
+  "significant_values": 139,
+  "large_effect_values": 129,
+  "long_favoring": 161,
+  "short_favoring": 107
 }

@@ -1,6 +1,9 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-objections_rebutted,0,71,14,85,83.53,16.47,-67.06,37.187,0.0,Yes,Favors Short Calls,33.53
-objections_rebutted,4,1,4,5,20.0,80.0,60.0,2.1322,0.1442,No,Favors Long Calls,30.0
-objections_rebutted,3,2,4,6,33.33,66.67,33.33,1.0131,0.3142,No,Favors Long Calls,16.67
-objections_rebutted,2,9,18,27,33.33,66.67,33.33,9.3913,0.0022,Yes,Favors Long Calls,16.67
-objections_rebutted,1,12,14,26,46.15,53.85,7.69,2.299,0.1295,No,Neutral,3.85
+objections_rebutted,7.0,0,9,9,0.0,100.0,100.0,7.164,0.0074,Yes,Favors Long Calls,50.0
+objections_rebutted,6.0,1,14,15,6.67,93.33,86.67,9.7197,0.0018,Yes,Favors Long Calls,43.33
+objections_rebutted,5.0,2,21,23,8.7,91.3,82.61,14.3581,0.0002,Yes,Favors Long Calls,41.3
+objections_rebutted,4.0,4,38,42,9.52,90.48,80.95,26.8546,0.0,Yes,Favors Long Calls,40.48
+objections_rebutted,3.0,10,55,65,15.38,84.62,69.23,31.4637,0.0,Yes,Favors Long Calls,34.62
+objections_rebutted,2.0,51,108,159,32.08,67.92,35.85,22.6846,0.0,Yes,Favors Long Calls,17.92
+objections_rebutted,0.0,439,220,659,66.62,33.38,-33.23,157.1314,0.0,Yes,Favors Short Calls,16.62
+objections_rebutted,1.0,102,137,239,42.68,57.32,14.64,6.0176,0.0142,Yes,Favors Long Calls,7.32

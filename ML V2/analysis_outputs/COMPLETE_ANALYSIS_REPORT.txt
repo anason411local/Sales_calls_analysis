@@ -3,7 +3,7 @@ COMPLETE TWO-LEVEL ANALYSIS REPORT
 Sales Call Duration Analysis: Why Not All OMC Calls Go Above 4.88 Minutes
 ====================================================================================================
 
-Generated: 2025-12-22 19:56:27
+Generated: 2025-12-22 20:16:53
 Analysis Framework: Two-Level Approach (Variable-Level + Value-Level)
 
 ====================================================================================================
@@ -17,8 +17,8 @@ LEVEL 1 (VARIABLE-LEVEL): Which of the 49 variables matter most?
 LEVEL 2 (VALUE-LEVEL): Which specific values within those variables matter?
 
 Total Variables Analyzed: 49 (from Sections 1-6.6)
-Total Specific Values Analyzed: 185
-Significant Values Found: 46
+Total Specific Values Analyzed: 346
+Significant Values Found: 139
 
 ====================================================================================================
 LEVEL 1: VARIABLE-LEVEL KEY FINDINGS
@@ -27,35 +27,35 @@ LEVEL 1: VARIABLE-LEVEL KEY FINDINGS
 TOP 10 MOST IMPORTANT VARIABLES:
 ----------------------------------------------------------------------------------------------------
   1. total_buying_signals
-     Combined Score: 0.9151
-     RF Importance: 0.1831 | XGB Importance: 0.5118
+     Combined Score: 0.9063
+     RF Importance: 0.2077 | XGB Importance: 0.2370
   2. total_discovery_questions
-     Combined Score: 0.7831
-     RF Importance: 0.2012 | XGB Importance: 0.3005
-  3. objections_rebutted
-     Combined Score: 0.4731
-     RF Importance: 0.0901 | XGB Importance: 0.1877
-  4. TO_Event_O
-     Combined Score: 0.3253
-     RF Importance: 0.0145 | XGB Importance: 0.0000
-  5. LQ_Company_Address
-     Combined Score: 0.3199
-     RF Importance: 0.0114 | XGB Importance: 0.0000
+     Combined Score: 0.6555
+     RF Importance: 0.2171 | XGB Importance: 0.0622
+  3. TO_Event_O
+     Combined Score: 0.3464
+     RF Importance: 0.0184 | XGB Importance: 0.0125
+  4. LQ_Company_Address
+     Combined Score: 0.3358
+     RF Importance: 0.0113 | XGB Importance: 0.0120
+  5. LQ_Company_Name
+     Combined Score: 0.3190
+     RF Importance: 0.0123 | XGB Importance: 0.0150
   6. LQ_Customer_Name
-     Combined Score: 0.3187
-     RF Importance: 0.0127 | XGB Importance: 0.0000
-  7. LQ_Service
-     Combined Score: 0.3031
-     RF Importance: 0.0116 | XGB Importance: 0.0000
-  8. total_objections
-     Combined Score: 0.3027
-     RF Importance: 0.0770 | XGB Importance: 0.0000
-  9. LQ_Company_Name
-     Combined Score: 0.2933
-     RF Importance: 0.0062 | XGB Importance: 0.0000
+     Combined Score: 0.3081
+     RF Importance: 0.0091 | XGB Importance: 0.0107
+  7. total_interruptions
+     Combined Score: 0.3040
+     RF Importance: 0.0679 | XGB Importance: 0.0275
+  8. call_result_tag
+     Combined Score: 0.2873
+     RF Importance: 0.0287 | XGB Importance: 0.0306
+  9. LQ_Service
+     Combined Score: 0.2706
+     RF Importance: 0.0116 | XGB Importance: 0.0107
   10. price_mentions_final_2min
-     Combined Score: 0.2580
-     RF Importance: 0.0561 | XGB Importance: 0.0000
+     Combined Score: 0.2703
+     RF Importance: 0.0583 | XGB Importance: 0.0270
 
 ====================================================================================================
 LEVEL 2: VALUE-LEVEL KEY FINDINGS
@@ -63,89 +63,89 @@ LEVEL 2: VALUE-LEVEL KEY FINDINGS
 
 TOP 20 SPECIFIC VALUES ASSOCIATED WITH LONG CALLS:
 ----------------------------------------------------------------------------------------------------
-  total_discovery_questions = 13
-     100.0% Long Calls | 6 calls | p=0.0066
-  total_buying_signals = 4
-     100.0% Long Calls | 8 calls | p=0.0010
-  call_result_tag = Disconnect - During Close Attempt
-     100.0% Long Calls | 5 calls | p=0.0167
-  commitment_type = Customer to Discuss with Partner
-     100.0% Long Calls | 5 calls | p=0.0167
-  price_mentions_final_2min = 2
-     87.5% Long Calls | 8 calls | p=0.0112
-  total_discovery_questions = 6
-     85.7% Long Calls | 7 calls | p=0.0267
-  total_interruptions = 3
-     85.7% Long Calls | 7 calls | p=0.0267
-  total_discovery_questions = 8
-     85.7% Long Calls | 7 calls | p=0.0267
-  objections_acknowledged = 4
-     83.3% Long Calls | 6 calls | p=0.0627
-  customer_sentiment_omc = Interested
-     83.3% Long Calls | 12 calls | p=0.0027
-  TO_User_M = MARIAFRSAMANIEGO
-     83.3% Long Calls | 6 calls | p=0.0627
-  TO_OMC_Disposiion = P2P
-     83.3% Long Calls | 12 calls | p=0.0027
-  commitment_type = Customer to Review Materials
-     80.0% Long Calls | 5 calls | p=0.1442
-  objections_rebutted = 4
-     80.0% Long Calls | 5 calls | p=0.1442
-  TO_User_M = JOLYDEETEDOY
-     80.0% Long Calls | 5 calls | p=0.1442
-  price_mentions_final_2min = 4
-     75.0% Long Calls | 8 calls | p=0.0733
-  call_result_tag = Follow-up Scheduled
-     73.7% Long Calls | 19 calls | p=0.0020
-  total_buying_signals = 3
-     72.7% Long Calls | 11 calls | p=0.0373
-  total_buying_signals = 2
-     72.7% Long Calls | 11 calls | p=0.0373
-  commitment_type = Follow-up Call Scheduled
-     71.4% Long Calls | 14 calls | p=0.0189
+  objections_rebutted = 7.0
+     100.0% Long Calls | 9 calls | p=0.0074
+  price_mentions_final_2min = 7.0
+     100.0% Long Calls | 7 calls | p=0.0229
+  total_buying_signals = 11.0
+     100.0% Long Calls | 9 calls | p=0.0074
+  total_buying_signals = 7.0
+     100.0% Long Calls | 24 calls | p=0.0000
+  total_buying_signals = 8.0
+     100.0% Long Calls | 10 calls | p=0.0043
+  total_objections = 8.0
+     100.0% Long Calls | 11 calls | p=0.0025
+  total_buying_signals = 10.0
+     100.0% Long Calls | 8 calls | p=0.0130
+  total_interruptions = 8.0
+     100.0% Long Calls | 9 calls | p=0.0074
+  commitment_type = Customer Agreed to Think It Over (Specific Timeline)
+     100.0% Long Calls | 11 calls | p=0.0025
+  total_discovery_questions = 15.0
+     100.0% Long Calls | 16 calls | p=0.0002
+  total_discovery_questions = 14.0
+     100.0% Long Calls | 24 calls | p=0.0000
+  total_discovery_questions = 17.0
+     100.0% Long Calls | 8 calls | p=0.0130
+  total_discovery_questions = 18.0
+     100.0% Long Calls | 6 calls | p=0.0407
+  total_discovery_questions = 16.0
+     100.0% Long Calls | 7 calls | p=0.0229
+  total_buying_signals = 9.0
+     100.0% Long Calls | 14 calls | p=0.0005
+  total_buying_signals = 15.0
+     100.0% Long Calls | 7 calls | p=0.0229
+  total_buying_signals = 12.0
+     100.0% Long Calls | 5 calls | p=0.0730
+  technical_quality_issues = Dead Air Detected
+     100.0% Long Calls | 5 calls | p=0.0730
+  total_interruptions = 9.0
+     100.0% Long Calls | 8 calls | p=0.0130
+  total_interruptions = 10.0
+     100.0% Long Calls | 11 calls | p=0.0025
 
 TOP 20 SPECIFIC VALUES ASSOCIATED WITH SHORT CALLS:
 ----------------------------------------------------------------------------------------------------
-  customer_sentiment_omc = Neutral
-     97.8% Short Calls | 45 calls | p=0.0000
-  total_discovery_questions = 0
-     93.3% Short Calls | 45 calls | p=0.0000
-  omc_agent_sentiment_style = Robotic & Script-Bound
-     92.9% Short Calls | 14 calls | p=0.0241
-  call_result_tag = Disconnect - During Discovery
-     92.6% Short Calls | 27 calls | p=0.0005
+  LQ_Service = Home Renovation
+     100.0% Short Calls | 5 calls | p=0.0730
+  TO_OMC_Disposiion = BCC
+     100.0% Short Calls | 5 calls | p=0.0730
+  omc_agent_sentiment_style = Hesitant & Apologetic
+     100.0% Short Calls | 18 calls | p=0.0001
   TO_OMC_Disposiion = NQTO
-     91.7% Short Calls | 12 calls | p=0.0523
-  call_result_tag = Early Disconnect - Before Discovery
-     91.2% Short Calls | 34 calls | p=0.0001
-  LQ_Company_Address = -
-     90.0% Short Calls | 10 calls | p=0.1115
-  total_discovery_questions = 1
-     90.0% Short Calls | 10 calls | p=0.1115
-  total_objections = 0
-     89.6% Short Calls | 48 calls | p=0.0000
-  total_buying_signals = 0
-     88.5% Short Calls | 87 calls | p=0.0000
-  technical_quality_issues = Start-of-Call Latency, Intelligibility
-     87.5% Short Calls | 16 calls | p=0.0453
-  TO_OMC_User = ISMAELMALENCOCORDOVA
-     87.5% Short Calls | 16 calls | p=0.0453
-  total_discovery_questions = 2
-     86.7% Short Calls | 15 calls | p=0.0652
-  omc_who_said_hello_first = unknown
-     85.7% Short Calls | 14 calls | p=0.0931
-  total_objections = 1
-     85.0% Short Calls | 20 calls | p=0.0369
-  time_to_reason_seconds = 0.0
-     84.2% Short Calls | 19 calls | p=0.0526
-  objections_rebutted = 0
-     83.5% Short Calls | 85 calls | p=0.0000
-  timezone = unknown
-     83.3% Short Calls | 6 calls | p=0.4819
-  TO_User_M = GREGPHILIPSALAZAR
-     83.3% Short Calls | 6 calls | p=0.4819
-  technical_quality_score = 3.6
-     83.3% Short Calls | 12 calls | p=0.1856
+     91.9% Short Calls | 74 calls | p=0.0000
+  total_discovery_questions = 1.0
+     89.9% Short Calls | 89 calls | p=0.0000
+  omc_agent_sentiment_style = Robotic & Script-Bound
+     89.1% Short Calls | 110 calls | p=0.0000
+  LQ_Customer_Name = Mike 
+     88.9% Short Calls | 9 calls | p=0.0447
+  call_result_tag = Disconnect - During Discovery
+     88.7% Short Calls | 222 calls | p=0.0000
+  TO_OMC_Disposiion = A
+     87.5% Short Calls | 8 calls | p=0.0761
+  forbidden_industry = unknown
+     83.3% Short Calls | 6 calls | p=0.2195
+  TO_OMC_Disposiion = LB
+     83.3% Short Calls | 30 calls | p=0.0004
+  is_decision_maker = Not Confirmed/Gatekeeper
+     83.3% Short Calls | 6 calls | p=0.2195
+  total_discovery_questions = 0.0
+     82.3% Short Calls | 277 calls | p=0.0000
+  total_discovery_questions = 2.0
+     81.0% Short Calls | 63 calls | p=0.0000
+  LQ_Company_Address = Toronto, ON, 
+     80.0% Short Calls | 5 calls | p=0.3701
+  call_result_tag = Hard Decline (Not Interested)
+     80.0% Short Calls | 5 calls | p=0.3701
+  LQ_Service = HANDYMAN
+     80.0% Short Calls | 5 calls | p=0.3701
+  LQ_Customer_Name = Nick 
+     80.0% Short Calls | 5 calls | p=0.3701
+  customer_sentiment_lgs = Overwhelmed/Stressed
+     80.0% Short Calls | 30 calls | p=0.0017
+  LQ_Service = Air Conditioning Services
+     80.0% Short Calls | 5 calls | p=0.3701
 
 ====================================================================================================
 ANSWERS TO KEY QUESTIONS
@@ -153,33 +153,36 @@ ANSWERS TO KEY QUESTIONS
 
 1. WHICH TIMEZONE LEADS TO LONGER CALLS?
 ----------------------------------------------------------------------------------------------------
-  Mountain: 55.6% Long Calls
-  Central: 44.1% Long Calls
-  Pacific: 42.3% Long Calls
-  Eastern: 36.8% Long Calls
-  unknown: 16.7% Long Calls
+  Mountain: 55.1% Long Calls
+  Central: 53.8% Long Calls
+  Eastern: 51.1% Long Calls
+  Pacific: 47.0% Long Calls
+  unknown: 41.7% Long Calls
 
 3. WHICH CUSTOMER SENTIMENT (OMC) LEADS TO LONGER CALLS?
 ----------------------------------------------------------------------------------------------------
-  Interested: 83.3% Long Calls
-  Resistant: 46.4% Long Calls
-  Neutral: 2.2% Long Calls
+  Fluctuated: 90.5% Long Calls
+  Interested: 79.0% Long Calls
+  Skeptical: 57.7% Long Calls
+  Not Found in Transcript: 54.7% Long Calls
+  Resistant: 51.2% Long Calls
+  Neutral: 27.5% Long Calls
 
 ====================================================================================================
 ACTIONABLE INSIGHTS
 ====================================================================================================
 
 1. FOCUS ON HIGH-IMPACT VARIABLES:
-   Top 3: total_buying_signals, total_discovery_questions, objections_rebutted
+   Top 3: total_buying_signals, total_discovery_questions, TO_Event_O
    These variables have the strongest relationship with call duration.
 
 2. OPTIMIZE FOR HIGH-PERFORMING VALUES:
-   Best value: total_discovery_questions = 13
+   Best value: objections_rebutted = 7.0
    Achieves 100.0% long calls
 
 3. AVOID LOW-PERFORMING VALUES:
-   Worst value: customer_sentiment_omc = Neutral
-   Only 2.2% long calls
+   Worst value: LQ_Service = Home Renovation
+   Only 0.0% long calls
 
 ====================================================================================================
 METHODOLOGY

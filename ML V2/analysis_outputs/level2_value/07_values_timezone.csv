@@ -1,6 +1,6 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-timezone,unknown,5,1,6,83.33,16.67,-66.67,0.4945,0.4819,No,Favors Short Calls,33.33
-timezone,Eastern,43,25,68,63.24,36.76,-26.47,0.0747,0.7846,No,Favors Short Calls,13.24
-timezone,Pacific,15,11,26,57.69,42.31,-15.38,0.0369,0.8476,No,Favors Short Calls,7.69
-timezone,Central,19,15,34,55.88,44.12,-11.76,0.2846,0.5937,No,Favors Short Calls,5.88
-timezone,Mountain,4,5,9,44.44,55.56,11.11,0.5134,0.4737,No,Favors Long Calls,5.56
+timezone,unknown,49,35,84,58.33,41.67,-16.67,2.1609,0.1416,No,Favors Short Calls,8.33
+timezone,Mountain,40,49,89,44.94,55.06,10.11,0.7758,0.3784,No,Favors Long Calls,5.06
+timezone,Central,128,149,277,46.21,53.79,7.58,1.8691,0.1716,No,Neutral,3.79
+timezone,Pacific,87,77,164,53.05,46.95,-6.1,0.5708,0.45,No,Neutral,3.05
+timezone,Eastern,233,244,477,48.85,51.15,2.31,0.3446,0.5572,No,Neutral,1.15

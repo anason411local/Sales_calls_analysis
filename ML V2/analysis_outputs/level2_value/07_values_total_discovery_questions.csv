@@ -1,11 +1,20 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-total_discovery_questions,13,0,6,6,0.0,100.0,100.0,7.3779,0.0066,Yes,Favors Long Calls,50.0
-total_discovery_questions,0,42,3,45,93.33,6.67,-86.67,25.5713,0.0,Yes,Favors Short Calls,43.33
-total_discovery_questions,1,9,1,10,90.0,10.0,-80.0,2.5328,0.1115,No,Favors Short Calls,40.0
-total_discovery_questions,2,13,2,15,86.67,13.33,-73.33,3.4011,0.0652,No,Favors Short Calls,36.67
-total_discovery_questions,6,1,6,7,14.29,85.71,71.43,4.9099,0.0267,Yes,Favors Long Calls,35.71
-total_discovery_questions,8,1,6,7,14.29,85.71,71.43,4.9099,0.0267,Yes,Favors Long Calls,35.71
-total_discovery_questions,3,10,3,13,76.92,23.08,-53.85,0.8309,0.362,No,Favors Short Calls,26.92
-total_discovery_questions,7,7,3,10,70.0,30.0,-40.0,0.062,0.8034,No,Favors Short Calls,20.0
-total_discovery_questions,5,5,7,12,41.67,58.33,16.67,1.3098,0.2524,No,Favors Long Calls,8.33
-total_discovery_questions,4,6,7,13,46.15,53.85,7.69,0.7624,0.3826,No,Neutral,3.85
+total_discovery_questions,15.0,0,16,16,0.0,100.0,100.0,14.2497,0.0002,Yes,Favors Long Calls,50.0
+total_discovery_questions,14.0,0,24,24,0.0,100.0,100.0,22.4847,0.0,Yes,Favors Long Calls,50.0
+total_discovery_questions,17.0,0,8,8,0.0,100.0,100.0,6.1655,0.013,Yes,Favors Long Calls,50.0
+total_discovery_questions,18.0,0,6,6,0.0,100.0,100.0,4.1873,0.0407,Yes,Favors Long Calls,50.0
+total_discovery_questions,16.0,0,7,7,0.0,100.0,100.0,5.1726,0.0229,Yes,Favors Long Calls,50.0
+total_discovery_questions,13.0,1,25,26,3.85,96.15,92.31,20.7899,0.0,Yes,Favors Long Calls,46.15
+total_discovery_questions,12.0,2,22,24,8.33,91.67,83.33,15.344,0.0001,Yes,Favors Long Calls,41.67
+total_discovery_questions,11.0,4,37,41,9.76,90.24,80.49,25.8456,0.0,Yes,Favors Long Calls,40.24
+total_discovery_questions,1.0,80,9,89,89.89,10.11,-79.78,59.3963,0.0,Yes,Favors Short Calls,39.89
+total_discovery_questions,10.0,7,57,64,10.94,89.06,78.12,39.5962,0.0,Yes,Favors Long Calls,39.06
+total_discovery_questions,8.0,11,52,63,17.46,82.54,65.08,26.7821,0.0,Yes,Favors Long Calls,32.54
+total_discovery_questions,0.0,228,49,277,82.31,17.69,-64.62,148.0532,0.0,Yes,Favors Short Calls,32.31
+total_discovery_questions,2.0,51,12,63,80.95,19.05,-61.9,24.1709,0.0,Yes,Favors Short Calls,30.95
+total_discovery_questions,9.0,11,42,53,20.75,79.25,58.49,17.7537,0.0,Yes,Favors Long Calls,29.25
+total_discovery_questions,3.0,59,24,83,71.08,28.92,-42.17,14.9462,0.0001,Yes,Favors Short Calls,21.08
+total_discovery_questions,7.0,25,60,85,29.41,70.59,41.18,14.6203,0.0001,Yes,Favors Long Calls,20.59
+total_discovery_questions,6.0,37,61,98,37.76,62.24,24.49,5.8703,0.0154,Yes,Favors Long Calls,12.24
+total_discovery_questions,4.0,53,39,92,57.61,42.39,-15.22,1.987,0.1587,No,Favors Short Calls,7.61
+total_discovery_questions,5.0,40,41,81,49.38,50.62,1.23,0.0,1.0,No,Neutral,0.62

@@ -1,5 +1,11 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-customer_sentiment_lgs,Skeptical/Cautious,17,8,25,68.0,32.0,-36.0,0.2787,0.5976,No,Favors Short Calls,18.0
-customer_sentiment_lgs,Not Angry/Frustrated,27,13,40,67.5,32.5,-35.0,0.559,0.4547,No,Favors Short Calls,17.5
-customer_sentiment_lgs,unknown,7,4,11,63.64,36.36,-27.27,0.0,1.0,No,Favors Short Calls,13.64
-customer_sentiment_lgs,Happy/Optimistic,21,24,45,46.67,53.33,6.67,4.8799,0.0272,Yes,Neutral,3.33
+customer_sentiment_lgs,Overwhelmed/Stressed,24,6,30,80.0,20.0,-60.0,9.8766,0.0017,Yes,Favors Short Calls,30.0
+customer_sentiment_lgs,unknown,32,21,53,60.38,39.62,-20.75,1.9726,0.1602,No,Favors Short Calls,10.38
+customer_sentiment_lgs,Not Skeptical/Cautious,2,3,5,40.0,60.0,20.0,0.0,1.0,No,Favors Long Calls,10.0
+customer_sentiment_lgs,Angry/Frustrated,2,3,5,40.0,60.0,20.0,0.0,1.0,No,Favors Long Calls,10.0
+customer_sentiment_lgs,Happy/Optimistic,166,237,403,41.19,58.81,17.62,18.1711,0.0,Yes,Favors Long Calls,8.81
+customer_sentiment_lgs,Mixed Emotional Signals,20,26,46,43.48,56.52,13.04,0.5648,0.4523,No,Favors Long Calls,6.52
+customer_sentiment_lgs,Skeptical/Cautious,101,86,187,54.01,45.99,-8.02,1.2382,0.2658,No,Neutral,4.01
+customer_sentiment_lgs,Not Happy/Optimistic,16,14,30,53.33,46.67,-6.67,0.0342,0.8533,No,Neutral,3.33
+customer_sentiment_lgs,Not Angry/Frustrated,143,138,281,50.89,49.11,-1.78,0.074,0.7856,No,Neutral,0.89
+customer_sentiment_lgs,Neutral,9,9,18,50.0,50.0,0.0,0.0,1.0,No,Neutral,0.0

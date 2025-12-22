@@ -1,8 +1,15 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-TO_OMC_Disposiion,NQTO,11,1,12,91.67,8.33,-83.33,3.7661,0.0523,No,Favors Short Calls,41.67
-TO_OMC_Disposiion,P2P,2,10,12,16.67,83.33,66.67,8.9733,0.0027,Yes,Favors Long Calls,33.33
-TO_OMC_Disposiion,LB,4,1,5,80.0,20.0,-60.0,0.1652,0.6844,No,Favors Short Calls,30.0
-TO_OMC_Disposiion,HU,29,10,39,74.36,25.64,-48.72,3.0514,0.0807,No,Favors Short Calls,24.36
-TO_OMC_Disposiion,CALLBK,4,9,13,30.77,69.23,38.46,4.2558,0.0391,Yes,Favors Long Calls,19.23
-TO_OMC_Disposiion,NI,27,18,45,60.0,40.0,-20.0,0.0009,0.9766,No,Favors Short Calls,10.0
-TO_OMC_Disposiion,DISMX,7,8,15,46.67,53.33,6.67,0.8923,0.3449,No,Neutral,3.33
+TO_OMC_Disposiion,BCC,5,0,5,100.0,0.0,-100.0,3.2132,0.073,No,Favors Short Calls,50.0
+TO_OMC_Disposiion,NQTO,68,6,74,91.89,8.11,-83.78,53.5364,0.0,Yes,Favors Short Calls,41.89
+TO_OMC_Disposiion,P2P,14,133,147,9.52,90.48,80.95,107.722,0.0,Yes,Favors Long Calls,40.48
+TO_OMC_Disposiion,A,7,1,8,87.5,12.5,-75.0,3.1457,0.0761,No,Favors Short Calls,37.5
+TO_OMC_Disposiion,LB,25,5,30,83.33,16.67,-66.67,12.3372,0.0004,Yes,Favors Short Calls,33.33
+TO_OMC_Disposiion,CALLBK,21,66,87,24.14,75.86,51.72,23.9646,0.0,Yes,Favors Long Calls,25.86
+TO_OMC_Disposiion,VM,11,6,17,64.71,35.29,-29.41,0.9545,0.3286,No,Favors Short Calls,14.71
+TO_OMC_Disposiion,N,7,4,11,63.64,36.36,-27.27,0.367,0.5447,No,Favors Short Calls,13.64
+TO_OMC_Disposiion,NP,26,17,43,60.47,39.53,-20.93,1.5428,0.2142,No,Favors Short Calls,10.47
+TO_OMC_Disposiion,HU,185,136,321,57.63,42.37,-15.26,9.7461,0.0018,Yes,Favors Short Calls,7.63
+TO_OMC_Disposiion,INCALL,5,4,9,55.56,44.44,-11.11,0.0,1.0,No,Favors Short Calls,5.56
+TO_OMC_Disposiion,DISMX,52,61,113,46.02,53.98,7.96,0.6243,0.4295,No,Neutral,3.98
+TO_OMC_Disposiion,B,8,7,15,53.33,46.67,-6.67,0.0,1.0,No,Neutral,3.33
+TO_OMC_Disposiion,NI,164,158,322,50.93,49.07,-1.86,0.1055,0.7453,No,Neutral,0.93

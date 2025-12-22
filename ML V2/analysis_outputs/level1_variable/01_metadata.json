@@ -1,7 +1,7 @@
 {
   "total_variables": 47,
-  "categorical_variables": 45,
-  "numerical_variables": 2,
+  "categorical_variables": 44,
+  "numerical_variables": 3,
   "categorical_list": [
     "LQ_Company_Name",
     "LQ_Company_Address",
@@ -34,7 +34,6 @@
     "omc_who_said_hello_first",
     "total_discovery_questions",
     "total_buying_signals",
-    "time_to_reason_seconds",
     "location_mentioned",
     "business_type_mentioned",
     "within_45_seconds",
@@ -51,11 +50,12 @@
   ],
   "numerical_list": [
     "TO_length_in_sec",
-    "customer_talk_percentage"
+    "customer_talk_percentage",
+    "time_to_reason_seconds"
   ],
-  "total_records": 155,
-  "short_calls": 95,
-  "long_calls": 60,
+  "total_records": 1218,
+  "short_calls": 609,
+  "long_calls": 609,
   "sections": {
     "lead_quality": 6,
     "timings": 3,

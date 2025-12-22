@@ -1,4 +1,4 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-who_said_hello_first_lgs,unknown,7,3,10,70.0,30.0,-40.0,0.062,0.8034,No,Favors Short Calls,20.0
-who_said_hello_first_lgs,Agent,70,42,112,62.5,37.5,-25.0,0.0991,0.7529,No,Favors Short Calls,12.5
-who_said_hello_first_lgs,Customer,10,11,21,47.62,52.38,4.76,1.3051,0.2533,No,Neutral,2.38
+who_said_hello_first_lgs,unknown,40,26,66,60.61,39.39,-21.21,2.7073,0.0999,No,Favors Short Calls,10.61
+who_said_hello_first_lgs,Customer,82,113,195,42.05,57.95,15.9,5.4952,0.0191,Yes,Favors Long Calls,7.95
+who_said_hello_first_lgs,Agent,432,433,865,49.94,50.06,0.12,0.0,1.0,No,Neutral,0.06
