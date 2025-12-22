@@ -1,101 +1,101 @@
 Value_Feature,GB_Importance
-total_buying_signals_0.0,0.5496470620714614
-total_discovery_questions_0.0,0.07983891194009396
-call_result_tag_Disconnect - During Discovery,0.07817408824332309
-TO_OMC_Disposiion_P2P,0.07103806164775402
-total_discovery_questions_2.0,0.028047160638689034
-total_discovery_questions_1.0,0.01598801474395808
-TO_OMC_Disposiion_CALLBK,0.013547441917400942
-total_discovery_questions_11.0,0.011076791932839624
-total_discovery_questions_10.0,0.01003879620411134
-total_discovery_questions_15.0,0.009106042440953237
-total_discovery_questions_9.0,0.007616173115751324
-total_interruptions_3.0,0.0073166850767135624
-total_interruptions_4.0,0.0072924966116362355
-total_objections_8.0,0.006927944375148845
-total_discovery_questions_13.0,0.006218398865239419
-omc_agent_sentiment_style_Robotic & Script-Bound,0.006060034873928515
-total_objections_7.0,0.005879738762504643
-objections_rebutted_3.0,0.005657658310441291
-total_discovery_questions_14.0,0.0053425570430668
-call_result_tag_Follow-up Scheduled,0.0049922327076532234
-ready_to_transfer_YES,0.004518870277029635
-price_mentions_final_2min_2.0,0.003946234825059226
-timeline_mentions_final_2min_5.0,0.0039199124576679845
-total_interruptions_7.0,0.0036913753297081876
-total_buying_signals_4.0,0.0036671032429493548
-LQ_Service_remodeler,0.0034726948540090763
-customer_sentiment_lgs_Overwhelmed/Stressed,0.003380889352990806
-total_buying_signals_7.0,0.003314335016709269
-total_buying_signals_5.0,0.0032728034236625438
-total_discovery_questions_8.0,0.003187535438777557
-call_result_tag_Early Disconnect - Before Discover,0.00271011661751793
-omc_agent_sentiment_style_Professional,0.0026061009916602752
-total_objections_6.0,0.002521808762450108
-total_buying_signals_3.0,0.0024974622411826483
-timeline_mentions_final_2min_3.0,0.002442890199706411
-price_mentions_final_2min_3.0,0.002304080772008002
-objections_rebutted_5.0,0.002164406354913299
-price_mentions_final_2min_4.0,0.0018728631927117454
-objections_rebutted_4.0,0.0016740700030491108
-customer_sentiment_omc_Interested,0.001648688521011821
-omc_agent_sentiment_style_Hesitant & Apologetic,0.0016369802080705698
-total_discovery_questions_12.0,0.0016274302460019328
-commitment_type_Customer to Discuss with Partner,0.0014401539124533744
-total_buying_signals_9.0,0.0013950986064283626
-price_mentions_final_2min_6.0,0.0010508359052408191
-call_result_tag_Disconnect - During Close Attempt,0.0005832989199121898
-TO_OMC_Disposiion_LB,0.0005382191492508045
-objections_acknowledged_5.0,0.0005174559244526223
-total_interruptions_6.0,0.0005031335092941362
-TO_OMC_Disposiion_NQTO,0.000430592007973721
-contract_mentions_final_2min_1.0,0.0004305347902740677
-total_interruptions_5.0,0.0003102907544728019
-total_buying_signals_6.0,0.0003051441294861199
-customer_sentiment_omc_Fluctuated,0.00030498155498168085
-price_mentions_final_2min_5.0,0.00015934708325934967
-objections_acknowledged_4.0,0.00011964367232209727
-objections_rebutted_6.0,2.6326228681645633e-05
-price_mentions_final_2min_7.0,0.0
-objections_rebutted_7.0,0.0
-total_buying_signals_8.0,0.0
-total_interruptions_8.0,0.0
-total_discovery_questions_17.0,0.0
-total_discovery_questions_18.0,0.0
-technical_quality_issues_Dead Air Detected,0.0
-TO_OMC_Disposiion_BCC,0.0
-total_buying_signals_12.0,0.0
-total_buying_signals_11.0,0.0
-LQ_Service_Home Renovation,0.0
-total_interruptions_9.0,0.0
-LQ_Customer_Name_James ,0.0
-total_interruptions_10.0,0.0
-total_discovery_questions_16.0,0.0
-total_buying_signals_15.0,0.0
-total_buying_signals_10.0,0.0
-commitment_type_Customer Agreed to Think It Over (,0.0
-price_mentions_final_2min_8.0,0.0
-objections_acknowledged_6.0,0.0
-LQ_Customer_Name_Mike ,0.0
-contract_mentions_final_2min_2.0,0.0
-timeline_mentions_final_2min_6.0,0.0
-objections_acknowledged_7.0,0.0
-forbidden_industry_unknown,0.0
-technical_quality_score_4.6,0.0
-TO_OMC_Disposiion_A,0.0
-is_decision_maker_Not Confirmed/Gatekeeper,0.0
-timeline_mentions_final_2min_9.0,0.0
-LQ_Customer_Name_Nick ,0.0
-LQ_Service_Air Conditioning Services,0.0
-LQ_Service_Moving Services,0.0
-LQ_Service_HANDYMAN,0.0
-call_result_tag_Hard Decline (Not Interested),0.0
-call_result_tag_Unknown - Recording Incomplete,0.0
-LQ_Service_CAR MECHANIC,0.0
-"LQ_Company_Address_Toronto, ON, ",0.0
-"LQ_Company_Address_San Diego, CA, ",0.0
-LQ_Service_Junk Removal  Hauling,0.0
-Calls Count_8,0.0
-commitment_type_Follow-up Scheduled,0.0
-contract_mentions_final_2min_3.0,0.0
-LQ_Customer_Name_Alex ,0.0
+total_buying_signals_0,0.5305679244269504
+customer_sentiment_omc_Neutral,0.12334250242973806
+objections_rebutted_0,0.0871533866831023
+call_result_tag_Disconnect - During Discovery,0.03959064250192086
+ready_to_transfer_No,0.036107668446957376
+ready_for_customers_unknown,0.028602041794116122
+timeline_mentions_final_2min_0,0.02330475810624234
+"technical_quality_issues_Start-of-Call Latency, In",0.017776941300860643
+total_interruptions_0,0.015510878500414944
+lgs_agent_gender_Male,0.01412713584941553
+total_discovery_questions_0,0.013666883314463854
+commitment_type_No Commitment Secured,0.00867663915153428
+business_type_mentioned_No,0.00863206726175584
+TO_OMC_User_RAFAELVALDOVINOS,0.0074460137024261845
+TO_OMC_User_ERNESTOALFAROCORONA,0.007402414739518708
+objections_acknowledged_0,0.005727568842486517
+call_structure_framed_No,0.005112375545349712
+price_mentions_final_2min_0,0.0045922031309732865
+technical_quality_score_4.2,0.004559234302778849
+objections_rebutted_2,0.003940180965623039
+objections_acknowledged_1,0.002977836721622514
+TO_OMC_Disposiion_HU,0.0028005025949864163
+total_discovery_questions_2,0.002702502382388597
+total_objections_0,0.001407917624761666
+customer_sentiment_lgs_Skeptical/Cautious,0.001214436467062854
+location_mentioned_No,0.0009678838574957219
+TO_OMC_User_ARTURODELEON,0.0005954871126332826
+objections_acknowledged_2,0.0004950139394142988
+customer_sentiment_lgs_Not Angry/Frustrated,0.0004021816396274309
+TO_User_M_MARKCASEYALEGADO25,0.00028470424384646845
+total_discovery_questions_3,0.00018654826330150322
+TO_User_M_KARLBABONALES,5.530411005678921e-05
+time_to_reason_seconds_0.0,1.980968860741144e-05
+total_objections_1,1.8158434313386163e-05
+call_result_tag_Early Disconnect - Before Discover,1.5239051984154534e-05
+customer_sentiment_omc_Interested,1.3359166596251553e-05
+call_result_tag_Follow-up Scheduled,3.65370467226393e-06
+time_to_reason_seconds_13.0,0.0
+commitment_type_Customer to Review Materials,0.0
+TO_OMC_Disposiion_LB,0.0
+TO_User_M_MARIAFRSAMANIEGO,0.0
+technical_quality_score_3.6,0.0
+timezone_unknown,0.0
+TO_OMC_Disposiion_P2P,0.0
+total_discovery_questions_8,0.0
+total_interruptions_3,0.0
+objections_acknowledged_4,0.0
+omc_agent_sentiment_style_Robotic & Script-Bound,0.0
+price_mentions_final_2min_2,0.0
+TO_OMC_User_ISMAELMALENCOCORDOVA,0.0
+total_discovery_questions_6,0.0
+omc_who_said_hello_first_unknown,0.0
+LQ_Company_Address_-,0.0
+TO_OMC_Disposiion_NQTO,0.0
+total_discovery_questions_1,0.0
+commitment_type_Customer to Discuss with Partner,0.0
+total_discovery_questions_13,0.0
+total_buying_signals_4,0.0
+call_result_tag_Disconnect - During Close Attempt,0.0
+TO_User_M_GREGPHILIPSALAZAR,0.0
+price_mentions_final_2min_4,0.0
+customer_knows_marketing_No,0.0
+time_to_reason_seconds_18.0,0.0
+objections_rebutted_4,0.0
+customer_marketing_experience_SKEPTIC (Burned),0.0
+time_to_reason_seconds_15.0,0.0
+TO_User_M_JOLYDEETEDOY,0.0
+commitment_type_Email/Information Send Agreed,0.0
+TO_User_M_JENNIFERLICUANAN,0.0
+timeline_mentions_final_2min_3,0.0
+commitment_type_Follow-up Call Scheduled,0.0
+LQ_Customer_Name_ ,0.0
+omc_agent_sentiment_style_Not Found in Transcript,0.0
+total_buying_signals_2,0.0
+omc_agent_sentiment_style_Consultative & Validatin,0.0
+total_buying_signals_3,0.0
+Connection Made Calls_2,0.0
+lgs_sentiment_style_Hesitant & Apologetic,0.0
+TO_User_M_CLIFFORDBOLARDE,0.0
+ready_for_customers_UNKNOWN,0.0
+customer_availability_busy,0.0
+total_objections_5,0.0
+who_said_hello_first_lgs_unknown,0.0
+total_discovery_questions_7,0.0
+TO_OMC_Disposiion_CALLBK,0.0
+is_decision_maker_unknown,0.0
+customer_marketing_experience_NOVICE (Job Seeker),0.0
+total_interruptions_2,0.0
+lgs_sentiment_style_Robotic & Script-Bound,0.0
+objections_rebutted_3,0.0
+total_objections_4,0.0
+time_to_reason_seconds_12.0,0.0
+TO_User_M_ELIASPAULOJR,0.0
+ready_for_customers_No,0.0
+LQ_Service_Junk Removal,0.0
+Calls Count_4,0.0
+omc_agent_sentiment_style_Professional,0.0
+TO_OMC_User_MARYANNPERALTA,0.0
+TO_User_M_ADELALUCAS,0.0
+customer_availability_unknown,0.0

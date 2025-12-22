@@ -1,0 +1,67 @@
+================================================================================
+BUGFIX - CALL_ID ERROR
+================================================================================
+Date: December 19, 2024
+Issue: All calls failing with 'call_id' KeyError
+
+================================================================================
+PROBLEM IDENTIFIED
+================================================================================
+
+Error Message:
+--------------
+ERROR - Failed to analyze call XXXXX: 'call_id'
+
+Root Cause:
+-----------
+In the recent update, we changed the input structure from:
+  OLD: analysis_input["call_id"]
+  NEW: analysis_input["lead_id"]
+
+However, on line 133 of agents/analysis_nodes.py, the code was still trying to
+access the old field name:
+
+  insight.call_id = analysis_input["call_id"]  # ❌ This key doesn't exist!
+
+================================================================================
+FIX APPLIED
+================================================================================
+
+File: agents/analysis_nodes.py
+Line: 133
+
+BEFORE:
+-------
+insight.call_id = analysis_input["call_id"]
+
+AFTER:
+------
+insight.call_id = analysis_input["lead_id"]
+
+================================================================================
+VERIFICATION
+================================================================================
+
+✅ Linter check passed
+✅ Field name matches prompt template ({lead_id})
+✅ Field name matches INPUT_COLUMNS mapping
+✅ Ready to run
+
+================================================================================
+TESTING
+================================================================================
+
+Next run should now work correctly:
+
+cd D:\Sales_calls_analysis\ai_agents\call_performance_analyzer
+python main.py --run
+
+Expected behavior:
+- Calls should analyze successfully
+- No more 'call_id' KeyError
+- Proper lead_id values in insights
+
+================================================================================
+END OF BUGFIX
+================================================================================
+

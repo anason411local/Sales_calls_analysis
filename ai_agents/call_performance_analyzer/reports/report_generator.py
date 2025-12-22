@@ -30,6 +30,9 @@ def generate_comprehensive_report(state: AnalysisState) -> str:
         daily_trends = _prepare_daily_trends(state)
         status_analysis = _prepare_status_analysis(state)
         
+        # Prepare ML insights (NEW)
+        ml_insights_summary = _prepare_ml_insights_summary(state)
+        
         # Get LLM for report generation
         llm = get_report_llm()
         
@@ -47,15 +50,21 @@ def generate_comprehensive_report(state: AnalysisState) -> str:
             "accumulated_insights": accumulated_insights,
             "agent_performance": agent_performance,
             "daily_trends": daily_trends,
-            "status_analysis": status_analysis
+            "status_analysis": status_analysis,
+            "ml_insights": ml_insights_summary  # NEW
         })
         
         report = response.content
+        
+        # Add ML Insights Section (NEW)
+        if state.get('ml_insights'):
+            report += "\n\n" + _generate_ml_insights_section(state['ml_insights'])
         
         # Add metadata footer
         report += f"\n\n---\n\n*Report generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*\n"
         report += f"*Total calls analyzed: {len(state['all_insights'])}*\n"
         report += f"*Analysis period: {_get_date_range(state)}*\n"
+        report += f"*Analysis Method: Agentic AI + Machine Learning*\n"
         
         logger.info("Report generation complete")
         return report
@@ -281,4 +290,163 @@ def _generate_fallback_report(state: AnalysisState) -> str:
 """
     
     return report
+
+
+def _prepare_ml_insights_summary(state: AnalysisState) -> str:
+    """
+    Prepare ML insights summary for LLM
+    
+    Args:
+        state: Analysis state
+        
+    Returns:
+        ML insights summary string
+    """
+    ml_insights = state.get('ml_insights')
+    
+    if not ml_insights:
+        return "ML insights not available"
+    
+    try:
+        summary_parts = []
+        
+        # Top variables
+        if ml_insights.top_variables:
+            summary_parts.append(f"Top 10 Variables: {', '.join(ml_insights.top_variables[:10])}")
+        
+        # Statistical summary
+        summary_parts.append(f"Statistical Summary: {ml_insights.statistical_summary}")
+        
+        # Key insights count
+        summary_parts.append(f"Generated {len(ml_insights.key_insights)} ML-based insights")
+        
+        # Top 5 insights
+        if ml_insights.key_insights:
+            summary_parts.append("\nTop 5 ML Insights:")
+            for i, insight in enumerate(ml_insights.key_insights[:5], 1):
+                summary_parts.append(f"  {i}. [{insight.category.upper()}] {insight.insight}")
+                summary_parts.append(f"     Evidence: {insight.evidence}")
+        
+        return "\n".join(summary_parts)
+        
+    except Exception as e:
+        logger.error(f"Error preparing ML insights summary: {str(e)}")
+        return "ML insights summary unavailable"
+
+
+def _generate_ml_insights_section(ml_insights) -> str:
+    """
+    Generate ML Insights section for the report with embedded visualizations
+    
+    Args:
+        ml_insights: MLInsightsCollection object
+        
+    Returns:
+        Markdown formatted ML insights section
+    """
+    try:
+        section = []
+        
+        section.append("---\n")
+        section.append("# 🤖 MACHINE LEARNING INSIGHTS\n")
+        section.append("*Advanced ML Analysis: Feature Importance, SHAP, LIME, Statistical Tests*\n")
+        
+        # Statistical Summary
+        section.append("\n## 📊 Statistical Summary\n")
+        section.append(f"{ml_insights.statistical_summary}\n")
+        
+        # Top Variables
+        if ml_insights.top_variables:
+            section.append("\n## 🎯 Top 10 Most Important Variables\n")
+            section.append("*These variables have the strongest predictive power for call duration:*\n")
+            for i, var in enumerate(ml_insights.top_variables, 1):
+                section.append(f"{i}. **{var}**")
+            section.append("")
+        
+        # Key Visualizations
+        if ml_insights.visualizations_to_include:
+            section.append("\n## 📈 Key ML Visualizations\n")
+            
+            for viz_path in ml_insights.visualizations_to_include[:6]:  # Top 6 visualizations
+                # Convert absolute path to relative path for Markdown
+                from pathlib import Path
+                viz_path_obj = Path(viz_path)
+                viz_name = viz_path_obj.name
+                
+                # Determine visualization title
+                if "waterfall" in viz_name:
+                    title = "SHAP Waterfall Plot - Individual Prediction Explanation"
+                    description = "Shows how each variable contributes to pushing a call toward short or long duration"
+                elif "top_20" in viz_name:
+                    title = "Top 20 Variables by Combined Importance"
+                    description = "Ranked by Random Forest, XGBoost, and Correlation analysis"
+                elif "beeswarm" in viz_name:
+                    title = "SHAP Summary Plot - Overall Feature Impact"
+                    description = "Each dot represents one call, color shows feature value (red=high, blue=low)"
+                elif "correlation" in viz_name:
+                    title = "Correlation vs ML Importance"
+                    description = "Compares statistical correlation with ML model importance"
+                elif "effect_sizes" in viz_name:
+                    title = "Statistical Effect Sizes"
+                    description = "Variables with largest differences between short and long calls"
+                elif "roc" in viz_name:
+                    title = "ML Model Performance (ROC Curves)"
+                    description = "Model accuracy in predicting call duration"
+                else:
+                    title = viz_name.replace("_", " ").replace(".png", "").title()
+                    description = "ML analysis visualization"
+                
+                section.append(f"\n### {title}\n")
+                section.append(f"*{description}*\n")
+                section.append(f"![{title}]({viz_path})\n")
+        
+        # Key Insights by Category
+        if ml_insights.key_insights:
+            section.append("\n## 💡 Key ML Insights\n")
+            
+            # Group insights by category
+            categories = {}
+            for insight in ml_insights.key_insights:
+                if insight.category not in categories:
+                    categories[insight.category] = []
+                categories[insight.category].append(insight)
+            
+            # Display by category
+            category_names = {
+                'correlation': '📉 Correlation Analysis',
+                'feature_importance': '⭐ Feature Importance',
+                'shap': '🔍 SHAP Explainability',
+                'statistical': '📊 Statistical Significance',
+                'lime': '🎯 LIME Local Explanations'
+            }
+            
+            for category, insights_list in categories.items():
+                section.append(f"\n### {category_names.get(category, category.title())}\n")
+                
+                for insight in insights_list[:5]:  # Top 5 per category
+                    section.append(f"**{insight.insight}**")
+                    section.append(f"- *Evidence:* {insight.evidence}")
+                    section.append(f"- *Recommendation:* {insight.recommendation}")
+                    section.append(f"- *Importance Score:* {insight.importance_score:.3f}")
+                    section.append("")
+        
+        # Comprehensive Recommendations
+        section.append("\n## 🎯 ML-Based Recommendations\n")
+        section.append("*Actionable insights derived from machine learning analysis:*\n")
+        section.append(f"{ml_insights.recommendations_summary}\n")
+        
+        # Methodology Note
+        section.append("\n## 🔬 ML Methodology\n")
+        section.append("This analysis combines multiple ML techniques:\n")
+        section.append("- **Random Forest & XGBoost**: Tree-based models for feature importance")
+        section.append("- **SHAP (SHapley Additive exPlanations)**: Model-agnostic explainability")
+        section.append("- **LIME (Local Interpretable Model-agnostic Explanations)**: Local predictions")
+        section.append("- **Statistical Tests**: T-tests, Mann-Whitney U, Chi-square, Cohen's D")
+        section.append("- **Correlation Analysis**: Spearman correlation for non-linear relationships\n")
+        
+        return "\n".join(section)
+        
+    except Exception as e:
+        logger.error(f"Error generating ML insights section: {str(e)}")
+        return "\n---\n\n# MACHINE LEARNING INSIGHTS\n\n*ML insights unavailable - see logs for details*\n"
 

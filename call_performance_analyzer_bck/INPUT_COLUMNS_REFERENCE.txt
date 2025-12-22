@@ -1,0 +1,289 @@
+================================================================================
+📋 INPUT COLUMNS REFERENCE - CALL PERFORMANCE ANALYZER
+================================================================================
+Updated: December 22, 2024
+
+This document lists ALL input columns we're reading from the CSV file and 
+passing to the Gemini LLM for analysis.
+
+================================================================================
+TOTAL INPUT VARIABLES: 59
+================================================================================
+
+================================================================================
+1. LEAD QUALITY INFORMATION (6 columns)
+================================================================================
+
+CSV Column Name                  → Prompt Placeholder
+---------------------------------------------------
+LQ_Company_Name                  → {LQ_Company_Name}
+LQ_Company_Address               → {LQ_Company_Address}
+LQ_Service                       → {LQ_Service}
+LQ_Customer_Name                 → {LQ_Customer_Name}
+Calls Count                      → {Calls_Count}
+Connection Made Calls            → {Connection_Made_Calls}
+
+Note: Last 2 columns have SPACES in CSV but UNDERSCORES in prompt!
+
+================================================================================
+2. CALL INFORMATION (5 columns)
+================================================================================
+
+CSV Column Name                  → Prompt Placeholder
+---------------------------------------------------
+TO_Lead_ID                       → {TO_Lead_ID}
+TO_Event_O                       → {TO_Event_O}
+TO_length_in_sec                 → {TO_length_in_sec}
+TO_OMC_Duration                  → {TO_OMC_Duration}
+TO_OMC_Disposiion                → {TO_OMC_Disposiion}
+
+================================================================================
+3. LGS (LEAD GENERATION) DATA (12 columns)
+================================================================================
+
+Base LGS Columns:
+-----------------
+CSV Column Name                              → Prompt Placeholder
+----------------------------------------------------------------
+TO_User_M                                    → {TO_User_M}
+TO_Transcription_VICI(0-32000) Words        → {lgs_transcription}*
+TO_Transcription_VICI(32001-64000) Words    → {lgs_transcription}*
+TO_Transcription_VICI(64000+ Words)          → {lgs_transcription}*
+
+*These 3 columns are CONCATENATED into a single {lgs_transcription} variable
+
+LGS Extracted Variables (10 columns):
+--------------------------------------
+CSV Column Name                  → Prompt Placeholder
+---------------------------------------------------
+season_status                    → {season_status}
+lgs_agent_gender                 → {lgs_agent_gender}
+is_decision_maker                → {is_decision_maker}
+ready_for_customers              → {ready_for_customers}
+forbidden_industry               → {forbidden_industry}
+ready_to_transfer                → {ready_to_transfer}
+customer_sentiment_lgs           → {customer_sentiment_lgs}
+customer_language                → {customer_language}
+who_said_hello_first_lgs         → {who_said_hello_first_lgs}
+lgs_sentiment_style              → {lgs_sentiment_style}
+
+================================================================================
+4. OMC (OUTBOUND MARKETING) DATA (28 columns)
+================================================================================
+
+Base OMC Columns:
+-----------------
+CSV Column Name                              → Prompt Placeholder
+----------------------------------------------------------------
+TO_OMC_User                                  → {TO_OMC_User}
+TO_OMC_Transcription_VICI                    → {omc_transcription}*
+TO_OMC_Transcription_VICI(32000-64000)Words  → {omc_transcription}*
+TO_OMC_Transcription_VICI(64000+ Words)      → {omc_transcription}*
+
+*These 3 columns are CONCATENATED into a single {omc_transcription} variable
+
+OMC Extracted Variables (25 columns):
+--------------------------------------
+CSV Column Name                  → Prompt Placeholder
+---------------------------------------------------
+timezone                         → {timezone}
+customer_sentiment_omc           → {customer_sentiment_omc}
+customer_knows_marketing         → {customer_knows_marketing}
+customer_availability            → {customer_availability}
+customer_marketing_experience    → {customer_marketing_experience}
+technical_quality_score          → {technical_quality_score}
+omc_agent_sentiment_style        → {omc_agent_sentiment_style}
+omc_who_said_hello_first         → {omc_who_said_hello_first}
+customer_talk_percentage         → {customer_talk_percentage}
+total_discovery_questions        → {total_discovery_questions}
+total_buying_signals             → {total_buying_signals}
+time_to_reason_seconds           → {time_to_reason_seconds}
+location_mentioned               → {location_mentioned}
+business_type_mentioned          → {business_type_mentioned}
+within_45_seconds                → {within_45_seconds}
+call_structure_framed            → {call_structure_framed}
+total_objections                 → {total_objections}
+objections_acknowledged          → {objections_acknowledged}
+price_mentions_final_2min        → {price_mentions_final_2min}
+timeline_mentions_final_2min     → {timeline_mentions_final_2min}
+contract_mentions_final_2min     → {contract_mentions_final_2min}
+objections_rebutted              → {objections_rebutted}
+total_interruptions              → {total_interruptions}
+commitment_type                  → {commitment_type}
+call_result_tag                  → {call_result_tag}
+
+================================================================================
+COLUMN BREAKDOWN BY CATEGORY:
+================================================================================
+
+Lead Quality:           6 columns
+Call Information:       5 columns
+LGS Base:              4 columns (3 transcriptions + 1 agent)
+LGS Extracted:        10 columns
+OMC Base:              4 columns (3 transcriptions + 1 agent)
+OMC Extracted:        25 columns
+                      ───────────
+TOTAL:                54 unique CSV columns
+                      (59 variables after concatenation)
+
+================================================================================
+SPECIAL HANDLING:
+================================================================================
+
+1. COLUMNS WITH SPACES (CSV) → UNDERSCORES (Prompt):
+   --------------------------------------------------
+   CSV: "Calls Count"            → Prompt: {Calls_Count}
+   CSV: "Connection Made Calls"  → Prompt: {Connection_Made_Calls}
+
+2. TRANSCRIPTION CONCATENATION:
+   ----------------------------
+   LGS: 3 columns → 1 variable {lgs_transcription}
+   OMC: 3 columns → 1 variable {omc_transcription}
+
+3. COLUMNS WITH SPECIAL CHARACTERS:
+   --------------------------------
+   CSV: "TO_Transcription_VICI(0-32000) Words"
+   CSV: "TO_OMC_Transcription_VICI(32000-64000)Words"
+   
+   These are read directly from CSV but mapped to simple names:
+   {lgs_transcription} and {omc_transcription}
+
+================================================================================
+DATA FLOW:
+================================================================================
+
+1. CSV File (mergeed_for_test.csv)
+   ↓
+   54 unique columns read
+
+2. Python Code (analysis_nodes.py)
+   ↓
+   - Direct CSV column access: row.get('LQ_Company_Name', 'unknown')
+   - Concatenate transcriptions: 3 columns → 1 variable
+   - Map spaces to underscores: "Calls Count" → "Calls_Count"
+   ↓
+   59 variables prepared
+
+3. Prompt Template (analysis_prompt.txt)
+   ↓
+   - Uses clean placeholders: {LQ_Company_Name}
+   - Uses underscores: {Calls_Count}
+   - Uses simple names: {lgs_transcription}
+   ↓
+   Prompt formatted with all 59 variables
+
+4. Gemini LLM
+   ↓
+   Receives complete prompt with all data
+   ↓
+   Generates comprehensive analysis
+
+================================================================================
+VERIFICATION CHECKLIST:
+================================================================================
+
+✅ All 54 CSV columns are being read
+✅ All 59 variables are passed to the LLM
+✅ No "missing variables" errors
+✅ Transcriptions are properly concatenated
+✅ Spaces in CSV columns are handled correctly
+✅ Special characters in column names are handled
+✅ All extracted variables from sales_variables_extractor are included
+
+================================================================================
+COLUMNS NOT USED FROM CSV:
+================================================================================
+
+The following columns exist in the CSV but are NOT used for analysis:
+(They may be metadata or intermediate processing columns)
+
+- TO_Phone
+- TO_Status
+- TO_Campaing_ID
+- TO_Recording_Link
+- TO_OMC_Call_Date_O
+- TO_OMC_Campaign_ID
+- TO_OMC_Recording_Link
+- TO_OMC_User_Group
+- LQ_User
+- Dial Attempt Calls
+- lead_id (lowercase - we use TO_Lead_ID instead)
+- row_number
+- customer_name (lowercase - we use LQ_Customer_Name instead)
+- service (lowercase - we use LQ_Service instead)
+- customer_address (lowercase - we use LQ_Company_Address instead)
+- season_month
+- lgs_call_not_transferred
+- technical_quality_issues
+- lgs_extraction_success
+- lgs_error_message
+- agent_talk_percentage
+- talk_ratio_classification
+- goal1_questions
+- goal2_questions
+- goal3_questions
+- discovery_quality
+- advanced_discovery_used
+- total_resistance_signals
+- signal_ratio
+- call_structure_clarity
+- acknowledgement_rate
+- roi_calculation_presented
+- average_monologue_length
+- longest_monologue_length
+- extended_monologues_count
+- short_monologues
+- medium_monologues
+- long_monologues
+- very_long_monologues
+- interruption_rate
+- interruption_pattern
+- conversation_balance
+- script_adherence
+- stages_skipped
+- stages_out_of_order
+- premature_closing_attempt
+- name_used_first_minute
+- name_usage_count
+- rapport_elements_count
+- tone_assessment
+- personal_greeting
+- common_ground_established
+- sentiment_progression
+- sentiment_opening
+- sentiment_early_middle
+- sentiment_late_middle
+- sentiment_closing
+- notable_sentiment_shifts
+- customer_frustrations
+- empathy_responses
+- empathy_response_rate
+- total_call_duration
+- disconnect_stage
+- hang_up_initiated_by
+- time_in_final_stage
+- commitment_clarity
+- assumptive_language_used
+- full_sale_closed
+- payment_info_collected
+- followup_scheduled
+- primary_disconnect_reason
+- omc_extraction_success
+- omc_error_message
+- extraction_complete
+
+Note: These columns are available in the CSV but not currently used in the 
+analysis prompt. They could be added in future updates if needed.
+
+================================================================================
+SUMMARY:
+================================================================================
+
+INPUT: 54 unique CSV columns
+PROCESSING: Concatenation + mapping
+OUTPUT: 59 variables to LLM
+
+All variables are properly mapped and ready for comprehensive call analysis!
+
+================================================================================
+

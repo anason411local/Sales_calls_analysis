@@ -1,8 +1,8 @@
 {
-  "total_samples_explained": 1000,
+  "total_samples_explained": 155,
   "key_examples_explained": 4,
-  "aggregated_samples": 1000,
-  "top_variable_rf": "total_discovery_questions",
-  "top_variable_gb": "total_discovery_questions",
-  "lime_shap_correlation": 0.9583521472885782
+  "aggregated_samples": 155,
+  "top_variable_rf": "total_buying_signals",
+  "top_variable_gb": "total_buying_signals",
+  "lime_shap_correlation": 0.969244736693074
 }

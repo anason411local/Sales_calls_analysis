@@ -94,15 +94,23 @@ DAILY TRENDS DATA:
 STATUS ANALYSIS DATA:
 {status_analysis}
 
+MACHINE LEARNING INSIGHTS (NEW):
+{ml_insights}
+
 CRITICAL REQUIREMENTS:
 - Use VERBATIM QUOTES to prove every major claim
 - Extract TRANSFERABLE WISDOM from successful agents
 - Show HOW to implement recommendations (not just what to do)
+- **INTEGRATE ML INSIGHTS**: Combine agentic AI analysis with ML findings
+- **CROSS-VALIDATE**: Where ML and agent analysis agree, emphasize those insights
 - Keep report length manageable (~same as before, but with strategic quotes)
 - Focus on ACTIONABLE insights with PROOF
 - Think: "How would I train agents using this report?"
+- **ML-ENHANCED RECOMMENDATIONS**: Use ML variable importance to prioritize recommendations
 
 Create a professional, well-structured Markdown report that the CEO can review and convert to Word.
 Use tables, bullet points, and clear sections. Be specific and actionable.
+
+NOTE: A separate ML INSIGHTS section with visualizations will be automatically appended after this report.
 """
 

@@ -1,5 +1,4 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-omc_who_said_hello_first,Not Found in Transcript,5,12,17,29.41,70.59,41.18,2.1476,0.1428,No,Favors Long Calls,20.59
-omc_who_said_hello_first,unknown,82,35,117,70.09,29.91,-40.17,20.0074,0.0,Yes,Favors Short Calls,20.09
-omc_who_said_hello_first,Customer,36,26,62,58.06,41.94,-16.13,1.3765,0.2407,No,Favors Short Calls,8.06
-omc_who_said_hello_first,Agent,485,534,1019,47.6,52.4,4.81,13.8389,0.0002,Yes,Neutral,2.4
+omc_who_said_hello_first,unknown,12,2,14,85.71,14.29,-71.43,2.8206,0.0931,No,Favors Short Calls,35.71
+omc_who_said_hello_first,Agent,79,51,130,60.77,39.23,-21.54,0.0063,0.9366,No,Favors Short Calls,10.77
+omc_who_said_hello_first,Customer,4,4,8,50.0,50.0,0.0,0.0903,0.7638,No,Neutral,0.0

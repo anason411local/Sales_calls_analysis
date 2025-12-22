@@ -1,21 +1,21 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-LQ_Service,Home Renovation,5,0,5,100.0,0.0,-100.0,3.2132,0.073,No,Favors Short Calls,50.0
-TO_OMC_Disposiion,BCC,5,0,5,100.0,0.0,-100.0,3.2132,0.073,No,Favors Short Calls,50.0
-omc_agent_sentiment_style,Hesitant & Apologetic,18,0,18,100.0,0.0,-100.0,16.2964,0.0001,Yes,Favors Short Calls,50.0
-TO_OMC_Disposiion,NQTO,68,6,74,91.89,8.11,-83.78,53.5364,0.0,Yes,Favors Short Calls,41.89
-total_discovery_questions,1.0,80,9,89,89.89,10.11,-79.78,59.3963,0.0,Yes,Favors Short Calls,39.89
-omc_agent_sentiment_style,Robotic & Script-Bound,98,12,110,89.09,10.91,-78.18,72.2026,0.0,Yes,Favors Short Calls,39.09
-LQ_Customer_Name,Mike ,8,1,9,88.89,11.11,-77.78,4.0298,0.0447,Yes,Favors Short Calls,38.89
-call_result_tag,Disconnect - During Discovery,197,25,222,88.74,11.26,-77.48,161.0746,0.0,Yes,Favors Short Calls,38.74
-TO_OMC_Disposiion,A,7,1,8,87.5,12.5,-75.0,3.1457,0.0761,No,Favors Short Calls,37.5
-forbidden_industry,unknown,5,1,6,83.33,16.67,-66.67,1.5074,0.2195,No,Favors Short Calls,33.33
-TO_OMC_Disposiion,LB,25,5,30,83.33,16.67,-66.67,12.3372,0.0004,Yes,Favors Short Calls,33.33
-is_decision_maker,Not Confirmed/Gatekeeper,5,1,6,83.33,16.67,-66.67,1.5074,0.2195,No,Favors Short Calls,33.33
-total_discovery_questions,0.0,228,49,277,82.31,17.69,-64.62,148.0532,0.0,Yes,Favors Short Calls,32.31
-total_discovery_questions,2.0,51,12,63,80.95,19.05,-61.9,24.1709,0.0,Yes,Favors Short Calls,30.95
-LQ_Company_Address,"Toronto, ON, ",4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
-call_result_tag,Hard Decline (Not Interested),4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
-LQ_Service,HANDYMAN,4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
-LQ_Customer_Name,Nick ,4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
-customer_sentiment_lgs,Overwhelmed/Stressed,24,6,30,80.0,20.0,-60.0,9.8766,0.0017,Yes,Favors Short Calls,30.0
-LQ_Service,Air Conditioning Services,4,1,5,80.0,20.0,-60.0,0.8033,0.3701,No,Favors Short Calls,30.0
+customer_sentiment_omc,Neutral,44,1,45,97.78,2.22,-95.56,33.4477,0.0,Yes,Favors Short Calls,47.78
+total_discovery_questions,0,42,3,45,93.33,6.67,-86.67,25.5713,0.0,Yes,Favors Short Calls,43.33
+omc_agent_sentiment_style,Robotic & Script-Bound,13,1,14,92.86,7.14,-85.71,5.084,0.0241,Yes,Favors Short Calls,42.86
+call_result_tag,Disconnect - During Discovery,25,2,27,92.59,7.41,-85.19,11.9525,0.0005,Yes,Favors Short Calls,42.59
+TO_OMC_Disposiion,NQTO,11,1,12,91.67,8.33,-83.33,3.7661,0.0523,No,Favors Short Calls,41.67
+call_result_tag,Early Disconnect - Before Discovery,31,3,34,91.18,8.82,-82.35,14.8227,0.0001,Yes,Favors Short Calls,41.18
+LQ_Company_Address,-,9,1,10,90.0,10.0,-80.0,2.5328,0.1115,No,Favors Short Calls,40.0
+total_discovery_questions,1,9,1,10,90.0,10.0,-80.0,2.5328,0.1115,No,Favors Short Calls,40.0
+total_objections,0,43,5,48,89.58,10.42,-79.17,21.7647,0.0,Yes,Favors Short Calls,39.58
+total_buying_signals,0,77,10,87,88.51,11.49,-77.01,59.3229,0.0,Yes,Favors Short Calls,38.51
+technical_quality_issues,"Start-of-Call Latency, Intelligibility",14,2,16,87.5,12.5,-75.0,4.0075,0.0453,Yes,Favors Short Calls,37.5
+TO_OMC_User,ISMAELMALENCOCORDOVA,14,2,16,87.5,12.5,-75.0,4.0075,0.0453,Yes,Favors Short Calls,37.5
+total_discovery_questions,2,13,2,15,86.67,13.33,-73.33,3.4011,0.0652,No,Favors Short Calls,36.67
+omc_who_said_hello_first,unknown,12,2,14,85.71,14.29,-71.43,2.8206,0.0931,No,Favors Short Calls,35.71
+total_objections,1,17,3,20,85.0,15.0,-70.0,4.354,0.0369,Yes,Favors Short Calls,35.0
+time_to_reason_seconds,0.0,16,3,19,84.21,15.79,-68.42,3.757,0.0526,No,Favors Short Calls,34.21
+objections_rebutted,0,71,14,85,83.53,16.47,-67.06,37.187,0.0,Yes,Favors Short Calls,33.53
+timezone,unknown,5,1,6,83.33,16.67,-66.67,0.4945,0.4819,No,Favors Short Calls,33.33
+TO_User_M,GREGPHILIPSALAZAR,5,1,6,83.33,16.67,-66.67,0.4945,0.4819,No,Favors Short Calls,33.33
+technical_quality_score,3.6,10,2,12,83.33,16.67,-66.67,1.752,0.1856,No,Favors Short Calls,33.33

@@ -1,10 +1,6 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-price_mentions_final_2min,7.0,0,7,7,0.0,100.0,100.0,5.1726,0.0229,Yes,Favors Long Calls,50.0
-price_mentions_final_2min,6.0,1,16,17,5.88,94.12,88.24,11.6926,0.0006,Yes,Favors Long Calls,44.12
-price_mentions_final_2min,5.0,1,12,13,7.69,92.31,84.62,7.7753,0.0053,Yes,Favors Long Calls,42.31
-price_mentions_final_2min,8.0,1,5,6,16.67,83.33,66.67,1.5074,0.2195,No,Favors Long Calls,33.33
-price_mentions_final_2min,3.0,10,49,59,16.95,83.05,66.1,25.7205,0.0,Yes,Favors Long Calls,33.05
-price_mentions_final_2min,4.0,8,35,43,18.6,81.4,62.79,16.2962,0.0001,Yes,Favors Long Calls,31.4
-price_mentions_final_2min,2.0,20,76,96,20.83,79.17,58.33,34.2065,0.0,Yes,Favors Long Calls,29.17
-price_mentions_final_2min,1.0,34,76,110,30.91,69.09,38.18,16.799,0.0,Yes,Favors Long Calls,19.09
-price_mentions_final_2min,0.0,534,326,860,62.09,37.91,-24.19,169.5144,0.0,Yes,Favors Short Calls,12.09
+price_mentions_final_2min,2,1,7,8,12.5,87.5,75.0,6.4342,0.0112,Yes,Favors Long Calls,37.5
+price_mentions_final_2min,4,2,6,8,25.0,75.0,50.0,3.2085,0.0733,No,Favors Long Calls,25.0
+price_mentions_final_2min,0,84,29,113,74.34,25.66,-48.67,27.921,0.0,Yes,Favors Short Calls,24.34
+price_mentions_final_2min,1,5,8,13,38.46,61.54,23.08,2.1552,0.1421,No,Favors Long Calls,11.54
+price_mentions_final_2min,3,3,3,6,50.0,50.0,0.0,0.023,0.8794,No,Neutral,0.0

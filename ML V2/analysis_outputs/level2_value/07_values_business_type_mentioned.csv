@@ -1,3 +1,3 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-business_type_mentioned,No,217,155,372,58.33,41.67,-16.67,14.401,0.0001,Yes,Favors Short Calls,8.33
-business_type_mentioned,Yes,392,454,846,46.34,53.66,7.33,14.401,0.0001,Yes,Neutral,3.66
+business_type_mentioned,No,28,15,43,65.12,34.88,-30.23,0.1779,0.6732,No,Favors Short Calls,15.12
+business_type_mentioned,Yes,67,45,112,59.82,40.18,-19.64,0.1779,0.6732,No,Favors Short Calls,9.82

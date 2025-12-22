@@ -1,0 +1,168 @@
+================================================================================
+✅ 5-MINUTE THRESHOLD FIX - COMPLETE (December 19, 2024)
+================================================================================
+
+ISSUE IDENTIFIED:
+==================
+The report was still showing "2 minutes" instead of "5 minutes" even though the 
+CALL_DURATION_THRESHOLD was set to 300 seconds (5 minutes) in settings.py.
+
+ROOT CAUSE:
+===========
+The hardcoded "2 min" text was in the REPORT GENERATOR file, which creates the 
+summary text that gets passed to the LLM for report generation. This text was 
+not dynamically using the threshold setting.
+
+FILES FIXED:
+============
+
+1. ai_agents/call_performance_analyzer/reports/report_generator.py
+   ----------------------------------------------------------------
+   BEFORE (Line 122-123):
+   SHORT CALLS (<2 min): {short_calls} ({short_pct:.1f}%)
+   LONG CALLS (>=2 min): {long_calls} ({long_pct:.1f}%)
+   
+   AFTER:
+   SHORT CALLS (<5 min): {short_calls} ({short_pct:.1f}%)
+   LONG CALLS (>=5 min): {long_calls} ({long_pct:.1f}%)
+   
+   BEFORE (Line 263-264):
+   **Short Calls (<2 min):** {short_calls} ({short_pct:.1f}%)
+   **Long Calls (>=2 min):** {long_calls} ({long_pct:.1f}%)
+   
+   AFTER:
+   **Short Calls (<5 min):** {short_calls} ({short_pct:.1f}%)
+   **Long Calls (>=5 min):** {long_calls} ({long_pct:.1f}%)
+
+2. ai_agents/call_performance_analyzer/schemas/analysis_schemas.py
+   -----------------------------------------------------------------
+   BEFORE (Line 28):
+   is_short_call: bool = Field(default=False, description="Whether call is under 2 minutes")
+   
+   AFTER:
+   is_short_call: bool = Field(default=False, description="Whether call is under 5 minutes")
+
+================================================================================
+VERIFICATION OF ALL SETTINGS:
+================================================================================
+
+✅ config/settings.py (Line 78):
+   CALL_DURATION_THRESHOLD = 300  # 5 minutes in seconds
+
+✅ config/settings.py (Lines 105-106):
+   "short_calls": "Calls under 5 minutes (<300 seconds)",
+   "long_calls": "Calls over 5 minutes (>=300 seconds)",
+
+✅ prompts/system_instructions.txt (Line 16):
+   Calls under 5 minutes (<300 seconds) in OMC are not converting.
+
+✅ prompts/system_instructions.txt (Line 18):
+   2. WHAT patterns exist in successful calls (>5 minutes)?
+
+✅ prompts/system_instructions.txt (Line 38):
+   - Reasons for early termination (if <5 min)
+
+✅ prompts/system_instructions.txt (Line 41):
+   For SHORT calls (<5 minutes):
+
+✅ prompts/system_instructions.txt (Line 48):
+   For LONG calls (>=5 minutes):
+
+✅ prompts/analysis_prompt.txt (Line 81):
+   - Is this a SHORT call (<5 minutes) or LONG call (>=5 minutes)?
+
+✅ prompts/prompt_templates.py (Line 41):
+   - Short calls (<5 min) vs Long calls (>=5 min)
+
+✅ agents/analysis_nodes.py (Line 139):
+   insight.is_short_call = insight.omc_duration < CALL_DURATION_THRESHOLD
+
+✅ reports/report_generator.py (Lines 122-123):
+   SHORT CALLS (<5 min): {short_calls} ({short_pct:.1f}%)
+   LONG CALLS (>=5 min): {long_calls} ({long_pct:.1f}%)
+
+✅ reports/report_generator.py (Lines 263-264):
+   **Short Calls (<5 min):** {short_calls} ({short_pct:.1f}%)
+   **Long Calls (>=5 min):** {long_calls} ({long_pct:.1f}%)
+
+✅ schemas/analysis_schemas.py (Line 28):
+   is_short_call: bool = Field(default=False, description="Whether call is under 5 minutes")
+
+================================================================================
+HOW THE SYSTEM WORKS:
+================================================================================
+
+1. SETTINGS (config/settings.py):
+   - CALL_DURATION_THRESHOLD = 300 (5 minutes)
+   - This is the source of truth
+
+2. ANALYSIS (agents/analysis_nodes.py):
+   - Uses: insight.is_short_call = insight.omc_duration < CALL_DURATION_THRESHOLD
+   - Correctly categorizes calls as short (<5 min) or long (>=5 min)
+
+3. PROMPTS (prompts/*.txt):
+   - System instructions tell LLM about 5-minute threshold
+   - Analysis prompt asks LLM to identify SHORT (<5 min) vs LONG (>=5 min)
+
+4. REPORT GENERATION (reports/report_generator.py):
+   - Creates summary text with "SHORT CALLS (<5 min)" and "LONG CALLS (>=5 min)"
+   - This summary is passed to LLM for final report generation
+   - LLM uses this context to write the report
+
+5. FINAL REPORT:
+   - Should now consistently show "5 minutes" throughout
+   - All references to "2 minutes" have been removed
+
+================================================================================
+TESTING INSTRUCTIONS:
+================================================================================
+
+To verify the fix works:
+
+1. Run the analyzer:
+   cd D:\Sales_calls_analysis\ai_agents\call_performance_analyzer
+   python main.py --run --fresh
+
+2. Check the generated report:
+   D:\Sales_calls_analysis\reports\call_performance_analysis_report.md
+
+3. Search for "2 min" in the report:
+   - Should find ZERO occurrences
+   - All references should be "5 minutes" or "5 min"
+
+4. Verify key sections:
+   - Executive Summary: Should mention "51.0% (627 calls)—are 'short calls' (under 5 minutes)"
+   - Call Pattern Analysis: Should say "Short calls (<5 min) vs Long calls (>=5 min)"
+   - Agent Performance: Should reference 5-minute threshold
+   - Recommendations: Should mention 5 minutes consistently
+
+================================================================================
+EXPECTED REPORT CHANGES:
+================================================================================
+
+BEFORE (Old Report):
+- "51.0% (627 calls)—are 'short calls' (under 2 minutes)"
+- "Short calls (<2 min) vs Long calls (>=2 min)"
+- "Calls under 2 minutes in OMC are not converting"
+
+AFTER (New Report):
+- "51.0% (627 calls)—are 'short calls' (under 5 minutes)"
+- "Short calls (<5 min) vs Long calls (>=5 min)"
+- "Calls under 5 minutes in OMC are not converting"
+
+================================================================================
+SUMMARY:
+================================================================================
+
+✅ All hardcoded "2 min" references removed
+✅ All files now reference 5 minutes consistently
+✅ System correctly uses CALL_DURATION_THRESHOLD = 300 seconds
+✅ Report generation will now show 5 minutes throughout
+✅ No code changes needed - only text updates
+
+READY TO RUN! 🚀
+
+The next report generation will correctly show "5 minutes" everywhere.
+
+================================================================================
+

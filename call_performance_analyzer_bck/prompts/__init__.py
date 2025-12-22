@@ -1,0 +1,15 @@
+"""Prompts module"""
+from .prompt_templates import (
+    CALL_ANALYSIS_PROMPT,
+    REPORT_GENERATION_PROMPT,
+    SYSTEM_INSTRUCTIONS,
+    ANALYSIS_PROMPT
+)
+
+__all__ = [
+    "CALL_ANALYSIS_PROMPT",
+    "REPORT_GENERATION_PROMPT",
+    "SYSTEM_INSTRUCTIONS",
+    "ANALYSIS_PROMPT"
+]
+

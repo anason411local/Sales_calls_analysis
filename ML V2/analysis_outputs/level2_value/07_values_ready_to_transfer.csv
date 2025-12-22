@@ -1,6 +1,4 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-ready_to_transfer,YES,8,26,34,23.53,76.47,52.94,8.7441,0.0031,Yes,Favors Long Calls,26.47
-ready_to_transfer,unknown,24,17,41,58.54,41.46,-17.07,0.9086,0.3405,No,Favors Short Calls,8.54
-ready_to_transfer,Yes,227,278,505,44.95,55.05,10.1,8.4568,0.0036,Yes,Favors Long Calls,5.05
-ready_to_transfer,No,275,232,507,54.24,45.76,-8.48,5.9603,0.0146,Yes,Neutral,4.24
-ready_to_transfer,NO,26,23,49,53.06,46.94,-6.12,0.0851,0.7706,No,Neutral,3.06
+ready_to_transfer,No,53,23,76,69.74,30.26,-39.47,3.8127,0.0509,No,Favors Short Calls,19.74
+ready_to_transfer,unknown,5,3,8,62.5,37.5,-25.0,0.0,1.0,No,Favors Short Calls,12.5
+ready_to_transfer,Yes,24,30,54,44.44,55.56,11.11,8.8527,0.0029,Yes,Favors Long Calls,5.56

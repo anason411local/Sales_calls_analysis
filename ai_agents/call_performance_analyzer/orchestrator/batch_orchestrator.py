@@ -6,7 +6,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from data.data_handler import DataHandler
 from graph.analysis_graph import create_analysis_graph
 from graph.state import AnalysisState
-from reports.report_generator import generate_comprehensive_report
+from reports.react_report_generator import ReActReportGenerator
+from agents.ml_insights_agent import MLInsightsAgent
 from utils.logger import logger
 from config.settings import BATCH_SIZE
 import pandas as pd
@@ -20,6 +21,7 @@ class BatchOrchestrator:
     def __init__(self):
         self.data_handler = DataHandler()
         self.graph = create_analysis_graph()
+        self.report_generator = ReActReportGenerator()
         
     def run_analysis(self, resume: bool = True) -> str:
         """
@@ -107,12 +109,39 @@ class BatchOrchestrator:
             # Mark as ready for report
             state['ready_for_report'] = True
             
-            # Generate final report
+            # STEP: ML INSIGHTS ANALYSIS (NEW) - Optional, continues if fails
             logger.info("=" * 80)
-            logger.info("GENERATING COMPREHENSIVE REPORT")
+            logger.info("ML INSIGHTS AGENT: ANALYZING ML OUTPUTS")
             logger.info("=" * 80)
             
-            report = generate_comprehensive_report(state)
+            try:
+                ml_agent = MLInsightsAgent()
+                ml_insights = ml_agent.analyze_ml_outputs()
+                
+                # Check if ML insights have actual data
+                if ml_insights and (ml_insights.top_variables or ml_insights.key_insights):
+                    state['ml_insights'] = ml_insights
+                    logger.info(f"✅ ML Insights generated: {len(ml_insights.key_insights)} insights")
+                    logger.info(f"✅ Top variables identified: {len(ml_insights.top_variables)}")
+                else:
+                    logger.warning("⚠️ ML Insights empty - continuing without ML validation")
+                    state['ml_insights'] = None
+                    
+            except FileNotFoundError as e:
+                logger.warning(f"⚠️ ML data files not found: {str(e)}")
+                logger.warning("⚠️ Continuing without ML insights - report will be based on agentic AI analysis only")
+                state['ml_insights'] = None
+            except Exception as e:
+                logger.error(f"❌ ML Insights Agent failed: {str(e)}")
+                logger.warning("⚠️ Continuing without ML insights - report will be based on agentic AI analysis only")
+                state['ml_insights'] = None
+            
+            # Generate final report using ReAct pattern
+            logger.info("=" * 80)
+            logger.info("GENERATING COMPREHENSIVE REPORT (REACT PATTERN)")
+            logger.info("=" * 80)
+            
+            report = self.report_generator.generate_report(state)
             
             # Save report (Markdown)
             markdown_path = self.data_handler.save_report(report)

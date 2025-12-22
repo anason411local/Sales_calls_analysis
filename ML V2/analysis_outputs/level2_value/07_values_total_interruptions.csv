@@ -1,12 +1,5 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-total_interruptions,8.0,0,9,9,0.0,100.0,100.0,7.164,0.0074,Yes,Favors Long Calls,50.0
-total_interruptions,9.0,0,8,8,0.0,100.0,100.0,6.1655,0.013,Yes,Favors Long Calls,50.0
-total_interruptions,10.0,0,11,11,0.0,100.0,100.0,9.1738,0.0025,Yes,Favors Long Calls,50.0
-total_interruptions,6.0,1,15,16,6.25,93.75,87.5,10.7031,0.0011,Yes,Favors Long Calls,43.75
-total_interruptions,5.0,4,23,27,14.81,85.19,70.37,12.272,0.0005,Yes,Favors Long Calls,35.19
-total_interruptions,4.0,7,33,40,17.5,82.5,65.0,16.1556,0.0001,Yes,Favors Long Calls,32.5
-total_interruptions,3.0,14,64,78,17.95,82.05,64.1,32.8882,0.0,Yes,Favors Long Calls,32.05
-total_interruptions,7.0,3,10,13,23.08,76.92,53.85,2.7991,0.0943,No,Favors Long Calls,26.92
-total_interruptions,0.0,439,204,643,68.27,31.73,-36.55,180.3849,0.0,Yes,Favors Short Calls,18.27
-total_interruptions,2.0,46,86,132,34.85,65.15,30.3,12.9233,0.0003,Yes,Favors Long Calls,15.15
-total_interruptions,1.0,95,117,212,44.81,55.19,10.38,2.5186,0.1125,No,Favors Long Calls,5.19
+total_interruptions,3,1,6,7,14.29,85.71,71.43,4.9099,0.0267,Yes,Favors Long Calls,35.71
+total_interruptions,0,70,19,89,78.65,21.35,-57.3,24.8635,0.0,Yes,Favors Short Calls,28.65
+total_interruptions,2,4,10,14,28.57,71.43,42.86,5.511,0.0189,Yes,Favors Long Calls,21.43
+total_interruptions,1,18,15,33,54.55,45.45,-9.09,0.4833,0.4869,No,Neutral,4.55

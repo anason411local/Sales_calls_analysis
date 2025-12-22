@@ -1,7 +1,7 @@
 """
 LangGraph state management for call performance analysis
 """
-from typing import TypedDict, List, Dict, Optional
+from typing import TypedDict, List, Dict, Optional, Any
 from schemas.analysis_schemas import CallInsight
 
 
@@ -43,6 +43,9 @@ class AnalysisState(TypedDict):
     # Final report flag
     ready_for_report: bool  # Whether all processing is complete
     final_report: Optional[str]  # Generated markdown report
+    
+    # ML Insights (NEW)
+    ml_insights: Optional[Any]  # ML insights from ML Insights Agent
     
     # Error tracking
     errors: List[Dict]  # Errors encountered during processing

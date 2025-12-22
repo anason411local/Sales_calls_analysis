@@ -1,3 +1,3 @@
 Variable,Value,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Chi_Square,P_Value,Significant,Direction,Importance_Score
-call_structure_framed,No,266,183,449,59.24,40.76,-18.49,23.7193,0.0,Yes,Favors Short Calls,9.24
-call_structure_framed,Yes,343,426,769,44.6,55.4,10.79,23.7193,0.0,Yes,Favors Long Calls,5.4
+call_structure_framed,No,44,18,62,70.97,29.03,-41.94,3.4274,0.0641,No,Favors Short Calls,20.97
+call_structure_framed,Yes,51,42,93,54.84,45.16,-9.68,3.4274,0.0641,No,Neutral,4.84

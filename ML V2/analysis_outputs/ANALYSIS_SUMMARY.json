@@ -1,8 +1,8 @@
 {
-  "analysis_date": "2025-12-22 15:58:03",
+  "analysis_date": "2025-12-22 19:56:27",
   "total_variables": 49,
-  "total_values_analyzed": 346,
-  "significant_values": 139,
+  "total_values_analyzed": 185,
+  "significant_values": 46,
   "top_variable": "total_buying_signals",
-  "top_value": "objections_rebutted = 7.0"
+  "top_value": "total_discovery_questions = 13"
 }
