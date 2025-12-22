@@ -23,7 +23,7 @@ LOGS_DIR.mkdir(exist_ok=True)
 REPORTS_DIR.mkdir(exist_ok=True)
 
 # Input/Output files
-INPUT_FILE = INPUT_DIR / "mergeed_for_test.csv"
+INPUT_FILE = INPUT_DIR / "sales_variables_.csv"
 OUTPUT_FILE = REPORTS_DIR / "call_performance_analysis_report.md"
 CHECKPOINT_FILE = OUTPUT_DIR / "analysis_checkpoint.json"
 
