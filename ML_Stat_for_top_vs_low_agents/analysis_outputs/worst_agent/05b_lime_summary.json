@@ -1,0 +1,8 @@
+{
+  "total_samples_explained": 167,
+  "key_examples_explained": 4,
+  "aggregated_samples": 167,
+  "top_variable_rf": "total_buying_signals",
+  "top_variable_gb": "total_buying_signals",
+  "lime_shap_correlation": 0.9412603721410019
+}

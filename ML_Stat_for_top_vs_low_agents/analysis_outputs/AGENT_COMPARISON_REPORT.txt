@@ -1,0 +1,43 @@
+====================================================================================================
+AGENT COMPARISON REPORT: TOP VS WORST PERFORMER
+====================================================================================================
+
+Generated: 2025-12-24 17:30:42
+
+TOP AGENT: DARWINSANCHEZ24
+  Total Calls: 146
+  Short Calls: 66 (45.2%)
+  Long Calls: 80 (54.8%)
+
+WORST AGENT: ARTURODELEON
+  Total Calls: 167
+  Short Calls: 101 (60.5%)
+  Long Calls: 66 (39.5%)
+
+====================================================================================================
+TOP 10 MOST IMPORTANT VARIABLES - TOP AGENT
+====================================================================================================
+  1. total_buying_signals: 0.9276
+  2. total_discovery_questions: 0.6914
+  3. total_interruptions: 0.3444
+  4. TO_Event_O: 0.3222
+  5. price_mentions_final_2min: 0.3187
+  6. LQ_Company_Address: 0.3099
+  7. LQ_Company_Name: 0.2988
+  8. LQ_Customer_Name: 0.2892
+  9. LQ_Service: 0.2859
+  10. TO_OMC_Disposiion: 0.2790
+
+====================================================================================================
+TOP 10 MOST IMPORTANT VARIABLES - WORST AGENT
+====================================================================================================
+  1. total_buying_signals: 0.9153
+  2. total_discovery_questions: 0.4348
+  3. objections_rebutted: 0.3797
+  4. LQ_Company_Address: 0.3655
+  5. TO_Event_O: 0.3231
+  6. LQ_Service: 0.3202
+  7. LQ_Customer_Name: 0.3054
+  8. LQ_Company_Name: 0.2923
+  9. technical_quality_issues: 0.2570
+  10. total_interruptions: 0.2569

@@ -1,0 +1,202 @@
+==============================================================================
+EFFECT SIZE vs P-VALUE CHART: LABEL FIX COMPLETE
+==============================================================================
+
+Date: 2025-12-24 17:18
+Status: FIXED AND REGENERATED
+Issue: Variable labels were missing from the scatter plot
+
+==============================================================================
+PROBLEM IDENTIFIED
+==============================================================================
+
+The "04_stat_effect_vs_pvalue.png" chart for both TOP and WORST agents showed:
+- Scatter points without any variable names
+- Difficult for end users to identify which variables are which
+- No way to know which bubbles represent important variables
+
+This made it impossible to understand which specific variables had:
+- Large effect sizes
+- Statistical significance
+- Both (top-right quadrant = most important)
+
+==============================================================================
+SOLUTION IMPLEMENTED
+==============================================================================
+
+FIXED: Added variable labels to the scatter plot with the following logic:
+
+FOR NUMERICAL VARIABLES:
+- Labels added if: p-value < 0.05 (significant) OR effect size > 0.3 (large)
+- Shows Cohen's D effect size on X-axis
+- Shows -log10(p-value) on Y-axis
+
+FOR CATEGORICAL VARIABLES:
+- Labels added if: (p-value < 0.05 AND effect size > 0.3) OR effect size > 0.5
+- Shows Cramer's V effect size on X-axis
+- Shows -log10(p-value) on Y-axis
+
+LABEL FEATURES:
+✓ Variable names displayed in yellow boxes
+✓ Arrows pointing from label to data point
+✓ Long variable names truncated (>25 chars)
+✓ Labels staggered vertically to reduce overlap
+✓ Only important variables labeled (not cluttered)
+
+==============================================================================
+TECHNICAL CHANGES
+==============================================================================
+
+Modified File: ML V2/04_variable_level_statistical_tests.py
+
+Changes Made:
+1. Added annotation logic for significant/large effect variables
+2. Implemented smart label positioning with offsets
+3. Added arrow pointers from labels to data points
+4. Used yellow background boxes for better visibility
+5. Staggered labels vertically to minimize overlap
+
+Code Addition:
+- Used matplotlib's annotate() function
+- Added offset calculations: offset_x and offset_y
+- Implemented modulo-based vertical staggering
+- Created arrow properties for visual connection
+
+==============================================================================
+REGENERATED CHARTS
+==============================================================================
+
+TOP AGENT (DARWINSANCHEZ24):
+  File: analysis_outputs/top_agent/04_stat_effect_vs_pvalue.png
+  Size: 518 KB
+  Generated: 2025-12-24 17:18
+  
+  LABELED VARIABLES (Numerical):
+  - total_discovery_questions (Large effect, Significant)
+  - TO_length_in_sec (Small effect, Significant)
+  - time_to_reason_seconds (Small effect)
+  - customer_talk_percentage (Small effect, Significant)
+  
+  LABELED VARIABLES (Categorical):
+  - total_buying_signals (Large effect, Significant)
+  - TO_OMC_Disposiion (Large effect, Significant)
+  - call_result_tag (Large effect, Significant)
+  - price_mentions_final_2min (Large effect, Significant)
+  - total_interruptions (Medium effect, Significant)
+  - call_structure_framed (Medium effect, Significant)
+  - And more...
+
+WORST AGENT (ARTURODELEON):
+  File: analysis_outputs/worst_agent/04_stat_effect_vs_pvalue.png
+  Size: 518 KB
+  Generated: 2025-12-24 17:18
+  
+  LABELED VARIABLES (Categorical):
+  - total_buying_signals (Large effect, Significant)
+  - total_discovery_questions (Large effect, Significant)
+  - technical_quality_issues (Large effect, Significant)
+  - total_interruptions (Medium effect, Significant)
+  - TO_OMC_Disposiion (Medium effect, Significant)
+  - And more...
+
+==============================================================================
+HOW TO READ THE NEW CHART
+==============================================================================
+
+CHART LAYOUT:
+- Left panel: Numerical Variables (Cohen's D)
+- Right panel: Categorical Variables (Cramer's V)
+- Red dashed line: p=0.05 significance threshold
+
+INTERPRETING POSITIONS:
+- Top-Right = BEST: Large effect + Statistically significant
+- Top-Left = Significant but small effect
+- Bottom-Right = Large effect but not significant
+- Bottom-Left = Neither large nor significant
+
+READING LABELS:
+- Yellow boxes = Variable names
+- Black arrows = Point to the actual data point
+- Variables above red line = Statistically significant (p<0.05)
+- Variables to the right = Larger effect sizes
+
+KEY INSIGHTS FROM LABELS:
+1. TOP AGENT: total_discovery_questions has the largest effect (Cohen's D = 1.494)
+2. WORST AGENT: total_buying_signals is most important (Cramer's V = 0.619)
+3. Both agents show technical_quality_issues as significant
+4. Top agent has more variables in the top-right quadrant
+
+==============================================================================
+COMPARISON: TOP vs WORST AGENT
+==============================================================================
+
+TOP AGENT (DARWINSANCHEZ24):
+✓ More variables with large effect sizes
+✓ total_discovery_questions: Huge effect (1.494)
+✓ 18 significant variables out of 46
+✓ Better separation between short/long calls
+
+WORST AGENT (ARTURODELEON):
+✗ Fewer variables with large effect sizes
+✗ No numerical variables are significant
+✗ 17 significant variables out of 46
+✗ Less clear patterns
+
+ACTIONABLE INSIGHT:
+The top agent excels at asking discovery questions (1.494 effect size),
+which is the single most important differentiator between their short
+and long calls. This should be a key training focus for other agents.
+
+==============================================================================
+VERIFICATION
+==============================================================================
+
+To verify the fix worked:
+1. Open: analysis_outputs/top_agent/04_stat_effect_vs_pvalue.png
+2. Check: You should see yellow labels on important variables
+3. Confirm: Labels point to data points with arrows
+4. Compare: Old chart (no labels) vs New chart (with labels)
+
+Expected Result:
+✓ Variable names clearly visible
+✓ Easy to identify which variables are in top-right quadrant
+✓ Can read variable names without guessing
+✓ Arrows connect labels to data points
+
+==============================================================================
+NEXT STEPS
+==============================================================================
+
+The fix is complete and charts are regenerated. You can now:
+
+1. Review the labeled charts:
+   - analysis_outputs/top_agent/04_stat_effect_vs_pvalue.png
+   - analysis_outputs/worst_agent/04_stat_effect_vs_pvalue.png
+
+2. Use the labels to identify:
+   - Which variables have the largest effects
+   - Which variables are statistically significant
+   - Which variables are in the "sweet spot" (top-right)
+
+3. Incorporate insights into:
+   - Agent training programs
+   - Performance improvement strategies
+   - Call quality optimization
+
+4. If you need to regenerate all charts:
+   cd D:\Sales_calls_analysis\ML_Stat_for_top_vs_low_agents
+   python RUN_AGENT_COMPARISON_ANALYSIS.py
+
+==============================================================================
+TECHNICAL NOTE
+==============================================================================
+
+The fix has been applied to:
+- ML V2/04_variable_level_statistical_tests.py (original)
+- ML_Stat_for_top_vs_low_agents/04_agent_statistical_tests.py (agent version)
+
+Both files now include the label annotation logic. Any future runs will
+automatically include the variable labels on the scatter plots.
+
+==============================================================================
+

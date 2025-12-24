@@ -1,0 +1,120 @@
+====================================================================================================
+COMPREHENSIVE AGENT COMPARISON REPORT
+TOP PERFORMER vs WORST PERFORMER
+====================================================================================================
+
+Generated: 2025-12-24 17:28:44
+
+TOP AGENT: DARWINSANCHEZ24
+WORST AGENT: ARTURODELEON
+
+====================================================================================================
+1. EXECUTIVE SUMMARY
+====================================================================================================
+
+CALL VOLUME:
+  TOP Agent: 146 total calls
+  WORST Agent: 167 total calls
+  Difference: -21 calls
+
+SUCCESS RATE (Long Calls %):
+  TOP Agent: 54.8% (80/146)
+  WORST Agent: 39.5% (66/167)
+  Difference: +15.3% (TOP is better)
+
+MODEL PERFORMANCE (Random Forest ROC-AUC):
+  TOP Agent: 0.885
+  WORST Agent: 0.776
+  Difference: +0.109 (TOP is more predictable)
+
+====================================================================================================
+2. TOP 10 MOST IMPORTANT VARIABLES
+====================================================================================================
+
+TOP AGENT:
+  1. total_buying_signals: 0.9276
+  2. total_discovery_questions: 0.6914
+  3. total_interruptions: 0.3444
+  4. TO_Event_O: 0.3222
+  5. price_mentions_final_2min: 0.3187
+  6. LQ_Company_Address: 0.3099
+  7. LQ_Company_Name: 0.2988
+  8. LQ_Customer_Name: 0.2892
+  9. LQ_Service: 0.2859
+  10. TO_OMC_Disposiion: 0.2790
+
+WORST AGENT:
+  1. total_buying_signals: 0.9153
+  2. total_discovery_questions: 0.4348
+  3. objections_rebutted: 0.3797
+  4. LQ_Company_Address: 0.3655
+  5. TO_Event_O: 0.3231
+  6. LQ_Service: 0.3202
+  7. LQ_Customer_Name: 0.3054
+  8. LQ_Company_Name: 0.2923
+  9. technical_quality_issues: 0.2570
+  10. total_interruptions: 0.2569
+
+====================================================================================================
+3. KEY DIFFERENCES ANALYSIS
+====================================================================================================
+
+DISCOVERY QUESTIONS:
+  TOP Agent Average: 6.18 questions per call
+  WORST Agent Average: 4.26 questions per call
+  Difference: +1.92 questions (TOP asks more)
+
+STATISTICAL SIGNIFICANCE:
+  TOP Agent: 18 significant variables (out of 46)
+  WORST Agent: 17 significant variables (out of 46)
+  Difference: +1 variables
+
+====================================================================================================
+4. ACTIONABLE INSIGHTS
+====================================================================================================
+
+WHAT MAKES THE TOP AGENT SUCCESSFUL:
+  1. Asks 1.9 more discovery questions per call
+  2. Achieves 15.3% higher long call rate
+  3. Has 0.109 better model predictability (more consistent patterns)
+  4. Shows 1 more statistically significant variables
+  5. Top variable importance: total_buying_signals (0.928)
+
+RECOMMENDATIONS FOR IMPROVEMENT:
+  1. Train agents to ask more discovery questions (target: 8+ per call)
+  2. Focus on buying signals identification and response
+  3. Improve call structure and pacing (reduce interruptions)
+  4. Enhance objection handling techniques
+  5. Implement TOP agent's successful patterns in training
+
+====================================================================================================
+5. DETAILED METRICS COMPARISON
+====================================================================================================
+
+RANDOM FOREST PERFORMANCE:
+  TOP Agent:
+    - Test ROC-AUC: 0.885
+    - Test Accuracy: 0.838
+    - Test F1-Score: 0.850
+    - CV Mean ROC-AUC: 0.922 ± 0.093
+  WORST Agent:
+    - Test ROC-AUC: 0.776
+    - Test Accuracy: 0.690
+    - Test F1-Score: 0.519
+    - CV Mean ROC-AUC: 0.840 ± 0.097
+
+XGBOOST PERFORMANCE:
+  TOP Agent:
+    - Test ROC-AUC: 0.832
+    - Test Accuracy: 0.757
+    - Test F1-Score: 0.780
+    - CV Mean ROC-AUC: 0.870 ± 0.118
+  WORST Agent:
+    - Test ROC-AUC: 0.734
+    - Test Accuracy: 0.762
+    - Test F1-Score: 0.706
+    - CV Mean ROC-AUC: 0.824 ± 0.088
+
+====================================================================================================
+END OF REPORT
+====================================================================================================

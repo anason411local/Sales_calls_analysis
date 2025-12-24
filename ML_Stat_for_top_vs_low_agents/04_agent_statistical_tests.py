@@ -22,8 +22,13 @@ from scipy.stats import mannwhitneyu, chi2_contingency, pointbiserialr
 import warnings
 warnings.filterwarnings('ignore')
 
+import sys
+
+AGENT_TYPE = sys.argv[2] if len(sys.argv) >= 3 else 'top_agent'
+AGENT_NAME = sys.argv[1] if len(sys.argv) >= 2 else 'Unknown'
+
 print("="*100)
-print("LEVEL 1: VARIABLE-LEVEL STATISTICAL TESTS")
+print(f"AGENT-LEVEL STATISTICAL TESTS: {AGENT_NAME}")
 print("="*100)
 
 # ==============================================================================
@@ -31,9 +36,9 @@ print("="*100)
 # ==============================================================================
 
 print("\nLoading data...")
-df_short = pd.read_csv('analysis_outputs/level1_variable/01_short_calls_original.csv')
-df_long = pd.read_csv('analysis_outputs/level1_variable/01_long_calls_original.csv')
-df_combined = pd.read_csv('analysis_outputs/level1_variable/01_combined_original.csv')
+df_short = pd.read_csv(f'analysis_outputs/{AGENT_TYPE}/01_short_calls_original.csv')
+df_long = pd.read_csv(f'analysis_outputs/{AGENT_TYPE}/01_long_calls_original.csv')
+df_combined = pd.read_csv(f'analysis_outputs/{AGENT_TYPE}/01_combined_original.csv')
 
 print(f"Short calls: {len(df_short)}")
 print(f"Long calls: {len(df_long)}")
@@ -225,8 +230,8 @@ print("\n" + "="*100)
 print("SAVING RESULTS")
 print("="*100)
 
-df_numerical_tests.to_csv('analysis_outputs/level1_variable/04_statistical_tests_numerical.csv', index=False)
-df_categorical_tests.to_csv('analysis_outputs/level1_variable/04_statistical_tests_categorical.csv', index=False)
+df_numerical_tests.to_csv(f'analysis_outputs/{AGENT_TYPE}/04_statistical_tests_numerical.csv', index=False)
+df_categorical_tests.to_csv(f'analysis_outputs/{AGENT_TYPE}/04_statistical_tests_categorical.csv', index=False)
 
 # Combined summary
 df_combined_tests = pd.concat([
@@ -235,7 +240,7 @@ df_combined_tests = pd.concat([
 ], ignore_index=True)
 
 df_combined_tests = df_combined_tests.sort_values('Effect_Size_Value', ascending=False)
-df_combined_tests.to_csv('analysis_outputs/level1_variable/04_statistical_tests_combined.csv', index=False)
+df_combined_tests.to_csv(f'analysis_outputs/{AGENT_TYPE}/04_statistical_tests_combined.csv', index=False)
 
 print("\n[OK] Saved CSV files:")
 print("  - 04_statistical_tests_numerical.csv")
@@ -288,7 +293,7 @@ axes[1].grid(alpha=0.3)
 plt.suptitle('LEVEL 1: P-VALUE DISTRIBUTIONS\nValues below red line = Statistically significant',
              fontsize=14, fontweight='bold', y=1.02)
 plt.tight_layout()
-plt.savefig('analysis_outputs/level1_variable/04_stat_pvalue_distributions.png',
+plt.savefig(f'analysis_outputs/{AGENT_TYPE}/04_stat_pvalue_distributions.png',
             dpi=300, bbox_inches='tight')
 print("[OK] Saved: 04_stat_pvalue_distributions.png")
 plt.close()
@@ -387,7 +392,7 @@ for idx, row in df_categorical_tests.iterrows():
 plt.suptitle('LEVEL 1: EFFECT SIZE vs STATISTICAL SIGNIFICANCE\nBest variables are in top-right (large effect + low p-value)',
              fontsize=15, fontweight='bold', y=1.00)
 plt.tight_layout()
-plt.savefig('analysis_outputs/level1_variable/04_stat_effect_vs_pvalue.png',
+plt.savefig(f'analysis_outputs/{AGENT_TYPE}/04_stat_effect_vs_pvalue.png',
             dpi=300, bbox_inches='tight')
 print("[OK] Saved: 04_stat_effect_vs_pvalue.png (WITH LABELS)")
 plt.close()
@@ -424,7 +429,7 @@ for i, (bar, val) in enumerate(zip(bars, df_num_sorted['Mean_Diff'])):
             fontsize=9, fontweight='bold')
 
 plt.tight_layout()
-plt.savefig('analysis_outputs/level1_variable/04_stat_mean_differences.png',
+plt.savefig(f'analysis_outputs/{AGENT_TYPE}/04_stat_mean_differences.png',
             dpi=300, bbox_inches='tight')
 print("[OK] Saved: 04_stat_mean_differences.png")
 plt.close()
@@ -464,7 +469,7 @@ for i, (bar, val) in enumerate(zip(bars, top_vars['Effect_Size'])):
             fontsize=8, fontweight='bold')
 
 plt.tight_layout()
-plt.savefig('analysis_outputs/level1_variable/04_stat_significance_summary.png',
+plt.savefig(f'analysis_outputs/{AGENT_TYPE}/04_stat_significance_summary.png',
             dpi=300, bbox_inches='tight')
 print("[OK] Saved: 04_stat_significance_summary.png")
 plt.close()

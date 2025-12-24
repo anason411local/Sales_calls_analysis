@@ -1,0 +1,288 @@
+================================================================================
+AGENT-LEVEL ANALYSIS FRAMEWORK COMPLETE
+================================================================================
+
+Created: December 24, 2025
+Location: D:\Sales_calls_analysis\ML_Stat_for_top_vs_low_agents
+
+================================================================================
+WHAT WAS CREATED
+================================================================================
+
+✓ Complete ML and Statistical Analysis Framework for Agent Comparison
+✓ Identical methodology to ML V2, but filtered by agent (TO_OMC_User column)
+✓ Analyzes TOP Agent (DARWINSANCHEZ24) vs WORST Agent (ARTURODELEON)
+
+================================================================================
+FILES CREATED
+================================================================================
+
+Core Scripts:
+1. RUN_AGENT_COMPARISON_ANALYSIS.py - Main orchestrator (runs everything)
+2. generate_scripts.py - Script generator (adapts ML V2 scripts)
+
+Analysis Scripts (Auto-Generated):
+3. 01_agent_preprocessing.py - Filter and prepare agent-specific data
+4. 02_agent_correlation.py - Spearman correlation + heatmaps
+5. 03_agent_feature_importance.py - Random Forest + XGBoost models
+6. 04_agent_statistical_tests.py - T-tests, Mann-Whitney, Chi-square
+7. 05_agent_shap.py - SHAP analysis (all chart types)
+8. 05b_agent_lime.py - LIME analysis (explanations + importance)
+9. 06_agent_visualizations.py - Top 20 vars, section analysis, etc.
+10. 07_comparison_report.py - Side-by-side comparison report
+
+Documentation:
+11. README.txt - Complete usage guide and documentation
+
+Folder Structure:
+analysis_outputs/
+  ├── top_agent/     (DARWINSANCHEZ24 results)
+  ├── worst_agent/   (ARTURODELEON results)
+  └── AGENT_COMPARISON_REPORT.txt
+
+================================================================================
+HOW TO USE
+================================================================================
+
+OPTION 1: Run Complete Analysis (Recommended)
+-----------------------------------------------
+cd D:\Sales_calls_analysis\ML_Stat_for_top_vs_low_agents
+python RUN_AGENT_COMPARISON_ANALYSIS.py
+
+This will:
+- Analyze 47 variables for each agent
+- Generate ALL visualizations (20+ charts per agent)
+- Create comparison report
+- Take ~20-40 minutes total
+
+OPTION 2: Run Individual Steps
+--------------------------------
+# Example for TOP agent
+python 01_agent_preprocessing.py DARWINSANCHEZ24 top_agent
+python 02_agent_correlation.py DARWINSANCHEZ24 top_agent
+# ... and so on
+
+================================================================================
+VISUALIZATIONS GENERATED (PER AGENT)
+================================================================================
+
+Correlation:
+  ✓ heatmap_02_short_calls.png
+  ✓ heatmap_02_long_calls.png
+
+Statistical Tests:
+  ✓ 04_stat_effect_vs_pvalue.png
+  ✓ 04_stat_mean_differences.png
+  ✓ 04_stat_pvalue_distributions.png
+  ✓ 04_stat_significance_summary.png
+
+Feature Importance:
+  ✓ 03_eval_confusion_matrices.png
+  ✓ 03_eval_roc_curves.png
+  ✓ 03_eval_learning_curves.png
+  ✓ 03_eval_metrics_comparison.png
+
+SHAP (Random Forest):
+  ✓ shap_05_rf_summary_beeswarm.png
+  ✓ shap_05_rf_importance_bar.png
+  ✓ shap_05_rf_waterfall.png
+  ✓ shap_05_rf_dependence.png
+
+SHAP (XGBoost):
+  ✓ shap_05_xgb_summary_beeswarm.png
+  ✓ shap_05_xgb_importance_bar.png
+  ✓ shap_05_xgb_waterfall.png
+  ✓ shap_05_xgb_dependence.png
+
+LIME:
+  ✓ lime_05b_rf_individual_explanations.png
+  ✓ lime_05b_gb_individual_explanations.png
+  ✓ lime_05b_aggregated_importance.png
+  ✓ lime_05b_lime_vs_shap.png
+
+General Visualizations:
+  ✓ viz_06_top_20_variables.png
+  ✓ viz_06_correlation_vs_importance.png
+  ✓ viz_06_section_analysis.png
+  ✓ viz_06_model_comparison.png
+  ✓ viz_06_effect_sizes.png
+
+TOTAL: 27+ visualizations per agent = 54+ charts + comparison report
+
+================================================================================
+METHODOLOGY
+================================================================================
+
+Data Source:
+- Input: ../ML/Less_than_4.88_mnt..csv (short calls)
+- Input: ../ML/greater_than_4.88_mnt..csv (long calls)
+- Filter: TO_OMC_User column (agent identifier)
+
+Variables Analyzed: 47 variables
+- Excludes TO_OMC_User (agent identifier)
+- Excludes TO_OMC_Duration (perfect separator)
+- Includes all other sections 1-6.6
+
+Analysis Methods:
+1. Spearman Correlation (non-linear relationships)
+2. Random Forest + XGBoost (feature importance)
+3. Statistical tests (Mann-Whitney U, Chi-square)
+4. Effect sizes (Cohen's D, Cramer's V)
+5. SHAP values (model-based explanations)
+6. LIME explanations (local interpretability)
+
+Sample Sizes:
+- SHAP: 500 short + 500 long calls (1000 total per agent)
+- LIME: 1000 samples per agent (maximum accuracy)
+
+================================================================================
+KEY INSIGHTS YOU CAN EXTRACT
+================================================================================
+
+After Analysis Completes, You Can Answer:
+
+1. Variable Importance:
+   - Which variables matter most for each agent?
+   - Are the top variables different between agents?
+   
+2. Correlations:
+   - How do variable relationships differ?
+   - Which correlations are unique to each agent?
+   
+3. Statistical Significance:
+   - Which variables show significant differences?
+   - What are the effect sizes?
+   
+4. Model Performance:
+   - Can we predict call duration for each agent?
+   - Which model works better for each agent?
+   
+5. Explainability:
+   - What drives long calls for the TOP agent?
+   - What causes short calls for the WORST agent?
+   - How do individual predictions differ?
+
+6. Actionable Recommendations:
+   - What can the WORST agent learn from the TOP agent?
+   - Which behaviors/patterns should be replicated?
+   - Which variables should management focus on?
+
+================================================================================
+COMPARISON USE CASES
+================================================================================
+
+✓ Training: Use TOP agent's patterns to train other agents
+✓ Coaching: Identify specific behaviors that differentiate performance
+✓ Process Improvement: Find systemic differences in approach
+✓ Quality Assurance: Validate if TOP agent follows best practices
+✓ Performance Management: Set data-driven performance benchmarks
+✓ Predictive Modeling: Build agent-specific prediction models
+
+================================================================================
+TECHNICAL SPECIFICATIONS
+================================================================================
+
+Languages: Python 3.7+
+Libraries: pandas, numpy, scikit-learn, xgboost, shap, lime, matplotlib, seaborn
+
+Compatibility: 
+- Windows 10/11 ✓
+- UTF-8 encoding ✓
+- Handles large datasets ✓
+- Graceful error handling ✓
+
+Performance:
+- Parallel processing where applicable
+- Optimized for 1000-sample SHAP/LIME
+- Memory-efficient data handling
+- Progress logging to file
+
+Output Formats:
+- CSV (data tables)
+- JSON (metadata, metrics)
+- PNG (all visualizations, 300 DPI)
+- TXT (reports)
+- PKL (trained models)
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. RUN THE ANALYSIS:
+   cd D:\Sales_calls_analysis\ML_Stat_for_top_vs_low_agents
+   python RUN_AGENT_COMPARISON_ANALYSIS.py
+
+2. WAIT FOR COMPLETION:
+   - Progress will be shown in terminal
+   - Full log saved to: agent_comparison_analysis.log
+   - Estimated time: 20-40 minutes
+
+3. REVIEW OUTPUTS:
+   - analysis_outputs/top_agent/ (all TOP agent results)
+   - analysis_outputs/worst_agent/ (all WORST agent results)
+   - analysis_outputs/AGENT_COMPARISON_REPORT.txt (comparison)
+
+4. ANALYZE RESULTS:
+   - Compare top 20 variables between agents
+   - Review SHAP/LIME explanations
+   - Identify transferable patterns
+   - Generate recommendations
+
+5. OPTIONAL - Analyze Different Agents:
+   - Edit RUN_AGENT_COMPARISON_ANALYSIS.py
+   - Change TOP_AGENT and WORST_AGENT variables
+   - Run analysis again
+
+================================================================================
+MAINTENANCE
+================================================================================
+
+To Update Scripts:
+1. Update ML V2 scripts if needed
+2. Run: python generate_scripts.py
+3. All analysis scripts will be regenerated
+
+To Add New Agents:
+- Modify RUN_AGENT_COMPARISON_ANALYSIS.py
+- Change TOP_AGENT and WORST_AGENT constants
+- Run the pipeline
+
+================================================================================
+SUPPORT & TROUBLESHOOTING
+================================================================================
+
+Common Issues:
+1. "No calls found for agent"
+   → Check agent name spelling in TO_OMC_User column
+   
+2. "Too few samples" warning
+   → Agent has < 30 calls, results may not be significant
+   
+3. Encoding errors
+   → Scripts use UTF-8, ensure terminal supports it
+   
+4. Memory errors
+   → Reduce SHAP/LIME sample size in respective scripts
+
+Logs:
+- Terminal output: Real-time progress
+- agent_comparison_analysis.log: Complete execution log
+- Individual script logs: Within each output directory
+
+================================================================================
+STATUS: ✓ READY TO RUN
+================================================================================
+
+All scripts generated successfully!
+All folders created successfully!
+Documentation complete!
+
+COMMAND TO START:
+-----------------
+cd D:\Sales_calls_analysis\ML_Stat_for_top_vs_low_agents
+python RUN_AGENT_COMPARISON_ANALYSIS.py
+
+================================================================================
+END OF SUMMARY
+================================================================================
+
