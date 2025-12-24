@@ -1,0 +1,14 @@
+{
+  "agent_name": "DARWINSANCHEZ24",
+  "agent_type": "top_agent",
+  "random_forest": {
+    "r2_score": 0.4600855488324995,
+    "mae": 268.97687486471864,
+    "rmse": 312.3591285539617
+  },
+  "gradient_boosting": {
+    "r2_score": -1.110533598503138,
+    "mae": 382.06567914762945,
+    "rmse": 617.572375970788
+  }
+}

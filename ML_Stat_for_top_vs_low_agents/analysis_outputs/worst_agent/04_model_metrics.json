@@ -1,0 +1,14 @@
+{
+  "agent_name": "ARTURODELEON",
+  "agent_type": "worst_agent",
+  "random_forest": {
+    "r2_score": 0.3647126348759421,
+    "mae": 255.20332526996813,
+    "rmse": 301.6719550508351
+  },
+  "gradient_boosting": {
+    "r2_score": 0.07248321314735207,
+    "mae": 291.9847269511601,
+    "rmse": 364.51106662336844
+  }
+}

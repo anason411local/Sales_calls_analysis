@@ -1,0 +1,17 @@
+Variable,Missing_Count,Missing_Percent
+technical_quality_issues,40,50.0
+LQ_Company_Name,32,40.0
+customer_marketing_experience,13,16.25
+LQ_Service,12,15.0
+customer_sentiment_lgs,12,15.0
+ready_for_customers,10,12.5
+timezone,9,11.25
+customer_availability,8,10.0
+customer_knows_marketing,7,8.75
+is_decision_maker,7,8.75
+season_status,6,7.5
+who_said_hello_first_lgs,6,7.5
+customer_language,5,6.25
+ready_to_transfer,5,6.25
+lgs_agent_gender,4,5.0
+technical_quality_score,1,1.25

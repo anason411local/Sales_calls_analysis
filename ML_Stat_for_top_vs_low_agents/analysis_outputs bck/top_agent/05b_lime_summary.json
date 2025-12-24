@@ -1,0 +1,8 @@
+{
+  "total_samples_explained": 146,
+  "key_examples_explained": 4,
+  "aggregated_samples": 146,
+  "top_variable_rf": "total_discovery_questions",
+  "top_variable_gb": "total_discovery_questions",
+  "lime_shap_correlation": 0.9476157526176697
+}

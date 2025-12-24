@@ -1,0 +1,44 @@
+Variable,Type,TOP_Mode,WORST_Mode,Chi_Square_PValue,Significant,Cramers_V,Effect_Size
+TO_Event_O,Categorical,12/10/2025 10:29,12/10/2025 11:11,0.5330564781393563,No,0.9790417392903774,Large
+LQ_Company_Address,Categorical,-,-,0.35248967287007715,No,0.9487609321622104,Large
+LQ_Customer_Name,Categorical, , ,0.33304715105160293,No,0.9025209960883764,Large
+LQ_Service,Categorical,Junk Removal,Handyman Services,0.35350097384261814,No,0.8301511210848201,Large
+LQ_Company_Name,Categorical,10th  Stewart,Affordable Handyman Services,0.4614364983704732,No,0.7878954377195115,Large
+TO_OMC_Disposiion,Categorical,P2P,NI,2.5111041113855826e-09,Yes,0.607353121323521,Large
+technical_quality_issues,Categorical,Start-of-Call Latency,Start-of-Call Latency,0.045810510372293,Yes,0.5187056989851463,Large
+total_discovery_questions,Categorical,8.0,6.0,0.08818086680907601,No,0.4637685341108429,Medium
+technical_quality_score,Categorical,5.0,5.0,0.009758498994881171,Yes,0.4473626070151159,Medium
+TO_User_M,Categorical,ADELALUCAS,ADELALUCAS,0.09271517294140257,No,0.44378590999057327,Medium
+call_result_tag,Categorical,Disconnect - During Pitch/Value Prop,Soft Decline,0.007549925426851673,Yes,0.41838617903561803,Medium
+customer_marketing_experience,Categorical,Novice,Novice,0.014882925051733647,Yes,0.4136982524506673,Medium
+total_buying_signals,Categorical,0.0,1.0,0.1691716893699937,No,0.3707862053943406,Medium
+timeline_mentions_final_2min,Categorical,0.0,0.0,0.03763203583242419,Yes,0.33464660375255884,Medium
+total_interruptions,Categorical,0.0,0.0,0.6000396521032691,No,0.30946489502280516,Medium
+customer_sentiment_lgs,Categorical,Happy/Optimistic,Happy/Optimistic,0.25707411575813494,No,0.2918266413477162,Small
+customer_knows_marketing,Categorical,Yes,Yes,0.007434278130893673,Yes,0.28651338703211865,Small
+objections_acknowledged,Categorical,0.0,0.0,0.16588537901695927,No,0.2828871916070397,Small
+within_45_seconds,Categorical,Yes,Yes,0.0007243684996467266,Yes,0.27974616531405216,Small
+price_mentions_final_2min,Categorical,0.0,0.0,0.4369079686874626,No,0.262247270262859,Small
+commitment_type,Categorical,No Commitment Secured,No Commitment Secured,0.35691221064242185,No,0.26067716344188596,Small
+omc_agent_sentiment_style,Categorical,Confident & Assumptive,Confident & Assumptive,0.13216618423384824,No,0.259427217526838,Small
+is_decision_maker,Categorical,Yes,Yes,0.14312941470486723,No,0.2562582712924631,Small
+lgs_sentiment_style,Categorical,Consultative & Validating,Consultative & Validating,0.0915455126035563,No,0.2547524494338442,Small
+customer_availability,Categorical,available,available,0.02583581396106381,Yes,0.25206220171884863,Small
+customer_sentiment_omc,Categorical,Resistant,Resistant,0.24588341156482954,No,0.24959335332639135,Small
+total_objections,Categorical,2.0,2.0,0.46723815789938583,No,0.24384022224390745,Small
+who_said_hello_first_lgs,Categorical,Agent,Agent,0.0828088613665443,No,0.21390877372107345,Small
+customer_language,Categorical,English,English,0.052346190678008345,No,0.2010205506679373,Small
+ready_to_transfer,Categorical,No,Yes,0.32503366190562893,No,0.19950489097301677,Small
+location_mentioned,Categorical,Yes,Yes,0.02466013795846879,Yes,0.1859370092962122,Small
+omc_who_said_hello_first,Categorical,Agent,Agent,0.17318536299012707,No,0.1847084562349916,Small
+Calls Count,Categorical,1,1,0.7937279846390648,No,0.14616857253264073,Small
+ready_for_customers,Categorical,Yes,Yes,0.7764021008938107,No,0.1308721352601873,Small
+Connection Made Calls,Categorical,1,1,0.3140147128871837,No,0.12596560945342405,Small
+objections_rebutted,Categorical,0.0,0.0,0.9153367229633014,No,0.11840498506164945,Small
+timezone,Categorical,Eastern,Eastern,0.8774215814801783,No,0.11071430794591353,Small
+lgs_agent_gender,Categorical,Male,Female,0.6326407947635255,No,0.10851893490993335,Small
+contract_mentions_final_2min,Categorical,0.0,0.0,0.6372983093174167,No,0.10785456684114002,Small
+forbidden_industry,Categorical,No,No,0.5312859620164229,No,0.09307934955027071,Negligible
+season_status,Categorical,Low season,Low season,0.8958693193860792,No,0.06423728107373755,Negligible
+business_type_mentioned,Categorical,Yes,Yes,0.6332887784398926,No,0.03948532523724363,Negligible
+call_structure_framed,Categorical,Yes,Yes,1.0,No,0.0,Negligible

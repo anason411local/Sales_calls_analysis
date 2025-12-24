@@ -1,0 +1,43 @@
+Variable,Type,Short_Mode,Long_Mode,Chi_Square_Stat,Chi_Square_PValue,Degrees_of_Freedom,Significant,Cramers_V,Effect_Size
+TO_Event_O,Categorical,12/10/2025 11:03,12/10/2025 10:29,143.9814393939394,0.48476273959439165,144,No,0.9930630606483369,Large
+LQ_Company_Address,Categorical,-,-,125.44738292011019,0.42173063671129396,123,No,0.9269458722804375,Large
+LQ_Customer_Name,Categorical, , ,104.00602346999405,0.5090739338163169,105,No,0.8440201560194416,Large
+LQ_Company_Name,Categorical,Electrical Services,10th  Stewart,99.49236363636363,0.3560220332537382,95,No,0.8255026017248798,Large
+LQ_Service,Categorical,Handyman Services,Junk Removal,92.1332683982684,0.3889723144985058,89,No,0.7943864195401276,Large
+total_buying_signals,Categorical,0,0.0,64.68849186624924,7.509982209849961e-09,13,Yes,0.6656364338718228,Large
+TO_OMC_Disposiion,Categorical,HU,P2P,58.39733818508927,2.7267203231596447e-09,9,Yes,0.6324411185169908,Large
+call_result_tag,Categorical,Early Disconnect - Before Discovery,Disconnect - During Pitch/Value Prop,51.176503769135344,1.6202153925792192e-07,10,Yes,0.5920506721715086,Large
+price_mentions_final_2min,Categorical,0,0.0,40.344742294742304,6.579924959112806e-06,9,Yes,0.5256746630130193,Large
+total_interruptions,Categorical,0,0.0,34.84314265715128,0.0002630012130711149,11,Yes,0.4885198686187521,Medium
+call_structure_framed,Categorical,Yes,Yes,25.027758093910805,5.651087251793175e-07,1,Yes,0.41403260818832216,Medium
+TO_User_M,Categorical,CLIFFORDBOLARDE,ADELALUCAS,24.852746660647732,0.16544656459800047,19,No,0.4125824671459239,Medium
+timeline_mentions_final_2min,Categorical,0,0.0,22.247600141173848,0.0023023151024736893,7,Yes,0.39035986331172984,Medium
+customer_sentiment_omc,Categorical,Resistant,Resistant,21.530867659102952,0.003058972914913908,7,Yes,0.3840204373405479,Medium
+total_objections,Categorical,0,2.0,20.07855839404273,0.005402474906350404,7,Yes,0.37084278685439803,Medium
+omc_agent_sentiment_style,Categorical,Confident & Assumptive,Confident & Assumptive,19.366980591168094,0.0035867274811001637,6,Yes,0.36421223482236564,Medium
+objections_acknowledged,Categorical,0,0.0,19.12525839615967,0.0018215544786852624,5,Yes,0.36193220431683276,Medium
+technical_quality_issues,Categorical,Start-of-Call Latency,Start-of-Call Latency,19.045855978024655,0.45389794504344594,19,No,0.36118010513126914,Medium
+commitment_type,Categorical,No Commitment Secured,No Commitment Secured,16.800105970418468,0.03225918884002189,8,Yes,0.33921854161509063,Medium
+objections_rebutted,Categorical,0,0.0,15.613259464514405,0.008039517807664794,5,Yes,0.32701702297983176,Medium
+customer_marketing_experience,Categorical,Novice,Novice,12.696976549334504,0.3135913530505388,11,No,0.29489929264693227,Small
+customer_sentiment_lgs,Categorical,Happy/Optimistic,Happy/Optimistic,11.522360821545604,0.24159426810045245,9,No,0.2809275344277015,Small
+lgs_sentiment_style,Categorical,Consultative & Validating,Consultative & Validating,10.560134760515778,0.1029600938359035,6,No,0.26894179693851794,Small
+Calls Count,Categorical,1,1,10.311280338652988,0.24385422641601082,8,No,0.26575403627977706,Small
+technical_quality_score,Categorical,5.0,5.0,10.0124986673774,0.52926323629367,11,No,0.26187546275994555,Small
+ready_for_customers,Categorical,Yes,Yes,9.181779446044153,0.10202958404495724,5,No,0.25077659443291533,Small
+is_decision_maker,Categorical,Yes,Yes,8.621423368298366,0.19601484770348815,6,No,0.24300379624266155,Small
+location_mentioned,Categorical,Yes,Yes,7.99475189809277,0.004691312818607598,1,Yes,0.23400550131240724,Small
+omc_who_said_hello_first,Categorical,Agent,Agent,7.171754179728318,0.06662026754839977,3,No,0.2216339413779891,Small
+who_said_hello_first_lgs,Categorical,Agent,Agent,6.452242546074782,0.091565087534235,3,No,0.21022236345451598,Small
+ready_to_transfer,Categorical,No,No,5.547414030588012,0.4757447003318386,6,No,0.19492559224195471,Small
+customer_language,Categorical,English,English,5.477127039627041,0.14001309221287178,3,No,0.19368678004595144,Small
+lgs_agent_gender,Categorical,Male,Male,5.163218391531715,0.16022827844292847,3,No,0.18805453871427605,Small
+within_45_seconds,Categorical,Yes,Yes,5.0475954281988775,0.02466013795846879,1,Yes,0.1859370092962122,Small
+customer_availability,Categorical,available,available,4.534146224146225,0.20926466981501746,3,No,0.17622654753412173,Small
+customer_knows_marketing,Categorical,Yes,Yes,4.460569208769028,0.2158345056467524,3,No,0.1747908575860828,Small
+forbidden_industry,Categorical,No,No,4.0752880921895,0.13033541367457643,2,No,0.16707163774346695,Small
+timezone,Categorical,Eastern,Eastern,3.896214362751941,0.5644533578209705,5,No,0.16335972497796483,Small
+contract_mentions_final_2min,Categorical,0,0.0,3.3929577464788743,0.1833279097140131,2,No,0.1524448641959391,Small
+business_type_mentioned,Categorical,Yes,Yes,2.6517891656954147,0.10343342190915794,1,No,0.13476995025251173,Small
+Connection Made Calls,Categorical,1,1,1.2245962955497323,0.5421036022344727,2,No,0.09158409174048555,Negligible
+season_status,Categorical,Low season,Low season,0.1855562200956939,0.9798866326060626,3,No,0.035650147466091464,Negligible

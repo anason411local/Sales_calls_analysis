@@ -1,0 +1,22 @@
+{
+  "random_forest_roc_auc_test": 0.8852941176470588,
+  "random_forest_roc_auc_train": 0.9568027210884353,
+  "random_forest_accuracy_test": 0.8378378378378378,
+  "random_forest_f1_test": 0.85,
+  "random_forest_cv_mean": 0.9216346153846153,
+  "random_forest_cv_std": 0.09262265975770571,
+  "random_forest_overfitting_gap": 0.07150860344137655,
+  "xgboost_roc_auc_test": 0.8323529411764705,
+  "xgboost_roc_auc_train": 0.9105442176870749,
+  "xgboost_accuracy_test": 0.7567567567567568,
+  "xgboost_f1_test": 0.7804878048780488,
+  "xgboost_cv_mean": 0.8696085164835166,
+  "xgboost_cv_std": 0.11828588142672805,
+  "xgboost_overfitting_gap": 0.07819127651060442,
+  "n_features": 46,
+  "n_train": 109,
+  "n_test": 37,
+  "removed_variables": [
+    "TO_OMC_Duration"
+  ]
+}

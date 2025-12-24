@@ -1,0 +1,13 @@
+Variable,Missing_Count,Missing_Percent
+LQ_Company_Name,24,36.36363636363637
+technical_quality_issues,15,22.727272727272727
+ready_for_customers,10,15.151515151515152
+LQ_Service,6,9.090909090909092
+timezone,5,7.575757575757576
+season_status,4,6.0606060606060606
+customer_marketing_experience,4,6.0606060606060606
+lgs_agent_gender,3,4.545454545454546
+customer_sentiment_lgs,3,4.545454545454546
+technical_quality_score,2,3.0303030303030303
+customer_talk_percentage,1,1.5151515151515151
+time_to_reason_seconds,1,1.5151515151515151
