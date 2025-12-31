@@ -117,9 +117,9 @@ def main():
     project_root = os.path.dirname(script_dir)
     
     # Define file paths relative to project root
-    omc_file = os.path.join(project_root, "input_data", "OMC Calls - December 18, 2025.csv")
-    lead_quality_file = os.path.join(project_root, "input_data", "Lead Quality - December 18, 2025.csv")
-    output_file = os.path.join(project_root, "input_data", "Merged_OMC_LeadQuality_December_18_2025.csv")
+    omc_file = os.path.join(project_root, "input_data", "dpad_OMC Calls - December 1_26, 2025.csv")
+    lead_quality_file = os.path.join(project_root, "input_data", "dpad_Lead Quality - December 1_to_26, 2025.csv")
+    output_file = os.path.join(project_root, "input_data", "dpad_Merged_OMC_LeadQuality_December_18_2025.csv")
     
     # Merge the files
     success = merge_lead_data(omc_file, lead_quality_file, output_file)

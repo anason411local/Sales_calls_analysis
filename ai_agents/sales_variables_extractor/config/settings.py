@@ -21,8 +21,8 @@ CHECKPOINTS_DIR.mkdir(exist_ok=True)
 LOGS_DIR.mkdir(exist_ok=True)
 
 # Input/Output files
-INPUT_CSV = INPUT_DIR / "mergeed_for_test_og.csv"
-OUTPUT_CSV = OUTPUT_DIR / "sales_variables_extracted.csv"
+INPUT_CSV = INPUT_DIR / "dpad_Merged_OMC_LeadQuality_December_18_2025.csv"
+OUTPUT_CSV = OUTPUT_DIR / "dpad_sales_variables_extracted.csv"
 CHECKPOINT_FILE = CHECKPOINTS_DIR / "variables_extraction_checkpoint.json"
 
 # Seasonality and timezone reference files
