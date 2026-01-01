@@ -333,6 +333,262 @@ def apply_bonferroni_correction(results_df):
     return results_df
 
 
+def create_combined_effect_size_visualization(t_test_results, chi_square_results, output_dir):
+    """
+    Create combined effect size visualization showing top 25 variables
+    Similar to ML V2 output
+    """
+    print("\n📊 Creating combined effect size visualization...")
+    
+    output_path = output_dir / "analysis_outputs" / "statistical_tests"
+    
+    # Combine numerical and categorical results
+    combined_results = []
+    
+    # Add numerical features (Cohen's D)
+    for idx, row in t_test_results.iterrows():
+        combined_results.append({
+            'Variable': row['feature'],
+            'Type': 'Numerical',
+            'Significant': 'Yes' if row['p_value'] < 0.05 else 'No',
+            'Effect_Size_Value': abs(row['cohens_d'])
+        })
+    
+    # Add categorical features (Cramér's V)
+    for idx, row in chi_square_results.iterrows():
+        combined_results.append({
+            'Variable': row['feature'],
+            'Type': 'Categorical',
+            'Significant': 'Yes' if row['p_value'] < 0.05 else 'No',
+            'Effect_Size_Value': row['cramers_v']
+        })
+    
+    combined_df = pd.DataFrame(combined_results)
+    combined_df = combined_df.sort_values('Effect_Size_Value', ascending=True).tail(25)
+    
+    # Save combined results
+    all_combined = pd.DataFrame(combined_results).sort_values('Effect_Size_Value', ascending=False)
+    all_combined.to_csv(output_path / "04_statistical_tests_combined.csv", index=False)
+    print(f"   ✓ Saved: 04_statistical_tests_combined.csv")
+    
+    # Create visualization
+    fig, ax = plt.subplots(figsize=(14, 10))
+    
+    colors = ['#4ECDC4' if sig == 'Yes' else '#FF6B6B' 
+              for sig in combined_df['Significant']]
+    
+    bars = ax.barh(range(len(combined_df)), combined_df['Effect_Size_Value'], 
+                   color=colors, alpha=0.8, edgecolor='black', linewidth=1.2)
+    
+    ax.set_yticks(range(len(combined_df)))
+    ax.set_yticklabels(combined_df['Variable'], fontsize=10)
+    ax.set_xlabel("Effect Size (Cohen's D or Cramér's V)", fontsize=13, fontweight='bold')
+    ax.set_title("LEVEL 1: TOP 25 VARIABLES BY EFFECT SIZE\n" +
+                 "TEAL = Statistically Significant (p<0.05) | RED = Not Significant",
+                 fontsize=14, fontweight='bold', pad=20)
+    
+    # Add value labels
+    for bar, val in zip(bars, combined_df['Effect_Size_Value']):
+        ax.text(val + 0.02, bar.get_y() + bar.get_height()/2,
+               f'{val:.3f}',
+               va='center', fontsize=9, fontweight='bold')
+    
+    ax.grid(axis='x', alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig(output_path / "04_effect_size_top25.png", dpi=300, bbox_inches='tight')
+    print(f"   ✓ Saved: 04_effect_size_top25.png")
+    plt.close()
+
+
+def create_effect_size_vs_significance_plots(t_test_results, chi_square_results, output_dir):
+    """
+    Create scatter plots showing effect size vs statistical significance
+    Similar to ML V2 volcano-style plots
+    """
+    print("\n📊 Creating effect size vs significance scatter plots...")
+    
+    output_path = output_dir / "analysis_outputs" / "statistical_tests"
+    
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
+    
+    # Plot 1: Numerical Variables (Cohen's D vs p-value)
+    if len(t_test_results) > 0:
+        # Calculate -log10(p-value)
+        neg_log_p = -np.log10(t_test_results['p_value'].replace(0, 1e-300))
+        
+        # Color by significance
+        colors = []
+        for p in t_test_results['p_value']:
+            if p < 0.05:
+                colors.append('#FFD700')  # Yellow for significant
+            else:
+                colors.append('#4169E1')  # Blue for not significant
+        
+        scatter = ax1.scatter(t_test_results['cohens_d'], neg_log_p,
+                            c=colors, s=120, alpha=0.7, edgecolors='black', linewidths=1.5)
+        
+        # Add significance line
+        ax1.axhline(-np.log10(0.05), color='red', linestyle='--', 
+                   label='p=0.05', linewidth=2)
+        
+        # Annotate top features by absolute effect size
+        t_test_results['abs_cohens_d'] = t_test_results['cohens_d'].abs()
+        top_features = t_test_results.nlargest(3, 'abs_cohens_d')
+        for idx, row in top_features.iterrows():
+            if abs(row['cohens_d']) > 0.3:  # Only annotate if meaningful effect
+                ax1.annotate(row['feature'], 
+                           xy=(row['cohens_d'], -np.log10(row['p_value'])),
+                           xytext=(10, 10), textcoords='offset points',
+                           fontsize=9, fontweight='bold',
+                           bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.7),
+                           arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0'))
+        
+        ax1.set_xlabel("Effect Size (|Cohen's D|)", fontsize=12, fontweight='bold')
+        ax1.set_ylabel("-log10(p-value)", fontsize=12, fontweight='bold')
+        ax1.set_title("Numerical Variables: Effect Size vs Significance\n" +
+                     "Top-right = Large effect + Significant",
+                     fontsize=13, fontweight='bold')
+        ax1.legend(fontsize=10)
+        ax1.grid(alpha=0.3)
+    
+    # Plot 2: Categorical Variables (Cramér's V vs p-value)
+    if len(chi_square_results) > 0:
+        # Calculate -log10(p-value)
+        neg_log_p = -np.log10(chi_square_results['p_value'].replace(0, 1e-300))
+        
+        # Color by significance
+        colors = []
+        for p in chi_square_results['p_value']:
+            if p < 0.05:
+                colors.append('#FFD700')  # Yellow for significant
+            else:
+                colors.append('#FF6347')  # Red for not significant
+        
+        scatter = ax2.scatter(chi_square_results['cramers_v'], neg_log_p,
+                            c=colors, s=120, alpha=0.7, edgecolors='black', linewidths=1.5)
+        
+        # Add significance line
+        ax2.axhline(-np.log10(0.05), color='red', linestyle='--',
+                   label='p=0.05', linewidth=2)
+        
+        # Annotate top features
+        top_features = chi_square_results.nlargest(3, 'cramers_v')
+        for idx, row in top_features.iterrows():
+            if row['cramers_v'] > 0.3:  # Only annotate if meaningful effect
+                ax2.annotate(row['feature'],
+                           xy=(row['cramers_v'], -np.log10(row['p_value'])),
+                           xytext=(10, 10), textcoords='offset points',
+                           fontsize=9, fontweight='bold',
+                           bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.7),
+                           arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0'))
+        
+        ax2.set_xlabel("Effect Size (Cramér's V)", fontsize=12, fontweight='bold')
+        ax2.set_ylabel("-log10(p-value)", fontsize=12, fontweight='bold')
+        ax2.set_title("Categorical Variables: Effect Size vs Significance\n" +
+                     "Top-right = Large effect + Significant",
+                     fontsize=13, fontweight='bold')
+        ax2.legend(fontsize=10)
+        ax2.grid(alpha=0.3)
+    
+    plt.suptitle("LEVEL 1: EFFECT SIZE vs STATISTICAL SIGNIFICANCE\n" +
+                 "Best variables are in top-right (large effect + low p-value)",
+                 fontsize=15, fontweight='bold', y=1.02)
+    
+    plt.tight_layout()
+    plt.savefig(output_path / "04_effect_size_vs_significance.png", dpi=300, bbox_inches='tight')
+    print(f"   ✓ Saved: 04_effect_size_vs_significance.png")
+    plt.close()
+
+
+def save_detailed_statistical_tables(t_test_results, chi_square_results, output_dir):
+    """
+    Save detailed statistical tables similar to ML V2 format
+    """
+    print("\n💾 Saving detailed statistical tables...")
+    
+    output_path = output_dir / "analysis_outputs" / "statistical_tests"
+    
+    # Numerical features table
+    numerical_table = t_test_results.copy()
+    numerical_table['Type'] = 'Numerical'
+    numerical_table['Significant'] = numerical_table['p_value'].apply(
+        lambda p: 'Yes' if p < 0.05 else 'No'
+    )
+    numerical_table['Abs_Cohens_D'] = numerical_table['cohens_d'].abs()
+    
+    # Categorize effect size
+    def categorize_effect_cohens(d):
+        d = abs(d)
+        if d >= 0.8:
+            return 'Large'
+        elif d >= 0.5:
+            return 'Medium'
+        elif d >= 0.2:
+            return 'Small'
+        else:
+            return 'Negligible'
+    
+    numerical_table['Effect_Size'] = numerical_table['cohens_d'].apply(categorize_effect_cohens)
+    
+    # Rename columns to match ML V2 format
+    numerical_export = numerical_table[[
+        'feature', 'Type', 'mean_high', 'std_high', 'mean_low', 'std_low',
+        'difference', 't_statistic', 'p_value', 'Significant',
+        'cohens_d', 'Abs_Cohens_D', 'Effect_Size'
+    ]].rename(columns={
+        'feature': 'Variable',
+        'mean_high': 'High_DPAD_Mean',
+        'mean_low': 'Low_DPAD_Mean',
+        'std_high': 'High_DPAD_Std',
+        'std_low': 'Low_DPAD_Std',
+        'difference': 'Mean_Diff',
+        't_statistic': 'T_Statistic',
+        'p_value': 'P_Value',
+        'cohens_d': 'Cohens_D'
+    })
+    
+    numerical_export = numerical_export.sort_values('Abs_Cohens_D', ascending=False)
+    numerical_export.to_csv(output_path / "04_statistical_tests_numerical.csv", index=False)
+    print(f"   ✓ Saved: 04_statistical_tests_numerical.csv")
+    
+    # Categorical features table
+    categorical_table = chi_square_results.copy()
+    categorical_table['Type'] = 'Categorical'
+    categorical_table['Significant'] = categorical_table['p_value'].apply(
+        lambda p: 'Yes' if p < 0.05 else 'No'
+    )
+    
+    # Categorize effect size
+    def categorize_effect_cramers(v):
+        if v >= 0.5:
+            return 'Large'
+        elif v >= 0.3:
+            return 'Medium'
+        elif v >= 0.1:
+            return 'Small'
+        else:
+            return 'Negligible'
+    
+    categorical_table['Effect_Size'] = categorical_table['cramers_v'].apply(categorize_effect_cramers)
+    
+    # Rename columns
+    categorical_export = categorical_table[[
+        'feature', 'Type', 'chi2_statistic', 'p_value', 
+        'degrees_of_freedom', 'Significant', 'cramers_v', 'Effect_Size'
+    ]].rename(columns={
+        'feature': 'Variable',
+        'chi2_statistic': 'Chi_Square_Stat',
+        'p_value': 'P_Value',
+        'degrees_of_freedom': 'Degrees_of_Freedom',
+        'cramers_v': 'Cramers_V'
+    })
+    
+    categorical_export = categorical_export.sort_values('Cramers_V', ascending=False)
+    categorical_export.to_csv(output_path / "04_statistical_tests_categorical.csv", index=False)
+    print(f"   ✓ Saved: 04_statistical_tests_categorical.csv")
+
+
 def create_statistical_visualizations(t_test_results, mann_whitney_results, 
                                        chi_square_results, output_dir):
     """
@@ -345,7 +601,16 @@ def create_statistical_visualizations(t_test_results, mann_whitney_results,
     output_path = output_dir / "analysis_outputs" / "statistical_tests"
     output_path.mkdir(parents=True, exist_ok=True)
     
-    # Plot 1: T-test Results (Effect Size vs P-value)
+    # NEW: Create combined effect size visualization
+    create_combined_effect_size_visualization(t_test_results, chi_square_results, output_dir)
+    
+    # NEW: Create effect size vs significance scatter plots
+    create_effect_size_vs_significance_plots(t_test_results, chi_square_results, output_dir)
+    
+    # NEW: Save detailed statistical tables
+    save_detailed_statistical_tables(t_test_results, chi_square_results, output_dir)
+    
+    # ORIGINAL: Plot 1: T-test Results (Effect Size vs P-value)
     if len(t_test_results) > 0:
         fig, ax = plt.subplots(figsize=(12, 8))
         
@@ -393,7 +658,7 @@ def create_statistical_visualizations(t_test_results, mann_whitney_results,
         print(f"   ✓ Saved: t_test_volcano_plot.png")
         plt.close()
     
-    # Plot 2: Top Significant Features (T-test)
+    # ORIGINAL: Plot 2: Top Significant Features (T-test)
     if len(t_test_results) > 0:
         sig_features = t_test_results[t_test_results['p_value'] < 0.05].head(20)
         
@@ -430,7 +695,7 @@ def create_statistical_visualizations(t_test_results, mann_whitney_results,
             print(f"   ✓ Saved: significant_features_effect_sizes.png")
             plt.close()
     
-    # Plot 3: Chi-square Results
+    # ORIGINAL: Plot 3: Chi-square Results
     if len(chi_square_results) > 0:
         sig_chi = chi_square_results[chi_square_results['p_value'] < 0.05].head(20)
         
@@ -455,6 +720,8 @@ def create_statistical_visualizations(t_test_results, mann_whitney_results,
             plt.savefig(output_path / "chi_square_effect_sizes.png", dpi=300, bbox_inches='tight')
             print(f"   ✓ Saved: chi_square_effect_sizes.png")
             plt.close()
+    
+    print(f"\n✅ Created all statistical visualizations")
 
 
 def generate_statistical_report(t_test_results, mann_whitney_results,

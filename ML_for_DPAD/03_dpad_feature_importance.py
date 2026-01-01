@@ -576,6 +576,297 @@ def generate_feature_importance_report(rf_importance, xgb_importance,
     print(f"✅ Feature importance report saved: {report_path}")
 
 
+def create_model_evaluation_visualizations(rf_model, xgb_model, X, y, 
+                                             rf_cv_scores, xgb_cv_scores, output_dir):
+    """
+    Create comprehensive model evaluation visualizations:
+    1. Confusion Matrices
+    2. ROC Curves
+    3. Learning Curves
+    4. Model Performance Comparison
+    """
+    print("\n" + "="*70)
+    print("CREATING MODEL EVALUATION VISUALIZATIONS")
+    print("="*70)
+    
+    from sklearn.model_selection import train_test_split, learning_curve
+    from sklearn.metrics import roc_curve, auc, f1_score, accuracy_score
+    
+    output_path = output_dir / "analysis_outputs" / "feature_importance"
+    
+    # Split data for testing
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.25, random_state=42, stratify=y
+    )
+    
+    # Get predictions
+    y_pred_rf = rf_model.predict(X_test)
+    y_proba_rf = rf_model.predict_proba(X_test)[:, 1]
+    roc_auc_rf_test = roc_auc_score(y_test, y_proba_rf)
+    acc_rf_test = accuracy_score(y_test, y_pred_rf)
+    f1_rf_test = f1_score(y_test, y_pred_rf)
+    
+    if xgb_model is not None:
+        y_pred_xgb = xgb_model.predict(X_test)
+        y_proba_xgb = xgb_model.predict_proba(X_test)[:, 1]
+        roc_auc_xgb_test = roc_auc_score(y_test, y_proba_xgb)
+        acc_xgb_test = accuracy_score(y_test, y_pred_xgb)
+        f1_xgb_test = f1_score(y_test, y_pred_xgb)
+    
+    # ==============================
+    # VIZ 1: CONFUSION MATRICES
+    # ==============================
+    print("\n📊 Creating confusion matrices...")
+    
+    if xgb_model is not None:
+        fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+        
+        # RF Confusion Matrix
+        cm_rf = confusion_matrix(y_test, y_pred_rf)
+        sns.heatmap(cm_rf, annot=True, fmt='d', cmap='Blues', ax=axes[0],
+                    xticklabels=['Low-DPAD', 'High-DPAD'], 
+                    yticklabels=['Low-DPAD', 'High-DPAD'],
+                    cbar_kws={'label': 'Count'})
+        axes[0].set_title(f'Random Forest Confusion Matrix\nTest ROC-AUC: {roc_auc_rf_test:.4f}',
+                          fontsize=12, fontweight='bold')
+        axes[0].set_xlabel('Predicted', fontsize=11, fontweight='bold')
+        axes[0].set_ylabel('Actual', fontsize=11, fontweight='bold')
+        
+        # XGBoost Confusion Matrix
+        cm_xgb = confusion_matrix(y_test, y_pred_xgb)
+        sns.heatmap(cm_xgb, annot=True, fmt='d', cmap='Greens', ax=axes[1],
+                    xticklabels=['Low-DPAD', 'High-DPAD'], 
+                    yticklabels=['Low-DPAD', 'High-DPAD'],
+                    cbar_kws={'label': 'Count'})
+        axes[1].set_title(f'XGBoost Confusion Matrix\nTest ROC-AUC: {roc_auc_xgb_test:.4f}',
+                          fontsize=12, fontweight='bold')
+        axes[1].set_xlabel('Predicted', fontsize=11, fontweight='bold')
+        axes[1].set_ylabel('Actual', fontsize=11, fontweight='bold')
+        
+        plt.suptitle('LEVEL 1: MODEL CONFUSION MATRICES\nDiagonal = Correct Predictions | Off-diagonal = Errors',
+                     fontsize=14, fontweight='bold', y=1.02)
+    else:
+        fig, ax = plt.subplots(figsize=(8, 6))
+        cm_rf = confusion_matrix(y_test, y_pred_rf)
+        sns.heatmap(cm_rf, annot=True, fmt='d', cmap='Blues', ax=ax,
+                    xticklabels=['Low-DPAD', 'High-DPAD'], 
+                    yticklabels=['Low-DPAD', 'High-DPAD'],
+                    cbar_kws={'label': 'Count'})
+        ax.set_title(f'Random Forest Confusion Matrix\nTest ROC-AUC: {roc_auc_rf_test:.4f}',
+                     fontsize=12, fontweight='bold')
+        ax.set_xlabel('Predicted', fontsize=11, fontweight='bold')
+        ax.set_ylabel('Actual', fontsize=11, fontweight='bold')
+    
+    plt.tight_layout()
+    plt.savefig(output_path / "03_eval_confusion_matrices.png", dpi=300, bbox_inches='tight')
+    print(f"   ✓ Saved: 03_eval_confusion_matrices.png")
+    plt.close()
+    
+    # ==============================
+    # VIZ 2: ROC CURVES
+    # ==============================
+    print("📈 Creating ROC curves...")
+    
+    fig, ax = plt.subplots(figsize=(10, 8))
+    
+    # RF ROC Curve
+    fpr_rf, tpr_rf, _ = roc_curve(y_test, y_proba_rf)
+    ax.plot(fpr_rf, tpr_rf, label=f'Random Forest (AUC = {roc_auc_rf_test:.4f})',
+            linewidth=2.5, color='#4ECDC4')
+    
+    if xgb_model is not None:
+        # XGBoost ROC Curve
+        fpr_xgb, tpr_xgb, _ = roc_curve(y_test, y_proba_xgb)
+        ax.plot(fpr_xgb, tpr_xgb, label=f'XGBoost (AUC = {roc_auc_xgb_test:.4f})',
+                linewidth=2.5, color='#FF6B6B')
+    
+    # Diagonal (random classifier)
+    ax.plot([0, 1], [0, 1], 'k--', linewidth=1.5, label='Random Classifier (AUC = 0.50)')
+    
+    ax.set_xlabel('False Positive Rate', fontsize=12, fontweight='bold')
+    ax.set_ylabel('True Positive Rate', fontsize=12, fontweight='bold')
+    ax.set_title('LEVEL 1: ROC CURVES - Model Comparison\nHigher curve = Better performance',
+                 fontsize=14, fontweight='bold', pad=20)
+    ax.legend(fontsize=11, loc='lower right')
+    ax.grid(alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig(output_path / "03_eval_roc_curves.png", dpi=300, bbox_inches='tight')
+    print(f"   ✓ Saved: 03_eval_roc_curves.png")
+    plt.close()
+    
+    # ==============================
+    # VIZ 3: LEARNING CURVES
+    # ==============================
+    print("📚 Creating learning curves...")
+    
+    if xgb_model is not None:
+        fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+        
+        # RF Learning Curve
+        train_sizes, train_scores_rf, val_scores_rf = learning_curve(
+            rf_model, X, y, cv=5, n_jobs=-1,
+            train_sizes=np.linspace(0.6, 1.0, 5),  # Adjusted for small dataset
+            scoring='roc_auc', random_state=42
+        )
+        
+        train_mean_rf = train_scores_rf.mean(axis=1)
+        train_std_rf = train_scores_rf.std(axis=1)
+        val_mean_rf = val_scores_rf.mean(axis=1)
+        val_std_rf = val_scores_rf.std(axis=1)
+        
+        axes[0].plot(train_sizes, train_mean_rf, label='Training Score',
+                    linewidth=2.5, color='#4ECDC4', marker='o')
+        axes[0].fill_between(train_sizes, train_mean_rf - train_std_rf,
+                            train_mean_rf + train_std_rf, alpha=0.2, color='#4ECDC4')
+        axes[0].plot(train_sizes, val_mean_rf, label='Cross-Validation Score',
+                    linewidth=2.5, color='#FF6B6B', marker='o')
+        axes[0].fill_between(train_sizes, val_mean_rf - val_std_rf,
+                            val_mean_rf + val_std_rf, alpha=0.2, color='#FF6B6B')
+        
+        axes[0].set_xlabel('Training Set Size', fontsize=11, fontweight='bold')
+        axes[0].set_ylabel('ROC-AUC Score', fontsize=11, fontweight='bold')
+        axes[0].set_title('Random Forest Learning Curve\nChecking overfitting and convergence',
+                          fontsize=12, fontweight='bold')
+        axes[0].legend(fontsize=10)
+        axes[0].grid(alpha=0.3)
+        
+        # XGBoost Learning Curve
+        train_sizes, train_scores_xgb, val_scores_xgb = learning_curve(
+            xgb_model, X, y, cv=5, n_jobs=-1,
+            train_sizes=np.linspace(0.6, 1.0, 5),
+            scoring='roc_auc', random_state=42
+        )
+        
+        train_mean_xgb = train_scores_xgb.mean(axis=1)
+        train_std_xgb = train_scores_xgb.std(axis=1)
+        val_mean_xgb = val_scores_xgb.mean(axis=1)
+        val_std_xgb = val_scores_xgb.std(axis=1)
+        
+        axes[1].plot(train_sizes, train_mean_xgb, label='Training Score',
+                    linewidth=2.5, color='#45B7D1', marker='o')
+        axes[1].fill_between(train_sizes, train_mean_xgb - train_std_xgb,
+                            train_mean_xgb + train_std_xgb, alpha=0.2, color='#45B7D1')
+        axes[1].plot(train_sizes, val_mean_xgb, label='Cross-Validation Score',
+                    linewidth=2.5, color='#F7DC6F', marker='o')
+        axes[1].fill_between(train_sizes, val_mean_xgb - val_std_xgb,
+                            val_mean_xgb + val_std_xgb, alpha=0.2, color='#F7DC6F')
+        
+        axes[1].set_xlabel('Training Set Size', fontsize=11, fontweight='bold')
+        axes[1].set_ylabel('ROC-AUC Score', fontsize=11, fontweight='bold')
+        axes[1].set_title('XGBoost Learning Curve\nChecking overfitting and convergence',
+                          fontsize=12, fontweight='bold')
+        axes[1].legend(fontsize=10)
+        axes[1].grid(alpha=0.3)
+        
+        plt.suptitle('LEVEL 1: LEARNING CURVES\nGap between training and validation = Overfitting level',
+                     fontsize=14, fontweight='bold', y=1.02)
+    else:
+        fig, ax = plt.subplots(figsize=(10, 6))
+        
+        train_sizes, train_scores_rf, val_scores_rf = learning_curve(
+            rf_model, X, y, cv=5, n_jobs=-1,
+            train_sizes=np.linspace(0.6, 1.0, 5),
+            scoring='roc_auc', random_state=42
+        )
+        
+        train_mean_rf = train_scores_rf.mean(axis=1)
+        train_std_rf = train_scores_rf.std(axis=1)
+        val_mean_rf = val_scores_rf.mean(axis=1)
+        val_std_rf = val_scores_rf.std(axis=1)
+        
+        ax.plot(train_sizes, train_mean_rf, label='Training Score',
+                linewidth=2.5, color='#4ECDC4', marker='o')
+        ax.fill_between(train_sizes, train_mean_rf - train_std_rf,
+                        train_mean_rf + train_std_rf, alpha=0.2, color='#4ECDC4')
+        ax.plot(train_sizes, val_mean_rf, label='Cross-Validation Score',
+                linewidth=2.5, color='#FF6B6B', marker='o')
+        ax.fill_between(train_sizes, val_mean_rf - val_std_rf,
+                        val_mean_rf + val_std_rf, alpha=0.2, color='#FF6B6B')
+        
+        ax.set_xlabel('Training Set Size', fontsize=11, fontweight='bold')
+        ax.set_ylabel('ROC-AUC Score', fontsize=11, fontweight='bold')
+        ax.set_title('Random Forest Learning Curve\nChecking overfitting and convergence',
+                     fontsize=12, fontweight='bold')
+        ax.legend(fontsize=10)
+        ax.grid(alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig(output_path / "03_eval_learning_curves.png", dpi=300, bbox_inches='tight')
+    print(f"   ✓ Saved: 03_eval_learning_curves.png")
+    plt.close()
+    
+    # ==============================
+    # VIZ 4: MODEL METRICS COMPARISON
+    # ==============================
+    print("📊 Creating metrics comparison...")
+    
+    fig, ax = plt.subplots(figsize=(12, 8))
+    
+    if xgb_model is not None:
+        metrics_comparison = {
+            'ROC-AUC (Test)': [roc_auc_rf_test, roc_auc_xgb_test],
+            'Accuracy (Test)': [acc_rf_test, acc_xgb_test],
+            'F1-Score (Test)': [f1_rf_test, f1_xgb_test],
+            'CV Mean': [rf_cv_scores.mean(), xgb_cv_scores.mean()]
+        }
+        
+        x = np.arange(len(metrics_comparison))
+        width = 0.35
+        
+        bars1 = ax.bar(x - width/2, [metrics_comparison[k][0] for k in metrics_comparison.keys()],
+                      width, label='Random Forest', color='#98D8C8', alpha=0.8, 
+                      edgecolor='black', linewidth=1.5)
+        bars2 = ax.bar(x + width/2, [metrics_comparison[k][1] for k in metrics_comparison.keys()],
+                      width, label='XGBoost', color='#F7DC6F', alpha=0.8, 
+                      edgecolor='black', linewidth=1.5)
+        
+        # Add value labels
+        for bars in [bars1, bars2]:
+            for bar in bars:
+                height = bar.get_height()
+                ax.text(bar.get_x() + bar.get_width()/2., height,
+                       f'{height:.4f}',
+                       ha='center', va='bottom', fontsize=10, fontweight='bold')
+        
+        ax.set_xticklabels(metrics_comparison.keys(), fontsize=11)
+        ax.legend(fontsize=12)
+    else:
+        metrics_comparison = {
+            'ROC-AUC (Test)': roc_auc_rf_test,
+            'Accuracy (Test)': acc_rf_test,
+            'F1-Score (Test)': f1_rf_test,
+            'CV Mean': rf_cv_scores.mean()
+        }
+        
+        x = np.arange(len(metrics_comparison))
+        bars = ax.bar(x, list(metrics_comparison.values()),
+                     color='#98D8C8', alpha=0.8, edgecolor='black', linewidth=1.5)
+        
+        for bar, val in zip(bars, metrics_comparison.values()):
+            height = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width()/2., height,
+                   f'{height:.4f}',
+                   ha='center', va='bottom', fontsize=10, fontweight='bold')
+        
+        ax.set_xticklabels(metrics_comparison.keys(), fontsize=11)
+    
+    ax.set_xlabel('Metric', fontsize=13, fontweight='bold')
+    ax.set_ylabel('Score', fontsize=13, fontweight='bold')
+    ax.set_title('LEVEL 1: MODEL PERFORMANCE COMPARISON\nHigher is better for all metrics',
+                 fontsize=14, fontweight='bold', pad=20)
+    ax.set_xticks(x)
+    ax.set_ylim([0, 1.05])
+    ax.grid(axis='y', alpha=0.3)
+    
+    plt.tight_layout()
+    plt.savefig(output_path / "03_eval_metrics_comparison.png", dpi=300, bbox_inches='tight')
+    print(f"   ✓ Saved: 03_eval_metrics_comparison.png")
+    plt.close()
+    
+    print("\n✅ Created 4 model evaluation visualizations")
+
+
 def save_feature_importance_data(rf_importance, xgb_importance, 
                                    rf_perm_importance, xgb_perm_importance,
                                    comparison_df, output_dir):
@@ -628,7 +919,13 @@ def main():
         rf_perm_importance, xgb_perm_importance
     )
     
-    # Create visualizations
+    # Create model evaluation visualizations (NEW!)
+    create_model_evaluation_visualizations(
+        rf_model, xgb_model, X, y,
+        rf_cv_scores, xgb_cv_scores, output_dir
+    )
+    
+    # Create feature importance visualizations
     plot_feature_importance_comparison(
         rf_importance, xgb_importance,
         rf_perm_importance, xgb_perm_importance,
@@ -656,6 +953,10 @@ def main():
     print(f"\nTop 5 Most Important Features:")
     for idx, row in comparison_df.head(5).iterrows():
         print(f"   {idx+1}. {row['feature']:<45} (Avg: {row['avg_importance']:.4f})")
+    print(f"\nOutputs saved to: {output_dir / 'analysis_outputs' / 'feature_importance'}")
+    print("  - Confusion matrices, ROC curves, learning curves, metrics comparison")
+    print("  - Feature importance plots and data")
+    print("  - Comprehensive report")
     print("\n" + "="*70)
 
 
