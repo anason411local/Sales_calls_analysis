@@ -469,6 +469,132 @@ def save_shap_data(shap_values, X, feature_importance, output_dir):
     print(f"\n✅ SHAP data saved to: {output_path}")
 
 
+def create_shap_comparison_with_xgboost(X, y, output_dir):
+    """
+    Train XGBoost model and create SHAP comparison between RF and XGBoost
+    Similar to ML V2 format
+    """
+    print("\n" + "="*70)
+    print("CREATING RF vs XGBOost SHAP COMPARISON")
+    print("="*70)
+    
+    output_path = output_dir / "analysis_outputs" / "shap_analysis"
+    
+    try:
+        import xgboost as xgb
+        
+        # Train XGBoost model
+        print("\n🌲 Training XGBoost model...")
+        xgb_model = xgb.XGBClassifier(
+            n_estimators=500,
+            max_depth=6,
+            learning_rate=0.1,
+            random_state=42,
+            n_jobs=-1,
+            scale_pos_weight=len(y[y==0])/len(y[y==1])  # Handle imbalance
+        )
+        xgb_model.fit(X, y)
+        
+        accuracy = (xgb_model.predict(X) == y).mean()
+        print(f"   XGBoost accuracy: {accuracy:.3f}")
+        
+        # Calculate SHAP for XGBoost
+        print("   Calculating SHAP values for XGBoost...")
+        explainer_xgb = shap.TreeExplainer(xgb_model)
+        shap_values_xgb = explainer_xgb.shap_values(X)
+        
+        # Handle XGBoost SHAP format
+        if isinstance(shap_values_xgb, list):
+            shap_values_xgb = shap_values_xgb[1]  # High-DPAD class
+        
+        # Calculate mean absolute SHAP for XGBoost
+        mean_abs_shap_xgb = np.abs(shap_values_xgb).mean(axis=0)
+        
+        # Also recalculate for RF
+        print("   Recalculating SHAP values for Random Forest...")
+        rf_model = RandomForestClassifier(
+            n_estimators=500,
+            max_depth=10,
+            min_samples_split=5,
+            min_samples_leaf=2,
+            random_state=42,
+            n_jobs=-1,
+            class_weight='balanced'
+        )
+        rf_model.fit(X, y)
+        
+        explainer_rf = shap.TreeExplainer(rf_model)
+        shap_values_rf = explainer_rf.shap_values(X)
+        
+        if isinstance(shap_values_rf, list):
+            shap_values_rf = shap_values_rf[1]
+        elif len(shap_values_rf.shape) == 3:
+            shap_values_rf = shap_values_rf[:, :, 1]
+        
+        mean_abs_shap_rf = np.abs(shap_values_rf).mean(axis=0)
+        
+        # Create comparison DataFrame (ML V2 format)
+        shap_comparison = pd.DataFrame({
+            'Variable': X.columns,
+            'SHAP_RF': mean_abs_shap_rf,
+            'SHAP_XGB': mean_abs_shap_xgb,
+            'SHAP_Avg': (mean_abs_shap_rf + mean_abs_shap_xgb) / 2
+        }).sort_values('SHAP_Avg', ascending=False)
+        
+        # Save comparison
+        shap_comparison.to_csv(output_path / "05_shap_importance.csv", index=False)
+        print(f"\n   ✓ Saved: 05_shap_importance.csv")
+        
+        # Create comparison visualization
+        fig, ax = plt.subplots(figsize=(14, 10))
+        
+        top_n = 20
+        top_vars = shap_comparison.head(top_n)
+        
+        x = np.arange(len(top_vars))
+        width = 0.35
+        
+        bars1 = ax.barh(x - width/2, top_vars['SHAP_RF'], width, 
+                       label='Random Forest', color='#4ECDC4', alpha=0.8, edgecolor='black')
+        bars2 = ax.barh(x + width/2, top_vars['SHAP_XGB'], width,
+                       label='XGBoost', color='#FFD700', alpha=0.8, edgecolor='black')
+        
+        ax.set_yticks(x)
+        ax.set_yticklabels(top_vars['Variable'], fontsize=10)
+        ax.set_xlabel('Mean |SHAP value| (average impact on model output magnitude)', 
+                     fontsize=11, fontweight='bold')
+        ax.set_title('LEVEL 1: VARIABLE IMPORTANCE (Random Forest vs XGBoost SHAP)\n' +
+                    'Mean |SHAP value| shows average impact on predictions',
+                    fontsize=13, fontweight='bold', pad=20)
+        ax.legend(fontsize=11, loc='lower right')
+        ax.grid(axis='x', alpha=0.3)
+        
+        # Add value labels
+        for bars in [bars1, bars2]:
+            for bar in bars:
+                width_val = bar.get_width()
+                ax.text(width_val + 0.001, bar.get_y() + bar.get_height()/2,
+                       f'{width_val:.3f}',
+                       va='center', fontsize=8)
+        
+        plt.tight_layout()
+        plt.savefig(output_path / "05_shap_comparison_rf_vs_xgb.png", dpi=300, bbox_inches='tight')
+        print(f"   ✓ Saved: 05_shap_comparison_rf_vs_xgb.png")
+        plt.close()
+        
+        print(f"\n✅ SHAP comparison complete!")
+        print(f"   Top 3 variables by average SHAP:")
+        for idx, row in shap_comparison.head(3).iterrows():
+            print(f"      {row['Variable']:.<45} {row['SHAP_Avg']:.4f}")
+        
+        return shap_values_rf, shap_values_xgb, shap_comparison
+        
+    except ImportError:
+        print("\n⚠️  XGBoost not available. Skipping RF vs XGB comparison.")
+        print("   Install with: pip install xgboost")
+        return None, None, None
+
+
 def main():
     """Main SHAP analysis pipeline"""
     
@@ -492,8 +618,17 @@ def main():
     # Load data and model
     X, y, model, feature_metadata = load_data_and_model()
     
-    # Calculate SHAP values
-    shap_values, explainer = calculate_shap_values(model, X)
+    # Create RF vs XGBoost SHAP comparison (ML V2 style)
+    shap_values_rf, shap_values_xgb, shap_comparison = create_shap_comparison_with_xgboost(X, y, output_dir)
+    
+    # Use RF SHAP values for detailed analysis
+    if shap_values_rf is not None:
+        shap_values = shap_values_rf
+        explainer = shap.TreeExplainer(model)
+    else:
+        # Fallback to original single-model approach
+        shap_values, explainer = calculate_shap_values(model, X)
+        shap_comparison = None
     
     if shap_values is None:
         print("\n⚠️  Could not calculate SHAP values")
@@ -503,10 +638,15 @@ def main():
     create_shap_summary_plot(shap_values, X, output_dir)
     create_shap_bar_plot(shap_values, X, output_dir)
     create_shap_dependence_plots(shap_values, X, output_dir, top_n=6)
-    create_shap_waterfall_plots(shap_values, X, y, explainer, output_dir, n_examples=4)
+    create_shap_waterfall_plots(shap_values, X, y, explainer, output_dir, n_examples=6)  # Increased to 6
     
     # Analyze interactions
-    feature_importance = analyze_feature_interactions(shap_values, X, top_n=10)
+    if shap_comparison is not None:
+        feature_importance = shap_comparison[['Variable', 'SHAP_Avg']].rename(
+            columns={'Variable': 'feature', 'SHAP_Avg': 'mean_abs_shap'}
+        )
+    else:
+        feature_importance = analyze_feature_interactions(shap_values, X, top_n=10)
     
     # Generate report
     generate_shap_report(shap_values, X, y, feature_importance, output_dir)
@@ -519,7 +659,9 @@ def main():
     print("="*70)
     print(f"\nTop 5 Most Important Features (by mean |SHAP|):")
     for idx, row in feature_importance.head(5).iterrows():
-        print(f"   {row['feature']:.<50} {row['mean_abs_shap']:.4f}")
+        feat_name = row['feature'] if 'feature' in row else row.get('Variable', 'Unknown')
+        shap_val = row['mean_abs_shap'] if 'mean_abs_shap' in row else row.get('SHAP_Avg', 0)
+        print(f"   {feat_name:.<50} {shap_val:.4f}")
     print("\n" + "="*70)
 
 

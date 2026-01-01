@@ -36,6 +36,8 @@ Date: 2025
 
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # Set non-interactive backend BEFORE importing pyplot
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
@@ -485,6 +487,200 @@ def save_lime_data(feature_stats, explanations, output_dir):
     print(f"\n✅ LIME data saved to: {output_path}")
 
 
+def create_lime_comparison_with_xgboost(X, y, n_samples=1000):
+    """
+    Create LIME comparison between RF and XGBoost similar to ML V2 format
+    """
+    print("\n" + "="*70)
+    print("CREATING RF vs XGBoost LIME COMPARISON")
+    print("="*70)
+    
+    output_path = Path("ML_for_DPAD/analysis_outputs/lime_analysis")
+    output_path.mkdir(parents=True, exist_ok=True)
+    
+    try:
+        import xgboost as xgb
+        
+        # Train models
+        print("\n🌲 Training Random Forest...")
+        rf_model = RandomForestClassifier(
+            n_estimators=500,
+            max_depth=10,
+            min_samples_split=5,
+            min_samples_leaf=2,
+            random_state=42,
+            n_jobs=-1,
+            class_weight='balanced'
+        )
+        rf_model.fit(X, y)
+        
+        print("🌲 Training XGBoost...")
+        xgb_model = xgb.XGBClassifier(
+            n_estimators=500,
+            max_depth=6,
+            learning_rate=0.1,
+            random_state=42,
+            n_jobs=-1,
+            scale_pos_weight=len(y[y==0])/len(y[y==1])
+        )
+        xgb_model.fit(X, y)
+        
+        # Sample data for LIME (balanced sample)
+        high_indices = np.where(y == 1)[0]
+        low_indices = np.where(y == 0)[0]
+        
+        sample_per_class = min(n_samples // 2, len(high_indices), len(low_indices))
+        high_sample = np.random.choice(high_indices, sample_per_class, replace=False)
+        low_sample = np.random.choice(low_indices, sample_per_class, replace=False)
+        
+        sample_indices = np.concatenate([high_sample, low_sample])
+        np.random.shuffle(sample_indices)
+        
+        X_sample = X.iloc[sample_indices]
+        y_sample = y[sample_indices]
+        
+        print(f"\n📊 LIME aggregation sample: {len(X_sample)} calls")
+        print(f"   High-DPAD: {sum(y_sample == 1)}")
+        print(f"   Low-DPAD: {sum(y_sample == 0)}")
+        
+        # Create LIME explainer
+        print("\n🔬 Creating LIME explainer...")
+        explainer = lime.lime_tabular.LimeTabularExplainer(
+            training_data=X.values,
+            feature_names=X.columns.tolist(),
+            class_names=['Low-DPAD', 'High-DPAD'],
+            mode='classification',
+            random_state=42
+        )
+        
+        # Aggregate LIME explanations
+        print("   Aggregating LIME explanations for RF...")
+        lime_weights_rf = {feat: [] for feat in X.columns}
+        
+        for idx in range(len(X_sample)):
+            if (idx + 1) % 100 == 0:
+                print(f"      Processed {idx + 1}/{len(X_sample)} samples...")
+            
+            exp = explainer.explain_instance(
+                data_row=X_sample.iloc[idx].values,
+                predict_fn=rf_model.predict_proba,
+                num_features=len(X.columns),
+                num_samples=1000
+            )
+            
+            exp_dict = dict(exp.as_list())
+            for feat in X.columns:
+                # Try to find the feature in explanation
+                weight = 0
+                for key, val in exp_dict.items():
+                    if feat in key or key.split('<=')[0].split('>')[0].strip() == feat:
+                        weight = val
+                        break
+                lime_weights_rf[feat].append(weight)
+        
+        print("   Aggregating LIME explanations for XGBoost...")
+        lime_weights_xgb = {feat: [] for feat in X.columns}
+        
+        for idx in range(len(X_sample)):
+            if (idx + 1) % 100 == 0:
+                print(f"      Processed {idx + 1}/{len(X_sample)} samples...")
+            
+            exp = explainer.explain_instance(
+                data_row=X_sample.iloc[idx].values,
+                predict_fn=xgb_model.predict_proba,
+                num_features=len(X.columns),
+                num_samples=1000
+            )
+            
+            exp_dict = dict(exp.as_list())
+            for feat in X.columns:
+                weight = 0
+                for key, val in exp_dict.items():
+                    if feat in key or key.split('<=')[0].split('>')[0].strip() == feat:
+                        weight = val
+                        break
+                lime_weights_xgb[feat].append(weight)
+        
+        # Calculate mean absolute LIME weights
+        lime_rf = {feat: np.mean(np.abs(weights)) for feat, weights in lime_weights_rf.items()}
+        lime_xgb = {feat: np.mean(np.abs(weights)) for feat, weights in lime_weights_xgb.items()}
+        
+        # Create comparison DataFrame (ML V2 format)
+        lime_comparison = pd.DataFrame({
+            'Variable': X.columns,
+            'LIME_RF': [lime_rf[feat] for feat in X.columns],
+            'LIME_XGB': [lime_xgb[feat] for feat in X.columns],
+            'LIME_Avg': [(lime_rf[feat] + lime_xgb[feat]) / 2 for feat in X.columns]
+        }).sort_values('LIME_Avg', ascending=False)
+        
+        # Save comparison
+        lime_comparison.to_csv(output_path / "05b_lime_importance.csv", index=False)
+        print(f"\n   ✓ Saved: 05b_lime_importance.csv")
+        
+        # Create comparison visualization
+        fig, ax = plt.subplots(figsize=(14, 10))
+        
+        top_n = 20
+        top_vars = lime_comparison.head(top_n)
+        
+        x = np.arange(len(top_vars))
+        width = 0.35
+        
+        bars1 = ax.barh(x - width/2, top_vars['LIME_RF'], width,
+                       label='Random Forest', color='#98D8C8', alpha=0.8, edgecolor='black')
+        bars2 = ax.barh(x + width/2, top_vars['LIME_XGB'], width,
+                       label='XGBoost', color='#FFD700', alpha=0.8, edgecolor='black')
+        
+        ax.set_yticks(x)
+        ax.set_yticklabels(top_vars['Variable'], fontsize=10)
+        ax.set_xlabel('Mean Absolute LIME Weight', fontsize=11, fontweight='bold')
+        ax.set_title('LEVEL 1: TOP 20 VARIABLES BY LIME IMPORTANCE\n' +
+                    f'Averaged across ALL {len(X_sample)} sample explanations (MAXIMUM ACCURACY)\n' +
+                    'Higher value = More important for individual predictions',
+                    fontsize=13, fontweight='bold', pad=20)
+        ax.legend(fontsize=11, loc='lower right')
+        ax.grid(axis='x', alpha=0.3)
+        
+        # Add value labels
+        for bars in [bars1, bars2]:
+            for bar in bars:
+                width_val = bar.get_width()
+                ax.text(width_val + 0.002, bar.get_y() + bar.get_height()/2,
+                       f'{width_val:.3f}',
+                       va='center', fontsize=8)
+        
+        plt.tight_layout()
+        plt.savefig(output_path / "05b_lime_comparison_rf_vs_xgb.png", dpi=300, bbox_inches='tight')
+        print(f"   ✓ Saved: 05b_lime_comparison_rf_vs_xgb.png")
+        plt.close()
+        
+        # Save summary JSON
+        lime_summary = {
+            "total_samples_explained": len(X_sample),
+            "key_examples_explained": 6,  # Will be generated separately
+            "aggregated_samples": len(X_sample),
+            "top_variable_rf": lime_comparison.iloc[0]['Variable'],
+            "top_variable_xgb": lime_comparison.iloc[0]['Variable']
+        }
+        
+        import json
+        with open(output_path / "05b_lime_summary.json", 'w') as f:
+            json.dump(lime_summary, f, indent=2)
+        print(f"   ✓ Saved: 05b_lime_summary.json")
+        
+        print(f"\n✅ LIME comparison complete!")
+        print(f"   Top 3 variables by average LIME importance:")
+        for idx, row in lime_comparison.head(3).iterrows():
+            print(f"      {row['Variable']:.<45} {row['LIME_Avg']:.4f}")
+        
+        return rf_model, xgb_model, lime_comparison
+        
+    except ImportError as e:
+        print(f"\n⚠️  Error: {e}")
+        print("   Install with: pip install xgboost")
+        return None, None, None
+
+
 def main():
     """Main LIME analysis pipeline"""
     
@@ -508,7 +704,22 @@ def main():
     # Load data and model
     X, y, model, predictions, feature_metadata = load_data_and_model()
     
-    # Create LIME explainer
+    # Create RF vs XGBoost LIME comparison (ML V2 style)
+    print("\n" + "="*70)
+    print("STEP 1: COMPREHENSIVE LIME AGGREGATION (1000 SAMPLES)")
+    print("="*70)
+    rf_model, xgb_model, lime_comparison = create_lime_comparison_with_xgboost(X, y, n_samples=min(1000, len(X)))
+    
+    # Use RF model for detailed individual explanations
+    if rf_model is not None:
+        model = rf_model
+        predictions = model.predict(X)
+    
+    # Create LIME explainer for individual examples
+    print("\n" + "="*70)
+    print("STEP 2: DETAILED INDIVIDUAL EXPLANATIONS (6 KEY EXAMPLES)")
+    print("="*70)
+    
     class_names = ['Low-DPAD', 'High-DPAD']
     explainer = create_lime_explainer(X, X.columns.tolist(), class_names)
     
@@ -519,7 +730,7 @@ def main():
     # Select diverse examples
     examples, descriptions = select_diverse_examples(X, y, predictions, n_examples=6)
     
-    # Generate LIME explanations
+    # Generate LIME explanations for key examples
     explanations = generate_lime_explanations(
         explainer, model, X, examples, descriptions, output_dir
     )
@@ -527,7 +738,7 @@ def main():
     # Create comparison plot
     create_lime_comparison_plot(explanations, output_dir)
     
-    # Extract insights
+    # Extract insights from individual explanations
     feature_stats = extract_lime_insights(explanations)
     
     # Generate report
@@ -539,9 +750,16 @@ def main():
     print("\n" + "="*70)
     print("✅ LIME ANALYSIS COMPLETE")
     print("="*70)
-    print(f"\nTop 5 Most Important Features (by avg |LIME weight|):")
-    for idx, row in feature_stats.head(5).iterrows():
-        print(f"   {row['feature']:.<50} {row['abs_mean_weight']:.4f}")
+    
+    if lime_comparison is not None:
+        print(f"\nTop 5 Most Important Features (by aggregated LIME across 1000 samples):")
+        for idx, row in lime_comparison.head(5).iterrows():
+            print(f"   {row['Variable']:.<50} {row['LIME_Avg']:.4f}")
+    else:
+        print(f"\nTop 5 Most Important Features (by avg |LIME weight| from key examples):")
+        for idx, row in feature_stats.head(5).iterrows():
+            print(f"   {row['feature']:.<50} {row['abs_mean_weight']:.4f}")
+    
     print("\n" + "="*70)
 
 

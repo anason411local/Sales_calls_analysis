@@ -16,9 +16,9 @@ This finding is consistent across ALL 6 analytical methods:
 TOP 5 FEATURES:
    11. interruption_rate (4 methods)
    1. sentiment_progression (4 methods)
-   6. sentiment_early_middle (4 methods)
-   4. interruption_pattern (3 methods)
    12. longest_monologue_length (3 methods)
+   13. agent_talk_percentage (3 methods)
+   6. sentiment_early_middle (3 methods)
 
 IMMEDIATE ACTIONS:
    1. Train agents on active listening (reduce interruptions)

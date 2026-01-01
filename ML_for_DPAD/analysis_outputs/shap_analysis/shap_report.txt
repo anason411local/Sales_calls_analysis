@@ -17,26 +17,26 @@ Features ranked by mean absolute SHAP value:
 
 | Rank | Feature | Mean |SHAP| | Interpretation |
 |------|---------|------------|----------------|
-| 62   | interruption_rate                             | 0.0329   | High impact on predictions |
-| 55   | longest_monologue_length                      | 0.0257   | High impact on predictions |
-| 75   | sentiment_progression                         | 0.0189   | High impact on predictions |
-| 63   | interruption_pattern                          | 0.0170   | High impact on predictions |
-| 61   | total_interruptions                           | 0.0148   | High impact on predictions |
-| 25   | agent_talk_percentage                         | 0.0131   | High impact on predictions |
-| 77   | sentiment_early_middle                        | 0.0130   | High impact on predictions |
-|  6   | timezone                                      | 0.0111   | High impact on predictions |
-| 94   | call_result_tag                               | 0.0110   | High impact on predictions |
-| 70   | name_usage_count                              | 0.0110   | High impact on predictions |
-| 64   | conversation_balance                          | 0.0109   | High impact on predictions |
-| 22   | technical_quality_score                       | 0.0106   | High impact on predictions |
-| 39   | time_to_reason_seconds                        | 0.0101   | High impact on predictions |
-| 84   | total_call_duration                           | 0.0091   | High impact on predictions |
-|  2   | TO_OMC_Duration                               | 0.0089   | High impact on predictions |
-| 95   | primary_disconnect_reason                     | 0.0088   | High impact on predictions |
-| 24   | customer_talk_percentage                      | 0.0086   | High impact on predictions |
-| 58   | medium_monologues                             | 0.0086   | High impact on predictions |
-| 54   | average_monologue_length                      | 0.0083   | High impact on predictions |
-| 79   | sentiment_closing                             | 0.0075   | High impact on predictions |
+| 75   | sentiment_progression                         | 0.4986   | High impact on predictions |
+|  6   | timezone                                      | 0.4614   | High impact on predictions |
+| 55   | longest_monologue_length                      | 0.4206   | High impact on predictions |
+| 25   | agent_talk_percentage                         | 0.3542   | High impact on predictions |
+|  2   | TO_OMC_Duration                               | 0.3096   | High impact on predictions |
+| 62   | interruption_rate                             | 0.3059   | High impact on predictions |
+| 44   | call_structure_clarity                        | 0.2535   | High impact on predictions |
+| 41   | location_mentioned                            | 0.2329   | High impact on predictions |
+| 70   | name_usage_count                              | 0.1293   | High impact on predictions |
+| 28   | goal1_questions                               | 0.1074   | High impact on predictions |
+| 79   | sentiment_closing                             | 0.0826   | High impact on predictions |
+| 84   | total_call_duration                           | 0.0729   | High impact on predictions |
+| 66   | stages_skipped                                | 0.0723   | High impact on predictions |
+| 77   | sentiment_early_middle                        | 0.0721   | High impact on predictions |
+| 12   | ready_for_customers                           | 0.0667   | High impact on predictions |
+| 23   | technical_quality_issues                      | 0.0640   | High impact on predictions |
+| 35   | signal_ratio                                  | 0.0488   | High impact on predictions |
+| 61   | total_interruptions                           | 0.0455   | High impact on predictions |
+| 71   | rapport_elements_count                        | 0.0424   | High impact on predictions |
+| 39   | time_to_reason_seconds                        | 0.0407   | High impact on predictions |
 
 ## 2. SHAP Value Statistics
 

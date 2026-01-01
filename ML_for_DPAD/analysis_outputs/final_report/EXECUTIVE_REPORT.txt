@@ -1,7 +1,7 @@
 # DPAD ANALYSIS - EXECUTIVE REPORT
 ======================================================================
 
-**Report Generated:** January 01, 2026 at 16:36
+**Report Generated:** January 01, 2026 at 17:00
 
 ---
 
@@ -41,13 +41,13 @@ patterns and conversation characteristics that drive sales success.
 |------|---------|-----------|----------------|
 | 11   | interruption_rate                   | 4/6     | Agents let customers speak |
 |  1   | sentiment_progression               | 4/6     | Positive emotional journey |
-|  6   | sentiment_early_middle              | 4/6     | Early sentiment management |
-|  4   | interruption_pattern                | 3/6     | Type of interruptions |
 | 12   | longest_monologue_length            | 3/6     | Strategic speech length |
 | 13   | agent_talk_percentage               | 3/6     | Balanced conversation |
+|  6   | sentiment_early_middle              | 3/6     | Early sentiment management |
 |  8   | timezone                            | 2/6     | Performance indicator |
-| 19   | total_interruptions                 | 2/6     | Minimal interruptions |
-| 20   | call_result_tag                     | 2/6     | Performance indicator |
+| 15   | TO_OMC_Duration                     | 2/6     | Performance indicator |
+|  4   | interruption_pattern                | 2/6     | Type of interruptions |
+| 17   | call_structure_clarity              | 2/6     | Performance indicator |
 |  2   | customer_availability               | 1/6     | Performance indicator |
 
 ### 2. Correlation Analysis
@@ -325,4 +325,4 @@ improvements in DPAD performance within 30-90 days.
 ---
 
 **End of Report**
-Generated: January 01, 2026 at 16:36
+Generated: January 01, 2026 at 17:00
