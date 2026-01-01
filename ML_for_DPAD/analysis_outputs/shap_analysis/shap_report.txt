@@ -1,0 +1,94 @@
+# DPAD Analysis - SHAP Interpretability Report
+======================================================================
+
+## Executive Summary
+
+This report explains HOW the Random Forest model classifies calls
+as High-DPAD vs Low-DPAD using SHAP (SHapley Additive exPlanations).
+
+SHAP values show the contribution of each feature to each prediction:
+- Positive SHAP: Feature pushes prediction toward High-DPAD
+- Negative SHAP: Feature pushes prediction toward Low-DPAD
+- Magnitude: How strong the push is
+
+## 1. Global Feature Importance (SHAP-based)
+
+Features ranked by mean absolute SHAP value:
+
+| Rank | Feature | Mean |SHAP| | Interpretation |
+|------|---------|------------|----------------|
+| 62   | interruption_rate                             | 0.0329   | High impact on predictions |
+| 55   | longest_monologue_length                      | 0.0257   | High impact on predictions |
+| 75   | sentiment_progression                         | 0.0189   | High impact on predictions |
+| 63   | interruption_pattern                          | 0.0170   | High impact on predictions |
+| 61   | total_interruptions                           | 0.0148   | High impact on predictions |
+| 25   | agent_talk_percentage                         | 0.0131   | High impact on predictions |
+| 77   | sentiment_early_middle                        | 0.0130   | High impact on predictions |
+|  6   | timezone                                      | 0.0111   | High impact on predictions |
+| 94   | call_result_tag                               | 0.0110   | High impact on predictions |
+| 70   | name_usage_count                              | 0.0110   | High impact on predictions |
+| 64   | conversation_balance                          | 0.0109   | High impact on predictions |
+| 22   | technical_quality_score                       | 0.0106   | High impact on predictions |
+| 39   | time_to_reason_seconds                        | 0.0101   | High impact on predictions |
+| 84   | total_call_duration                           | 0.0091   | High impact on predictions |
+|  2   | TO_OMC_Duration                               | 0.0089   | High impact on predictions |
+| 95   | primary_disconnect_reason                     | 0.0088   | High impact on predictions |
+| 24   | customer_talk_percentage                      | 0.0086   | High impact on predictions |
+| 58   | medium_monologues                             | 0.0086   | High impact on predictions |
+| 54   | average_monologue_length                      | 0.0083   | High impact on predictions |
+| 79   | sentiment_closing                             | 0.0075   | High impact on predictions |
+
+## 2. SHAP Value Statistics
+
+### Average SHAP Values by Group
+
+| Feature | High-DPAD Avg | Low-DPAD Avg | Difference |
+|---------|---------------|--------------|------------|
+| interruption_rate                        |   0.0200      |  -0.0204     |  0.0404   |
+| longest_monologue_length                 |   0.0145      |  -0.0137     |  0.0282   |
+| sentiment_progression                    |   0.0112      |  -0.0110     |  0.0222   |
+| interruption_pattern                     |   0.0094      |  -0.0104     |  0.0198   |
+| sentiment_early_middle                   |   0.0084      |  -0.0093     |  0.0178   |
+| total_interruptions                      |   0.0076      |  -0.0101     |  0.0177   |
+| agent_talk_percentage                    |   0.0083      |  -0.0076     |  0.0159   |
+| time_to_reason_seconds                   |   0.0076      |  -0.0058     |  0.0133   |
+| total_call_duration                      |   0.0041      |  -0.0080     |  0.0121   |
+| timezone                                 |   0.0062      |  -0.0056     |  0.0119   |
+
+## 3. Key Insights from SHAP Analysis
+
+### Features that Push Toward High-DPAD Classification
+
+- **customer_talk_percentage**: Avg SHAP = 0.0014
+- **name_usage_count**: Avg SHAP = 0.0011
+- **disconnect_stage**: Avg SHAP = 0.0010
+- **Dial Attempt Calls**: Avg SHAP = 0.0009
+- **time_to_reason_seconds**: Avg SHAP = 0.0009
+
+### Features that Push Toward Low-DPAD Classification
+
+- **total_call_duration**: Avg SHAP = -0.0020
+- **total_interruptions**: Avg SHAP = -0.0012
+- **ready_for_customers**: Avg SHAP = -0.0009
+- **customer_availability**: Avg SHAP = -0.0009
+- **customer_sentiment_lgs**: Avg SHAP = -0.0007
+
+## 4. How to Interpret SHAP Plots
+
+### Summary Plot
+- **Y-axis**: Features ranked by importance
+- **X-axis**: SHAP value (impact on prediction)
+- **Color**: Feature value (red=high, blue=low)
+- **Position**: Right of zero = pushes toward High-DPAD
+
+### Dependence Plot
+- **X-axis**: Feature value
+- **Y-axis**: SHAP value for that feature
+- **Color**: Value of interacting feature
+- **Pattern**: Shows relationship and interactions
+
+### Waterfall Plot
+- Shows step-by-step how features combine
+- Starts from base value (expected)
+- Each bar adds/subtracts to reach final prediction
+- Red bars push up, blue bars push down

@@ -1,0 +1,177 @@
+# DPAD Analysis - Feature Importance Report
+======================================================================
+
+## Executive Summary
+
+This report identifies which features are most important for
+predicting High-DPAD vs Low-DPAD agent performance using
+tree-based machine learning models.
+
+## 1. Model Performance
+
+### Random Forest
+- **Cross-Validation Accuracy:** 0.575 (+/- 0.150)
+- **Number of Trees:** 500
+- **Max Depth:** 10
+
+### XGBoost
+- **Cross-Validation Accuracy:** 0.475 (+/- 0.166)
+- **Number of Trees:** 500
+- **Learning Rate:** 0.05
+
+## 2. Top 20 Features by Importance
+
+### Consensus Features (Important Across All Methods)
+
+| Rank | Feature | Avg Importance | RF Gini | RF Perm | XGB Gain |
+|------|---------|----------------|---------|---------|----------|
+|  1   | interruption_rate                   | 0.0302         | 0.0522  | 0.0000  | 0.0687   |
+|  5   | sentiment_progression               | 0.0206         | 0.0288  | 0.0000  | 0.0335   |
+|  2   | longest_monologue_length            | 0.0197         | 0.0395  | 0.0000  | 0.0192   |
+| 20   | call_result_tag                     | 0.0174         | 0.0199  | 0.0000  | 0.0496   |
+|  3   | agent_talk_percentage               | 0.0173         | 0.0314  | 0.0000  | 0.0305   |
+| 17   | primary_disconnect_reason           | 0.0158         | 0.0212  | 0.0000  | 0.0422   |
+| 16   | stages_skipped                      | 0.0151         | 0.0213  | 0.0000  | 0.0393   |
+|  7   | sentiment_early_middle              | 0.0142         | 0.0275  | 0.0000  | 0.0294   |
+| 22   | technical_quality_score             | 0.0140         | 0.0196  | 0.0000  | 0.0365   |
+| 23   | conversation_balance                | 0.0136         | 0.0183  | 0.0000  | 0.0359   |
+| 18   | customer_marketing_experience       | 0.0134         | 0.0207  | 0.0000  | 0.0328   |
+|  6   | TO_OMC_Duration                     | 0.0126         | 0.0276  | 0.0000  | 0.0229   |
+|  8   | time_to_reason_seconds              | 0.0122         | 0.0272  | 0.0000  | 0.0215   |
+|  4   | average_monologue_length            | 0.0117         | 0.0289  | 0.0000  | 0.0177   |
+| 14   | total_interruptions                 | 0.0116         | 0.0230  | 0.0000  | 0.0232   |
+| 53   | total_resistance_signals            | 0.0115         | 0.0051  | 0.0000  | 0.0409   |
+| 13   | medium_monologues                   | 0.0115         | 0.0232  | 0.0000  | 0.0227   |
+| 21   | customer_talk_percentage            | 0.0107         | 0.0199  | 0.0000  | 0.0230   |
+|  9   | call_structure_clarity              | 0.0103         | 0.0262  | 0.0000  | 0.0151   |
+| 30   | Dial Attempt Calls                  | 0.0103         | 0.0128  | 0.0000  | 0.0284   |
+
+## 3. Random Forest Gini Importance (Top 20)
+
+*Based on mean decrease in impurity*
+
+| Rank | Feature | Importance |
+|------|---------|------------|
+| 62   | interruption_rate                             | 0.0522   |
+| 55   | longest_monologue_length                      | 0.0395   |
+| 25   | agent_talk_percentage                         | 0.0314   |
+| 54   | average_monologue_length                      | 0.0289   |
+| 75   | sentiment_progression                         | 0.0288   |
+|  2   | TO_OMC_Duration                               | 0.0276   |
+| 77   | sentiment_early_middle                        | 0.0275   |
+| 39   | time_to_reason_seconds                        | 0.0272   |
+| 44   | call_structure_clarity                        | 0.0262   |
+|  1   | TO_length_in_sec                              | 0.0257   |
+| 84   | total_call_duration                           | 0.0248   |
+| 63   | interruption_pattern                          | 0.0240   |
+| 58   | medium_monologues                             | 0.0232   |
+| 61   | total_interruptions                           | 0.0230   |
+| 80   | notable_sentiment_shifts                      | 0.0229   |
+| 66   | stages_skipped                                | 0.0213   |
+| 95   | primary_disconnect_reason                     | 0.0212   |
+| 21   | customer_marketing_experience                 | 0.0207   |
+|  6   | timezone                                      | 0.0205   |
+| 94   | call_result_tag                               | 0.0199   |
+
+## 4. Random Forest Permutation Importance (Top 20)
+
+*Based on accuracy drop when feature is shuffled*
+
+| Rank | Feature | Importance | Std Dev |
+|------|---------|------------|---------|
+|  1   | TO_length_in_sec                         | 0.0000   | 0.0000 |
+|  2   | TO_OMC_Duration                          | 0.0000   | 0.0000 |
+|  3   | Calls Count                              | 0.0000   | 0.0000 |
+|  4   | Connection Made Calls                    | 0.0000   | 0.0000 |
+|  5   | Dial Attempt Calls                       | 0.0000   | 0.0000 |
+|  6   | timezone                                 | 0.0000   | 0.0000 |
+|  7   | season_status                            | 0.0000   | 0.0000 |
+|  8   | season_month                             | 0.0000   | 0.0000 |
+|  9   | lgs_sentiment_style                      | 0.0000   | 0.0000 |
+| 10   | lgs_agent_gender                         | 0.0000   | 0.0000 |
+| 11   | is_decision_maker                        | 0.0000   | 0.0000 |
+| 12   | ready_for_customers                      | 0.0000   | 0.0000 |
+| 13   | forbidden_industry                       | 0.0000   | 0.0000 |
+| 14   | ready_to_transfer                        | 0.0000   | 0.0000 |
+| 15   | lgs_call_not_transferred                 | 0.0000   | 0.0000 |
+| 16   | customer_sentiment_lgs                   | 0.0000   | 0.0000 |
+| 17   | customer_language                        | 0.0000   | 0.0000 |
+| 18   | customer_knows_marketing                 | 0.0000   | 0.0000 |
+| 19   | customer_availability                    | 0.0000   | 0.0000 |
+| 20   | who_said_hello_first_lgs                 | 0.0000   | 0.0000 |
+
+## 5. XGBoost Gain Importance (Top 20)
+
+*Based on average gain when feature is used*
+
+| Rank | Feature | Importance |
+|------|---------|------------|
+| 62   | interruption_rate                             | 0.0687   |
+| 94   | call_result_tag                               | 0.0496   |
+| 95   | primary_disconnect_reason                     | 0.0422   |
+| 34   | total_resistance_signals                      | 0.0409   |
+| 66   | stages_skipped                                | 0.0393   |
+| 22   | technical_quality_score                       | 0.0365   |
+| 64   | conversation_balance                          | 0.0359   |
+| 75   | sentiment_progression                         | 0.0335   |
+| 21   | customer_marketing_experience                 | 0.0328   |
+| 25   | agent_talk_percentage                         | 0.0305   |
+| 77   | sentiment_early_middle                        | 0.0294   |
+| 56   | extended_monologues_count                     | 0.0290   |
+|  5   | Dial Attempt Calls                            | 0.0284   |
+| 42   | within_45_seconds                             | 0.0250   |
+| 61   | total_interruptions                           | 0.0232   |
+| 24   | customer_talk_percentage                      | 0.0230   |
+|  2   | TO_OMC_Duration                               | 0.0229   |
+| 58   | medium_monologues                             | 0.0227   |
+| 39   | time_to_reason_seconds                        | 0.0215   |
+| 86   | hang_up_initiated_by                          | 0.0213   |
+
+## 6. Key Insights
+
+### Most Important Features (Consensus)
+
+**1. interruption_rate** (Avg Importance: 0.0302)
+   - This feature is consistently ranked high across all methods
+
+**5. sentiment_progression** (Avg Importance: 0.0206)
+   - This feature is consistently ranked high across all methods
+
+**2. longest_monologue_length** (Avg Importance: 0.0197)
+   - This feature is consistently ranked high across all methods
+
+**20. call_result_tag** (Avg Importance: 0.0174)
+   - This feature is consistently ranked high across all methods
+
+**3. agent_talk_percentage** (Avg Importance: 0.0173)
+   - This feature is consistently ranked high across all methods
+
+### Feature Categories
+
+**Sentiment:**
+- Average importance: 0.0051
+- Top feature: sentiment_progression
+
+**Talk Dynamics:**
+- Average importance: 0.0110
+- Top feature: interruption_rate
+
+**Discovery:**
+- Average importance: 0.0028
+- Top feature: total_discovery_questions
+
+**Objections:**
+- Average importance: 0.0038
+- Top feature: total_resistance_signals
+
+**Timing:**
+- Average importance: 0.0069
+- Top feature: sentiment_progression
+
+**Structure:**
+- Average importance: 0.0073
+- Top feature: stages_skipped
+
+**Closing:**
+- Average importance: 0.0014
+- Top feature: roi_calculation_presented

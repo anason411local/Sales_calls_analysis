@@ -1,0 +1,58 @@
+# DPAD Analysis - Statistical Tests Report
+======================================================================
+
+## Executive Summary
+
+This report presents rigorous statistical tests comparing High-DPAD
+(>1 deal/agent/day) vs Low-DPAD (<1 deal/agent/day) agents.
+
+**Testing Overview:**
+- **Total tests performed:** 152
+- **Significant at p<0.05:** 8 (5.3%)
+- **Significant at p<0.01:** 3 (2.0%)
+
+## 1. T-Test Results (Numerical Features)
+
+*Independent samples t-test comparing means*
+
+### Top 20 Significant Differences
+
+| Feature | Mean High | Mean Low | Diff | Cohen's d | p-value | Interpretation |
+|---------|-----------|----------|------|-----------|---------|----------------|
+| interruption_rate                   | 0.038 | 0.217 | -0.178 | -0.981 | 0.0044 | Large ↓ Higher in Low-DPAD |
+
+## 2. Mann-Whitney U Test Results (Non-parametric)
+
+*Comparing distributions without assuming normality*
+
+### Top 20 Significant Differences
+
+| Feature | Median High | Median Low | Diff | U-statistic | p-value |
+|---------|-------------|------------|------|-------------|---------|
+| interruption_rate                        | 0.000 | 0.170 | -0.170 | 114.0 | 0.0066 |
+| sentiment_progression                    | 2.000 | 0.000 | 2.000 | 286.0 | 0.0081 |
+| interruption_pattern                     | 3.000 | 2.000 | 1.000 | 271.0 | 0.0299 |
+| total_interruptions                      | 0.000 | 1.000 | -1.000 | 129.5 | 0.0320 |
+
+## 3. Chi-Square Test Results (Categorical Features)
+
+*Testing association between categories and DPAD level*
+
+### Top 20 Significant Associations
+
+| Feature | Chi-square | Cramér's V | p-value | Effect Size |
+|---------|------------|------------|---------|-------------|
+| interruption_pattern                | 9.24 | 0.481 | 0.0263 | Medium |
+| total_interruptions                 | 12.67 | 0.563 | 0.0267 | Large |
+| timezone                            | 12.63 | 0.562 | 0.0271 | Large |
+
+## 4. Key Statistical Insights
+
+### Consensus Features (Significant in Both Parametric & Non-parametric Tests)
+
+- **interruption_rate**: Robust difference across test types
+
+### Features with Large Effect Sizes (|d| ≥ 0.8)
+
+- **interruption_rate**: Cohen's d = -0.981
+  Lower in High-DPAD agents (very large practical difference)

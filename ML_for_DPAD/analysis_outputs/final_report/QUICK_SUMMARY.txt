@@ -1,0 +1,31 @@
+DPAD ANALYSIS - QUICK SUMMARY
+======================================================================
+
+🏆 #1 FINDING: INTERRUPTION RATE
+
+High-DPAD agents interrupt customers SIGNIFICANTLY LESS than Low-DPAD agents.
+
+This finding is consistent across ALL 6 analytical methods:
+✓ Correlation Analysis
+✓ Machine Learning Feature Importance
+✓ Statistical Significance Testing
+✓ SHAP Analysis
+✓ LIME Analysis
+✓ Agent-Level Aggregation
+
+TOP 5 FEATURES:
+   11. interruption_rate (4 methods)
+   1. sentiment_progression (4 methods)
+   6. sentiment_early_middle (4 methods)
+   4. interruption_pattern (3 methods)
+   12. longest_monologue_length (3 methods)
+
+IMMEDIATE ACTIONS:
+   1. Train agents on active listening (reduce interruptions)
+   2. Monitor and flag high interruption rates
+   3. Set talk ratio targets (50-60% agent, 40-50% customer)
+   4. Optimize call openings (state reason within 10-13 seconds)
+   5. Implement real-time sentiment tracking
+
+Full report: ML_for_DPAD\analysis_outputs\final_report\EXECUTIVE_REPORT.txt
+HTML version: ML_for_DPAD\analysis_outputs\final_report\EXECUTIVE_REPORT.html

@@ -1,0 +1,40 @@
+# DPAD Analysis - Preprocessing Report
+======================================================================
+
+## 1. Dataset Overview
+
+**High-DPAD Calls (>1 deal/agent/day):** 20
+**Low-DPAD Calls (<1 deal/agent/day):**  20
+**Total Calls:**                         40
+
+**High-DPAD Agents:** 5
+**Low-DPAD Agents:**  5
+**Total Agents:**     10
+
+## 2. Feature Types
+
+**Numerical Features:**   13
+**Categorical Features:** 65
+**Boolean Features:**     17
+**Total Features:**       95
+
+## 3. Missing Value Handling
+
+**Columns with missing values:** 15
+
+Top 10 columns by missing count:
+- commitment_clarity: 33 missing (categorical)
+- stages_out_of_order: 26 missing (categorical)
+- interruption_pattern: 24 missing (categorical)
+- technical_quality_issues: 20 missing (categorical)
+- sentiment_late_middle: 19 missing (categorical)
+- sentiment_early_middle: 8 missing (categorical)
+- notable_sentiment_shifts: 6 missing (categorical)
+- customer_marketing_experience: 5 missing (categorical)
+- sentiment_closing: 5 missing (categorical)
+- timezone: 4 missing (categorical)
+
+## 4. Class Balance
+
+**High-DPAD (Class 1):** 20 (50.0%)
+**Low-DPAD (Class 0):**  20 (50.0%)

@@ -1,0 +1,1420 @@
+﻿TO_Lead_ID,TO_Phone,TO_User_M,TO_Event_O,TO_Status,TO_Campaing_ID,TO_length_in_sec,TO_Recording_Link,TO_Transcription_VICI(0-32000) Words,TO_Transcription_VICI(32001-64000) Words,TO_Transcription_VICI(64000+ Words),TO_OMC_User,TO_OMC_Call_Date_O,TO_OMC_Campaign_ID,TO_OMC_Recording_Link,TO_OMC_Disposiion,TO_OMC_User_Group,TO_OMC_Duration,TO_OMC_Transcription_VICI,TO_OMC_Transcription_VICI(32000-64000)Words,TO_OMC_Transcription_VICI(64000+ Words),LQ_User,LQ_Customer_Name,LQ_Company_Name,LQ_Company_Address,LQ_Service,Calls Count,Connection Made Calls,Dial Attempt Calls,lead_id,row_number,customer_name,service,customer_address,timezone,season_status,season_month,lgs_sentiment_style,lgs_agent_gender,is_decision_maker,ready_for_customers,forbidden_industry,ready_to_transfer,lgs_call_not_transferred,customer_sentiment_lgs,customer_language,customer_knows_marketing,customer_availability,who_said_hello_first_lgs,customer_marketing_experience,technical_quality_score,technical_quality_issues,lgs_extraction_success,lgs_error_message,customer_talk_percentage,agent_talk_percentage,talk_ratio_classification,total_discovery_questions,goal1_questions,goal2_questions,goal3_questions,discovery_quality,advanced_discovery_used,total_buying_signals,total_resistance_signals,signal_ratio,customer_sentiment_omc,omc_agent_sentiment_style,omc_who_said_hello_first,time_to_reason_seconds,business_type_mentioned,location_mentioned,within_45_seconds,call_structure_framed,call_structure_clarity,total_objections,objections_acknowledged,objections_rebutted,acknowledgement_rate,price_mentions_final_2min,timeline_mentions_final_2min,contract_mentions_final_2min,price_timeline_contract_before_dropoff,roi_calculation_presented,average_monologue_length,longest_monologue_length,extended_monologues_count,short_monologues,medium_monologues,long_monologues,very_long_monologues,total_interruptions,interruption_rate,interruption_pattern,conversation_balance,script_adherence,stages_skipped,stages_out_of_order,premature_closing_attempt,name_used_first_minute,name_usage_count,rapport_elements_count,tone_assessment,personal_greeting,common_ground_established,sentiment_progression,sentiment_opening,sentiment_early_middle,sentiment_late_middle,sentiment_closing,notable_sentiment_shifts,customer_frustrations,empathy_responses,empathy_response_rate,total_call_duration,disconnect_stage,hang_up_initiated_by,time_in_final_stage,commitment_type,commitment_clarity,assumptive_language_used,full_sale_closed,payment_info_collected,followup_scheduled,call_result_tag,primary_disconnect_reason,omc_extraction_success,omc_error_message,extraction_complete
+16265212,2045995229,MARIAIRENECABIGON,12/8/2025 9:18,XFER,CP105,104,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-08/20251209-011828_CP105_MARIAIRENECABIGON-all.mp3,"Speaker B (00:02 - 00:02): Hello.
+Speaker A (00:03 - 00:08): Hello. Good morning and good afternoon. You do for junk removal services in Quinola?
+Speaker B (00:09 - 00:09): Yes.
+Speaker A (00:09 - 00:25): Great. And we say this is Lou, and I'm calling you because we're seeing several people looking for this junk removal services online. And my manager asked me to look for someone who can handle the customer in Quinora. But you're giving few estimates. If you have to look at the job or you have to charge for it.
+Speaker B (00:26 - 00:29): I charge by like, I go look at it and then I charge.
+Speaker A (00:29 - 00:32): You charge. But you do commercial services, right?
+Speaker B (00:33 - 00:34): I can. Yeah.
+Speaker A (00:34 - 00:41): Okay, great. I know. Who are you speaking with? Employee just for Colton. Colton. And you own the business Colton, right?
+Speaker B (00:41 - 00:41): Yes.
+Speaker A (00:41 - 00:43): But you do the service also?
+Speaker B (00:43 - 00:43): Yeah.
+Speaker A (00:43 - 00:56): Yeah. Okay, thank you. And with Colton. I was just asking because it's my manager who asked me to look for someone. That's why I'm a manager. One specific person who asked for the service or the owner of it. So let me transfer you now. Just hold on.
+Speaker B (00:56 - 00:57): Okay.
+Speaker A (00:57 - 01:08): Hello, we have Patrick. I do have here Carlson, the owner of trunk removal services and doing residential and commercial service. Okay, thank you. Hi there, sir. How are you?
+Speaker B (01:08 - 01:09): Good, how are you?
+Speaker A (01:09 - 01:10): Well, I'm doing great, thank you.
+",,,Patrick Garcia,12/8/2025 9:19,IG114,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-08/20251208-091959_CP111_MICHAELANGELORAMOS-all.mp3,NQTO,UG142,47,"Yellow. Yep, Patrick. I do have here a call from the owner of Junk Removal Services. I'm doing residential and commercial service. Okay, thank you. Hi there, sir. How are you? Good. How are you? Well, I'm doing great. Thank you for asking. Uh, this is Patrick, one of the area manager with 411 Locals. And I did ask my assistant to contact you because we are looking for reliable business in your area that we can work with. I just want to ask a few questions to see if this would be a good fit. Okay? Okay. All right. Can you tell me more, sir, about your business? Like, how long have you been running the business now?",,,MICHAELANGELORAMOS,Colton ,NWO junk removal  hauling,"Kenora, ON, ",Junk Removal,1,1,0,16265212,18,Colton ,Junk Removal,"Kenora, ON, ",unknown,Low season,December,Confident & Assumptive,Female,Yes,UNKNOWN,No,Yes,Yes,Not Angry/Frustrated,English,Yes,available,Customer,NOVICE,5,,TRUE,,25,75,Agent-Heavy,1,1,0,0,Surface-Level,Yes,0,0,0:00,Neutral,Confident & Assumptive,Agent,13,Yes,Yes,Yes,Yes,Agent stated the purpose and outlined that they would ask a few questions to determine fit.,0,0,0,0,0,0,0,0,No,3.33,7,1,2,0,1,0,0,0,None,Agent-Heavy,Structured,"IV, V, VI, VII",None,No,No,0,3,Professional,Yes,No,Stable,Neutral,N/A,N/A,N/A,None,0,0,0,47,Discovery Phase,Unknown,8,No Commitment Secured,None,No,No,No,No,Disconnect - During Discovery,Unclear,TRUE,,TRUE
+16256035,2026508464,DEODATORUGGEROUY,12/4/2025 8:33,XFER,CP105,239,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-04/20251205-003321_CP105_DEODATORUGGEROUY-all.mp3,"Speaker A (00:04 - 00:05): Hello?
+Speaker B (00:05 - 00:08): Hello. You're doing handyman services, right?
+Speaker A (00:08 - 00:09): Yes.
+Speaker B (00:09 - 00:19): Yeah, I saw your ad here on Facebook. By the way, my name is Dave. There's only like one picture here. Do you have a webpage where we can look up more of your work?
+Speaker A (00:20 - 00:23): What type of work you need? Maybe I cannot do that.
+Speaker B (00:23 - 00:29): For example, simple TV installation, some minor painting, something like that.
+Speaker A (00:29 - 00:33): Ah, okay. Yeah, I have a website. It is on the app.
+Speaker B (00:33 - 00:35): It is on the app, but.
+Speaker B (00:36 - 00:37): Which.
+Speaker A (00:37 - 00:42): You saw on the Facebook. You can see my cell phone, my email, my website.
+Speaker A (00:44 - 00:46): Not much pictures on the website.
+Speaker C (00:47 - 00:48): Pictures.
+Speaker A (00:50 - 00:54): I have a picture on the contact. Do you know contact?
+Speaker B (00:56 - 00:57): Is that an application?
+Speaker A (00:57 - 01:00): It is an application to hide some.
+Speaker B (01:03 - 01:05): Oh, okay. Okay, perfect.
+Speaker C (01:05 - 01:07): And am I speaking to Mr. Dale?
+Speaker A (01:07 - 01:09): Yes, my name is Dale.
+Speaker B (01:09 - 01:25): Wonderful. Yeah. I'm calling because we're seeing a search of people in your area searching online for handyman service. And my manager asked me to reach out of your local business that can actually attract new customers or you, you.
+Speaker A (01:25 - 01:27): Are customer or you from some company?
+Speaker B (01:28 - 01:30): I'm from a company, actually, yeah.
+Speaker C (01:31 - 01:34): Dale, you are also the owner of these services, right?
+Speaker A (01:34 - 01:35): Yes.
+Speaker B (01:35 - 02:04): Oh, wonderful to hear that. Yeah. And just to be clear, we're not looking for work. We have connect customers who are already searching for your kind of service. It's about reviewing a few local business for potential placement in front of real customer searches. So my manager just confirms which one fits the criteria. So like for example, any season you're still open to accepting new ones, right? New clients, yes.
+Speaker A (02:04 - 02:07): But usually I'm busy. Always now I'm.
+Speaker B (02:07 - 02:14): Oh, yeah, yeah, no worries about that. Deal. Let me just write it down that you're so open. So yeah.
+Speaker A (02:14 - 02:15): What company you are from?
+Speaker B (02:15 - 02:28): I am from 411 local. So as of now, we're comparing prices, something like that, making sure that, you know, we are all aware about your services. Yes. So at least.
+Speaker C (02:29 - 02:31): So you can do that like TV.
+Speaker B (02:31 - 02:35): Installation and some minor repairs, right?
+Speaker A (02:35 - 02:35): Yes.
+Speaker B (02:35 - 02:41): Okay, wonderful to hear that. Let me just make sure here that I'm well aware about your services.
+Speaker C (02:42 - 02:42): Perfect.
+Speaker B (02:42 - 02:43): Please.
+Speaker B (02:44 - 02:52): By the way, D, I have my manager here who asked me to call you. Patrick. We have Dale under handyman and he has a website.
+Speaker C (02:53 - 02:56): Okay, thank you. Hi there, Dale. How are you?
+Speaker A (02:56 - 02:58): Good. Hello, how are you?
+Speaker C (02:58 - 03:00): I'm doing good, thank you.
+",,,Patrick Garcia,12/4/2025 8:36,IG114,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-04/20251204-083706_CP111_MICHAELANGELORAMOS-all.mp3,B,UG142,93,"Yeah, uh, by the way, uh, Dale, I have my manager here who asked me to call you. Patrick, we have Dale under handyman, uh, and he has a website. Okay, thank you. Hi there, uh, Dale, how are you? Good, hello, how are you? I'm doing good. Uh, thank you for asking, you know, uh, can't complain. God is good, right? Anyway, this is Patrick, one of the area manager here with 411 locals. And I did ask my assistant to contact you because we are looking for reliable business in your area that we can work with. Okay? So, I just want to ask a few questions here that way we can see if this would be a good fit. Okay? Uh, yeah, but I am busy now. I am at work. Actually, this will only take like, uh, a few minutes of your time, right? Um, if you like what you hear, we can go ahead, if not, then we can just part ways at this point. Okay? Uh, yeah, let's let's talk some different time, okay? I am busy. And if you, if you send your contact information to my email address, maybe I can reach you out when I am available to talk. Okay? Okay. No worries. Thank you. Yes, thank you. Thank you. Bye.",,,MICHAELANGELORAMOS,DALE ,,"Fairfax  VA, , ",Handyman,1,1,0,16256035,8,DALE ,Handyman,"Fairfax  VA, , ",Eastern,Low season,December,Consultative & Validating,Male,Yes,UNKNOWN,No,No,Yes,Skeptical/Cautious,English,Yes,busy,Customer,Novice,5,,TRUE,,37.5,62.5,Agent-Heavy,0,0,0,0,Surface-Level,No,0,2,0:02,Resistant,Confident & Assumptive,Agent,13,Yes,Yes,Yes,Yes,"Agent stated the purpose ('see if this would be a good fit'), set time expectation ('only take like, uh, a few minutes'), and outlined the process ('if you like what you hear, we can go ahead, if not, then we can just part ways').",2,0,1,0,0,0,0,0,No,4,7,1,0,4,1,0,0,0,None,Agent-Heavy,Unstructured,"III, IV, V, VI, VII",None,No,Yes,2,3,Professional,Yes,No,Declined,Negative/Skeptical,N/A,N/A,Negative/Skeptical,"Customer's sentiment shifted from a polite initial greeting to immediate resistance ('I am busy now') and a request to talk at a different time, leading to the call's end.",2 frustrations,0,0,93,Introduction/Reason for Call,Customer,49,No Commitment Secured,None,No,No,No,No,Early Disconnect - Before Discovery,Timing concerns,TRUE,,TRUE
+9293373,2038021287,WILYNEGAJETE,12/5/2025 9:47,XFER,CP105,86,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-05/20251206-014733_CP105_WILYNEGAJETE-all.mp3,"Speaker A (00:02 - 00:07): Hello? Yes, hi. Good morning. Are you still doing handyman services, sir?
+Speaker B (00:07 - 00:08): Yeah. Who's speaking?
+Speaker A (00:08 - 00:22): My name is Brittany, sir. Maybe you can help me. I'm actually calling because my manager asked me to look for someone who does handyman services. So I would like to verify, sir, if you do residential or it's only commercial job?
+Speaker B (00:23 - 00:23): Both.
+Speaker A (00:24 - 00:32): Both. I see. So it doesn't matter how big or small the job is. You guys can still handle new customers? Of course. Right?
+Speaker B (00:32 - 00:32): Yeah.
+Speaker A (00:32 - 00:37): Okay, perfect, sir. By the way, my name is Brittany. Who do you have a pleasure of speaking with?
+Speaker B (00:37 - 00:38): Jose.
+Speaker A (00:38 - 00:40): Jose. Are you the owner of the business?
+Speaker B (00:40 - 00:41): Yes.
+Speaker A (00:41 - 00:55): Okay, perfect. So, sir, Jose is what I have mentioned, Sir. It was my manager who asked me to give you a call and he's on the line with us right now. His name is Oscar. Oscar is not here. Jose, the owner and can handle his customers for handiness.
+Speaker B (00:55 - 00:59): Okay, excellent. Thank you. Hi, Mr. Jose. How are you doing, sir? Good.
+",,,Oscar Ross,12/5/2025 9:48,IG114,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-05/20251205-094846_CP111_MANUELRAMIREZ-all.mp3,HU,UG142,291,"Speaker A (00:00 - 00:09): Who asked me to give you a call and he's on the line with us right now. His name is Oscar. Oscar, I have here today the owner and can handle his customers for handymeg.
+Speaker B (00:09 - 00:31): Okay, excellent. Thank you. Hi, Mr. Jose. How are you doing, sir? Good, perfect. I'm glad to hear that, Mr. Jose. This is Oscar, a manager at 411 Local, sir. And we're looking for available company to work with. Mr. Jose. We see an increase of customers looking for these handyman services and construction, and we want to know if you can take more customers for your business.
+Speaker B (00:33 - 00:39): Yeah, okay, perfect. And Mr. Jose, how many years of experience you've been doing this Handyman Services?
+Speaker C (00:40 - 00:41): About 20 years.
+Speaker B (00:41 - 00:42): 20 years of experience, is that.
+Speaker C (00:42 - 00:44): Yes, sir, 20 years.
+Speaker B (00:44 - 00:55): Okay, so you have a lot of. Wow. A lot of experience already. Perfect. And with that experience coach, you do residential and commercial services or you focus more on residential services?
+Speaker C (00:55 - 00:57): Both, I do both.
+Speaker B (00:57 - 01:05): Both residential and commercial. Okay, okay, Jose. And there is any type of service that you specialize or that better revenue. Your business, Mr. Jose.
+Speaker B (01:10 - 01:19): Have a lot of services. So which services better revenue, your business, or what services do you prefer to do, Mr. Hosa?
+Speaker C (01:20 - 01:33): Just service calls. I mean, usually with my service calls, I usually do whatever the client needs to do. Like, I do everything from what I prefer. Money. That's what I prefer.
+Speaker B (01:33 - 01:45): And what those services that give you the most money. That's totally understanding. That's what I'm gonna go. You know, what services better revenue, your business, Mr. Jose. That's what I'm trying to ask.
+Speaker C (01:45 - 01:46): Well, I.
+Speaker C (01:47 - 02:11): Mean, I like to do paintings. I like to do flooring. I like service calls where, you know, something's broken and I could fix it or replace it. So I do, I do. Yeah. Like, I mean, I could do everything else. It's just some of the things that I try to stay away from is big projects. I don't like big projects because I'm only one person.
+Speaker B (02:11 - 02:38): All right, so let's focus on residential services then. Oh yeah, then. And that's something. I think that's better because that's quick and easy money. Because sometimes for commercial services, because it's a huge services, they want to pay less. It's a big project. Let's focus on residential. Definitely get it. And what about the exterior? What about siding, roofing, window, door installation? Concrete, maybe, or use interior.
+Speaker C (02:39 - 02:40): Yeah, I do all that.
+Speaker C (02:42 - 02:44): I try to stay away from roofing.
+Speaker B (02:44 - 02:54): No roofing, but yes, siding. And that would be it. Right. Okay. Well, Mr. Jose. And how do you normally get new customers by word of mouth.
+Speaker C (02:54 - 02:57): Some word of mouth. And I advertise on Yelp.
+Speaker B (02:57 - 03:03): I see your business on Yelp. That's right. As a mobile handyman, how that works so far, Mr. Jose?
+Speaker C (03:04 - 03:05): It's working good.
+Speaker B (03:05 - 03:10): It's working good so far. Okay. And do you know how many customers you get last week from Yelp?
+Speaker C (03:11 - 03:12): Maybe two or three.
+Speaker B (03:12 - 03:19): Maybe two or three. Okay, that's. That's not. That's not bad. So you're paying with Yelp? You have a contract with them, Mr. Holmes there?
+Speaker C (03:19 - 03:20): I do.
+Speaker B (03:20 - 03:23): Okay. How much do you paying with Yelp at month?
+Speaker C (03:23 - 03:25): Hold on one second, sir. I gotta take.
+",,,WILYNEGAJETE,Jose ,Mobile Handyman,"Southington CT, CT, 6489",Handyman Drywall Installation  Repair Door Sale,2,1,1,9293373,16,Jose ,Handyman Drywall Installation  Repair Door Sale,"Southington CT, CT, 6489",Eastern,High season,December,Consultative & Validating,Female,Yes,Yes,No,Yes,Yes,Happy/Optimistic,English,Yes,available,Agent,Novice,5,,TRUE,,41.67,54.17,Mutual Dialogue,11,6,4,0,Moderate Depth,Yes,2,2,2:02,Neutral,Confident & Assumptive,Agent,9,Yes,No,No,No,"Not explicitly outlined, agent moved directly into discovery after stating reason.",2,2,2,100,1,0,0,1,No,2.69,6,1,7,5,1,0,0,0,None,Mutual,Somewhat Structured,FOMO; Value Proposition; ROI; Close,None,No,Yes,5,2,Professional,Yes,No,Stable,Neutral,Neutral,N/A,Neutral,"Customer remained engaged and responsive throughout the call, with no significant shifts in sentiment towards the agent or the call's purpose. The call ended due to an external interruption.",0,0,0,291,Discovery Phase,Customer,28,No Commitment Secured,None,No,No,No,No,Disconnect - During Discovery,External interruption,TRUE,,TRUE
+14426562,2083989669,GREGPHILIPSALAZAR,12/11/2025 8:53,XFER,CP108,277,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-11/20251211-085331_CP108_GREGPHILIPSALAZAR-all.mp3,"Hello?
+Hello, hello sir.
+I'm Mrs.
+Cerinos Martinez?
+No?
+No?
+You do remodeling service?
+Eh, one second.
+Yo?
+Hey sir.
+Oh.
+Hello?
+Hello, sir.
+Good morning.
+Um, do you still do remodeling painting service?
+Yes, sir, I am not there.
+Uh, I'm moving.
+I no living more in Idaho.
+I'm moving for Tennessee.
+Oh, how about you still I'm not painting painting.
+Yeah, we doing, but I no stay.
+I'm moving last last year.
+Like I'm I'm right now in Tennessee.
+Uh-huh.
+Yes, sir, in Tennessee.
+Yeah, I'm moving for Memphis, Tennessee.
+Oh.
+I no more more.
+I no more work in Idaho.
+Sorry.
+Thank you.
+No problem, sir, but I believe you're still in Memphis?
+Yes, Tennessee.
+Well, that's the reason why, sir, I'm reaching out if you still do remodeling and painting in Memphis, Tennessee?
+Yes.
+Well, this is great, sir.
+You're speaking with uh maybe you can help me.
+I'm calling, sir, um because uh we do seeing several people in your local areas here who's interested for remodeling and painting online and my manager asked me to look for someone can accommodate customer and your name, sir, who am I speaking with?
+Yeah, like Jeffrey.
+Thank you, Jeffrey.
+And I'm speaking with the owner, Jeffrey, right?
+Of the business?
+Yeah.
+Oh, Jeffrey, you speak a little bit English.
+Yes, a little bit.
+Yeah, sorry.
+So, um, Jeffrey, just to be clear, we're not looking for work.
+We help connect customers who are already searching for your kind of service and it's about reviewing a few local business for potential placement in front of real customers.
+Uh, do you do, Jeffrey, painting and remodeling resident or you do commercial?
+Both.
+And you do Thank you.
+And you do open Monday to Saturday, right?
+Yes, ma'am.
+Yes.
+Thank you.
+And you do offer free estimate, sir, or you charge an estimate, Jeffrey?
+Uh, free estimate.
+Free estimate, correct?
+Mhm.
+Yes.
+And you're licensed and insured, um, Jeffrey?
+Yeah, we got everything.
+Perfect.
+And if you don't mind me asking, Jeffrey, how many years you're in the business doing uh remodeling painting, sir?
+Like seven years.
+Seven years.
+Thank you.
+Well, one moment here, sir.
+Seven years, uh, Jeffrey, do you hear me?
+Yeah.
+Mhm.
+Yeah.
+Yeah.
+Um, you just stay locally in Memphis, in Tennessee or you do travel, sir, for a job?
+Uh, we Memphis and so close areas like too close for Mississippi and Arkansas too.
+Thank you.
+So you do travel, correct?
+Yeah.
+Yeah.
+Perfect.
+One moment here, Jeffrey.
+One moment here, Jeffrey.
+Hi, I do have Jeffrey, the owner can accommodate customer, remodeling and painting.
+Great, thanks.
+Uh, to cover.
+Uh, hello, Jerry, can you hear me okay?
+Yeah, I'm hearing.
+All right, right, perfect.
+Uh, look, so we don't take too much of your time or mine, let me go ahead and introduce myself.",,,Art Estrada,12/11/2025 8:57,IG114,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-11/20251211-085744_CP111_ARTURODELEON-all.mp3,A,UG142,139,"Hi, I do have Jeffrey, the owner, kind of a comedy customer, remodeling and painting.
+Great, thanks.
+Uh, let's go over.
+Uh hello Jerry, can you hear me okay?
+Yeah, I hear you.
+All right, right.
+Uh, look, so we don't take too much of your time or mind.
+Let me go ahead and introduce myself really quickly.
+Uh, my name is Art, and I'm the area manager for 411 locals.
+Uh, what we do here, Jerry, is is it Jerry or Jeffrey?
+I'm sorry.
+Jeffrey.
+Oh, Jeffrey.
+Oh, so, thank you so much.
+Sorry about that.
+Uh, and what we do here is actually help business like yours to uh, attract more people online, right?
+Better clientele, better uh, traffic online.
+Uh, is that something that you might be interested in here for your company, Jeffrey?
+Uh, not right now.
+I'm very little busy right now.
+You are really busy?
+For how many months do you think you're already busy?
+Like probably like three or four months.
+Oh, three or four months ahead.
+Okay, okay.
+Well, and what are your plans uh, ahead after those three months?
+How do you get new clients?
+Well, when I'm still working like if somebody call me for more jobs and, you know, like remodel.
+Yeah.
+Just send and, you know, the next couple of months.
+The next couple of months.
+Definitely understand that.
+Okay, okay.
+So you always stay busy right now and then you you don't really have any challenges as far as getting new new clients.
+No problems, right?
+Getting new clients?
+No.
+Not right now.
+Not right now.
+So that's a good thing, right?
+Absolutely.
+Okay, well, let me go ahead and send you some information about our company, uh, Jeffrey, if at some point, uh, you think this would be a good fit, please go ahead and give us a call back, okay?
+All right, no problem.
+All right, perfect, thank you.
+Take care.
+Bye.
+Bye.
+You have been kicked from this conference.",,,VDAD, ,Chirinos  Martinez Construction LLC,"Memphis, TN, TN, 83617",Construction- Remodeling/ Painter,1,1,0,14426562,40, ,Construction- Remodeling/ Painter,"Memphis, TN, TN, 83617",Eastern,Low season,December,Consultative & Validating,Male,Explicit Confirmation,UNKNOWN,PASS,NO,Yes,Not Angry/Frustrated,English,Yes,available,Agent,NOVICE,5,,TRUE,,41.67,58.33,Mutual Dialogue,2,1,1,0,Surface-Level,No,0,2,0:02,Resistant,Consultative & Validating,Agent,29,Yes,No,No,Yes,Agent stated he wouldn't take too much time and would introduce himself.,2,2,1,100,0,0,0,0,No,2.92,7,3,7,3,3,0,0,0,None,Mutual,Somewhat Structured,"IV, V, VI, VII",None,No,Yes,2,2,Professional,Yes,No,Declined,Skeptical,N/A,N/A,Resistant,Customer shifted to resistant after initial qualifying question and reiterated disinterest at the end of discovery.,0,0,0,139,Discovery Phase,Agent,32,Customer to Review Materials,Implied,No,No,No,No,Disconnect - During Discovery,Not qualified/not interested,TRUE,,TRUE
+16288539,2034247790,ADELALUCAS,12/17/2025 10:42,XFER,CP105,132,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-17/20251218-024230_CP105_ADELALUCAS-all.mp3,"Hello.
+Hello. Hi Ray, uh, this is Adele. I was the one who called you earlier regarding what junk removal services in Stamford.
+Okay. Okay. Yes, this is. Yeah, by the way, um, Ray, uh, I would like to ask if you're still, um, available to accommodate customer in the area for the service in Stamford?
+Um, when, exactly? I have I have something going on.
+Yeah, are you available to do the service like Mondays through Friday or can you also do on a weekend still?
+Mondays through Friday. I'm sorry, could you remind me where you called from? I uh didn't catch it.
+Yeah, I am actually calling on behalf of 411 locals, Ray. And we're calling because we're seeing a search people in your area in Stamford who's actually searching for junk removal service online.
+Right.
+Reason why my monitor asked me to reach out for someone that could definitely um accommodate customer in the area and I hope you do, right?
+Yes. Okay, but then um but then again, um Ray, do you have some workers or do you work alone for the service?
+Yeah, I have a small team. Um, but I did speak to a colleague earlier.
+Okay.
+I think it was. Oh, yes. Um, we have a call scheduled for like later this afternoon. So, um, yeah. Um,
+Can I just call you back or or something? Sorry, I was in the middle of something. Yeah.
+Oh, yeah. Um, actually my manager who asked me to give you a call, um, is on the other line, Ray. Um, his name is Patrick and he will take the call if you don't mind, okay?
+Okay. Um, sure. Yeah, Patrick.
+Yeah, I have here Ray, the owner can handle near customer for junk removal. He is available um via appointment um Mondays through Friday. Do residential and commercial five years in the business have workers.
+Okay, thank you. Hi Ray, how are you?
+Hi, I'm all right. How are you?
+Well, I'm doing great. Thank you for asking.",,,Patrick Garcia,12/17/2025 10:43,IG114,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-17/20251217-104358_CP111_MICHAELANGELORAMOS-all.mp3,CALLBK,UG142,87,"I think his name was Chris. Um, we have a call scheduled for like later this afternoon. So um, yeah. Um, Could I just call you back or or something? Sorry, I was in the middle of something. Oh yeah. Um, actually my manager who asked me to give you a call, um is on the other line Ray. Um his name is Patrick and he will take the call if you don't mind, okay? Okay. Um Yeah, Patrick. Yeah, I have here Ray, the owner can handle any customer for John. He is available um via appointment um Mondays through Friday to residential and commercial five years in the business have workers. Okay, thank you. Hi Ray, how are you? Hi, I'm all right. How are you? Well, I'm doing great. Thank you for asking, you know. And this is Patrick, one of the area manager here with 411 locals. and I asked my assistant to contact you because we're looking for reliable business in your area that we can work with. So I just want to ask a few questions to see if this would be Okay. Yeah, yeah. I I'm definitely interested in having a conversation. I just I'm in the middle of something right now, so I can't speak at the moment. Uh, could I talk to you around 4:00? Uh, sure, no worries. Just let us know, you know, call us back, okay? Okay. Yeah. All right, I will do. Yeah, I'll give you a call back.",,,ERNESTCGHERRERA,Ray ,,"Stamford CT, CT, ",Junk Removal Services,3,3,0,16288539,12,Ray ,Junk Removal Services,"Stamford CT, CT, ",Eastern,Low season,December,Hesitant & Apologetic,Female,Yes,,No,Yes,Yes,Overwhelmed/Stressed,English,Yes,busy,Agent,Novice,4.2,Start-of-Call Latency,TRUE,,33.33,66.67,Agent-Heavy,0,0,0,0,Surface-Level,No,1,1,1:01,Skeptical,Consultative & Validating,Agent,10,Yes,Yes,Yes,No,"Agent stated he wanted to ask a few questions, but did not outline the process or time expectations.",1,1,0,100,0,0,0,0,No,2.57,4,0,4,3,0,0,0,0,None,Agent-Heavy,Unstructured,Discovery; FOMO; Value Proposition; ROI Calculation; Assume the Sale,None,No,Yes,1,3,Professional,Yes,No,Stable,Skeptical,N/A,N/A,Skeptical,Customer expressed initial interest but immediately followed with a timing concern.,0,0,0,87,Introduction and Reason for Call,Mutual,5,Follow-up Scheduled,Implied,No,No,No,Yes,Follow-up Scheduled,Timing concerns,TRUE,,TRUE
+16290989,2059082489,NOELMAULEONHULGUIN,12/18/2025 15:22,XFER,CP105,430,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-18/20251219-072211_CP105_NOELMAULEONHULGUIN-all.mp3,"Speaker A (00:04 - 00:05): Hello?
+Speaker B (00:05 - 00:14): Hello sir, you still do irrigation repairs in Birmingham? I do. Oh good. By the way, this is Noel, who am I speaking with?
+Speaker A (00:14 - 00:15): Rodolfo.
+Speaker B (00:15 - 00:17): Oh the owner sir Rodolfo.
+Speaker A (00:17 - 00:18): Yes.
+Speaker B (00:18 - 00:34): Oh perfect. Sir Rodolfo. By the way following because we're seeing a slate of people in your area switching on my service and my manager asked reach out to a few local businesses. You can actually take on more customers. That's why I'm calling you. Are you able to handle new customers? What are you calling from?
+Speaker A (00:34 - 00:35): Where are you calling from?
+Speaker B (00:35 - 00:43): Oh, 411 locals. From where? 411 locals. What say? Our main office is on Las Vegas, Nevada.
+Speaker A (00:43 - 00:45): And what are you calling to Alabama.
+Speaker B (00:45 - 00:49): We're looking for someone who do irrigation repairs in Birmingham.
+Speaker A (00:49 - 00:51): What company are you from?
+Speaker B (00:51 - 00:54): 411 locals. 411 locals. Yes sir.
+Speaker A (00:54 - 00:55): I've never heard of that.
+Speaker B (00:55 - 01:03): What we do sir is we study the number of people going online searching for your type of service. Then we connect them to business like yours.
+Speaker A (01:03 - 01:04): What's your name again?
+Speaker B (01:04 - 01:06): Noel, sir. My name is Noel.
+Speaker A (01:06 - 01:07): What do you call?
+Speaker B (01:08 - 01:15): What we do is we help businesses create a website if they want one or we can put them on the top of their Google list and other platforms.
+Speaker A (01:15 - 01:24): Okay, so you want to dump people that they couchy. You want to charge money to pull you company and a local book or whatever.
+Speaker B (01:24 - 01:28): No, we're with Google sir. We're directly with Google.
+Speaker A (01:28 - 01:29): I don't think you're directly with Google.
+Speaker B (01:30 - 01:33): We're official partner. We're official partner with Google.
+Speaker A (01:33 - 01:38): If my phone can tell me who you are, tell me who is who you calling from and all that.
+Speaker B (01:39 - 01:56): We're with 411 local server using a VoIP so that you are not being charged while making this call. Sir, since I'm from Las Vegas sir if I call you using a Las Vegas number so you know.
+Speaker A (01:57 - 01:59): So you know this conversation being recorded, right?
+Speaker B (01:59 - 02:00): Yes sir, I know sir.
+Speaker A (02:00 - 02:01): Good.
+Speaker B (02:01 - 02:02): All our calls are being recorded.
+Speaker A (02:02 - 02:03): Good. So continue.
+Speaker B (02:03 - 02:16): Yes sir. Yes. So as what I've said sir, just to be clear sir Rodolfo Awareness of work. We help connect customers who are already searching for a kind of service in Birmingham. And you're able to handle new customers, right?
+Speaker A (02:16 - 02:21): I have a new customer right now. I'm sorry, I got a lot of customers right now.
+Speaker B (02:21 - 02:22): When are you available sir?
+Speaker A (02:22 - 02:25): I don't know man. I have to check my schedule and.
+Speaker B (02:25 - 02:28): See like next month or next.
+Speaker A (02:28 - 02:31): Next month probably in February.
+Speaker B (02:31 - 02:48): Oh that's still. Okay sir. That's still do it with us. We're reviewing a few of the fiscal Potential placements in front of your customer searches. And my manager just wants to confirm which one fits the criteria. How long have you been doing the irrigation repair? 10 years, 20 years. Oh, wow.
+Speaker A (02:49 - 02:50): That'S good.
+Speaker B (02:51 - 03:27): Do you usually work Monday to Friday or weekend day of the day. Oh, I see. That's good to know. By the way, sir Rodolfo. Actually I have now my manager who asked me. Oh, I'm sorry. My manager has connected. By the way, sir Rodolfo, what time do you usually start working? Like do you start early in the morning or you have a set of time? Yeah, start in the morning, so you can start anytime. Good to know. Do you have your license or LLC as well? I do.
+Speaker A (03:27 - 03:29): I don't need license to be a relationship.
+Speaker B (03:29 - 03:36): Okay, that's understandable. And do you work alone, sir, or you have partners or employees?
+Speaker A (03:36 - 03:39): I have people. I know people to help me out if I need to.
+Speaker B (03:40 - 04:04): Okay. Okay. So if the job is too big, you just ask them for help just like everybody else does. I'm sorry? Just like everyone else. Oh, okay. Okay. That's good to know, sir. And started off, how do you do your estimation? Like, do you have a set price for every repair or on how many irrigation that you need to repair? Do you charge it one by one?
+Speaker A (04:05 - 04:10): I have to look. I mean, they called me and told me come and look at it. And we go from this. Mmm.
+Speaker B (04:10 - 04:18): See. So do you charge by the hour? What I've answered is do you charge by the hour or on how many things that you need to.
+Speaker A (04:18 - 04:19): It just depends.
+Speaker B (04:19 - 04:39): A lot of things. Okay. Actually, tell me a moment here. My manager is almost here. I'll be transferring you to my manager once my manager is connected. Okay. By the way, sir, do you offer discounts for military or veterans or regular customers?
+Speaker A (04:40 - 04:40): Depends.
+Speaker B (04:41 - 04:59): Still depends like if you know the person or something like that. Actually, I have now my manager. Hello, ma'. Am. Cora. I have here, Sir Rodolpho can do irrigation repairs in BIRMINGHAM More than 20 years in a bit. Sure. Thank you. Hello, Rodolfo. Hi.
+",,,Cora Johnson,12/18/2025 15:28,IG112,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-18/20251218-152903_CP111_JOHNMENARDESCOTE25-all.mp3,NP,UG142,125,"Do you know the person or something like that? Actually, I have now my manager. Uh, hello, Mom Cora. I have here Sir Rodolfo can do irrigation repairs in Birmingham, more than 20 years in the business. Sure, thank you. Hello, Rodolfo. Hello. What's up? Hi, how are you doing today? Pretty good so far. Perfect, that's good to hear. Well, Rodolfo, this is Cora. I did try to ask my assistant to call you because I'm looking for a reliable business who provides irrigation repairs right now. So, I did try to call you because we're seeing several people in your local area who currently needs your services. So, I just wanted to ask you a few questions, in that way I could see if you might be a good fit. Would that be okay with you? Well, it depends on the questions. Right. How long have you been running the business now? Or 20 years. Oh, wow, congratulations. Like 20 years in the business or 20 years um experience? Wait, wait, wait. What are you, what are you calling me from? I'm calling from 411 locals. We're looking for business who provides irrigation services in the area. That way we can actually advertise. Oh, I got you. But where where are you located? Where are you located right now? Uh, well, um I'm actually one And this very moment, in this very moment, where are you located? I'm we're basically located in Birmingham. I'm one of the area managers here, but our main location is Las Vegas, Nevada. So, what are you calling from? From their office? Yes. Uh, you just lied to me because I can hear all the chickens and and everything in the background. Well, I didn't lie to you. I said you said it's it's in the office? Yes, I'm in a home office. So, yes. Uh, I think you need to find somebody else, ma'am. Okay, bye.",,,JOHNMENARDESCOTE25,Rodolfo ,,"Birmingham,, AL, 35201",Irrigation repairs,5,1,4,16290989,24,Rodolfo ,Irrigation repairs,"Birmingham,, AL, 35201",Central,Low season,December,Consultative & Validating,,Yes,No,No,No,Yes,Mixed Emotional Signals,English,Yes,busy,Customer,SKEPTIC,4.4,Intelligibility,TRUE,,45.45,54.55,Mutual Dialogue,1,1,0,0,Surface-Level,No,0,5,0:05,Resistant,Confident & Assumptive,Agent,9,Yes,Yes,Yes,Yes,Agent stated they wanted to ask a few questions to see if it was a good fit.,5,0,0,0,0,0,0,0,No,2,5,0,9,3,0,0,0,0,None,Mutual,Unstructured,"IV, V, VI, VII",None,No,Yes,2,3,Professional,Yes,No,Declined,Skeptical,Not Found in Transcript,Not Found in Transcript,Negative,"Customer sentiment shifted from neutral/positive to skeptical after agent's initial pitch, then sharply negative when questioning agent's location and accusing of lying.",5 frustrations,0,0,125,Discovery Phase,Customer,52,No Commitment Secured,None,No,No,No,No,Hard Decline,Lack of trust/rapport,TRUE,,TRUE
+13832245,2083585399,IVYSONGKIP,12/10/2025 10:44,XFER,CP108,162,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-10/20251210-104433_CP108_IVYSONGKIP-all.mp3,"Hello, good afternoon.
+Good afternoon, sir. Uh, maybe you can help me. We're looking for someone who does electrical repairs and installations.
+What kind of installations, sorry?
+Uh, for electrical wiring, troubleshooting. You still do that, right?
+Yes.
+Okay. My name is Kate Hanson, by the way. May I know my speaking with?
+Patrick.
+Hi, Patrick. Nice to meet you, sir. Happy Wednesday. Thank you very much for taking my call. Be owner, right? I'm speaking with, correct?
+Yes, who are you with?
+Okay. I'm with 411 Locals, Patrick. We're calling you because we are seeing several people in the area who are looking for electricians online. And my manager asked me to look for someone who can handle customers. Uh, I would like to know if you do electrical works only for residentials or you do commercial job as well?
+Commercial as well.
+Oh, you do. That's wonderful. So, how long have you been running the business now, sir, doing electrical works?
+Three years.
+Oh, my dear. That's been quite a while now. Congratulations for that. Well, looking forward for more years, Patrick, for the business. But of course, for three years, um, of course, this is still the best phone number, right? For customers to contact you directly or do you guys have any other lines for them to reach you for your service?
+Uh, just this one for now.
+Just this phone number. Okay. And, uh, you're open Monday to Friday, correct? Or like you're like seven days a week as well for your service?
+For emergencies, seven days a week. Standard is 8 to 5 Monday to Friday.
+Mm, okay. That's good to hear. So you're open also during weekends for your customer base. That's very good.
+For emergencies.
+For emergencies. Yes. I hear you. So, um, anyway, as, uh, just to be clear, Patrick, we're not looking for work. We help customers, connect customers who are already searching for your kind of service. So basically, customers will be the one to contact you directly for the service that you provide. So I have here my manager on the line. Patrick, his name is Oscar. Hi, Oscar. I have here Patrick, the owner who does electrical works, been the business for three years already.
+Three years. Okay, excellent. Thank you. Hi, Mr. Patrick. How you doing, sir?
+Good, how are you?",,,Oscar Ross,12/10/2025 10:46,AGENTDIRECT,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-10/20251210-104659_CP111_MANUELRAMIREZ-all.mp3,DISMX,UG142,123,"Patrick, his name is Oscar. Hi Oscar, I have here Patrick, the owner who does electrical works, been in the business for three years already. Three years. Okay, excellent. Thank you. Hi, Mr. Patrick. How are you doing, sir? Good, how are you? I'm doing excellent. Thank you. Thank you very much for asking. This is Oscar. I'm an IDR at 411 local sir. And we're looking for a reliable company to work with, Mr. Patrick. So we're seeing increase of customers looking for electrician services and we want to know if you can take more customers for your business. Okay. Excellent. So, Mr. Patrick, uh three years working with your own business or three years of experience overall? Three years of my own. By your own. Okay, so you have previous experience then, right? Yes. For how many years? Eight. Eight years of experience. Wow, okay, excellent. So that's a good experience. Perfect. And Mr. Patrick, um, additional to the electrical services, there is any other service that you offer? No. Just electrical, right? Installation, new wires, repairs. Yes. Okay. Excellent. And Patrick, uh, you do residential and commercial services or you focus more on residential, Mr. Patrick? Both. Both residential and commercial services. And you the owner of Vasco Electric LLC, right? Mhm. Perfect. Okay. And Mr. Patrick, uh where where you located in Idaho? How far you can go to give those services if you find a good project, you may travel with Um, can can we set up a different time to talk? I'm working currently. We only need a couple of minutes, Mr. Patrick, just to show you this proposal. Do you have that time? No. That's why I was wondering if you could call me back later. Okay.",,,MANUELRAMIREZ,Patrick -owner ,Vasco Electric LLC,"Shoshone, ID, 83352","electrcian , repairs and installation",2,2,0,13832245,38,Patrick -owner ,"electrcian , repairs and installation","Shoshone, ID, 83352",Mountain,High season,December,Consultative & Validating,Female,Yes,UNKNOWN,No,No,Yes,Not Happy/Optimistic,English,Yes,available,Customer,,5,,TRUE,,50,50,Mutual Dialogue,6,6,0,0,Surface-Level,No,0,2,0:02,Resistant,Consultative & Validating,Agent,26,Yes,Yes,No,No,Not Found in Transcript,2,0,1,0,0,3,0,3,No,3,6,1,6,3,1,0,0,0,None,Mutual,Unstructured,"IV, V, VI, VII",None,No,Yes,4,3,Professional,Yes,No,Declined,Neutral,Negative,N/A,Negative,"Customer sentiment shifted from neutral to resistant at 01:54 when the agent asked about location and travel, leading to a request to reschedule.",1 frustration,0,0,123,Discovery Phase,Customer,87,No Commitment Secured,None,No,No,No,No,Disconnect - During Discovery,Timeline concerns,TRUE,,TRUE
+14284180,2082088729,ADELALUCAS,12/17/2025 11:55,XFER,CP105,159,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-17/20251218-035456_CP105_ADELALUCAS-all.mp3,"Hello, Derek Tracks.
+Hello. Hi, maybe you can help me.
+Hello.
+Do you still do the debris cleanup services in Spokane?
+Do I still do what?
+Yeah, uh, the debris cleanup?
+Yeah, the debris cleanup?
+Yes.
+Yes. Yes.
+Oh, yeah, this is Adele, by the way.
+Am I speaking with the owner of the business, right?
+Yes, you are.
+Okay, and your name is?
+Jerry.
+Hi, Jerry.
+This is Adele.
+I'm calling you because we're seeing a search people in Spokane, searching online for debris cleanup service.
+My monitor asked me to reach out to a few local business that can actually take on more customer.
+By the way, are you still available to work on a weekends or is it only Mondays to Friday?
+Uh, Monday through Saturday.
+Monday through Saturday, that is good.
+And you're available for residential, right?
+Or can you take commercial too?
+Uh, whatever.
+Okay, sounds good.
+Yeah, wonderful.
+And by the way, um, just to be clear, we're not looking for work.
+We help connect customers who are already searching for your kind of service.
+It's about reviewing a few local businesses for potential placement in front of a real customer searches.
+And my manager just confirm which one fits the criteria.
+And you're able to handle new customer, right, for debris cleanup in Spokane?
+Yes.
+Okay.
+By the way, Jerry, how long have you been in the business?
+Uh, I've been in excavation business for 20 years.
+Oh, 20 years of excavation and demolition?
+Is that right?
+Mhm.
+Okay, sounds good.
+And do you have some workers or do you work alone for the service?
+Yeah.
+I just uh work by myself.
+Oh, just by yourself.
+Okay, that's fine.
+Anyway, my manager, Jerry, um, Cora, she's on the other line and she will take the call if you don't mind, okay?
+Yes.
+Sure.
+Yeah, Cora, I have here Jerry, the owner, can handle new customer for debris cleanup service, available for both residential and commercial, 20 years in the business, working by himself.
+Uh, sure, thank you.
+Hi, Jerry, how are you doing today?
+I'm doing well.
+Perfect.
+Jerry, this is Cora Johnson.",,,Cora Johnson,12/17/2025 11:56,IG114,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-17/20251217-115706_CP111_JOHNMENARDESCOTE25-all.mp3,NI,UG142,276,"Speaker A (00:01 - 00:09): Oh, just by yourself? Okay, that's fine. Anyway, my manager, Jerry, Cora, she's on the other line and she will take the call if you don't mind.
+Speaker B (00:09 - 00:10): Okay, sure.
+Speaker A (00:10 - 00:24): Yeah. Cora, I have here Jerry, the owner can handle new customer for debris cleanup service available for both residential and commercial. Twenty years in the business working by himself. Sure. Thank you. Hi, Jerry. How are you doing today?
+Speaker B (00:25 - 00:26): Doing well.
+Speaker A (00:26 - 00:50): Perfect. Jerry, this is Cora Johnson. I did ask my assistant to call you because currently we're seeing several people in your local area looking for your type of service. And we're actually looking for a reputable business that we can actually partner up with to drive in more jobs. So I just wanted to ask you a few questions and that way we could see if this might be a good fit. Would that be okay?
+Speaker B (00:50 - 00:50): Sure.
+Speaker A (00:50 - 00:59): Thank you. Derek, can you tell me more about the business? Like how long have you been running the business now? And what services do you mainly provide to your customers?
+Speaker B (01:00 - 01:17): I mean, we do clean out, we do excavating, we do backfilling, we do sand, gravel, rock placement, we haul out debris cleanup, all of that sort of work. Land leveling. Are you still there?
+Speaker A (01:17 - 01:23): Yes. And by any chances though, Jerry, are you doing residential or you're also doing commercial jobs?
+Speaker B (01:23 - 01:24): Both.
+Speaker A (01:24 - 01:29): I see. And so far, so good. Like how far are you willing to travel for jobs? Like how many mile wages are we talking about?
+Speaker B (01:30 - 01:39): Depending on the. I mean, if it's a sizable job that warrants us going, I mean, I'll go out 75, 80 miles.
+Speaker A (01:40 - 01:45): I see, I see. So pretty much it really depends how big the job is. Right. Your job, where the money is.
+Speaker B (01:45 - 01:47): Right. Okay, perfect.
+Speaker A (01:48 - 01:54): And your business, when you do get new customers, what type of jobs you really want more of right now?
+Speaker B (01:54 - 02:24): Well, right now we have. We have major flooding in our area. We have downed trees, we do chainsaw work and, you know, clean off to clean out all of the flood damage that we are experiencing. In fact, today we're having gust up to 70 miles an hour of winds. So we have trees that are being blown down and all of that kind of stuff. So that's the kind of stuff that we do. We can limb all those trees up. We can come in and load them up, haul them out.
+Speaker A (02:25 - 02:37): I see. Well, I'm really sorry to hear that. If you suffer from that strong leaks and everything and flooding. But pretty much the main services you mainly focus on is hauling services, correct? Here in Klosville, Yes.
+Speaker B (02:37 - 02:37): Yep.
+Speaker A (02:37 - 03:12): Right. Thank you. Right. Well, pretty much the reason why we did call you is because our company specializes in monitoring the online traffic search of people who are currently searching and looking for services right now. And in fact, in the past 30 days alone, we're talking about hauling out of those 37,000 population, there is already a total of 832 total monthly search in your local area. So if I could put your business in front of these interested people, searching and looking for service that would be beneficial for your business. Right, right.
+Speaker B (03:12 - 03:19): So I can see where this is headed. So you're wanting to charge me a fee to do to do some kind of service for me. Correct.
+Speaker A (03:19 - 03:25): Right. Well, what we mainly do is we provide maximum visibility online so that at any cost.
+Speaker B (03:25 - 03:29): Right. But you're still wanting to charge me a fee to do that?
+Speaker A (03:29 - 03:31): Yes, that is correct.
+Speaker B (03:31 - 03:33): Okay, I'm not interested, but thank you for the call.
+",,,MARIAIRENECABIGON,Jerry ,,-,HAULING & SKID STEER SERVICE (,2,2,0,14284180,34,Jerry ,HAULING & SKID STEER SERVICE (,-,Pacific,Low season,December,Consultative & Validating,Female,Yes,YES,No,YES,Yes,Happy/Optimistic,English,Yes,available,Agent,Novice,4,"Start-of-Call Latency, Intelligibility",TRUE,,50,50,Mutual Dialogue,5,5,0,0,Moderate Depth,No,1,2,1:02,Resistant,Confident & Assumptive,Agent,6,Yes,Yes,Yes,Yes,Agent stated she would ask a few questions to see if it might be a good fit.,3,0,1,0,3,0,0,3,No,3,6,1,8,3,1,0,0,0,None,Mutual,Somewhat Structured,IV. Highlight Competitor Success Using FOMO; VI. Utilize ROI Calculation; VII. Assume the Sale and Begin Gathering Information,None,No,Yes,3,3,Professional,Yes,No,Declined,Neutral,Skeptical,N/A,Negative,Shift from neutral/informative to skeptical/resistant at 03:12 when the customer anticipates a fee.,2 frustrations,1,50,276,V/VI - Value Proposition and ROI,Customer,56,No Commitment Secured,None,No,No,No,No,Disconnect - During Pitch/Value Prop,Not qualified/not interested,TRUE,,TRUE
+16316647,2083989023,ELIASPAULOJR,12/23/2025 11:24,XFER,IG103,219,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-23/20251223-112436_CP105_ELIASPAULOJR-all.mp3,"Hello? Hello? Hi sir, good afternoon. Uh maybe you can help me. Is this a construction or remodeling? What's that? You do construction or remodeling? Uh, yeah, we do. You do. And I'm talking to the owner, right? You are? Uh, I'm the son of the owner. Um, he's one of the Yeah. Uh is around. Can we talk? Um, he's actually going on a trip um this afternoon. Yeah, he's going to Peru, but um anything that you may have questions, you can ask me. Um, I'm one of the managers of it, so. Trip? Okay. All right. Great, great, great. So what do we uh since you're a son's owner, are you able to decide for you know what? Right now, right now, so right now some decision for this guy uh for your business? Yeah. You do? You do for right. Yeah. Uh what is your what is your name? So we can address you properly, would you mind? Uh, Nelson. Nelson. Is that right? Nelson, yeah. Nelson. All right. How do you spell it, by the way? Sorry. N I L T O N. L T O N, all right? Yeah. All right, Nelson. So, by the way, uh that was my manager who tried to contact you earlier. So, just to be clear, open for remodeling like from A to Z, right? So I mean, um Kitchen and bathroom, right? Painting drywall. You do, right? Uh-huh. Yeah, we I mean, we kind of do everything. Everything. As the like from like roof to, you know, building the houses and everything. Pretty much. Uh-huh. Okay. Yeah. Pretty much up. Okay, I will take note of that. So, by the way, uh Nelson, this is Alias and maybe you can help me. And I'm calling you because we are seeing seeing several people there in your local area right now looking for type of services online. And my manager asked me if you can take or you can handle new customers for this one, okay? So now, um, yeah, just to be clear Nelson, we are not looking for work, okay? So we help connect customers who are already searching for your kind of services. Does that make sense, right? So now, how long have how long have you been running this business, Nelson? For how many years? All right. Uh just a little bit over eight years. Eight years. And you are licensed and insured, right? For sure. Correct. All right. And in what part of Idaho you covered? What cities? What's that? Uh what cities you covered in Idaho? Uh just Sun Valley, Haley, and uh Bellevue. And I will leave you travel for work, right? Not in your local area mainly. Yeah, we're only we only do locals. Only local. And how many miles radius in your local area you travel? Would you mind me ask? Um, I think the furthest we go is like 45 miles. 45 miles. Okay, I will take note of that. You know, Nelson, thanks so much for your time, information with your business. However, I'll give you my manager a quick call. This is Nelson, son's owner. He can decide for marketing and financial decision and as well he can handle more customers doing remodeling. Uh sure, thank you. Hi Nelson, how are you doing today? Uh, I'm doing great. How are you?",,,Cora Johnson,12/23/2025 11:27,AGENTDIRECT,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-23/20251223-112750_CP111_JOHNMENARDESCOTE25-all.mp3,HU,UG142,99,"Okay, I will think of that. You know, Nelson, thank you so much for your time and information with your business. However, I have here my manager give my car, this is Nelson, Science owner. He can decide for marketing and financial decision and as well, he can handle more customers doing remodeling. I sure, thank you. Hi Nelson, how are you doing today? Uh, I'm doing great. How are you? I'm doing fantastic. Well, advance Merry Christmas and happy New Year to you. I appreciate it. I appreciate it. Good. You're welcome, sir. Well, sorry, my name is Cora Johnson. What's your name again? Nelson or Nelson? Nelson. Nelson? Yes. I see. Well, Milton, uh, thank you so much for picking up my phone call today. Again, this is Cora Johnson. I'm one of the area managers here in 411 locals. I did ask my assistant to call you because we're currently seeing several people in the local area who are currently searching and looking for your services. And that is the reason why we tried to get a hold of you to see if you're still open for new customer. Um, all right? Um, currently right now, we're not, just because our schedule's pretty packed for like the whole next year as well. Um, but we can definitely keep you guys in mind and hopefully, um, be able to do um, some type of work for you guys or like, you know, some type, some type of a partnership, partnership. Okay, then, not a problem. Thank you so much for your time. You have yourself a good day. Bye-bye. You as well. Bye.",,,JOHNMENARDESCOTE25,Milton ,,-,remodeler,1,1,0,16316647,39,Milton ,remodeler,-,Mountain,Low season,December,Consultative & Validating,Male,Yes,UNKNOWN,No,Yes,Yes,Happy/Optimistic,English,Yes,available,Agent,Transactional,4,"Start-of-Call Latency, Intelligibility",TRUE,,41.67,58.33,Mutual Dialogue,0,0,0,0,Surface-Level,No,0,1,0:01,Resistant,Confident & Assumptive,Agent,52,Yes,Yes,Yes,No,No structure was communicated to the customer.,1,0,0,0,0,0,0,0,No,3.57,6,2,2,3,2,0,0,0,None,Agent-Heavy,Unstructured,Discovery; FOMO; Value Proposition; ROI; Closing,None,No,Yes,5,3,Professional,Yes,No,Declined,Neutral,N/A,N/A,Resistant,Customer sentiment shifted from polite to resistant immediately after the agent stated the reason for the call and asked about availability.,1 frustration,0,0,99,II - Clear and Personalized Reason for the Call,Agent,15,No Commitment Secured,None,No,No,No,No,Early Disconnect - Before Discovery,Not qualified/not interested,TRUE,,TRUE
+13837491,2083126446,JERECHOCALOPE,12/9/2025 15:37,XFER,CP108,91,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-09/20251209-153702_CP108_JERECHOCALOPE-all.mp3,"Hello? Hello. Hi, Rob's Home Repair? Yeah. Yes, maybe you can help me. My name is Josh. I'm calling because we're seeing several people in your local area looking for your type of service online. My manager asked me to look for someone who can take customers. Are you the owner, right? Yeah. Yeah, um, you do free estimates, sir? Yeah, I do. Let's Yeah. Sorry, my name is Josh. Who am I speaking with? Robert. Hey Robert. Uh, you're licensed, right? Licensed and insured? Yes, I am. Okay. Uh, Robert, how long how far do you travel for work? 100 miles. Sorry? 100 miles. 100 miles? Okay. And how long have you been in business, sir, man? Uh, 10 years. 10 years in business. Okay, that's great, awesome. And one more thing, sir, you do only residential, right? Or commercial also? I I do both. Okay, that's great. Awesome. Uh, Mr. Robert, actually, uh, I am from a manager who asked me to give you a call. Art for Robert, the owner of Rob's Home Repair, licensed and insured, 10 years in business. Yes. Okay, perfect. Thank you. Uh, hello, Robert. Uh, how are you doing today? Good, how are you? Uh, doing great. Thank you so much, sir.",,,Art Estrada,12/9/2025 15:38,AGENTDIRECT,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-09/20251209-153813_CP111_ARTURODELEON-all.mp3,NI,UG142,84,"Okay. Um I have a manager who asked me to give you a call. Art, ever Robert, the owner of Ross Home Repair. Licensed and insured, 10 years in business. Yes. Okay, perfect, thank you. Uh hello, Robert. Uh how are you doing today? Good, how are you? Uh doing great. Thank you so much for asking. Look, so we don't take too much of your time or mine. Let me go and introduce myself real quickly. My name is Art and I'm the area manager for 411 locals. And the reason why we're calling you today, Robert, is because we're looking for reliable business around your area to work with. Uh just want to ask you a few questions here. That way, uh we can find out, right, to see if this would be a good fit for both of our companies. So, according to my assistant, right, you're in the industry here for uh handyman services. Is that correct? For what now? Handyman services. Is that correct? Yeah. Yeah, okay, okay. Awesome, perfect. And you have been running your company for about 10 years. Is that is that correct? Yeah, roughly, for more than 10. Wow, wow, wow, wow. So you have uh amazing amount of experience. Congratulations on that, Robert. Now, uh throughout those 10 years, uh Rob, uh how do you get new clients here for your company? Yeah, I know. You have been kicked from this conference.",,,ARTURODELEON,Robert ,Robs Home Repairs,"Heyburn, ID, 83336",Handyman Services,1,1,0,13837491,37,Robert ,Handyman Services,"Heyburn, ID, 83336",Mountain,Low season,December,Consultative & Validating,Male,Yes,UNKNOWN,No,No,No - agent did not ask for transfer consent,Not Angry/Frustrated,English,Yes,available,Agent,NOVICE,3.6,"Start-of-Call Latency, Intelligibility",TRUE,,44.44,55.56,Mutual Dialogue,2,1,1,0,Surface-Level,Yes,0,0,0:00,Neutral,Consultative & Validating,Agent,25,Yes,Yes,Yes,Yes,"Agent set time expectation ('so we don't take too much of your time or mine'), stated purpose ('looking for reliable business around your area to work with'), and outlined process ('ask you a few questions here. That way, uh we can find out, right, to see if this would be a good fit for both of our companies').",0,0,0,0,0,0,0,0,No,5,9,2,1,2,2,0,0,0,None,Mutual,Somewhat Structured,"IV, V, VI, VII",None,No,Yes,3,3,Professional,Yes,No,Stable,Neutral,Not Found in Transcript,Not Found in Transcript,Not Found in Transcript,None,0,0,0,84,Discovery Phase,Unknown - Technical/System,24,No Commitment Secured,None,No,No,No,No,Disconnect - During Discovery,Technical issue / Unclear,TRUE,,TRUE
+16271060,2066990695,MARICELADVINCULA,12/9/2025 15:04,XFER,CP108,135,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-09/20251210-070433_CP108_MARICELADVINCULA-all.mp3,"Hi, if you record your name and reason for calling, I'll see if this person is available.
+Hi, yes. Hi, this is Kim.
+Thanks, Kim. Please stay on the line.
+Hello?
+Hello.
+Hi, do you still do junk removal service?
+Yes.
+Yes, I do.
+All right. Thank you. And Bellevue, right?
+Sorry?
+And Bellevue in Washington in surrounding areas?
+Yes, yes.
+Oh, okay. Thank you.
+Thank you. By the way, this is Kim from 411 locals. May I know who am I speaking with?
+James.
+My name is James.
+James.
+All right. Thank you, James. You're the owner of the business, James?
+Yes, I am.
+All right. Thank you.
+James, by the way, you're doing this for commercial and residential, right? The junk removal service.
+Oh, okay. Thank you.
+Yes, yes.
+For how long have you been doing this type of business?
+Uh, I just got started, barely a few months ago.
+Oh, like, um, two months?
+Yes.
+Uh-huh. Okay. But in terms of experience, how long have you been in this, um, industry?
+Probably two years.
+30 32 32 years?
+Two years.
+Oh, sorry.
+Two years.
+Sorry for that. Two years in business.
+And you provide, uh, free estimates, right?
+Yes.
+Uh, okay. And do you travel to the surrounding areas as well, right?
+Yes, yes.
+Yes, I travel within a 70-mile, uh, radius.
+70 miles.
+Uh, yeah.
+79-mile radius.
+Okay. Thank you.
+So, by the way, James, I already have here my manager.
+I have here Cora.
+Hi, Cora.
+I have here James, the owner of the business, PNDO, uh, junk removal service in Bellevue, Washington.
+And this business for about two months now but had, um, two years' experience.
+Uh, sure. Thank you.
+Hi, James. How are you doing today?
+Hello. I'm doing fine. How are you doing?
+I'm doing fantastic.
+Thank you so much for asking, James.",,,Cora Johnson,12/9/2025 15:06,IG114,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-09/20251209-150619_CP111_JOHNMENARDESCOTE25-all.mp3,HU,UG142,487,"Speaker A (00:01 - 00:17): 79 mile radius. Okay, thank you. So by the way, James, I already have here my manager. I have here Cora. Hi, Cora. I have here James, the owner of the business. He and do a junk removal service in Bellevue, Washington. And this business for about two months.
+Speaker B (00:17 - 00:19): Now, but had two years experience.
+Speaker A (00:20 - 00:23): Sure, thank you. Hi, James, how are you doing today?
+Speaker C (00:23 - 00:24): Hello. I'm doing fine. How are you doing?
+Speaker B (00:25 - 00:28): I'm doing fantastic. Thank you so much for asking, James.
+Speaker A (00:28 - 00:30): Thanks to this Cora Johnson.
+Speaker B (00:30 - 00:49): I did ask my assistant to call you because we're seeing several people in your local area right now who currently looks for your type of service. And that's the reason why we did call you right now. Because we're looking for a reputable business so we can actually partner up with to actually feature in front of those people.
+Speaker A (00:49 - 00:51): So I just wanted to ask you a few questions.
+Speaker B (00:51 - 00:54): That way we can see if this might be a good fit.
+Speaker C (00:54 - 00:55): All right, sure.
+Speaker B (00:55 - 00:56): Thank you so much.
+Speaker A (00:57 - 00:59): James, can you please tell me more about the business?
+Speaker B (00:59 - 01:05): Like how long have you been running the business now? And what service do you mainly provide to your customers?
+Speaker C (01:05 - 01:11): Can you give me one second, please? Give me one second. Okay, go ahead, go ahead, go ahead. I'm back.
+Speaker B (01:11 - 01:19): Thank you so much. I was just asking though, like, how long have you been running your own business now? And what service do you mainly specialized with?
+Speaker C (01:19 - 01:28): I mainly specialize in junk removal. I've been running it for two years, but I've been in the industry for more than two years. I've been doing junk removal and moving.
+Speaker B (01:28 - 01:42): Oh, wow. Congratulations. So pretty much I'm speaking with an expert, I would say. Right. Congratulations. Perfect. And by any chances though, are you doing it residentially or you're also open to do commercial?
+Speaker C (01:42 - 01:43): I'm open to do commercial jobs.
+Speaker B (01:43 - 01:51): I see, that's perfect. Perfect. And so far, so good. Like how far out are you willing to travel for jobs or how many mile radius are we looking?
+Speaker C (01:52 - 01:54): Around? 80 miles radius between Seattle.
+Speaker B (01:55 - 01:57): Okay, so you can travel where the money is, I would say.
+Speaker C (01:58 - 01:59): Right, Yes.
+Speaker B (02:00 - 02:02): I see, I see. But the.
+Speaker B (02:03 - 02:07): I see. But the business is currently located in what zip code again?
+Speaker C (02:08 - 02:12): 98499. But most of our jobs in Seattle. Yes.
+Speaker B (02:12 - 02:19): Oh, in Seattle. Okay, perfect. And so far so good though. Are you still open to take on more jobs right now?
+Speaker C (02:19 - 02:20): Yes, I am.
+Speaker B (02:20 - 02:48): Right, well, here's the thing, James. The reason why I did call you right now is because our company is the one who closely monitors the online traffic search of people looking and searching for your services right now. Specifically in your city. Right. And in Fact in the past, for today's change, there is already a total of 713 total monthly search coming from the population looking and searching for your services right now.
+Speaker A (02:48 - 02:50): So if I could put your business.
+Speaker B (02:50 - 03:14): In front of those interested people searching and looking for your services, that would be something very, very beneficial. Right, Jane? Right. Now, here's what we do, Jane. When people search online for junk removal services in Lakewood City in Washington, they usually don't type in a business name. Right? They just search for the service of what they're looking for.
+Speaker C (03:14 - 03:15): Correct.
+Speaker B (03:15 - 03:42): Like junk removal means or the best junk removal service in liquid. And if you're not showing up, your competitors are getting those phones. Right? And that is the reason why we're here. Because we want to make sure that at any time of day, if someone is looking and searching for your services, they would be able to find you front and center your competition. Have you ever heard about J Dog Junk removal and Hauling? Do you know them?
+Speaker C (03:42 - 03:43): Who are they again?
+Speaker B (03:43 - 03:46): J Dog Junk Removal and Hauling. Do you know them?
+Speaker B (03:49 - 03:53): Junk removal and hauling. Yes. Do you know these people? You mentioned you're in Lakewood, right?
+Speaker C (03:53 - 03:56): Yes, I'm trying to see. Yeah, I can see them.
+Speaker B (03:57 - 03:59): Do you know them personally or no?
+Speaker C (03:59 - 03:59): No.
+Speaker B (04:00 - 04:05): How about Joe's Junk Removal and Demolition Elves? Does it ring a bell?
+Speaker C (04:06 - 04:08): No, not really. I haven't looked at my competition.
+Speaker B (04:10 - 04:40): Well, yeah, right. Well, I don't want you to mind them. Okay, but why this matters, it's because these are actually the ones who are now getting this big check out of those already interested customers. Well, it's not because they're better than you, but because they are likely the most visible in the eyes of Scott and your company or your business is not even there. You know, that's the tough part right now. Because even though you're the best option for junk removal in the area, but this.
+Speaker C (04:41 - 04:43): I'm sorry, how do you know that?
+Speaker B (04:43 - 04:45): Sorry, how do you. What do you.
+Speaker C (04:45 - 04:47): You said I'm the best junk remover. I'm like, how do you know that?
+Speaker A (04:47 - 04:49): Yeah, well, basically I know for sure.
+Speaker B (04:49 - 05:19): You provide quality works. Right. So this customer should be also calling you as well. Correct. So that's the top part right now. Even though you are the best option for every customer, but if they can find you easily, they will just jump off and call other competition in your area. Right? And that is the reason why we're here. Because what we will do here at 411Locals is we want to make sure that your business shows up in front of those customers. So the calls and the jobs come to you instead of someone else.
+Speaker C (05:19 - 05:20): How'd you find your number?
+Speaker B (05:20 - 05:21): I'm sorry?
+Speaker C (05:21 - 05:22): How do you find my number?
+Speaker B (05:22 - 05:37): Well, basically speaking, we work with another umbrella of our company who find us those reliable people that can provide quality services that will be perfect fit with our program. And that's one of the reason why we're giving you a call right now. Okay.
+Speaker B (05:41 - 05:42): Sorry.
+Speaker C (05:43 - 05:48): No, I've missed the lead. Literally picking up your phone. I thought you guys were literally, like, a lead.
+Speaker B (05:48 - 05:49): Hello?
+Speaker B (05:51 - 05:53): You have been kicked from this conference.
+",,,JOHNMENARDESCOTE25,James-owner ,Marshall Solutions Group/PNW Move and Clear,"Bellevue, WA, , ",COMMERCIAL & RESIDENTIAL JUNK REMOVAL,1,1,0,16271060,28,James-owner ,COMMERCIAL & RESIDENTIAL JUNK REMOVAL,"Bellevue, WA, , ",Pacific,Low season,December,Consultative & Validating,Female,Yes,unknown,No,No,Yes,Not Angry/Frustrated,English,Yes,available,Agent,NOVICE,2.8,"Start-of-Call Latency, Intelligibility, Silence/Dead Air Indicators",TRUE,,35.8,64.2,Agent-Heavy,5,5,0,0,Surface-Level,No,0,6,0:06,Resistant,Confident & Assumptive,Agent,29,Yes,Yes,Yes,Yes,Agent stated they would ask a few questions to see if it's a good fit.,3,0,2,0,0,0,0,0,No,2,6,4,22,7,4,0,3,0,Occasional,Agent-Heavy,Somewhat Structured,VI. Utilize ROI Calculation; VII. Assume the Sale and Begin Gathering Information,None,No,Yes,5,3,Professional,Yes,No,Declined,Neutral,Skeptical,Skeptical,Skeptical,"Customer sentiment shifted from neutral to skeptical around 04:41 when questioning agent's claims, and then to frustrated at 05:43 regarding how the agent obtained their number.",3 frustrations,0,0,353,During Pitch/Value Prop,Agent,34,No Commitment Secured,None,No,No,No,No,Disconnect - During Pitch/Value Prop,Lack of trust/rapport,TRUE,,TRUE
+16279179,2077175309,MARKCASEYALEGADO25,12/10/2025 7:58,XFER,CP108,246,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-10/20251210-235815_CP108_MARKCASEYALEGADO25-all.mp3,"Hello?
+Hello? Hi, uh this is Mark. Yeah, can you hear me?
+Yes, I can hear you.
+Alright. Maybe you can help me. Uh, do you do painting service?
+Painting service.
+Yes, we do. Uh-huh.
+Alright. Oh, I'm sorry. The owner, right? For Smith's Enterprises?
+Yes, Smith's Enterprises, that's me and my husband's company. Yes.
+Oh, okay. So, I'm calling you because we are seeing several people in your local area who are looking for a painting service online. My manager asked me ma'am to look for someone who are open for new customer, especially that you do residential work, correct?
+Yes, we do a lot of residential work. That's basically, um, what we do as of right now until we build. Exactly.
+Okay, wonderful for residential. That's great. And, um, pretty sure, oh, by the way, since you do have quality work as well, that's why my manager asked me to give you a call, okay? Oh, what's your name again? My name is Mark, by the way.
+My name is Cassidy.
+My name is Cassidy, nice to meet you. Pardon?
+Uh-huh. My name is Cassidy. Yeah.
+Cassidy. Alright. Nice to meet you as well, ma'am Cassidy. So you're still open for new customer here, right ma'am Cas- Cassidy?
+Yes, we are.
+Okay. So, uh, since we're looking for reliable business like yours, ma'am Cassidy, that's why my manager asked me to give you a call, okay? To work with. Anyway, uh, hold on for a moment, ma'am Cassidy. Let me call my manager here. Alright?
+Okay.
+Thank you. Okay, so it's ringing right now, ma'am Cassidy. Yes, ma'am.
+Okay. Uh, so ma'am Cassidy, while waiting for my manager, so is it Monday to Friday are open here or like everyday? What days?
+It's Monday to Friday, uh, usually around 8:00 a.m. to 6:00 p.m.
+Depending on clients' needs. If they need a different time, then we can try to work with them.
+Okay, I see. So Monday to Friday.
+Yes. But you can do for commercial as well, correct?
+Um, commercial, we're working on. Um, we are right now trying to get our licensing and stuff like that because um the state legis- state legislate is going to be changing to any jobs $15,000 or above, um, you're going to need specific licensing and class- classes. So right now we're just doing residential. We are going to upgrade, but right now we're staying residential.
+Okay. I understand it, ma'am Cassidy. So yeah, so just uh bear with me for a moment, okay? I'm still waiting for my manager. Okay.
+Uh, yes ma'am. Okay, thank you. Hold on.
+But you just, I mean, you also do other service, right? Aside from painting?
+Yes, we do a lot of different services.
+Like for handyman?
+Yeah, basically anything um that does repairs other than plumbing. Um, we don't do anything that would require any specific licenses like plumbing or electrical. Um, we don't touch any of that. If they need uh wall repairs, siding done, porch repair, porch installment, you know, there's a bunch of different things that we do.
+Okay.
+Alright. Got it. Oh, and I have my manager now. Hi Brian, I have here ma'am Cassidy the owner.
+Okay.
+So she's open for a new customer to do painting service. Alright, awesome. Thank you. Cassidy, thank you for taking my call. How are you all?",,,Bryan Bernal,12/10/2025 8:00,IG114,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-10/20251210-080205_CP111_LUISBERNAL-all.mp3,INCALL,UG142,1338,"your porch installment, you know, there's a bunch of different things that we do.
+All right.
+Got it.
+All right, I have my manager now.
+Hi Brian, I'm from Cassidy the owner.
+So check you up in for a new customer to do painting service.
+Okay.
+All right, awesome.
+Thank you.
+Cassidy, thank you for taking my call.
+How are you?
+I'm good.
+How are you?
+I'm doing good.
+Thank you, thank you for asking.
+Um, I did ask my assistant to give you a call because we're looking for a reliable business in your area to work with.
+Just want to ask you a few questions to see if this will be a good fit.
+Sounds good?
+Of course.
+All right.
+So, what type of services you usually take on?
+Uh, right now, we take on quite a few services.
+Um, we everyone in the company also has their 1099s.
+Uh, 1099, excuse me.
+Their Osha 10.
+Okay.
+Um, so everybody is covered under that for safety reasons.
+Okay.
+Um, now we do a lot of repair work.
+We do a lot of painting.
+Um, I I personally have a lot of experience um, in painting, um, commercial or residential.
+Um, so we also do porch repair, siding repair, siding replacement, installment.
+Uh, we also do if you guys like if there's a small roofing situation, we can take a look at it and do a quote on that as well.
+Um, we do a lot of interior as well, you know, if you need um, something a whole fixed on the inside or, you know, a wall taken out and put new dry new drywall sheet in, you know, we can do that as well.
+There's a lot of different things that we do.
+Um, that's why we basically just say, you know, if you want an estimate or a quote, we can just we can go look at it, get pictures and things go from there.
+Okay.
+Yeah, listen, how do you normally generate new clients, Cassidy?
+Like when it comes to people that doesn't know you yet.
+I generate new clients in a whole bunch of different ways.
+Um, basically I grew add advertisements, um, promote it on my different social media accounts.
+Okay.
+Um, create videos.
+I mean, there's so many different things I do.
+I see, I see.
+Okay.
+Um, because basically the jobs we want you to do, Cassidy, are not for us, basically for the people that search locally when they need them, right?
+Um, and and now we have like a spot open on Google.
+That's why we're calling you, right?
+So, are you guys able to take on some of these jobs, Cassidy?
+Of course.
+Yeah, of course we are.
+Yeah.
+Okay, so, um, because I was trying to look for for like have you checked your company on Google lately?
+Because we found you I think you're like on online directories, Facebook, right?
+I'm on Facebook, yes.
+Yeah, of course.
+And I I was not able to find like a Google listing for your company, right?
+Uh, not as of not as yet, no.
+Okay, perfect.
+Uh, the reason we're calling you is because well, I mean, within the last 30 days, we have almost like 2,000 searches for painting services.
+So my my question is very simple, Cassidy, right?
+If we can put you in front of these customers that are looking for your services, do you think that should be beneficial for your business?
+Yeah, I definitely think it would be beneficial.
+Okay.
+Are you the the one that takes the decisions for this company?
+Are you the the sole owner?
+Um, I'm the administrative office kind of lady.
+Um, yeah, my husband does all the I see, I see.
+Okay.
+My husband does all the building and stuff like that.
+I usually take on the jobs, take on the leads and check and see if it's actually worth our time.
+Okay.
+Got you.
+Got you.
+Basically, yeah.
+Okay, so that's good.
+I mean, you got a team, right?
+You got you got the perfect team.
+You got I mean, you're ladies taking the admin work and the guy, the man is the one doing the action.
+Yes, yes, 100%.
+And we have a couple other employees as well, so.
+Okay, so you have a crew as well that can help you in case that like we have like a big project, you guys can take it on.
+You guys can like get more people to help you, right?
+Yes.
+Yes.
+Okay.
+How far can you travel, Cassidy?
+Let's say when it comes to maybe uh, 20, 30, 50 miles radius.
+I'd say anywhere from like um, well, I live in we live in Dexter.
+So if I were to like put a name on it, the farthest I think we'd travel depending on the price of the job would probably be Augusta and north would probably be around Bangor or no area.
+Okay.
+And and like I said, depending on the job.
+I mean, if there's a Portland job that's like a $3,000 job that's going to be a week, you know, worth the work or whatever, then yeah, we would go down.
+But it really depends on what the job is and how long the duration of the job is.
+I see.
+So what's your local zip code there in Dexter?
+Like you said, 88230?
+No, it's 04930.
+04930.
+Let me show what we've got there.
+Okay.
+All right.
+Perfect.
+So you don't have no website as of now, yet.
+No website, just like social media.
+Right.
+Yes, so I'm I'm working on building that.
+Because you said you advertise.
+Um, I'm just trying we we don't have money to or extra money, I should say, to put towards um, any extra advertising.
+Um, I did try to put in for a Google um, business.
+Right.
+However, um, I'm still waiting on that.
+So, yeah, you you you're probably on the verification.
+Verification status because you need to verify your company on Google.
+Um, so they can let you list it.
+Okay.
+So basically that's what we certify here.
+We're Google certified partners, Cassidy, right?
+So we'll take care of all that for you, right?
+It means like um, we'll do the local SEO, the Google business setup, your website, listing your company on over 50 online directories, like getting all done.
+So what you're going to do is just focus on, you know, answer answering the calls, make sure like you say earlier, right?
+Those leads are going to, you know, they're going to make sense to you guys.
+You know, it's going to be something that you guys are able to do, right?
+Um, so you'll be in charge on that and we'll be dealing with the rest.
+Is this something that you might want to, you know, have an open mind to listen to it and see what we can do about it if the price is right?
+Huh?
+Um, well, like I said, I don't really have any extra funds right now though.
+I mean, I I'm interested but like we if we had the extra money, I would definitely do it, but we don't have the extra money right this second.
+I mean, I'm not asking you for money right now.
+Don't worry, we are post-paid service, meaning that we work first and we charge later, right?
+Uh, when it comes to to to uh, to our services.
+Uh, and we we're very flexible, right?
+I mean, I don't think how much you got in mind?
+Do you think we're going to charge like $1,000?
+I mean, no, I'm just thinking just general money wise.
+No, no, no, no.
+Basically, so no, we're very flexible.
+I'll go ahead and explain the project.
+Nothing to compromise, Cassidy.
+If you like what you hear, we can move forward.
+If not, I mean, we can part ways friends.
+Don't worry.
+Sounds good?
+Okay.
+All right.
+So listen, the Google listing thing, okay?
+Um, yeah, I mean, that's how everybody kind of look for like when they're when they're looking for clothes, any type of service, food, like 80% 80% of people use Google when they're kind of ready to buy, right?
+And 90% never scroll scroll past page one.
+Uh, I want to compete with those companies that I sent to you.
+Do you know any of them?
+No.
+No?
+Did you get them?
+The link The link that I sent to you?
+No, no, I got them.
+I I just don't know them.
+Okay.
+All right.
+So basically, um, I mean, we will be competing with them, right?
+Um, what I need you to do is just make sure the clients is going to be talking good about your services because they're going to be able to write a review, you know, under your company name, right?
+So you just make sure Hello?
+You have been kicked from this conference.",,,MARKCASEYALEGADO25, ,,-,,2,2,0,16279179,31, ,,-,,,December,Consultative & Validating,Male,Yes,Yes,No,Yes,Yes,Happy/Optimistic,English,Yes,available,Agent,NOVICE,3.2,"Start-of-Call Latency, Audio Stability, Intelligibility",TRUE,,34.9,65.1,Agent-Heavy,9,5,4,0,Moderate Depth,No,3,2,3:02,Resistant,Confident & Assumptive,Agent,15,Yes,Yes,Yes,Yes,Purpose and process outlined,1,0,1,0,0,0,0,11,Yes,2.71,15,4,17,4,3,1,3,0.34,Occasional,Agent-Heavy,Somewhat Structured,"None explicitly skipped, but flow was non-linear","Yes, agent returned to FOMO/competitor discussion after budget objection",Yes,Yes,2,2,Professional,Yes,No,Fluctuated,Neutral,Positive,Skeptical,Not Applicable - Transcript Truncated,Shift to skeptical/resistant at 06:30 when budget was mentioned.,1 frustration,0,0,1338,Closing/Payment Gathering,Unknown,65,No Commitment Secured,None,Yes,No,No,No,Disconnect - During Close Attempt,Unclear,TRUE,,TRUE
+16311618,2024555623,NOELMAULEONHULGUIN,12/23/2025 8:33,XFER,CP105,155,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-23/20251224-003333_CP105_NOELMAULEONHULGUIN-all.mp3,"Hello, please state your name after the tone, and Google Voice will try to connect you.
+Hello.
+Hello, sir. Uh, I still do mechanic work in Sparpoint?
+Yeah.
+Yes.
+Oh, good. Uh, by the way, this is Noel. Uh, who am I speaking with?
+Uh, Reese.
+Oh, the owner, Sir Reese?
+Yes.
+Oh, nice. Uh, Reese, uh, by the way, I'm calling because we're servicing people in your area, servicing on last-minute auto service, and my manager asked me to reach out to a few local businesses that can actually take on more customers. Are you able to handle new customers?
+Yes.
+Oh, perfect. This case, uh, just to be clear, Sir Reese, so we're gonna quickly help connect customers who are already searching for your kind of service. And do you work Monday to Friday or weekends as well?
+I work weekends as, uh, every other weekend, sorry. But yes, Monday through Friday.
+Oh, good. Oh, that's perfect, sir. This case, uh, we're just leaving it to local businesses for potential placement in front of your customer searches, and my manager just wants to confirm which one fits the criteria. Uh, how long have you been doing the mechanic business?
+Um, so I've been working on a car since I was about 14 years old. I am now 32 years old.
+Oh, so you own your business since you were a child or what is that?
+Um, no, I just, I don't own my business, so I, I grew up, um, down in the south, working on cars, working in the garage with my granddad, and I just, you know, took it on and, um, you know, I'm, I'm a car enthusiast, so on top of, you know, that hobby, I work on, like, people's cars, you know, on the side.
+So, oh, wow. So you have more than 10 years experience.
+Yes.
+Experience. Wow, that's perfect, sir. And do you have a shop or you go mobile?
+I go mobile.
+I see. Actually, I have my manager who asked me to give you a call. I'll be transferring you to them, okay?
+Okay.
+Yes, hello, Sir Oscar. I have you Reese, spending mechanic and more than 10 years in the business.
+Okay, excellent. Thank you. Hi, Mr. Reese, how you doing, sir?
+I'm pretty good, yourself?",,,Oscar Ross,12/23/2025 8:35,IG112,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-23/20251223-083551_CP111_MANUELRAMIREZ-all.mp3,DISMX,UG142,212,"Mm, they see.
+Actually, I have another manager who asked me to give you a call.
+I'll be trying to speak to them, okay?
+Okay.
+Yes, hello, Sir Oscar.
+I have here Mr. Ruiz, 10-year mechanic and more than 10 years in the business.
+Okay, excellent, thank you.
+Hi, Mr. Ruiz, how are you doing, sir?
+I'm pretty good, yourself?
+I'm doing excellent, thank you.
+Thank you very much for asking, sir.
+Yes, this is Oscar, Manager at 411 Local, sir, and we're looking for available company to work with Mr. Ruiz.
+And we see an incredible amount of customers looking for auto repair.
+And we want to know if you can take more customers for your business.
+Yes, I can.
+Excellent.
+And so you have, you, you have 10 years of experience doing this auto repair service, right?
+Yes, over 10 years.
+Over 10 years, okay, plus 10.
+All right, excellent.
+So you have a lot of experience, which is good.
+You do services, mobile services, or you have a location, Mr. Ruiz?
+I do mobile services.
+Mobile services.
+And how far you can go to give those services?
+Um, I, I sometimes I go state to state, so like Delaware, Pennsylvania, and uh Virginia.
+But that's not, that's not too often, you know, but I can.
+Okay.
+But you, I'm pretty sure that you prefer, you know, uh working your local area so you don't have to go so far, you know, 20, 30 minutes average, right?
+Yeah.
+Yeah.
+Okay.
+And how do you normally get new customers for your business, Mr. Ruiz, by?
+Um, via, via like Facebook, uh, uh, I have little cards and things like that that I pass around.
+Okay.
+So pretty much word of mouth.
+Word of mouth, recommendation.
+All right, that works too.
+That the.
+Of course that so, if someone is happy with the services that you offer, they will recommend you.
+That's, that's for sure.
+Yes, correct.
+Which is a slow process that works always.
+Okay.
+And Mr. Ruiz, just for me to, uh, and please correct me if I'm wrong, uh, your zip code 21219, is that right?
+Yes.
+Okay.
+All right, so I'm just checking right now in your local area.
+And I see a total of oh, 769 searches looking for auto repair mechanical services in your local area, Mr. Ruiz.
+And we want you, you know, to take advantage of of some of those customers.
+So if we can put some of those customers in front of your business.
+That will be something beneficial for your business, right?
+Right.
+So let me uh tell you who we are and and what we do.
+Our company Mr. Ruiz is 411 Local, sir.
+We're the biggest company for digital services.
+We help small and medium business to grow.
+So we watch the traffic of customers looking for the service that you offer.
+So whenever someone is looking for auto repair services, mechanical services, uh brakes, suspension, a scan or any, you know, any word related with the services that you offer, now, Google will recognize those searches and will put your business in front of them.
+Okay.
+All right?
+So, one of the first thing that we're going to do, Mr. Ruiz, you know, to catch those customers' attention will be build a website, professional website for your business.
+I would like to show you first, Mr. Ruiz.",,,MANUELRAMIREZ,Reese ,,"Sparrows Point, MD 21219, MD, 21219",Mechanic,1,1,0,16311618,7,Reese ,Mechanic,"Sparrows Point, MD 21219, MD, 21219",Eastern,unknown,December,Robotic & Script-Bound,unknown,Yes,Yes,No,Yes,Yes,Happy/Optimistic,English,Yes,available,Agent,Novice,5,,TRUE,,28.6,71.4,Agent-Heavy,8,5,1,2,Surface-Level,No,2,0,2:00,Interested,Confident & Assumptive,Agent,15,Yes,Yes,No,No,Agent stated the purpose of the call but did not outline the process or set time expectations.,0,0,0,0,0,0,0,0,No,3.28,10,3,10,2,3,0,0,0,None,Agent-Heavy,Somewhat Structured,ROI Calculation; Closing/Payment Gathering,None,No,Yes,6,4,Professional,Yes,Yes,Stable,Neutral/Positive,Neutral/Positive,N/A,N/A,None,0,0,0,212,Value Proposition,Unknown,90,No Commitment Secured,None,No,No,No,No,Disconnect - During Pitch/Value Prop,Unclear - Recording ended abruptly,TRUE,,TRUE
+16285018,2082964880,KARLBABONALES,12/12/2025 8:02,XFER,CP108,92,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-12/20251213-000158_CP108_KARLBABONALES-all.mp3,"Speaker A (00:06 - 01:12): Hello? Hello? Yeah sir, are you still doing painting? House painting? Yeah okay sir, this is Carlos. I'm calling because we are seeing several people in your area who are looking for a type of service online. My manager sir asked me to look for someone who can check my customers. Are you the owner of the company? Okay, do you have some Spanish or what's your name? My name is Carlos. Let's speak Spanish. You do commercial or residential? Owned for a moment. Are you a license? License insured insurance? Okay. I have here my manager, sir, Oscar, his name is Oscar also. Hello Oscar I have Oscar, the owner. He do painting, remodeling, DSL. Okay, excellent, thank you. Car hi Mr. Oscar. How you doing sir? I'm good, thank you. How you do? Excellent. I'm glad you heard that Mr. Oscar. Yeah, so this is. This is Oscar as well and.
+",,,Oscar Ross,12/12/2025 8:03,AGENTDIRECT,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-12/20251212-080305_CP126_MANUELRAMIREZ-all.mp3,HU,UG142,1777,"Speaker A (00:03 - 00:16): Okay. I have here my manager, Sir Oscar. His name is Oscar also. Hello Oscar. I have Oscar, the owner. We do painting and remodeling. He has life and insured. Excellent, thank you. Far. Hi, Mister Oscar. How are you doing?
+Speaker B (00:16 - 00:18): Far, I'm good, thank you. How are you doing?
+Speaker A (00:18 - 00:27): Excellent. I'm glad to hear that, Mister Oscar. Yeah. So this is Oscar as well and we're looking for available company to work with and we should increase our customers looking for.
+Speaker B (00:42 - 00:53): OK. I've only been with my business for a year, but I've always complied with what the State, license, insurance, everything, everything that corresponds, requires.
+Speaker A (00:54 - 01:11): Excellent, excellent, very good. That's very good for being a year in. We have had business owners who have had three, four years and still without a license. It's good that you are doing things right from the beginning, Mr. Oscar. Very good. And I want to think that you already had experience before, right?
+Speaker B (01:11 - 01:32): Yes, well, before starting my business, I spent seven years working for some people, so I also had to learn a little more English, so I can also have conversations with builders and homeowners, contractors and all that. So I took on the task of starting my business and here we are.
+Speaker A (01:32 - 02:01): Well, it didn't take that long either, seven years in which he learned the trade, in which he learned more new services, in which he also learned to speak English and that he decided, it's good that you made this decision, Mr. Oscar, to make your own money and be your own boss and win. Excellent, because the truth is that remodeling leaves quite well. Very good. And Mr. Oscar, with these seven years of experience that you have, can you do both residential and commercial services or do you focus more on residential?
+Speaker B (02:01 - 02:13): Well, I do both, honestly I do both and so far I haven't had any problems, thank God and we've been doing, well, we haven't been doing great, but regularly stable. We are, thank God.
+Speaker A (02:13 - 02:31): No, it is understood, the truth is that all businesses when they start, especially the first years, are complicated because people don't know them, they have to be making their name, they have to be making themselves known with the services that you offer. So they go.
+Speaker B (02:32 - 03:28): You know, before that, thank God, before starting my business, many clients, I'm not going to say that I took them from those I worked with, no, none of that, but all the clients and all the builders saw that I was always the face, I was the one with the face, my boss rarely arrived or only sent the invoices and all that and the claims, the guarantees, all that was me, it was me. So the clients, both builders, both referral, called me directly, even though I passed them on to the boss, the boss would say no, no, no, just tell me the price you're going to give and then the boss would charge. So thank God, I got a lot of customers when I started my business, so I had the task of going to places and houses and calling, God, this is my business, my insurance and all that and they started calling me quickly, so I talked to my ex-boss and said, don't you think I'm taking them from you? He says no, no, no, all your struggle gave mine, don't worry and I hope you do well.
+Speaker A (03:28 - 03:42): Of course, and above all, he learned something that he has to show his face too, maybe and his business is growing, but you are going to show your face and so that they know you have natural hinting and remodeling and who is behind the whole product.
+Speaker B (03:42 - 03:42): Exactly.
+Speaker A (03:44 - 04:10): You always learn and the truth is that people who adapt to changes, people or business owners who know how to improve those services, not only of organizing but of showing their face, well it also is. Now Mr. Oscar, of the services that you do, because remodeling is broad, what are the services that you should do? Better remunerate your business.
+Speaker B (04:10 - 04:44): OK, well look, what I do is the drywall, its roll taping, texture, all that, then comes the cleaning and then comes the painting, after that cleaning also general cleaning, I have other people who do general cleaning, like the people who clean the houses, after you've handed over the house you'll see that there's polo, stains, drops, all that, windows, doors, I have personnel for that and I also do tile, I do flooring, I do different activities, you understand me, Insulation, all that.
+Speaker A (04:45 - 05:01): Perfect, very good, well if it is a fairly complete service, until the cleaning there is no dust, the post construction clean. OK, excellent, well it's a pretty complete business. They do the internal remodeling and what about the external, for example window.
+Speaker B (05:03 - 05:39): Everything that is roofing I don't throw it away, I don't do it honestly what is the siting, I do any wall, a part of the house, I'm not going to tell you that I remodel it all. Why? Well, because I tried to do it and when I tried to do it my insurance tells me if it covers you, but your insurance will go up more like handyman. So your insurance already changes is higher, although the numbers are looking good right now, but it is higher and at the same time when you have nothing and you see that it goes down sometimes you will struggle a little because a high insurance has its risks.
+Speaker A (05:39 - 05:46): OK, well, then of the exterior that if it comes to be is window door installation, it would be like the silent repair.
+Speaker B (05:47 - 05:47): That's right.
+Speaker A (05:48 - 05:50): Not the complete installation, but only some.
+Speaker B (05:50 - 05:53): Repairs. Repairs, very good.
+Speaker A (05:53 - 06:13): So we are going to focus more on what I am seeing, on the interior remodeling, which is what should be more, which is better for you to do. OK, perfect. And currently Mr. Oscar, do you have any method or what method do you use? Rather that question, what method do you use to get new customers? By recommendations.
+Speaker B (06:14 - 07:39): Exactly. I even have a page on Yout that honestly, I'm not going to tell you honest, I'm going to be honest with you, don't think it helps me, it doesn't serve me because thank God I tell you, we are accredited and with the years when I worked for someone they called me, so already like the weekends that I didn't work with the boss they would tell me excuse me Oscar, I know it's the weekend, but you know that I got a. Yes you know that the whole floor of the laundry room was raised because the washing machine hose broke. Oscar, can you change this sheetrock And once that I can't give you an insurance because I don't have a business, it doesn't matter. To date, the work you have done here with us, very stable and well done. So call a company, a business, yes, the insurance and everything, but they come with. They do what they want, they do it sometimes reluctantly, if there are people or not, well when the house is alone, so you always this and you are always available. Well yes it sounds bad, but we all use money. Well yeah, it sounds. So to date thank God I tell you, I have not lacked work sometimes even, even I do not answer the calls because I already know the three hours to fifth already up the mountain and they pay me very well, they pay me the lodging and everything but sometimes also my family comes first You understand me?
+Speaker A (07:39 - 08:24): No, of course, of course. The family is always first and in fact you have this business for them, you want to give them more time, you want to give them more attention and that they have what is necessary more than necessary. Exactly, the family will always be first. I am always of the same idea that family is always first. Well look Mr. Oscar, we have excellent news. First of all I like it because I'm talking to you, you have a lot of experience, you have the desire, it didn't take you long to say you know what? Well I'm going to put the batteries, I know how to do it, I know how to make the contracts, I have my license in the first year and just last week here in the area where you are and please correct me if I'm wrong, here in Cowell in zip code 83605 Is that correct?
+Speaker B (08:24 - 08:25): Yes, yes.
+Speaker A (08:25 - 12:36): OK. Just last week we had a total of 1345 searches from people requesting construction and remodeling services. The truth is that there is a lot of work in the area where you are and what you were talking about there is no need to be traveling two hours, more than an hour. These searches that I am telling you Mr. Oscar are happening there in your local area, in your zip code so that you travel twenty, thirty minutes and people are looking for the services. So unlike what you already have because I see Natural Painting and Remodeling effectively in Drills there you have your information and also in MapQuest is practically the same. We unlike these companies, we are not an online directory, what we do is work with Google, we are Google Partners. This means that when people are looking for the services of any service you do, Drywall Painting, Remodeling Services, Bus construction, Cleaning or any other service, people will be able to know your business, Google will recommend your business and you will appear in front of those interested customers near your local area so you can get a better idea. Mr. Oscar, if we search right now Remodeling Services there in your local area you can search Remodeling Services to see what your competition is. Ethical remodeling LLC appears with 5 stars, 54 reviews Terry Construction appears equally with 5 stars, this one has a little more review 75 and there is Treasure Valley Remodeling and Restoration with 4.2 stars and this one has 9 ratings, reviews, sorry. These companies are the ones that appear on the first page of Google and there are more and what we want is that you can also appear on the first page when people look for the services that you can do so we are going to use the keywords the Google algorithm when they are looking for the services will present your business so that is what we want to do Mr. Oscar, that you are in the best place where to be if you have a business that is in Google. Now, what is the first thing we are going to do? The first thing we are going to do to attract the attention of those customers in your local area is going to be a professional website I would like you to see first of course Mr. Oscar how professional we are and how the design of the website can be for your business Look, I sent you a text message with a link that says Locals starts if you click on that link appears the design of the website and this is something that I just did right now in a couple of minutes more or less with information that you gave me of the services that you do we can change the design, put your own photos or videos in fact it would be important so that people can see in detail the quality of your work, that can be convinced and we put the name of your business What do you think of the design of the page sir? If you want you can put me Speaker so we continue talking while you see it OK, so we will put for example there the services, we put service 1, drywall services, service 2, painting services, remodeling kitchens, bathrooms, h. We will focus primarily on those that better remunerate without leaving aside Insulation, Window installation, Siding Repair but we will focus on the projects that better remunerate Mr. Oscar OK, perfect. Now, unlike Yelp or any other lead generator we do not sell leads, we do not charge any commission either very well, you can receive 20, 30 or more calls a month and you do not have to be paying for each of those customers who call you, in fact customers will call you directly, we are not intermediaries. Your phone number appears when people are interested in the services in any of the advertising services that we are going to do with that they click on your phone number will be linked the call directly to you or to you Mr. Oscar, there with you negotiate types of work, the costs, when they can start the project, everything necessary to the project that your customers need OK? Any questions up to this point Mr. Oscar?
+Speaker C (12:36 - 12:38): No ma'am, can you hear me well?
+Speaker A (12:38 - 14:27): Perfect, very good. Now Mr. Oscar, how effective are we going to be unlike Yelp? Well we are going to put it in a very simple way. We use Google more, we use Google every day and we don't use it so much and to search Right? So when people are searching on Google, Google is going to recommend it, it puts your business on the first page of Google and this is a complete service, this is not only a website, the website is one of the tools that we use. We put your own domain as W naturaltinkingandremodeling. Com At the level of large companies we put a business in the 50 directories equally most important in your local area Super Pages, Yellow Pages, Yahoo Business, mapquest, thumbtech and more. What we want is to make sure that you have a constant flow of potential customers who need services and who are willing to pay well for their work, OK? And that you don't have to be going to 2 hours 20, 30 minutes, there is a lot of work there where you are. We create your official listing in Google My Business and Google Maps so Google will already recommend you and we will cover all these guidelines that Google asks and so we make sure that every day people who are looking for your services will be easy to find them. Very well, so that is how we work. Now we are going to be realistic also we want to know what is the capacity that you can take of these 1,345 searches that I am telling you and we have to be realistic, maybe not all go with you. Let's assume, because there are many companies on the first page, assuming that at least 10% is a fairly real number, we are talking about 12 to 13. If you receive 12 to 13 calls Mr. Oscar a week, how many of them could you do the work for?
+Speaker C (14:27 - 14:28): Well look, being honest.
+Speaker B (14:31 - 14:31): More than anything.
+Speaker C (14:31 - 15:29): I have an accountant and I work. I don't think I just spend my time like some people who have their business; they already have a business and just stay at home. I'm working; I spray, I prepare, I do everything, and sometimes I don't have time to check my SketchUp. So, she's the one who calls me, ""Today is the 12th, by Monday the 16th, there has to be a house and it's from this date to that date, OK, everything is ready, you have to get it done."" I never wait. The company whose materials I like, I go get them because waiting is a waste of time. I do my SketchUp with the people and everything and I get moving, so she's reminding me all the time. So, I would have to see, because if I answer people right now, no, I can handle 5 clients, and then they call you, ""Hey, you messed up, what happened?""
+Speaker A (15:32 - 16:59): And that also matters a lot for the valuation they're going to give your business, that you commit, that you're responsible. Now, look, Mr. Oscar, let's think about it this way. As you're telling me, assuming it's one, at least one, because you've been doing well, because you have your schedule well organized, assuming you could only do one, I think, and that would be approximately like 4 a month on average. I think if you at least do these four projects in any case, we would be helping to grow your business. Very good. And Mr. Oscar, the cost for this complete online service, which is your website, your own domain W Natural Thinking and Remodeling, your business in the 50 most important directories, your business in an official listing on Google My Business and Google Maps, so that Google will recommend your business, this has a monthly cost of only $363.99 a month. I think if we achieve that goal at a minimum, I mean, in a worst-case scenario it could be more, obviously, and what we want is for your business to grow, but I think if we manage to make these clients interested in your services and have a constant flow of potential clients, it would be easy for you to pay these 363 dollars and 99 cents, right?
+Speaker B (17:01 - 17:03): It has a monthly cost, it would be a cost.
+Speaker A (17:03 - 17:28): Consecutive monthly 363 dollars and 99 cents. That's right, month to month, and effectively Mr. Oscar, it's a month to month services, which means that if you see that we are effectively making your business grow, that people are calling you and, most importantly, that you are making money thanks to that exposure, the only thing you will want is to continue with the service, right?
+Speaker B (17:28 - 17:41): Yes, of course. I understand what you're telling me, everything you're telling me, of course I understand it. But here's the thing. I say it with all due respect so that no one is offended, because apart from you, different ones have spoken to me.
+Speaker A (17:42 - 17:44): This era everyone gets offended.
+Speaker B (17:45 - 17:59): Exactly, exactly. Exactly. So not an offer. No, no, no, I don't know what to call it. Well, yes, okay, the offer is not expensive, honestly it's not expensive because you spend more on nonsense, honestly.
+Speaker C (18:00 - 18:01): But there it goes.
+Speaker B (18:01 - 18:28): Giving me a commitment for. Because I know my business very well, thank you. I am sane, regular. To commit myself and not fulfill it, I don't like. I don't like it. Why? Because until now, thank God, I say again, we are busy. Since I started my business, we are busy. I tell you again, there are times when I don't answer the calls and it looks a little bad, rude, but in my land we are like that, he who grabs too much, holds little.
+Speaker A (18:28 - 18:29): Yes, that's correct.
+Speaker B (18:29 - 18:36): You understand? So, why am I going to make a commitment if I'm not going to fulfill it later? OK, because later on.
+Speaker A (18:38 - 19:25): This is where many people get a little confused, Mr. Oscar, because that service is not designed to overload your business with clients. The service that we are offering is for you to choose the clients that best remunerate you. It's so you don't have to be traveling far, Mr. Oscar. Now, in any case, what it means to have a professional website and put your business online, that already gives your business an additional value, that people can already know your projects, that people already begin to recognize your name. Because effectively, Mr. Oscar, there is a big difference between companies looking for clients or clients looking for the company.
+Speaker B (19:25 - 21:05): That's right, you're very right. I'm going to understand you very well there. And I go back to the same thing, I'm very interested because as I say, I've been spoken to apart from different apps or something like that, I don't know what to call them. And if I quickly talk to my accountant, ""You know what? Look, these people spoke to me and like this, like that,"" she communicates with the people, just like with you, she asks for more information, everything that goes, what it is based on. Then she tells me ""Oscar, they are not asking for much, but as you just said, they are giving you, they are opening a door for you to grow more. Are you capable of growing more? Well, if you already have more sprayers, well to date no, you're the one who sprays, are you going to hire more personnel, more expenses, more payroll, more insurance, are you capable of all that?"" And right now no, because I only have one year. So once you believe, when you say, ""I currently have three people and I four and the two girls that clean the houses that I have."" When you already have a bigger business, immediately you and give me the order and I communicate with those who call us and we see which one suits us best. And absolutely, enough to grow and not only here in the State of areas, you can move to Utah, you can move further up, even all the contractors with whom you have worked come from Montana, come from Utah, come from other states, from Wisconsin, come from Washington and they say, they enter calls or messages or emails, they say ""Hey natural pa, we have a project here in some buildings in Utah that is young, is paying hotel, is paying all that."" Are you prepared for that? Honestly, so, so much so no. So at least the vision does not remain.
+Speaker A (21:05 - 22:47): That OK, businesses, there is no business that is a success, that has success as we want to see your business, no Amazon, or Facebook, or Tesla, or anyone in a year, I don't know how to say all that. So, look Mr. Oscar, the truth is that this is a process, it's not something that's going to happen overnight, don't think that if you do it, you're going to start being on Google tomorrow. We have to go through a validation process. Google needs to verify your business, that you effectively have your license, your registrations, that you effectively do the remodeling services, we have to put all those records in the directories. So this is also a process Mr. Oscar, it's not something that happens overnight, no? Yes, of course, we are also going to grow at your pace Mr. Oscar. Very good, because this is like any other social network, not because someone has a, a page on Facebook or on Instagram, it means that they are going to go viral immediately, that they are going to have thousands of likes, it doesn't work like that. So, Mr. Oscar, what we want is to start this process that within a year we are going to increase all these visibilities, OK? In fact, look, I'm going to send you the projection that we have for your business right now. So, in the first month we are going to build all the advertising material. At the beginning we are going to gain momentum and we are going to gain confidence with Google. There in the link that I just sent you, did you receive it, it's a bar, well, it's a graph.
+Speaker B (22:48 - 22:49): What is your name, sorry?
+Speaker A (22:49 - 22:51): Oscar, like you.
+Speaker B (22:51 - 22:57): Oscar, give me a second, brother, I'm going. I have to talk to the Sacramento gafas.
+Speaker A (22:57 - 22:58): OK, I'll wait here. OK.
+",,,MANUELRAMIREZ,Oscar ,Natural Painting and Remodeling,"Caldwell ID 83605, , ",Painting and Remodeling,3,1,2,16285018,36,Oscar ,Painting and Remodeling,"Caldwell ID 83605, , ",Mountain,Low season,December,Confident & Assumptive,Male,Yes,unknown,No,No,Yes,unknown,Spanish,Yes,available,Agent,,4.2,Start-of-Call Latency,TRUE,,53.19,46.81,Mutual Dialogue,4,3,1,0,Moderate Depth,No,1,6,1:06,Resistant,Consultative & Validating,Agent,6,Yes,No,No,No,Not Found in Transcript,2,2,2,100,0,1,0,1,Yes,38,251,10,5,7,6,4,1,0.03,Rare,Agent-Heavy,Somewhat Structured,VII. Assume the Sale and Begin Gathering Information,None,No,Yes,2,3,Professional,Yes,No,Declined,Neutral,Neutral,Skeptical,Skeptical,"Customer's sentiment shifted from neutral to skeptical after the agent presented the value proposition and price, primarily due to concerns about business capacity and readiness for growth.",4 frustrations,4,100,1777,V/VI - Value Proposition and ROI,Customer,113,Customer to Discuss with Partner,Explicit,Yes,No,No,No,Soft Decline,Need to consult others,TRUE,,TRUE
+16265388,2024457059,JUDITACLARIDAD,12/8/2025 10:36,XFER,IG103,142,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-08/20251208-103646_CP105_JUDITACLARIDAD-all.mp3,"Thank you for calling 411 locals. This is Julia, how can I help?
+Hello.
+Yes, hello. Um are you receiving a call?
+Yeah.
+Yeah, thank you for calling us back, sir. It looks like my manager was trying to call you. Are you doing painting service?
+I can't hear you.
+Oh. Sorry, can you hear me better?
+I can hear you, I can hear you now.
+Okay. Um yeah, it's my manager, sir, who was trying to call you. Are you doing painting service or drywall?
+Yes.
+Okay. Uh by the way, my name is Julia. May I know your name, please?
+My name is Jay. Your name is Julia?
+Yes, my name is Jay. Uh Julia. Okay.
+Yeah, Jay, my manager, sir, who was trying to call you because we're seeking several people in your local area who needs for painting service online. What are you located at?
+I'm sorry.
+I said what's your location? Where where you where you at? New York, New Jersey, Washington, Virginia? Where where are you located?
+Washington.
+You at what? Oh, okay, cuz I was looking at the numbers but the numbers the number was a New York number.
+Okay.
+Yeah, um my manager was trying to call you about this issue earlier, sir. if you can still accommodate new customers for painting service.
+Okay.
+Um you do the work, sir, during weekends as well, like Saturday?
+On weekend.
+Yes.
+Oh okay. Saturdays, Sundays, yes.
+Oh, okay, okay. Uh you are the owner, right? Of the painting service?
+Yes.
+Yes.
+Okay, great. Yeah, hold on, sir. I have here my manager um who was trying to call. Uh her name is Cora. Hi Cora, I have her Jay. He's calling back, the owner of painting service that they can accommodate new customers.
+Hi sure, thank you. Hi Jay, good morning. How are you?
+Hi. I'm well.",,,Cora Johnson,12/8/2025 10:38,AGENTDIRECT,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-08/20251208-103850_CP111_JOHNMENARDESCOTE25-all.mp3,P2P,UG142,1639,"People.
+All right, Miss Cora.
+Hi Cora, I have a J.
+He's calling that the owner of painting services so he can accommodate new customers.
+Ah, sure, thank you.
+Hi J, good morning.
+How are you?
+Hello.
+I'm okay, and you?
+I'm doing fantastic.
+It's Monday, so better be good, right?
+Well, uh, J, this is Johnson.
+Uh, thank you so much for reaching us back again.
+Um, actually, one of the senior area managers here in 411 locals.
+I did try to call you earlier because we're currently seeing several people in your local area who are currently searching and looking for your services right now.
+And pretty much we're looking for a refutable handyman that we can actually feature in front of those interested people.
+So just wanted to ask you a few questions to make sure you would be a good fit, okay?
+Okay.
+Uh, J, you are the owner of the business, correct?
+Yes.
+I'm self-employed, yeah.
+Perfect.
+And J, can you please tell me more about your business?
+Like how long have you been running your own business now?
+And what, when you do get new customers, what type of jobs right now usually you want more of or what makes you the most money?
+Well, the most jobs I would know is like in between painting, carpentry, and drywall, hanging drywall and painting.
+Mm-hmm.
+And how long have you been running the business now?
+I've been doing this for about 15, 20, almost 20 years now.
+Oh, wow.
+Congratulations.
+So pretty much I'm speaking with an expert then, I would say, right?
+Yes.
+Perfect.
+And I do, um, I do some, I do small, small plumbing and electric too.
+Just, just my, Okay. the basic, the basic electric and plumbing work.
+All right, perfect.
+That's good to hear.
+And, uh, are you mainly doing it residentially or you're also open to do commercial jobs as well?
+I do, I do mostly, mostly private, but I could do, I do commercial whenever, whenever available.
+All right, perfect, perfect.
+And so far so good.
+Um, how far are you willing to travel for jobs or how many mile radius are we looking at?
+It, it go, it depend on how, how soon I'm contacted.
+I could go to Falls Church, Virginia, Maryland, Clinton, any, any, any, any, any part in the DMV, any area, long, long as I'm contact, long as I have the information in advance, as long as I'm contacted, you know, in a timely matter where I could get to these places.
+Because like I said, I'm in the district, I'm in DC.
+Mhm.
+I live in the district.
+Mm-hmm, mm-hmm.
+Oh, wow.
+So pretty much you can travel where the money is, I would say, right?
+Yeah.
+All right.
+That's perfect.
+Yes.
+I see.
+But the business is, uh, originally located in what city and zip code again?
+Washington, DC.
+Uh-huh, and what's the zip code?
+20019.
+19.
+Okay, thank you.
+And so far so good, J.
+I'm pretty sure you're still open to take on more jobs for your business, correct?
+Yes.
+I see.
+Well, here's the thing, J.
+The reason why I ask you that question is because again, like what I told you, we've been seeing a lot of people in your local area, specifically in Washington, DC, in the city of Washington, DC, that are currently looking for handyman services, most importantly for painting, carpenter and drywall.
+And actually in the past 30 days alone, out of that 574,000 population in Washington, DC, there is already a total of 38,238 total monthly search in the past 30 days alone, currently searching and looking for a refutable handyman.
+So if I could put your business in front of those interested people, searching and looking for your services, that would be something very, very beneficial, right?
+Okay.
+Yes.
+I see.
+Uh, so far so good, J.
+I'm just curious to know, you mentioned you've been this, uh, this business for a long time now, but how do most of your customers usually find you?
+Is it online or just word of mouth?
+They can find me online and then and then they pass word word to mouth.
+They pass it on to other people throughout, um, throughout the region.
+That's how I've been getting business.
+I see.
+That's great to hear.
+So pretty much that speaks to the quality of your work and that's one of the things that we're looking for someone who provides handyman service in Washington.
+Here's what we do, J.
+When people search online for handyman services in the city of Washington, DC, they usually don't type in the business name.
+They just search for the service, like painter near me, or the best carpenter, or drywall services here in Washington, DC.
+Right.
+Okay.
+Right?
+And if you're not showing up, I understand. your competitors are getting those phone calls.
+Have you ever heard about VanDam handyman LLC?
+Do you know them?
+No.
+Um, how about Handyman of DC One LLC?
+Does it ring a bell?
+That bring a bell.
+I see.
+Maybe you also haven't heard about Clappinberger and Son and Capital Hill Handyman Solutions.
+Does that also ring a bell?
+No.
+No.
+I haven't, I haven't heard of that.
+But I think I've seen it online before somewhere.
+I see.
+Well you see, J, uh, these are actually, Sorry?
+I'm listening.
+I'm listening.
+Go ahead.
+Right.
+Sorry to interrupt you, J.
+Now, you see, J, I don't want you to mind them, but why this matters is because these are actually the businesses that are getting now the big checks out of those already interested people looking for painter, carpenter or drywall contractor.
+It's not because they're better than you, J, but obviously speaking it's because they are more visible and easy to be found online.
+Right.
+Uh, you know, you see since the COVID pandemic had happened, almost 84% of people nowadays don't usually talk to their neighborhoods anymore when they're looking for something.
+That's right.
+They will just pull up their phone, go online and find what they wanted to buy.
+And those people are now getting and dominating the area.
+You know, that's the tough part, J.
+You may be the best option for customers, but if they can't find you, they will just jump off and pure competitors are getting those phone calls.
+And that is the reason why we're here, J, because what we do here at 411 Locals is to make sure that your business shows up any time of the day in front of those customers, so the calls and the jobs comes to you instead of someone else.
+And I'm pretty sure that would be something that will be beneficial for your business, right J?
+Right.
+Yes.
+Right.
+Um, what's the name of your business, J?
+I don't have no real big name or nothing like that.
+Just, just, just J hand, just J the handyman.
+Right.
+J the handyman.
+I see.
+Okay, that's a good name already.
+All right, not a problem.
+Well, J, I don't know, I don't know if you've heard about our business before, but our company is called 411 Locals.
+We're actually one of the fastest growing full-fledged advertising companies in the country.
+Uh-huh.
+We are also a certified Google partners.
+We have a four star rating on Google.
+And J, I'm not bragging, but we have helped over 70,000 business owners, small to medium sized business owners like yours.
+Wait a minute.
+what is 411.
+I'm, I'm, I didn't mean to cut you off.
+What is 411 lookout?
+And most of them are what is this 411?
+Oh, no.
+411 Look.
+I know.
+Let me send you our website.
+Is this number textable?
+You can receive a text message?
+Yes.
+Yeah, let me send it to you, sir.
+That's our official website and our certification coming from you, Google.
+You got it?
+Okay.
+Uh, did you receive it?
+Okay.
+I got 702291.
+Yeah.
+Yep.
+Okay.
+Yeah, that's the our official website and our Google partner badge.
+You can put me in speaker phone while you're, you're opening those links, but pretty much what, again, we will do the marketing for you.
+So really all you got to do here, J, is just to pick up the phone calls and do the best that you can do to make your customer happy.
+And I'm pretty sure you can do that, right?
+Correct?
+Right.
+Yes.
+Now, the first thing that we will do here, J, is the most important part, which is to put your business on the front page placement on Google under five of your services that you mainly provide.
+Let me ask you this, J.
+Okay.
+When was the last time you used Google to search for something?
+Oh, it's been a while.
+Right.
+But it's been a while.
+But when you use Google, were you able to find what you're looking for?
+Most of the time, yes.
+Right.
+Well, it's because J, Google is the money maker.
+Well, based on his researchers and studies, Right, exactly.
+84% of people nowadays are using Google.
+And here's the kicker, J.
+94% of those people don't even past the first page results.
+Right.
+I don't know if they go to the 10th page or the bottom page of Google, but when I'm looking for something, I go directly that is the one that is highly suggested on the front page.
+And that's the reason why we're putting you on there.
+Because once you are on the front page of Google, J, you are naturally going to get calls since people associate the businesses on the first page as being the best anyway.
+J, do you have some photos of jobs you did?
+Uh, before and after photos?
+I have them back at the house with my other phone.
+I have, yeah, I have a lot of photos.
+That's perfect.
+Then it's time for you to show it to your customers because those photos is really important to build credibility of the works of the quality of the jobs that you did.
+I actually sent you another link to your phone, J, that should be a sample website that I created for your business.
+Do you have a website already or not yet?
+No, I have, I just have my email and my messages.
+You know what?
+Can, can you all please, can I, can you do me a favor?
+Because I'm in the dentist right now, he just called me.
+I'm getting my, um, dentures put in.
+Can I, can I, can you call me back about 4:00?
+Is that a good time?
+I can always, Uh, I can always call you back, J.
+That's not going to be a problem, but I'm already done here.
+Just wanted to wrap it all so you would have the information regarding everything.
+Let me just wrap it all.
+Okay, yes, because I'm getting these dentures put in now.
+Okay.
+I'm listening.
+Okay.
+Just give me, all right, perfect.
+Now, if you could open the link that I sent you right now, J, that should be a sample website, the one that has your phone number, and then you will be routed to a sample website that I created for your business.
+You got it open?
+You got the link?
+I don't have the link.
+Let me see.
+The one that has your phone number, 411 locals.com/your phone number.
+From the same phone number.
+Yes, I'm trying to go back there.
+I see the text and, uh, let me see.
+While you're finding it, J, you can still hear me, correct?
+Yeah, I can hear you.
+Right.
+So pretty much it's, um, again, that website is pretty much customizable based on your preferences.
+So if you want to change the colors, if you have some photos that you said you have, then we can actually attach that on the website to make it more enticing so that we can put your best foot forward from your business competition.
+And then lastly, Okay.
+We guarantee you a full brand maximum explosion.
+Okay.
+what you got.
+I didn't mean to cut you off.
+Let's see what you got.
+The official website 411 locals.
+Google partner.
+Okay.
+Tapp.
+And you did it.
+I'm trying to load it now.
+I'm trying to load it now.
+It said there are many ver, veritables 411 locals.com.
+Yeah.
+And then, uh, what do you see on the screen?
+I see there are many ver, pages and long.
+You see the name of your business, J the handyman?
+Give free consultation.
+Now she's calling me now.
+Oh yeah, I see the handyman.
+I just don't see my name.
+Oh yeah, I see it.
+I see J the handyman.
+On the top.
+Yeah.
+Yes.
+Do you like it or you don't like it?
+You can scroll down for you to see it more.
+Yeah.
+I like that.
+Right.
+Okay, perfect.
+Now again, um, just let us know what are the modifications that you want us to do here, change the color.
+If you have some photos, we can put it on the gallery of photos of the before and after jobs to make it more, um, enticing and professionally done, okay?
+And then lastly, J, we guarantee you a full brand maximum exposure online and that is one of the reason why we're also going to be putting your business over 50 online directories.
+Okay.
+We will put you on Yelp, Manta, Merchant Circle, Super Pages, Yahoo, Bing, Craigslist, basically anywhere online.
+And you don't need to pay them separately.
+Why?
+It's because we want to make sure that wherever the customer would search and look for the services that you specialize and you do, we will make sure that you're going to be showing up there front and center your competition.
+All right.
+And now, J, out of the three services I mentioned, the Google, the website, or putting your business under 50 online platforms, which one do you think would benefit your business the most?
+I guess the Google.
+Exactly.
+Yes, Google is the the key to success because the higher your Google placement is, the higher recommendation that you would have.
+But again, as you can see, J, we use all this following elements that I just mentioned because, uh, to help you establish and maintain a strong online presence, which is so critical these days.
+And our ability to generate new customer is why 99% of them really are happy with the results they see.
+Now, it's almost impossible not to make money with this program, J, because remember, we reposition your business in front of those interested people who are already searching for your services.
+The problem is that they just don't know who you are, right?
+J, can you open the last link, uh, the link that says, uh, Google partners?
+You got it?
+Right.
+The Google partner badge, the one with with along with the official website.
+Just wanted to show you something.
+You got that, right?
+I'm trying to find it.
+Contact information.
+Yes, no, I'm still.
+No, just go back to your text message and then you can see there the official website and then Google partner badge.
+And then I want you to click the one that says google.com.
+I see, I see Google partners badge.
+You said click that one?
+Or would you like me to send it again to you?
+Yeah, you click the link and then you will be routed to a Google website.
+Let me know once you're there.
+Okay, I'm here.
+And what do you see on the screen?
+Can you read something for me?
+It's kind of small.
+Let me see.
+Let me large it.
+Um.
+You got preference then certifications.
+Right.
+Mhm.
+That's correct.
+Google Google partners.
+Mhm.
+Mhm.
+Google partners.
+Right.
+Now, if you can see on the link, I'm looking.
+I'm looking.
+No, no, no.
+Just don't click the, just don't click the link.
+Just let it there, okay?
+Now, what you're seeing, J, is a Google website.
+If you could see the link that you clicked in, it says google.com/partners, it's not our website, J.
+It's directly coming from Google, right?
+You can also see our name, 411 Locals, and we have met our requirements to be a certified Google partners.
+Right.
+We also maintain an optimization score of at least 70% indicating that we have set up our clients to perform well, which shows you our ability to actually help our clients consistently and identifying new growth opportunities and sustain their success on an ongoing basis.
+Are you following?
+Now, I'm showing you this, J, because Google would never ever associate themselves with just anyone.
+Yes.
+A multi-billion dollar company will never ever compromise their reputation that they built for a long time by being in partners with a non-legit company, right?
+Right.
+And also from those 900 SEO companies around the US, only five were given the batch.
+And we are proud to say that we know exactly how to help you and your business in getting the right exposure you need that will also help you generate the right clients for your business.
+So really, we will do the marketing for you, so really all you got to do here is just to pick up the phone calls and do the best that you can do to make your customer happy.
+And I'm pretty sure you can do that, correct?
+Yes.
+Correct.
+Now, let me ask you this, sir.
+How much do you make for one painting job right now?
+I know it depends how big the job is, but what is the average cost of one job for you?
+The average, like you said, depend on the room, or the house.
+If it's a whole house or if it's a room, a whole house, the, the, I could, I could charge about, $2,000 depending on how many stories, how many squares, mm-hmm, okay.
+Now, in what?
+$2,000.
+If we're talking about a $2,000 job, sir, out of the number of searchers right now, let's say if I drive you 40 customers in a month, how many do you think you could do business with if it's a $2,000 job?
+Out of the 40 in one month.
+40 jobs in a month?
+Mhm.
+For $2,000.
+I could, I could get, uh, most of them done.
+Right.
+Can you give me a specific number, like realistically speaking?
+Like for, um, depend on how many workers I have with me, how many people I got working with me.
+So realistically, if it, it was me or another, me and another partner person, mhm.
+About, mm.
+Now, how many jobs you said?
+40?
+Um, yeah, 40 in a month.
+If ever, if ever so.
+40 jobs but how big?
+You, you're not telling me how big the job.
+$2,000 job.
+A $2,000.
+A $2,000.
+$2,000?
+Oh, okay.
+Well, about half of it.
+I say about half.
+All right, 20.
+Okay.
+That's a good number already.
+Now, If we're talking about $2,000 job multiplied by 20, roughly estimation, you make $40,000.
+$40,000.
+From the exposure we give you, right?
+And I'm pretty sure, J, you wouldn't be mad at me.
+You're making at least $40,000 every month if you make 20 customers, uh, you wouldn't be mad at me.
+And plus you're getting constant flow of new customers calling you every time they need something done.
+You wouldn't be mad at me, right?
+Yeah, that's definitely, but that's not, that's not, that's not, I would be mad at you, but that's not 100% guaranteed though.
+Exactly.
+That's not 100% guaranteed.
+Exactly.
+That is not 100% guaranteed, but what I'm trying to ask you here is just once you receive one single phone call, please do the best that you can do to make your customer happy.
+Is that something that you can do?
+I understand.
+I understand, yeah.
+I'm going to understand.
+Right.
+Now, let's say for example you make $40,000 from the exposure we give you.
+If I'm going to charge you $600 a month and you're earning $40,000, that should already cover more than the cost of the service and gives you a constant flow of new customers every time they need something done, correct?
+Right, right.
+Right.
+But of course, I'm not going to ask you to pay $600 a month, J, because normally the price of the package that I'm presenting to you from other companies who will offer you this kind of service, it will range from 700 to 1,000 bucks.
+But we are giving you a huge discount because we want to earn your business the old fashioned way, which is to show you first results.
+I appreciate that.
+So that's one of the reason why, Of course.
+So with us, for the maintenance fee every month, regardless how much you're making, or regardless how many jobs you get, it's all yours.
+We're not going to be asking for any cuts or any commission.
+For you to maintain the program instead of $700, it will be only $485.98 flat rate.
+But then again, I'm not going to ask you to pay today.
+$485.
+Yeah, $485.98.
+But then again, J, I'm not going to ask you to pay that today.
+Remember, we want to earn your business the old fashioned way, which is to show you results, and that's the reason why that monthly payment will start 30 days from today.
+To be exact, your billing cycle will be every the 10th of every month, starting on January 10th, and we'll be auto-built as your monthly recurring fee.
+But today, J, believe it or not, today you will have to, I have to, I have to, I have to lay down and think about this, okay?
+I understand.
+And plus, I'm in the dentist right now.
+That's why I need you to call me back about 4:00.
+I have to get this dentures in my mouth.
+But, um, Can I think about this?
+Uh, yes, but I'm not yet, uh, finished though.
+You know, today I'm only giving you $59.98.
+I have to, I have to, I have to.
+Oh, okay.
+Wow, can't beat that.
+Yeah.
+But I have to, I have to see this business.
+I have, they're calling me now.
+I can't miss this.
+Can you please, can I have you call me back?
+I'm in the dentist office right now.
+Yeah, if I call you back later, would you, are you going to pick up the phone or not?
+What time can I call you?
+Oh yeah, I have to pick it up.
+Okay.
+Cuz that means I hear some more about this.
+About 4:00.
+Mm-hmm, is there something that you would like, uh, how likely you would like to proceed with this program?
+Um, so interesting.
+I need to hear some more though.
+I'm sorry?
+That's what I need to.
+So I would need to hear some more about this company.
+That's why I need you to call me back.
+What do you want to hear from us then?
+Uh, more about the prices.
+You were saying this is, is, is, you have a better discount, right?
+Yep.
+It is.
+That's what I can't concentrate right now.
+I'm these people fooling with my dog on teeth.
+I, you have to call me back at 4:00 because I can't concentrate right now, okay?
+I appreciate that.
+Just level with me right now if you're not interested or not because if you ask me to call you back, I'll be calling you back until the end of the day here, J.
+Okay.
+You're calling me back until the end of the day?
+Because I spoke with a lot of business owners, J.
+They told me to call back, but I never received any of their responses.
+So I just want to be sure we are on the same page right now.
+Okay.
+We're on the same page.
+Because my job here is not to.
+You said $485 a month for your fee, right?
+For your services?
+Right, but today you can already start the program.
+Exactly.
+But for you to get everything started today, it's only going to be $59.98.
+Well, just $59 now.
+Right.
+That's the setup fee to get everything started.
+One of the reason why it's only 59.98 today so that at least we can show you results first.
+This is a month to month.
+We are performance-based company.
+So basically the concept we want you to make is which is for you to make money first before we do.
+Does that make sense?
+It does.
+Bottom line is once you are making profit out of the program, obviously you'd stay.
+When you stay, then that's how we make money.
+So really, all I'm going to be asking from you here is just give me 1% and let me earn the 99% all throughout the process.
+Okay, I understand what you're saying.
+I have to, I have to think about this.
+Okay, that's what I'm, I'm asking you to give me time to think about this also because right now I can't make up my mind.
+Mm-hmm.
+Okay.
+Yes.
+Okay.
+In a scale of 1 to 10 right now, how likely would you would like to proceed with this program?
+Uh, about six.
+How can I make it to 10, sir?
+I have to think about it.
+That's what I said.
+Let me finish with this dentist supporting.
+Okay.
+And do what I'm doing in here.
+Okay, bye-bye.
+Okay, then I'll call you at 4:00.
+Bye.
+You have been kicked from this conference.",,,JOHNMENARDESCOTE25,Jay ,,"Washington, DC, , ",Painting,1,1,0,16265388,6,Jay ,Painting,"Washington, DC, , ",Pacific,unknown,December,Hesitant & Apologetic,Female,Yes,UNKNOWN,No,No,Yes,Neutral,English,Yes,available,Agent,unknown,3.4,"Audio Stability, Intelligibility",TRUE,,37.04,62.96,Agent-Heavy,18,8,8,2,Moderate Depth,No,37,16,37:16:00,Fluctuated,Confident & Assumptive,Agent,26,Yes,Yes,Yes,Yes,"Agent stated the purpose was to ask a few questions to ensure a good fit, but did not outline time expectations or the full process.",7,3,7,42.86,0,0,0,0,Yes,5,13,7,70,50,30,20,11,0.4,Frequent,Agent-Heavy,Somewhat Structured,None,"No major reordering, but closing attempts were interspersed with re-explaining value/credibility due to customer questions and objections.",Yes,Yes,3,3,Professional,Yes,No,Fluctuated,Neutral,Neutral,Fluctuated,Resistant,Shift from engaged to resistant around 10:20 (first attempt to end call due to dentist); stronger shift to resistant around 20:10 (repeated attempts to end call); frustration expressed around 22:20.,4 frustrations,2,50,1639,Closing/Payment Gathering,Customer,439,Customer to Think It Over,Vague,Yes,No,No,Yes,Soft Decline,Timing concerns; Need to think,TRUE,,TRUE
+10766932,2085378913,MAUREENJOYCARPENA,12/9/2025 11:23,XFER,CP108,108,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-09/20251209-112349_CP108_MAUREENJOYCARPENA-all.mp3,"Hello?
+Hello?
+Hello?
+Hi there, this is Erin speaking. Have I reached Ed Lillas Painting?
+Hello?
+Hello, can you hear me?
+Yes.
+Yeah, are you still doing painting services?
+Yes.
+And am I speaking with Ed?
+Yes.
+Hi, Ed, my name is Erin. Maybe you can help me. I'm calling because we're seeing a surge of people in your area searching online for your type of service. And my manager here, he asked me to, uh, reach out to a few local businesses that can actually take on more customers. Can you still handle new customers, if I may ask?
+Yes, we can still.
+Oh, that's good to know. So, um, Ed, it's really my manager who asked me to give you a call, as I've mentioned earlier. Um, is it okay if I'll go ahead and connect you over to my manager so he can further discuss it with you? This will just be quick.
+Yes.
+Thank you. One moment. I'm going to contact my manager now.
+We might record this call. And trying to add a little bit like speakers as well. Uh, we're not looking for work. What we do is we help connect customers who are already for your type.
+So, if your call is now first in line and will be answered by the next available representative. The estimated hold time is currently 15 seconds.
+Please bear with me.
+Hello?
+Hello?
+Hi, I have here Ed now. He's the owner and they can still accommodate new customers.
+Thank you. I'll take it from here. Hi Ed, how are you?",,,Cora Johnson,12/9/2025 11:24,IG104,-,-,-,-,-,-,-,JOHNMENARDESCOTE25,Ed ,Ed Lilis Panting,", TX, ",Painting,1,1,0,10766932,42,Ed ,Painting,", TX, ",Central,unknown,December,Consultative & Validating,Female,Yes,Yes,No,Yes,Yes,Skeptical/Cautious,English,No,available,Customer,NOVICE (Job Seeker),2.8,"Start-of-Call Latency, Audio Stability, Silence/Dead Air Indicators",TRUE,,0,0,Not Found in Transcript,0,0,0,0,Not Found in Transcript,No,0,0,0:00,Not Found in Transcript,Not Found in Transcript,unknown,0,No,No,No,No,Not Found in Transcript,0,0,0,0,0,0,0,0,No,0,0,0,0,0,0,0,0,0,None,Not Found in Transcript,Not Found in Transcript,All stages skipped due to empty transcript,Not Found in Transcript,No,No,0,0,Not Found in Transcript,No,No,Not Found in Transcript,Not Found in Transcript,Not Found in Transcript,Not Found in Transcript,Not Found in Transcript,Not Found in Transcript,0,0,0,0,Early Disconnect - Before Discovery,unknown,0,No Commitment Secured,None,No,No,No,No,Early Disconnect - Before Discovery,No interaction - empty transcript,TRUE,,TRUE
+15367465,2092155355,NATHANIELPASION,12/17/2025 13:24,XFER,CP108,257,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-17/20251217-132410_CP108_NATHANIELPASION-all.mp3,"Hello? Hello. Hey, can you hear me? Yes, hi. Yes, sir. Uh is this Waki uh with uh with eating and uh paper? That's right. Who's this? Uh yes. My name is my name is Isaiah, sir. Uh and uh maybe you can help me out. But by the way, sir, uh am I speaking to the owner of the business? Uh that's correct. Okay, great. Well, uh, I'm calling sir because uh we're seeing a surge of people in your area searching online for your type of services. And my manager asked me to reach out to you and to a few local businesses that can actually take on more customers. By the way, sir, uh do you uh do the job yourself or do you have people working for you? Uh, both. Uh both. Okay, that's great, that's great, sir. Well, uh this is about reviewing a few local businesses for potential placement in front of your customer searches. And my manager just confirmed which one fits your criteria. I'll have you talk to my manager right away, and that is something you need to discuss between the two of you since it includes, you know, confidential information, okay? Okay. Okay, just give me a second. I'll be putting you to his line. Okay. And this is the phone number of the company, right sir? Uh 209 215 Yeah, this is correct. Yeah, you got it. Okay. Okay, just give me a second, sir. Let me just check here if he has already answered the call. Okay. Okay, sir. I already have my manager on the line. Uh, Oh. Just give me a second. What what company you guys? Oh, uh, I'm with uh, we are with 411 Local, sir. And we have been in business since ****, 18 years in the business, and my name is Isaiah, sir. Okay. Where are you guys based out of? Uh, we're based in uh, Las Vegas, Nevada, sir. We have already uh, 70,000 customers all over the US. Nice. Yes sir. Is your manager on the line? Uh, just give me a second, sir. Uh, the call got disconnected with him, so I'm trying to message him again so he can uh, take the call. Oh, you guys are all online calling? Okay. Yes. Uh, we we have different extensions, sir. So, uh, we're not just uh one office. We have different extensions. Yes, sir. Okay. So that uh, when somebody calls us, they can just directly dial the extension when they uh, you know, for example, they uh, got in touch with a customer service, they can dial the extensions separately. Yeah, yeah. I understand. Where are you from, man? Well, uh, originally, uh, I'm from Asia, sir. I'm in Mhm. Well, okay. Uh, I think I already have my manager here. Mhm. Yeah, I can hear him breathing. Okay, sir. Uh, yes sir. Uh, I have here my manager Mr. Ishmael. Oh, by the way, sir, I didn't catch your name. Can I have your first name so I can uh, Levi, man. Levi. Okay, thank you, sir, Mr. Okay. Uh, hello Mr. Ishmael. Uh, I have here Mr. Levi. He is uh, the owner of Waki uh, Weed Eating and uh, Landscaping services in Sonora, California. And Mr. Levi, I have here my manager Mr. Ishmael, and he will be taking the call with them. Okay. Oh. Hi, how are you today? How is going your great your day so far? It's all right, man. What's up? Okay, that's great.",,,Art Estrada,12/17/2025 13:26,IG112,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-17/20251217-133132_CP111_ARTURODELEON-all.mp3,N,UG142,39,"this website that you got a good ranking for the service. Um, this one, do you manage it directly by yourself or do you have someone working on this website for you that you pay for the service? I do it myself. Oh, okay, okay, okay. Okay. Now, when this service that you do, tell me for the service that you provide about the landscaping and advice, tell me what are the jobs that you do the most to your customers? Uh, we wacking and uh leaf raking, uh lot clearing, uh brush brush cutting, stuff like that. Clean up.",,,VDAD, ,Wacky Weedeating,"Sonora, CA, 95370",Landscaper,1,1,0,15367465,51, ,Landscaper,"Sonora, CA, 95370",Pacific,Low season,December,Consultative & Validating,Male,Yes,UNKNOWN,No,Yes,No,Mixed Emotional Signals,English,Yes,available,Agent,SKEPTIC (Burned),2.8,"Start-of-Call Latency, Audio Stability, Silence/Dead Air Indicators",TRUE,,50,50,Mutual Dialogue,2,1,1,0,Surface-Level,No,0,0,0:00,Neutral,Consultative & Validating,unknown,,Yes,No,No,No,Not Found in Transcript,0,0,0,0,0,0,0,0,No,2.5,3,0,1,1,0,0,0,0,None,Mutual,Unstructured,I. Proper Introduction; II. Clear and Personalized Reason for the Call; IV. Highlight Competitor Success Using FOMO; V. Value Proposition; VI. Utilize ROI Calculation; VII. Assume the Sale and Begin Gathering Information,Yes,No,No,0,0,Professional,No,No,Stable,Neutral,N/A,N/A,N/A,Not Found,0,0,0,39,Discovery Phase,unknown,39,No Commitment Secured,None,No,No,No,No,Disconnect - During Discovery,Unclear,TRUE,,TRUE
+16289266,2095341102,NOELMAULEONHULGUIN,12/17/2025 14:48,XFER,CP105,102,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-17/20251218-064847_CP105_NOELMAULEONHULGUIN-all.mp3,"Hello. Hello, sir, uh, we got disconnected. Oh, yeah, sorry. Yeah, yeah, sir. So, yes, actually my manager is the one who asked me to give you a call. Uh, my manager is ready here. I will be transferring it to him, okay? Hey, wait, wait, wait, wait. Hello. Yes, sir. I want to know what is this about? Like you guys need detailers to work for? Yeah, yeah, sir. Um, we're looking for someone who can do detailing in Modesto. Okay. Yes, so do I get paid like a, like an hour or something or? Are you an owner dealership? Uh, no, sir. Uh, actually, what we do is we study the number of people going online searching for your type of service, then we connect them to business like yours. For a fee or free? Uh, my manager will be the one to discuss that, sir. We will need to, they will need to check something first. Actually, I have now my manager who asked me to give you a call. I can transfer you to him, okay? That's fine. Okay, okay. Thank you. Okay, my manager is ready here. Uh, hello, Sir Patrick. I have here, um, Vinny, can do detailing and for use in the business. Okay, thank you. Hi, Vinny, how are you? Good.",,,Patrick Garcia,12/17/2025 14:50,IG112,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-17/20251217-145018_CP111_MICHAELANGELORAMOS-all.mp3,NI,UG142,38,"right here. Uh hello Sir Patrick. I have here um Vinnie can do detailing and for use in the business. Okay, thank you. Hi Vinnie, how are you? Good. Good to hear. Uh my name is Patrick, one of the area manager here with 411 locals. And I asked my assistant to contact you because we're looking for reliable business that we can work with, okay? So, I just want to ask a few questions just to see if this would be a good fit. Okay? That's fine.",,,MICHAELANGELORAMOS,Vinny ,,"Modesto,, CA, 95397",Detailing,3,1,2,16289266,62,Vinny ,Detailing,"Modesto,, CA, 95397",Pacific,Low season,December,Robotic & Script-Bound,unknown,No,unknown,No,Yes,Yes,Skeptical/Cautious,English,No,available,Agent,NOVICE (Job Seeker),5,,TRUE,,20,80,Agent-Heavy,0,0,0,0,Surface-Level,No,0,0,0:00,Neutral,Confident & Assumptive,Agent,20,Yes,No,Yes,Yes,Agent stated the purpose of asking a few questions to see if it would be a good fit.,0,0,0,0,0,0,0,0,No,2.5,4,0,2,1,1,0,0,0,None,Agent-Heavy,Somewhat Structured,FOMO/Competitor Discussion; Value Proposition; ROI Calculation; Closing/Payment Gathering,No,No,Yes,1,2,Professional,Yes,No,Stable,Neutral,Neutral,Neutral,Neutral,No shifts due to short call.,0,0,0,38,Discovery,Unknown,13,No Commitment Secured,None,No,No,No,No,Disconnect - During Discovery,Unclear,TRUE,,TRUE
+16293500,2102410370,JUDITACLARIDAD,12/19/2025 15:51,XFER,CP105,129,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-19/20251220-075058_CP105_JUDITACLARIDAD-all.mp3,"Hello? Hi. Um are you doing detailing service? Car detailing? Yes. Uh this is the N&G Signature Shine right detailing? Yes, this is it. Yes, my Yes. By the way, my name is Julia, ma'am maybe you can help me. Uh may I know who am I speaking with? Yes, you're speaking with Nicole. Oh Nicole. Uh you are the owner of the N&G Sorry, N&G? I am. Okay, okay. I am yes, me and my boyfriend, yes. Uh okay. Yeah Nicole, I'm actually calling you ma'am because we see several people in your local area who's looking for car detailing service online. And the manager asked me to look for someone who can still accommodate new customers. Uh you believe you're still taking new customers, right? Yes, ma'am. Okay, great. You do the detailing ma'am during weekends? Like Saturdays or just Monday to Friday? No, we do them, um we usually do them during the weekdays but if um the customer needs it on the weekends then we will most likely do it. Ah, okay, okay, great. But do you add like an extra charge ma'am when you do weekends or it's like a different? No. No, it's the same. Okay, perfect. One moment. Uh this is also like the best number ma'am to contact you or you have alternative number? No, this is the best number to contact me. This is the best number. Yeah, uh Nicole, I have here my manager who asked me to give you a call, his name is Oscar. Hi Oscar, I have here Nicole. She's the owner uh she's the owner of car detailing service and she can accommodate new customers. Okay, excellent. Thank you. Hi Ms. Nicole, how you doing ma'am? I'm doing good.",,,Oscar Ross,12/19/2025 15:52,AGENTDIRECT,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-19/20251219-155251_CP111_MANUELRAMIREZ-all.mp3,HU,UG142,169,"Hi. Yeah, uh Nicole, I have here my manager who asked me to give you a call. His name is Oscar. Hi, Oscar. I have here Nicole. She's the owner, uh she's the owner of Cardi detailing service and she can accommodate new customers. Okay, excellent. Thank you. Hi, Miss Nicole. How are you doing, ma'am? I'm doing good. Okay, excellent. I'm glad to hear that, Miss Nicole. This is Oscar, a manager at 411 Low Cost, ma'am. And uh we're looking for a valuable company to work with. We see an increase of customers looking for auto detailing in Texas and we want to know if you can take more customers for your business, Miss Nicole. Yes, we can. Okay. Excellent. And how many years of experience? You've been doing this, uh auto detailing? You have been kicked from this conference.",,,MANUELRAMIREZ,Nicole ,N&D Signature Shine Detailing,"San Antonio, TX, , ",Car detailing service,2,1,1,16293500,77,Nicole ,Car detailing service,"San Antonio, TX, , ",Central,Low season,December,Robotic & Script-Bound,Female,Yes,Yes,No,No,Yes,Happy/Optimistic,English,Yes,available,Agent,NOVICE,5,,TRUE,,40,60,Mutual Dialogue,1,1,0,0,Surface-Level,No,1,0,1:00,Interested,Confident & Assumptive,Agent,25,Yes,Yes,Yes,No,Not Found in Transcript,0,0,0,0,0,0,0,0,No,4.33,6,1,0,2,1,0,0,0,None,Mutual,Somewhat Structured,"IV, V, VI, VII",None,No,Yes,4,3,Professional,Yes,No,Stable,Positive,Not Found,Not Found,Not Found,None,0,0,0,169,Discovery,Technical issue,129,No Commitment Secured,None,No,No,No,No,Disconnect - During Discovery,Technical issue,TRUE,,TRUE
+16251152,2092635589,JUDITACLARIDAD,12/1/2025 14:32,XFER,CP108,337,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-01/20251202-063245_CP108_JUDITACLARIDAD-all.mp3,"Hello, is Jonathan De Maravilla?
+Hi. Are you still doing Handyman service?
+Yup, this is Handyman service.
+Yeah, yeah, Handyman in Sacramento, right?
+Yeah.
+Yeah, my name is Julia, Sir, maybe you can help me. Uh, may I know whom am I speaking with?
+Sorry, what you say? Sorry, is it, is it driving for the moment?
+Ah, okay, okay, that's right. Yeah, my name is Julia, Sir, and may I know your name?
+Ah, Jonathan, my name is Jonathan.
+Ah, Jonathan, you're the owner sir of the Handyman service?
+Yeah, it's, it's me, is go the CEO of the Handyman service and the company is go small company is the normal is go working on the different team. You, you wanna text me, uh, your problem, and you wanna help you for repair or replace and the different areas electric, the remodulation and the house. Uh, sealing landscaping, Garris, the landscaping? Ah, okay, okay. Yeah, everything, everything, the installer for Plomery electric, every.
+Ah, okay, okay, anything like home repairs, right? Well, yeah, Jonathan, uh, my name is Julia. I am calling you because we're seeking several people in your local area, who's looking for your type of service online and my manager asked me to look for someone who can still accommodate new customers.
+By the way, Jonathan, uh, you do the work, sir, during weekends, like Saturdays or just Monday to Friday?
+Is the normal is to go every, every week, uh, normal and the Saturday and Sunday is, work depending on the person for is go, uh, is the normal is go uses that one days for pass on the family.
+Right? But my, my team, my team is, is not the problem for working on the that one day, only is go the checking on the schedule is go for the day, it's not the problem.
+Hm, okay, depends on your schedule. But you are open to do, uh, work.
+Yeah, it's open on the liberal every hours, yeah.
+Hm, okay, okay, okay. You also offer like, uh, free estimates, Jonathan or you charge for it for the estimate?
+Uh, is go for the moment is go taking every information, sorry, is go the coming on the different jobs, is go driving. Uh, is go the go Sacramento for the moment and go checking on the on project over there and go finish, uh, you wanna, uh, checking your text.
+Uh, is go, is, is me fighting on the right here, the people and the different customers on the first me.
+Ah, you have the first. Oh, you're not available right now because I will have you, uh, talk to my manager sir for more details.
+Yeah, is, is go take me you every problem is go respond on the me or my assistant, okay?
+Ah, okay, you're not available right now like to talk to my.
+Uh, for the moment, for the moment, uh, no, but is go checking on the information for your problem is go maybe, uh, one person in my team is coming for repair or, or the customer for for your, your problem, okay?
+Ah, okay, okay, cool. I'll just call you back sir then, uh, like maybe later or tomorrow morning.
+Whatever the Uh, you wanna text me everything? Uh, is, is okay, is response and go checking and is go, uh, bring the message on the my system and the my system is, is my wife too.
+Ah, okay, okay, okay.
+It's no problem, it's okay.
+Yeah.
+Okay, okay.
+Okay. Uh, is go checking maybe today or tomorrow is coming on the my team, is the one guy is go coming or the different people is coming for your problem.
+Is the normal is on and the my company, is go different areas, is the guy is go professional for Plomery, professional for electric, professional for different department.
+Ah, okay, you do like everything about home repairs, right?
+Yeah, is the, yeah, is for the moment is uh, me, my license for the Handyman, but is go studying for the General Controll on the future.
+Ah, okay, General Control. Yes, but I have here sir my manager, um, who asked me to give you a call.
+He's already on the line, uh, his name is Patrick.
+Uh, hi Patrick, I have here, uh, Jonathan, he's the owner of Handyman service, he does everything like, uh, electrical service, landscaping, everything about home repairs, so he can accommodate new customers.
+Okay.
+All right. Thank you so much. Hi, Jonathan, how are you?
+We're good, how are you?
+Well, I'm doing",,,Patrick Garcia,12/1/2025 14:38,AGENTDIRECT,https://archive-sales.411locals.smartcarrier.io/RECORDINGS/2025-12-01/20251201-143803_CP111_MICHAELANGELORAMOS-all.mp3,B,UG142,294,"Hello, hi. Uh his name is Patrick. Uh hi, Patrick, I have here uh Jonathan, he's the owner of Handyman Service. He does everything like uh electrical service, landscaping, everything about home repairs, so he can accommodate new customers. All right. Thank you so much. Hi, Jonathan, how are you? How are you? Well, I'm doing great. Thank you for asking, you know, got nothing to complain. Yeah, that's good, right? And again, this is Patrick. One of the area manager. Uh, this is Patrick, one of the area manager here with 411 Locals. And I did ask my assistant to contact you because we're looking for reliable business in your area that we can work with. So, I just want to ask a few questions to see if this would be a good fit. Okay, sir. Um, how long have you been running the business now? Yes, my business? Yes. Uh, it's it's for a moment is on the handyman, okay? The main license is only for the handyman and different areas, only for remodelation and interior houses. Mhm. Great. And how long have you been uh running your business now? Uh, it's the normal is go for the company is go uh the star is go three years on the company is for the the company. Three years being in the business now. Yeah. Oh, wow. Yeah, uh is it three years on the company? But it's on the experience for everything is go the six and seven years for the construction areas is go different uh is the me is go the star and the enter the US, me I from Mexico. Uh but it's go uh enter in the US is on the situation is go start for the construction the help guy is for the assistant and the assistant superintendent and different company. KB Home, Taylor Morrison, uh big companies. Right. I mean, uh seven years, that speaks the quality of the service that you provide. Right? Yeah. Okay. Thank you. And what kind of jobs do you usually uh take on? Because I know being a handyman, they're they're calling you uh jack of all trades, right? Like you can do a little bit of everything. You know, flooring, drywall, painting, Yeah, is the flooring is the normal uh for moment uh the people is go for the painting on the month is December. Every guy is go the like is for uh the install lights, uh plumbing, clean on the gutters, the landscaping is for the different uh different place for the houses. Okay. Very good. Uh but is go the normal is my area, is my uh power area, you say? Uh is the electric and painting. A plummery too is uh and normal is me and my working is go everything uh plummery electric, drywall, painting. Okay. But you send the paintings you say and the and to uh the assistant. Mhm. Uh you say is the my team is the is not my is not only me. As the different person I need. Okay. Thank you. Basically just uh all types of works related to home repairs. You can do that, right? Yeah. Okay. And you do take residential only or you you can do commercial as well? Oh, no, only resident. Just residential. Yeah. Like like how many miles radius would you be able to travel for a job? Is it normally is only uh rachel shield on the Facebook, Instagram, that one, and Flyers on the different stories. I'm sorry. Sorry, is okay? Is it is it one is get coming on the assistant you say is go only two minutes where is go is the one customer is from is I'm learning me is go enter on the house for a moment. It's go maybe it's go checking on the uh you text me for more information necessary.",,,MICHAELANGELORAMOS,Jonathan ,,"Stockton CA, , ",Handyman,1,1,0,16251152,55,Jonathan ,Handyman,"Stockton CA, , ",Pacific,Low season,December,Consultative & Validating,Female,Yes,Yes,No,Yes,Yes,Happy/Optimistic,English,Yes,busy,Agent,Novice,4.6,,TRUE,,44.44,55.56,Mutual Dialogue,4,4,0,0,Surface-Level,No,0,0,0:00,Neutral,Confident & Assumptive,Agent,33,Yes,No,Yes,Yes,Agent stated purpose to ask questions to see if it's a good fit.,0,0,0,0,0,0,0,0,No,15.4,30,2,5,3,2,0,0,0,None,Mutual,Somewhat Structured,FOMO; Value Proposition; ROI Calculation; Assume the Sale,None,No,Yes,1,3,Professional,Yes,No,Stable,Neutral,Neutral,Not Applicable,Neutral,None,0,0,0,294,Discovery Phase,Unclear,245,No Commitment Secured,None,No,No,No,No,Disconnect - During Discovery,Unclear,TRUE,,TRUE

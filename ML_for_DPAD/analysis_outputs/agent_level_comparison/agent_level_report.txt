@@ -1,0 +1,98 @@
+# DPAD Analysis - Agent-Level Report
+======================================================================
+
+## Executive Summary
+
+This report aggregates call-level insights to agent-level patterns,
+revealing consistent behavioral differences between High-DPAD and
+Low-DPAD agents.
+
+## 1. Agent Overview
+
+**Total Agents Analyzed:** 10
+**High-DPAD Agents:** 5
+**Low-DPAD Agents:** 5
+
+**Call Distribution:**
+- Total calls: 40
+- Avg calls per agent: 4.0
+- Min calls per agent: 1
+- Max calls per agent: 7
+
+## 2. Key Differences Between Agent Groups
+
+Features with largest mean differences (agent-level averages):
+
+| Rank | Feature | Low-DPAD | High-DPAD | Difference |
+|------|---------|----------|-----------|------------|
+| 17   | total_call_duration                 |  334.016 |   493.373 |    159.357 |
+|  7   | time_to_reason_seconds              |   33.196 |    18.600 |    -14.596 |
+|  4   | agent_talk_percentage               |   72.183 |    58.498 |    -13.684 |
+| 19   | time_in_final_stage                 |   83.008 |    69.880 |    -13.128 |
+|  1   | TO_length_in_sec                    |  179.307 |   192.153 |     12.847 |
+|  3   | customer_talk_percentage            |   27.812 |    38.002 |     10.190 |
+|  2   | TO_OMC_Duration                     |   23.383 |    15.307 |     -8.076 |
+| 10   | longest_monologue_length            |   10.735 |    18.707 |      7.971 |
+| 16   | notable_sentiment_shifts            |   14.448 |    21.600 |      7.152 |
+| 11   | short_monologues                    |   14.230 |     9.340 |     -4.890 |
+| 20   | primary_disconnect_reason           |    6.657 |    10.280 |      3.623 |
+| 18   | disconnect_stage                    |    6.324 |     4.573 |     -1.750 |
+| 14   | stages_skipped                      |   15.331 |    17.053 |      1.722 |
+|  9   | average_monologue_length            |    3.341 |     4.920 |      1.578 |
+| 15   | stages_out_of_order                 |    4.454 |     5.807 |      1.352 |
+
+## 3. Best Practices from High-DPAD Agents
+
+What High-DPAD agents do differently (on average):
+
+### Higher Values (Good):
+- **total_call_duration**: 493.373 vs 334.016 (Δ +159.357)
+- **TO_length_in_sec**: 192.153 vs 179.307 (Δ +12.847)
+- **customer_talk_percentage**: 38.002 vs 27.812 (Δ +10.190)
+- **longest_monologue_length**: 18.707 vs 10.735 (Δ +7.971)
+- **notable_sentiment_shifts**: 21.600 vs 14.448 (Δ +7.152)
+
+### Lower Values (Good):
+- **time_to_reason_seconds**: 18.600 vs 33.196 (Δ -14.596)
+- **agent_talk_percentage**: 58.498 vs 72.183 (Δ -13.684)
+- **time_in_final_stage**: 69.880 vs 83.008 (Δ -13.128)
+- **TO_OMC_Duration**: 15.307 vs 23.383 (Δ -8.076)
+- **short_monologues**: 9.340 vs 14.230 (Δ -4.890)
+
+## 4. Individual Agent Performance
+
+### Top 5 Agents by Interruption Rate (Lower is Better):
+
+1. **Agent Art Estrada** (High-DPAD): 0.000 - 3 calls
+2. **Agent Ice Bello** (Low-DPAD): 0.000 - 1 calls
+3. **Agent Rafael Munoz** (Low-DPAD): 0.000 - 1 calls
+4. **Agent Patrick Garcia** (High-DPAD): 0.000 - 5 calls
+5. **Agent Oscar Ross** (High-DPAD): 0.006 - 5 calls
+
+## 5. Consistency Analysis
+
+Standard deviation reflects consistency across an agent's calls:
+
+- **TO_length_in_sec**: Low-DPAD agents more consistent (std: 89.755 vs 46.858)
+- **TO_OMC_Duration**: Low-DPAD agents more consistent (std: 10.529 vs 9.407)
+- **customer_talk_percentage**: High-DPAD agents more consistent (std: 10.386 vs 17.090)
+- **agent_talk_percentage**: High-DPAD agents more consistent (std: 11.985 vs 17.093)
+- **total_discovery_questions**: Low-DPAD agents more consistent (std: 3.098 vs 2.624)
+
+## 6. Actionable Insights for Management
+
+### For Coaching:
+1. Focus on agents with high interruption rates
+2. Use top performers as peer mentors
+3. Share behavioral patterns from High-DPAD agents
+4. Track improvement over time using these metrics
+
+### For Hiring:
+1. Test for patience and listening skills
+2. Assess emotional intelligence (sentiment management)
+3. Evaluate communication balance (not just talking ability)
+
+### For Performance Management:
+1. Set benchmarks based on High-DPAD agent averages
+2. Monitor agent-level trends over time
+3. Identify agents needing additional support

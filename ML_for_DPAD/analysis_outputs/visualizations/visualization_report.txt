@@ -1,0 +1,84 @@
+# DPAD Analysis - Visualization Report
+======================================================================
+
+## Summary of Generated Visualizations
+
+This report catalogs all visualizations created to compare
+High-DPAD vs Low-DPAD calling agents.
+
+## 1. Distribution Comparisons
+
+### distribution_boxplots.png
+- Box plots for top 9 numerical features
+- Shows median, quartiles, and outliers
+- Yellow diamonds indicate means
+- Clear comparison of central tendency and spread
+
+### distribution_violinplots.png
+- Violin plots for top 6 features
+- Shows full distribution shape (density)
+- Individual data points overlaid as black dots
+- Reveals multi-modality and distribution patterns
+
+## 2. Scatter Plot Comparisons
+
+### scatter_interruption_sentiment.png
+- Relationship between interruption rate and sentiment progression
+- Most important feature pair
+- Shows clustering patterns between groups
+
+### pairplot_top4.png
+- Pairwise relationships between top 4 features
+- Diagonal: KDE distribution plots
+- Off-diagonal: Scatter plots
+- Comprehensive view of feature interactions
+
+## 3. Categorical Comparisons
+
+### categorical_distributions.png
+- Bar plots for categorical features
+- Percentage-based for fair comparison
+- Shows category preferences by DPAD group
+
+## 4. Summary Dashboard
+
+### summary_dashboard.png
+- **Comprehensive single-page overview**
+- Top 7 features visualized
+- Sample size bars
+- Key relationship scatter plot
+- Statistical summary table
+- **Ready for executive presentation**
+
+## 5. Mean Comparison
+
+### mean_comparison_top_features.png
+- Horizontal bar chart of mean differences
+- Green = Higher in High-DPAD agents
+- Red = Higher in Low-DPAD agents
+- Sorted by absolute difference magnitude
+
+## How to Use These Visualizations
+
+**For Presentations:**
+- Start with `summary_dashboard.png` for overview
+- Use `distribution_violinplots.png` for detailed feature analysis
+- Show `scatter_interruption_sentiment.png` for key relationship
+
+**For Reports:**
+- Include `mean_comparison_top_features.png` for quick summary
+- Add `distribution_boxplots.png` for statistical rigor
+- Reference `pairplot_top4.png` for feature interactions
+
+**For Training:**
+- Use `distribution_violinplots.png` to show ideal ranges
+- Show `categorical_distributions.png` for behavior patterns
+- Display `summary_dashboard.png` as motivation
+
+## Key Visual Insights
+
+1. **Clear Separation**: Distributions show distinct patterns between groups
+2. **Interruption Dominance**: Interruption rate shows strongest visual difference
+3. **Sentiment Correlation**: Positive relationship with DPAD performance
+4. **Talk Ratio**: High-DPAD agents consistently talk less
+5. **Consistency**: Patterns are consistent across visualization types
