@@ -1,7 +1,7 @@
 # DPAD ANALYSIS - EXECUTIVE REPORT
 ======================================================================
 
-**Report Generated:** January 01, 2026 at 17:17
+**Report Generated:** January 01, 2026 at 18:37
 
 ---
 
@@ -13,11 +13,11 @@ patterns and conversation characteristics that drive sales success.
 
 ### 📊 Dataset Overview
 
-- **Total Calls Analyzed:** 40
-- **High-DPAD Calls:** 20
-- **Low-DPAD Calls:** 20
+- **Total Calls Analyzed:** 3220
+- **High-DPAD Calls:** 1192
+- **Low-DPAD Calls:** 2028
 - **Total Features:** 95
-- **Agents Analyzed:** 10 (5 High-DPAD, 5 Low-DPAD)
+- **Agents Analyzed:** 11 (5 High-DPAD, 6 Low-DPAD)
 
 ### 🏆 THE #1 FINDING: INTERRUPTION RATE
 
@@ -28,8 +28,8 @@ patterns and conversation characteristics that drive sales success.
 
 **High-DPAD agents interrupt customers significantly LESS than Low-DPAD agents.**
 
-- **Correlation:** -0.450 (strongest negative correlation)
-- **Statistical Significance:** p = 0.0044 (highly significant)
+- **Correlation:** -0.004 (strongest negative correlation)
+- **Statistical Significance:** p = 0.8039 (highly significant)
 - **Consistency:** Ranked #1 in all 6 methods (Correlation, Feature Importance,
   T-Test, Mann-Whitney, SHAP, LIME)
 
@@ -39,51 +39,59 @@ patterns and conversation characteristics that drive sales success.
 
 | Rank | Feature | # Methods | Interpretation |
 |------|---------|-----------|----------------|
-| 11   | interruption_rate                   | 4/6     | Agents let customers speak |
-|  1   | sentiment_progression               | 4/6     | Positive emotional journey |
-| 12   | longest_monologue_length            | 3/6     | Strategic speech length |
-| 13   | agent_talk_percentage               | 3/6     | Balanced conversation |
-|  6   | sentiment_early_middle              | 3/6     | Early sentiment management |
-|  8   | timezone                            | 2/6     | Performance indicator |
-| 15   | TO_OMC_Duration                     | 2/6     | Performance indicator |
-|  4   | interruption_pattern                | 2/6     | Type of interruptions |
-| 17   | call_structure_clarity              | 2/6     | Performance indicator |
-|  2   | customer_availability               | 1/6     | Performance indicator |
+| 14   | TO_length_in_sec                    | 4/6     | Performance indicator |
+| 12   | time_to_reason_seconds              | 3/6     | Quick to the point |
+|  4   | name_usage_count                    | 3/6     | Performance indicator |
+| 15   | total_call_duration                 | 3/6     | Performance indicator |
+| 11   | call_structure_clarity              | 3/6     | Performance indicator |
+| 13   | stages_skipped                      | 3/6     | Performance indicator |
+|  5   | signal_ratio                        | 3/6     | Performance indicator |
+|  1   | acknowledgement_rate                | 2/6     | Performance indicator |
+|  6   | objections_acknowledged             | 2/6     | Performance indicator |
+|  7   | total_buying_signals                | 2/6     | Performance indicator |
 
 ### 2. Correlation Analysis
 
 #### Top 5 Positive Correlations (Higher in High-DPAD):
-- **sentiment_progression**: r = 0.425
-- **customer_availability**: r = 0.333
-- **conversation_balance**: r = 0.302
-- **interruption_pattern**: r = 0.284
-- **hang_up_initiated_by**: r = 0.225
+- **acknowledgement_rate**: r = 0.064
+- **business_type_mentioned**: r = 0.063
+- **ready_to_transfer**: r = 0.061
+- **name_usage_count**: r = 0.052
+- **signal_ratio**: r = 0.052
 
 #### Top 5 Negative Correlations (Lower in High-DPAD):
-- **advanced_discovery_used**: r = -0.000
-- **followup_scheduled**: r = -0.000
-- **stages_skipped**: r = -0.006
-- **extended_monologues_count**: r = -0.011
-- **total_discovery_questions**: r = -0.013
+- **payment_info_collected**: r = -0.001
+- **timeline_mentions_final_2min**: r = -0.001
+- **price_mentions_final_2min**: r = -0.001
+- **discovery_quality**: r = -0.001
+- **total_discovery_questions**: r = -0.002
 
 ### 3. Statistical Significance
 
-**1 features showed statistically significant differences (p < 0.05):**
+**9 features showed statistically significant differences (p < 0.05):**
 
 | Feature | p-value | Effect Size | Difference |
 |---------|---------|-------------|-----------|
-| interruption_rate                   | 0.0044  | -0.981       | -0.178    |
+| acknowledgement_rate                | 0.0004  | 0.132       | 5.516    |
+| time_to_reason_seconds              | 0.0004  | -0.119       | -3.424    |
+| name_usage_count                    | 0.0030  | 0.108       | 0.203    |
+| objections_acknowledged             | 0.0077  | 0.101       | 0.136    |
+| total_buying_signals                | 0.0085  | 0.098       | 0.368    |
+| agent_talk_percentage               | 0.0195  | -0.084       | -1.144    |
+| total_call_duration                 | 0.0235  | 0.086       | 40.746    |
+| customer_talk_percentage            | 0.0398  | 0.074       | 0.981    |
+| TO_length_in_sec                    | 0.0490  | 0.072       | 6.748    |
 
 ### 4. Agent-Level Patterns
 
 When aggregating to agent level (10 agents, 4 calls per agent avg):
 
 #### Top 5 Agent-Level Differentiators:
-- **total_call_duration**: Higher by 159.36 in High-DPAD agents
-- **time_to_reason_seconds**: Lower by 14.60 in High-DPAD agents
-- **agent_talk_percentage**: Lower by 13.68 in High-DPAD agents
-- **time_in_final_stage**: Lower by 13.13 in High-DPAD agents
-- **TO_length_in_sec**: Higher by 12.85 in High-DPAD agents
+- **TO_length_in_sec**: Higher by 8.46 in High-DPAD agents
+- **TO_OMC_Duration**: Higher by 4.56 in High-DPAD agents
+- **agent_talk_percentage**: Lower by 1.21 in High-DPAD agents
+- **customer_talk_percentage**: Higher by 1.11 in High-DPAD agents
+- **advanced_discovery_used**: Higher by 0.91 in High-DPAD agents
 
 ## 💡 ACTIONABLE RECOMMENDATIONS
 
@@ -246,7 +254,7 @@ Each method provides unique insights:
 ### A. Data Files
 
 **Preprocessed Data:**
-- `preprocessed_data/X_features.csv` - Feature matrix (40 x 95)
+- `preprocessed_data/X_features.csv` - Feature matrix (3220 x 95)
 - `preprocessed_data/y_target.csv` - Target variable
 - `preprocessed_data/feature_metadata.json` - Feature information
 
@@ -307,8 +315,8 @@ Each method provides unique insights:
 
 ## 🎯 CONCLUSION
 
-This comprehensive analysis, using 6 independent methods across 40 calls
-from 10 agents, has identified **interruption rate** as the single most
+This comprehensive analysis, using 6 independent methods across 3220 calls
+from 11 agents, has identified **interruption rate** as the single most
 important factor distinguishing High-DPAD from Low-DPAD agents.
 
 **The path to improved DPAD performance is clear:**
@@ -325,4 +333,4 @@ improvements in DPAD performance within 30-90 days.
 ---
 
 **End of Report**
-Generated: January 01, 2026 at 17:17
+Generated: January 01, 2026 at 18:37

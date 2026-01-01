@@ -1,7 +1,7 @@
 {
-  "total_samples_explained": 40,
+  "total_samples_explained": 1000,
   "key_examples_explained": 6,
-  "aggregated_samples": 40,
-  "top_variable_rf": "sentiment_progression",
-  "top_variable_xgb": "sentiment_progression"
+  "aggregated_samples": 1000,
+  "top_variable_rf": "call_structure_clarity",
+  "top_variable_xgb": "call_structure_clarity"
 }

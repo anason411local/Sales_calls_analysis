@@ -10,12 +10,12 @@ tree-based machine learning models.
 ## 1. Model Performance
 
 ### Random Forest
-- **Cross-Validation Accuracy:** 0.575 (+/- 0.150)
+- **Cross-Validation Accuracy:** 0.675 (+/- 0.014)
 - **Number of Trees:** 500
 - **Max Depth:** 10
 
 ### XGBoost
-- **Cross-Validation Accuracy:** 0.475 (+/- 0.166)
+- **Cross-Validation Accuracy:** 0.710 (+/- 0.014)
 - **Number of Trees:** 500
 - **Learning Rate:** 0.05
 
@@ -25,26 +25,26 @@ tree-based machine learning models.
 
 | Rank | Feature | Avg Importance | RF Gini | RF Perm | XGB Gain |
 |------|---------|----------------|---------|---------|----------|
-|  1   | interruption_rate                   | 0.0302         | 0.0522  | 0.0000  | 0.0687   |
-|  5   | sentiment_progression               | 0.0206         | 0.0288  | 0.0000  | 0.0335   |
-|  2   | longest_monologue_length            | 0.0197         | 0.0395  | 0.0000  | 0.0192   |
-| 20   | call_result_tag                     | 0.0174         | 0.0199  | 0.0000  | 0.0496   |
-|  3   | agent_talk_percentage               | 0.0173         | 0.0314  | 0.0000  | 0.0305   |
-| 17   | primary_disconnect_reason           | 0.0158         | 0.0212  | 0.0000  | 0.0422   |
-| 16   | stages_skipped                      | 0.0151         | 0.0213  | 0.0000  | 0.0393   |
-|  7   | sentiment_early_middle              | 0.0142         | 0.0275  | 0.0000  | 0.0294   |
-| 22   | technical_quality_score             | 0.0140         | 0.0196  | 0.0000  | 0.0365   |
-| 23   | conversation_balance                | 0.0136         | 0.0183  | 0.0000  | 0.0359   |
-| 18   | customer_marketing_experience       | 0.0134         | 0.0207  | 0.0000  | 0.0328   |
-|  6   | TO_OMC_Duration                     | 0.0126         | 0.0276  | 0.0000  | 0.0229   |
-|  8   | time_to_reason_seconds              | 0.0122         | 0.0272  | 0.0000  | 0.0215   |
-|  4   | average_monologue_length            | 0.0117         | 0.0289  | 0.0000  | 0.0177   |
-| 14   | total_interruptions                 | 0.0116         | 0.0230  | 0.0000  | 0.0232   |
-| 53   | total_resistance_signals            | 0.0115         | 0.0051  | 0.0000  | 0.0409   |
-| 13   | medium_monologues                   | 0.0115         | 0.0232  | 0.0000  | 0.0227   |
-| 21   | customer_talk_percentage            | 0.0107         | 0.0199  | 0.0000  | 0.0230   |
-|  9   | call_structure_clarity              | 0.0103         | 0.0262  | 0.0000  | 0.0151   |
-| 30   | Dial Attempt Calls                  | 0.0103         | 0.0128  | 0.0000  | 0.0284   |
+|  1   | call_structure_clarity              | 0.0461         | 0.0648  | 0.0311  | 0.0235   |
+|  2   | time_to_reason_seconds              | 0.0250         | 0.0467  | 0.0212  | 0.0148   |
+|  3   | stages_skipped                      | 0.0170         | 0.0328  | 0.0149  | 0.0136   |
+|  4   | TO_length_in_sec                    | 0.0138         | 0.0297  | 0.0130  | 0.0105   |
+|  5   | total_call_duration                 | 0.0132         | 0.0295  | 0.0088  | 0.0121   |
+|  6   | time_in_final_stage                 | 0.0126         | 0.0285  | 0.0107  | 0.0094   |
+|  7   | TO_OMC_Duration                     | 0.0122         | 0.0282  | 0.0100  | 0.0093   |
+| 12   | signal_ratio                        | 0.0112         | 0.0216  | 0.0113  | 0.0114   |
+| 17   | name_usage_count                    | 0.0110         | 0.0167  | 0.0141  | 0.0124   |
+| 31   | call_structure_framed               | 0.0109         | 0.0113  | 0.0026  | 0.0262   |
+| 27   | tone_assessment                     | 0.0106         | 0.0118  | 0.0091  | 0.0202   |
+| 11   | agent_talk_percentage               | 0.0100         | 0.0224  | 0.0070  | 0.0107   |
+| 13   | longest_monologue_length            | 0.0100         | 0.0210  | 0.0065  | 0.0122   |
+|  8   | average_monologue_length            | 0.0099         | 0.0238  | 0.0059  | 0.0094   |
+|  9   | notable_sentiment_shifts            | 0.0099         | 0.0230  | 0.0054  | 0.0106   |
+| 10   | customer_talk_percentage            | 0.0099         | 0.0225  | 0.0074  | 0.0091   |
+| 14   | goal1_questions                     | 0.0093         | 0.0180  | 0.0047  | 0.0142   |
+| 16   | total_discovery_questions           | 0.0087         | 0.0178  | 0.0034  | 0.0135   |
+| 15   | short_monologues                    | 0.0082         | 0.0179  | 0.0056  | 0.0092   |
+| 22   | hang_up_initiated_by                | 0.0080         | 0.0132  | 0.0072  | 0.0116   |
 
 ## 3. Random Forest Gini Importance (Top 20)
 
@@ -52,26 +52,26 @@ tree-based machine learning models.
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 62   | interruption_rate                             | 0.0522   |
-| 55   | longest_monologue_length                      | 0.0395   |
-| 25   | agent_talk_percentage                         | 0.0314   |
-| 54   | average_monologue_length                      | 0.0289   |
-| 75   | sentiment_progression                         | 0.0288   |
-|  2   | TO_OMC_Duration                               | 0.0276   |
-| 77   | sentiment_early_middle                        | 0.0275   |
-| 39   | time_to_reason_seconds                        | 0.0272   |
-| 44   | call_structure_clarity                        | 0.0262   |
-|  1   | TO_length_in_sec                              | 0.0257   |
-| 84   | total_call_duration                           | 0.0248   |
-| 63   | interruption_pattern                          | 0.0240   |
-| 58   | medium_monologues                             | 0.0232   |
-| 61   | total_interruptions                           | 0.0230   |
-| 80   | notable_sentiment_shifts                      | 0.0229   |
-| 66   | stages_skipped                                | 0.0213   |
-| 95   | primary_disconnect_reason                     | 0.0212   |
-| 21   | customer_marketing_experience                 | 0.0207   |
-|  6   | timezone                                      | 0.0205   |
-| 94   | call_result_tag                               | 0.0199   |
+| 44   | call_structure_clarity                        | 0.0648   |
+| 39   | time_to_reason_seconds                        | 0.0467   |
+| 66   | stages_skipped                                | 0.0328   |
+|  1   | TO_length_in_sec                              | 0.0297   |
+| 84   | total_call_duration                           | 0.0295   |
+| 87   | time_in_final_stage                           | 0.0285   |
+|  2   | TO_OMC_Duration                               | 0.0282   |
+| 54   | average_monologue_length                      | 0.0238   |
+| 80   | notable_sentiment_shifts                      | 0.0230   |
+| 24   | customer_talk_percentage                      | 0.0225   |
+| 25   | agent_talk_percentage                         | 0.0224   |
+| 35   | signal_ratio                                  | 0.0216   |
+| 55   | longest_monologue_length                      | 0.0210   |
+| 28   | goal1_questions                               | 0.0180   |
+| 57   | short_monologues                              | 0.0179   |
+| 27   | total_discovery_questions                     | 0.0178   |
+| 70   | name_usage_count                              | 0.0167   |
+| 95   | primary_disconnect_reason                     | 0.0159   |
+| 85   | disconnect_stage                              | 0.0153   |
+| 58   | medium_monologues                             | 0.0151   |
 
 ## 4. Random Forest Permutation Importance (Top 20)
 
@@ -79,26 +79,26 @@ tree-based machine learning models.
 
 | Rank | Feature | Importance | Std Dev |
 |------|---------|------------|---------|
-|  1   | TO_length_in_sec                         | 0.0000   | 0.0000 |
-|  2   | TO_OMC_Duration                          | 0.0000   | 0.0000 |
-|  3   | Calls Count                              | 0.0000   | 0.0000 |
-|  4   | Connection Made Calls                    | 0.0000   | 0.0000 |
-|  5   | Dial Attempt Calls                       | 0.0000   | 0.0000 |
-|  6   | timezone                                 | 0.0000   | 0.0000 |
-|  7   | season_status                            | 0.0000   | 0.0000 |
-|  8   | season_month                             | 0.0000   | 0.0000 |
-|  9   | lgs_sentiment_style                      | 0.0000   | 0.0000 |
-| 10   | lgs_agent_gender                         | 0.0000   | 0.0000 |
-| 11   | is_decision_maker                        | 0.0000   | 0.0000 |
-| 12   | ready_for_customers                      | 0.0000   | 0.0000 |
-| 13   | forbidden_industry                       | 0.0000   | 0.0000 |
-| 14   | ready_to_transfer                        | 0.0000   | 0.0000 |
-| 15   | lgs_call_not_transferred                 | 0.0000   | 0.0000 |
-| 16   | customer_sentiment_lgs                   | 0.0000   | 0.0000 |
-| 17   | customer_language                        | 0.0000   | 0.0000 |
-| 18   | customer_knows_marketing                 | 0.0000   | 0.0000 |
-| 19   | customer_availability                    | 0.0000   | 0.0000 |
-| 20   | who_said_hello_first_lgs                 | 0.0000   | 0.0000 |
+| 44   | call_structure_clarity                   | 0.0311   | 0.0022 |
+| 39   | time_to_reason_seconds                   | 0.0212   | 0.0017 |
+| 66   | stages_skipped                           | 0.0149   | 0.0013 |
+| 70   | name_usage_count                         | 0.0141   | 0.0019 |
+|  1   | TO_length_in_sec                         | 0.0130   | 0.0019 |
+| 35   | signal_ratio                             | 0.0113   | 0.0015 |
+| 87   | time_in_final_stage                      | 0.0107   | 0.0012 |
+|  2   | TO_OMC_Duration                          | 0.0100   | 0.0016 |
+| 72   | tone_assessment                          | 0.0091   | 0.0011 |
+| 84   | total_call_duration                      | 0.0088   | 0.0006 |
+| 14   | ready_to_transfer                        | 0.0075   | 0.0010 |
+| 24   | customer_talk_percentage                 | 0.0074   | 0.0010 |
+| 86   | hang_up_initiated_by                     | 0.0072   | 0.0010 |
+| 25   | agent_talk_percentage                    | 0.0070   | 0.0015 |
+| 55   | longest_monologue_length                 | 0.0065   | 0.0012 |
+| 67   | stages_out_of_order                      | 0.0061   | 0.0011 |
+| 54   | average_monologue_length                 | 0.0059   | 0.0011 |
+| 85   | disconnect_stage                         | 0.0057   | 0.0007 |
+| 57   | short_monologues                         | 0.0056   | 0.0008 |
+| 12   | ready_for_customers                      | 0.0055   | 0.0007 |
 
 ## 5. XGBoost Gain Importance (Top 20)
 
@@ -106,72 +106,72 @@ tree-based machine learning models.
 
 | Rank | Feature | Importance |
 |------|---------|------------|
-| 62   | interruption_rate                             | 0.0687   |
-| 94   | call_result_tag                               | 0.0496   |
-| 95   | primary_disconnect_reason                     | 0.0422   |
-| 34   | total_resistance_signals                      | 0.0409   |
-| 66   | stages_skipped                                | 0.0393   |
-| 22   | technical_quality_score                       | 0.0365   |
-| 64   | conversation_balance                          | 0.0359   |
-| 75   | sentiment_progression                         | 0.0335   |
-| 21   | customer_marketing_experience                 | 0.0328   |
-| 25   | agent_talk_percentage                         | 0.0305   |
-| 77   | sentiment_early_middle                        | 0.0294   |
-| 56   | extended_monologues_count                     | 0.0290   |
-|  5   | Dial Attempt Calls                            | 0.0284   |
-| 42   | within_45_seconds                             | 0.0250   |
-| 61   | total_interruptions                           | 0.0232   |
-| 24   | customer_talk_percentage                      | 0.0230   |
-|  2   | TO_OMC_Duration                               | 0.0229   |
-| 58   | medium_monologues                             | 0.0227   |
-| 39   | time_to_reason_seconds                        | 0.0215   |
-| 86   | hang_up_initiated_by                          | 0.0213   |
+| 43   | call_structure_framed                         | 0.0262   |
+| 44   | call_structure_clarity                        | 0.0235   |
+| 72   | tone_assessment                               | 0.0202   |
+|  4   | Connection Made Calls                         | 0.0170   |
+| 74   | common_ground_established                     | 0.0169   |
+| 30   | goal3_questions                               | 0.0164   |
+| 39   | time_to_reason_seconds                        | 0.0148   |
+| 28   | goal1_questions                               | 0.0142   |
+| 66   | stages_skipped                                | 0.0136   |
+| 40   | business_type_mentioned                       | 0.0136   |
+| 33   | total_buying_signals                          | 0.0135   |
+| 27   | total_discovery_questions                     | 0.0135   |
+| 41   | location_mentioned                            | 0.0127   |
+| 42   | within_45_seconds                             | 0.0124   |
+| 70   | name_usage_count                              | 0.0124   |
+| 55   | longest_monologue_length                      | 0.0122   |
+| 64   | conversation_balance                          | 0.0122   |
+| 84   | total_call_duration                           | 0.0121   |
+| 31   | discovery_quality                             | 0.0118   |
+| 93   | followup_scheduled                            | 0.0117   |
 
 ## 6. Key Insights
 
 ### Most Important Features (Consensus)
 
-**1. interruption_rate** (Avg Importance: 0.0302)
+**1. call_structure_clarity** (Avg Importance: 0.0461)
    - This feature is consistently ranked high across all methods
 
-**5. sentiment_progression** (Avg Importance: 0.0206)
+**2. time_to_reason_seconds** (Avg Importance: 0.0250)
    - This feature is consistently ranked high across all methods
 
-**2. longest_monologue_length** (Avg Importance: 0.0197)
+**3. stages_skipped** (Avg Importance: 0.0170)
    - This feature is consistently ranked high across all methods
 
-**20. call_result_tag** (Avg Importance: 0.0174)
+**4. TO_length_in_sec** (Avg Importance: 0.0138)
    - This feature is consistently ranked high across all methods
 
-**3. agent_talk_percentage** (Avg Importance: 0.0173)
+**5. total_call_duration** (Avg Importance: 0.0132)
    - This feature is consistently ranked high across all methods
 
 ### Feature Categories
 
 **Sentiment:**
-- Average importance: 0.0051
-- Top feature: sentiment_progression
+- Average importance: 0.0059
+- Top feature: tone_assessment
 
 **Talk Dynamics:**
-- Average importance: 0.0110
-- Top feature: interruption_rate
+- Average importance: 0.0067
+- Top feature: agent_talk_percentage
 
 **Discovery:**
-- Average importance: 0.0028
-- Top feature: total_discovery_questions
+- Average importance: 0.0062
+- Top feature: goal1_questions
 
 **Objections:**
-- Average importance: 0.0038
+- Average importance: 0.0054
 - Top feature: total_resistance_signals
 
 **Timing:**
-- Average importance: 0.0069
-- Top feature: sentiment_progression
+- Average importance: 0.0078
+- Top feature: time_to_reason_seconds
 
 **Structure:**
-- Average importance: 0.0073
-- Top feature: stages_skipped
+- Average importance: 0.0149
+- Top feature: call_structure_clarity
 
 **Closing:**
-- Average importance: 0.0014
-- Top feature: roi_calculation_presented
+- Average importance: 0.0041
+- Top feature: price_timeline_contract_before_dropoff

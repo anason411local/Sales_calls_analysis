@@ -63,6 +63,17 @@ def load_all_analysis_results():
         results['preprocessing'] = {}
         print("   ⚠ Could not load preprocessing metadata")
     
+    # Get actual sample counts from the preprocessed data
+    try:
+        X = pd.read_csv(base_path / "preprocessed_data" / "X_features.csv")
+        y = pd.read_csv(base_path / "preprocessed_data" / "y_target.csv")
+        results['preprocessing']['total_samples'] = len(X)
+        results['preprocessing']['high_dpad_count'] = (y.values.ravel() == 1).sum()
+        results['preprocessing']['low_dpad_count'] = (y.values.ravel() == 0).sum()
+        print(f"   ✓ Loaded actual sample counts: {len(X)} total calls")
+    except:
+        print("   ⚠ Could not load preprocessed data CSVs")
+    
     # 2. Correlation results
     try:
         results['correlations'] = pd.read_csv(base_path / "correlations" / "all_correlations.csv")
@@ -113,6 +124,11 @@ def load_all_analysis_results():
     try:
         results['agent_comparison'] = pd.read_csv(base_path / "agent_level_comparison" / "agent_group_comparison.csv")
         results['agent_data'] = pd.read_csv(base_path / "agent_level_comparison" / "agent_aggregated_data.csv")
+        # Get agent counts
+        agent_data = results['agent_data']
+        results['preprocessing']['total_agents'] = len(agent_data)
+        results['preprocessing']['high_dpad_agents'] = int((agent_data['high_dpad'] == 1).sum())
+        results['preprocessing']['low_dpad_agents'] = int((agent_data['high_dpad'] == 0).sum())
         print("   ✓ Loaded agent-level results")
     except:
         results['agent_comparison'] = None
@@ -221,11 +237,14 @@ def generate_executive_summary(results, consensus_features):
     if results['preprocessing']:
         summary.append("### 📊 Dataset Overview")
         summary.append("")
-        summary.append(f"- **Total Calls Analyzed:** {results['preprocessing'].get('total_samples', 40)}")
-        summary.append(f"- **High-DPAD Calls:** {results['preprocessing'].get('high_dpad_count', 20)}")
-        summary.append(f"- **Low-DPAD Calls:** {results['preprocessing'].get('low_dpad_count', 20)}")
+        summary.append(f"- **Total Calls Analyzed:** {results['preprocessing'].get('total_samples', 'N/A')}")
+        summary.append(f"- **High-DPAD Calls:** {results['preprocessing'].get('high_dpad_count', 'N/A')}")
+        summary.append(f"- **Low-DPAD Calls:** {results['preprocessing'].get('low_dpad_count', 'N/A')}")
         summary.append(f"- **Total Features:** {results['preprocessing'].get('total_features', 95)}")
-        summary.append(f"- **Agents Analyzed:** 10 (5 High-DPAD, 5 Low-DPAD)")
+        total_agents = results['preprocessing'].get('total_agents', 'N/A')
+        high_agents = results['preprocessing'].get('high_dpad_agents', 'N/A')
+        low_agents = results['preprocessing'].get('low_dpad_agents', 'N/A')
+        summary.append(f"- **Agents Analyzed:** {total_agents} ({high_agents} High-DPAD, {low_agents} Low-DPAD)")
         summary.append("")
     
     # Key finding - THE #1 FACTOR
@@ -552,7 +571,9 @@ def generate_appendix(results):
     appendix.append("### A. Data Files")
     appendix.append("")
     appendix.append("**Preprocessed Data:**")
-    appendix.append("- `preprocessed_data/X_features.csv` - Feature matrix (40 x 95)")
+    total_samples = results['preprocessing'].get('total_samples', 'N')
+    total_features = results['preprocessing'].get('total_features', 95)
+    appendix.append(f"- `preprocessed_data/X_features.csv` - Feature matrix ({total_samples} x {total_features})")
     appendix.append("- `preprocessed_data/y_target.csv` - Target variable")
     appendix.append("- `preprocessed_data/feature_metadata.json` - Feature information")
     appendix.append("")
@@ -800,8 +821,10 @@ def main():
     # Add conclusion
     report.append("## 🎯 CONCLUSION")
     report.append("")
-    report.append("This comprehensive analysis, using 6 independent methods across 40 calls")
-    report.append("from 10 agents, has identified **interruption rate** as the single most")
+    total_calls = results['preprocessing'].get('total_samples', 'N/A')
+    total_agents = results['preprocessing'].get('total_agents', 'N/A')
+    report.append(f"This comprehensive analysis, using 6 independent methods across {total_calls} calls")
+    report.append(f"from {total_agents} agents, has identified **interruption rate** as the single most")
     report.append("important factor distinguishing High-DPAD from Low-DPAD agents.")
     report.append("")
     report.append("**The path to improved DPAD performance is clear:**")

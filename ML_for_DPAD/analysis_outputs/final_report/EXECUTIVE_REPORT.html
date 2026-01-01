@@ -24,7 +24,7 @@
 <body>
     <div class='container'>
         <h1>DPAD ANALYSIS - EXECUTIVE REPORT</h1>
-        <p>**Report Generated:** January 01, 2026 at 17:17</p>
+        <p>**Report Generated:** January 01, 2026 at 18:37</p>
         <hr>
         <h2>🎯 EXECUTIVE SUMMARY</h2>
         <p>This comprehensive analysis compares **High-DPAD** (>1 deal per day) with</p>
@@ -32,11 +32,11 @@
         <p>patterns and conversation characteristics that drive sales success.</p>
         <h3>📊 Dataset Overview</h3>
         <ul>
-            <li><strong>Total Calls Analyzed:<strong> 40</li>
-            <li><strong>High-DPAD Calls:<strong> 20</li>
-            <li><strong>Low-DPAD Calls:<strong> 20</li>
+            <li><strong>Total Calls Analyzed:<strong> 3220</li>
+            <li><strong>High-DPAD Calls:<strong> 1192</li>
+            <li><strong>Low-DPAD Calls:<strong> 2028</li>
             <li><strong>Total Features:<strong> 95</li>
-            <li><strong>Agents Analyzed:<strong> 10 (5 High-DPAD, 5 Low-DPAD)</li>
+            <li><strong>Agents Analyzed:<strong> 11 (5 High-DPAD, 6 Low-DPAD)</li>
         </ul>
         <h3>🏆 THE #1 FINDING: INTERRUPTION RATE</h3>
         <p>**Across ALL 6 independent analytical methods, one factor emerged as**</p>
@@ -44,8 +44,8 @@
         <h2>🎯 INTERRUPTION RATE</h2>
         <p>**High-DPAD agents interrupt customers significantly LESS than Low-DPAD agents.**</p>
         <ul>
-            <li><strong>Correlation:<strong> -0.450 (strongest negative correlation)</li>
-            <li><strong>Statistical Significance:<strong> p = 0.0044 (highly significant)</li>
+            <li><strong>Correlation:<strong> -0.004 (strongest negative correlation)</li>
+            <li><strong>Statistical Significance:<strong> p = 0.8039 (highly significant)</li>
             <li><strong>Consistency:<strong> Ranked #1 in all 6 methods (Correlation, Feature Importance,</li>
         <p>T-Test, Mann-Whitney, SHAP, LIME)</p>
         </ul>
@@ -53,49 +53,57 @@
         <h3>1. Top 10 Most Important Features (Consensus Across All Methods)</h3>
         <table>
             <tr><td>Rank</td><td>Feature</td><td># Methods</td><td>Interpretation</td></tr>
-            <tr><td>11</td><td>interruption_rate</td><td>4/6</td><td>Agents let customers speak</td></tr>
-            <tr><td>1</td><td>sentiment_progression</td><td>4/6</td><td>Positive emotional journey</td></tr>
-            <tr><td>12</td><td>longest_monologue_length</td><td>3/6</td><td>Strategic speech length</td></tr>
-            <tr><td>13</td><td>agent_talk_percentage</td><td>3/6</td><td>Balanced conversation</td></tr>
-            <tr><td>6</td><td>sentiment_early_middle</td><td>3/6</td><td>Early sentiment management</td></tr>
-            <tr><td>8</td><td>timezone</td><td>2/6</td><td>Performance indicator</td></tr>
-            <tr><td>15</td><td>TO_OMC_Duration</td><td>2/6</td><td>Performance indicator</td></tr>
-            <tr><td>4</td><td>interruption_pattern</td><td>2/6</td><td>Type of interruptions</td></tr>
-            <tr><td>17</td><td>call_structure_clarity</td><td>2/6</td><td>Performance indicator</td></tr>
-            <tr><td>2</td><td>customer_availability</td><td>1/6</td><td>Performance indicator</td></tr>
+            <tr><td>14</td><td>TO_length_in_sec</td><td>4/6</td><td>Performance indicator</td></tr>
+            <tr><td>12</td><td>time_to_reason_seconds</td><td>3/6</td><td>Quick to the point</td></tr>
+            <tr><td>4</td><td>name_usage_count</td><td>3/6</td><td>Performance indicator</td></tr>
+            <tr><td>15</td><td>total_call_duration</td><td>3/6</td><td>Performance indicator</td></tr>
+            <tr><td>11</td><td>call_structure_clarity</td><td>3/6</td><td>Performance indicator</td></tr>
+            <tr><td>13</td><td>stages_skipped</td><td>3/6</td><td>Performance indicator</td></tr>
+            <tr><td>5</td><td>signal_ratio</td><td>3/6</td><td>Performance indicator</td></tr>
+            <tr><td>1</td><td>acknowledgement_rate</td><td>2/6</td><td>Performance indicator</td></tr>
+            <tr><td>6</td><td>objections_acknowledged</td><td>2/6</td><td>Performance indicator</td></tr>
+            <tr><td>7</td><td>total_buying_signals</td><td>2/6</td><td>Performance indicator</td></tr>
         </table>
         <h3>2. Correlation Analysis</h3>
         <h4>Top 5 Positive Correlations (Higher in High-DPAD):</h4>
         <ul>
-            <li><strong>sentiment_progression<strong>: r = 0.425</li>
-            <li><strong>customer_availability<strong>: r = 0.333</li>
-            <li><strong>conversation_balance<strong>: r = 0.302</li>
-            <li><strong>interruption_pattern<strong>: r = 0.284</li>
-            <li><strong>hang_up_initiated_by<strong>: r = 0.225</li>
+            <li><strong>acknowledgement_rate<strong>: r = 0.064</li>
+            <li><strong>business_type_mentioned<strong>: r = 0.063</li>
+            <li><strong>ready_to_transfer<strong>: r = 0.061</li>
+            <li><strong>name_usage_count<strong>: r = 0.052</li>
+            <li><strong>signal_ratio<strong>: r = 0.052</li>
         </ul>
         <h4>Top 5 Negative Correlations (Lower in High-DPAD):</h4>
         <ul>
-            <li><strong>advanced_discovery_used<strong>: r = -0.000</li>
-            <li><strong>followup_scheduled<strong>: r = -0.000</li>
-            <li><strong>stages_skipped<strong>: r = -0.006</li>
-            <li><strong>extended_monologues_count<strong>: r = -0.011</li>
-            <li><strong>total_discovery_questions<strong>: r = -0.013</li>
+            <li><strong>payment_info_collected<strong>: r = -0.001</li>
+            <li><strong>timeline_mentions_final_2min<strong>: r = -0.001</li>
+            <li><strong>price_mentions_final_2min<strong>: r = -0.001</li>
+            <li><strong>discovery_quality<strong>: r = -0.001</li>
+            <li><strong>total_discovery_questions<strong>: r = -0.002</li>
         </ul>
         <h3>3. Statistical Significance</h3>
-        <p>**1 features showed statistically significant differences (p < 0.05):**</p>
+        <p>**9 features showed statistically significant differences (p < 0.05):**</p>
         <table>
             <tr><td>Feature</td><td>p-value</td><td>Effect Size</td><td>Difference</td></tr>
-            <tr><td>interruption_rate</td><td>0.0044</td><td>-0.981</td><td>-0.178</td></tr>
+            <tr><td>acknowledgement_rate</td><td>0.0004</td><td>0.132</td><td>5.516</td></tr>
+            <tr><td>time_to_reason_seconds</td><td>0.0004</td><td>-0.119</td><td>-3.424</td></tr>
+            <tr><td>name_usage_count</td><td>0.0030</td><td>0.108</td><td>0.203</td></tr>
+            <tr><td>objections_acknowledged</td><td>0.0077</td><td>0.101</td><td>0.136</td></tr>
+            <tr><td>total_buying_signals</td><td>0.0085</td><td>0.098</td><td>0.368</td></tr>
+            <tr><td>agent_talk_percentage</td><td>0.0195</td><td>-0.084</td><td>-1.144</td></tr>
+            <tr><td>total_call_duration</td><td>0.0235</td><td>0.086</td><td>40.746</td></tr>
+            <tr><td>customer_talk_percentage</td><td>0.0398</td><td>0.074</td><td>0.981</td></tr>
+            <tr><td>TO_length_in_sec</td><td>0.0490</td><td>0.072</td><td>6.748</td></tr>
         </table>
         <h3>4. Agent-Level Patterns</h3>
         <p>When aggregating to agent level (10 agents, 4 calls per agent avg):</p>
         <h4>Top 5 Agent-Level Differentiators:</h4>
         <ul>
-            <li><strong>total_call_duration<strong>: Higher by 159.36 in High-DPAD agents</li>
-            <li><strong>time_to_reason_seconds<strong>: Lower by 14.60 in High-DPAD agents</li>
-            <li><strong>agent_talk_percentage<strong>: Lower by 13.68 in High-DPAD agents</li>
-            <li><strong>time_in_final_stage<strong>: Lower by 13.13 in High-DPAD agents</li>
-            <li><strong>TO_length_in_sec<strong>: Higher by 12.85 in High-DPAD agents</li>
+            <li><strong>TO_length_in_sec<strong>: Higher by 8.46 in High-DPAD agents</li>
+            <li><strong>TO_OMC_Duration<strong>: Higher by 4.56 in High-DPAD agents</li>
+            <li><strong>agent_talk_percentage<strong>: Lower by 1.21 in High-DPAD agents</li>
+            <li><strong>customer_talk_percentage<strong>: Higher by 1.11 in High-DPAD agents</li>
+            <li><strong>advanced_discovery_used<strong>: Higher by 0.91 in High-DPAD agents</li>
         </ul>
         <h2>💡 ACTIONABLE RECOMMENDATIONS</h2>
         <p>Based on the comprehensive analysis, we recommend the following actions:</p>
@@ -270,7 +278,7 @@
         <h3>A. Data Files</h3>
         <p>**Preprocessed Data:**</p>
         <ul>
-            <li>`preprocessed_data/X_features.csv` - Feature matrix (40 x 95)</li>
+            <li>`preprocessed_data/X_features.csv` - Feature matrix (3220 x 95)</li>
             <li>`preprocessed_data/y_target.csv` - Target variable</li>
             <li>`preprocessed_data/feature_metadata.json` - Feature information</li>
         </ul>
@@ -335,8 +343,8 @@
             <li>`final_report/EXECUTIVE_REPORT.txt` - ⭐ This report</li>
         </ul>
         <h2>🎯 CONCLUSION</h2>
-        <p>This comprehensive analysis, using 6 independent methods across 40 calls</p>
-        <p>from 10 agents, has identified **interruption rate** as the single most</p>
+        <p>This comprehensive analysis, using 6 independent methods across 3220 calls</p>
+        <p>from 11 agents, has identified **interruption rate** as the single most</p>
         <p>important factor distinguishing High-DPAD from Low-DPAD agents.</p>
         <p>**The path to improved DPAD performance is clear:**</p>
         <p>1. Reduce interruptions</p>
@@ -349,9 +357,9 @@
         <p>improvements in DPAD performance within 30-90 days.</p>
         <hr>
         <p>**End of Report**</p>
-        <p>Generated: January 01, 2026 at 17:17</p>
+        <p>Generated: January 01, 2026 at 18:37</p>
         <div class='footer'>
-            <p>Report generated: January 01, 2026 at 17:17</p>
+            <p>Report generated: January 01, 2026 at 18:37</p>
             <p>DPAD Analysis Pipeline © 2025</p>
         </div>
     </div>

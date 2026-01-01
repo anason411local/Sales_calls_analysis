@@ -1,8 +1,8 @@
 DPAD ANALYSIS - PIPELINE EXECUTION REPORT
 ======================================================================
 
-Execution Date: 2026-01-01 17:17:44
-Total Execution Time: 0:00:50
+Execution Date: 2026-01-01 18:37:06
+Total Execution Time: 0:04:42
 
 ======================================================================
 SCRIPT EXECUTION SUMMARY
@@ -10,49 +10,49 @@ SCRIPT EXECUTION SUMMARY
 
 Script 1: Preprocessing
   Status: ✓ SUCCESS
-  Time: 0.95 seconds
+  Time: 1.55 seconds
 
 Script 2: Correlation Analysis
   Status: ✓ SUCCESS
-  Time: 6.36 seconds
+  Time: 9.28 seconds
 
 Script 3: Feature Importance
   Status: ✓ SUCCESS
-  Time: 15.81 seconds
+  Time: 33.23 seconds
 
 Script 4: Statistical Tests
   Status: ✓ SUCCESS
-  Time: 3.00 seconds
+  Time: 4.14 seconds
   Key Findings:
-    - significant_features: 3
+    - significant_features: 10
 
 Script 5: SHAP Analysis
   Status: ✓ SUCCESS
-  Time: 6.16 seconds
+  Time: 61.54 seconds
   Key Findings:
     - method: SHAP (RF + XGBoost)
 
 Script 6: LIME Analysis
   Status: ✓ SUCCESS
-  Time: 9.71 seconds
+  Time: 154.90 seconds
   Key Findings:
     - method: LIME (RF + XGBoost)
 
 Script 7: Visualizations
   Status: ✓ SUCCESS
-  Time: 5.57 seconds
+  Time: 12.17 seconds
   Key Findings:
     - charts: 7 visualizations
 
 Script 8: Agent-Level Analysis
   Status: ✓ SUCCESS
-  Time: 2.84 seconds
+  Time: 4.97 seconds
   Key Findings:
-    - agents: 10
+    - agents: 11
 
 Script 9: Combined Report
   Status: ✓ SUCCESS
-  Time: 0.43 seconds
+  Time: 0.36 seconds
   Key Findings:
     - reports: Text + HTML + Summary
 
@@ -65,5 +65,5 @@ Successful: 9
 Failed: 0
 Success Rate: 100.0%
 
-Total Time: 0:00:50
-Average Time per Script: 5.65 seconds
+Total Time: 0:04:42
+Average Time per Script: 31.35 seconds

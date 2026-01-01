@@ -17,26 +17,26 @@ Features ranked by mean absolute SHAP value:
 
 | Rank | Feature | Mean |SHAP| | Interpretation |
 |------|---------|------------|----------------|
-| 75   | sentiment_progression                         | 0.4986   | High impact on predictions |
-|  6   | timezone                                      | 0.4614   | High impact on predictions |
-| 55   | longest_monologue_length                      | 0.4206   | High impact on predictions |
-| 25   | agent_talk_percentage                         | 0.3542   | High impact on predictions |
-|  2   | TO_OMC_Duration                               | 0.3096   | High impact on predictions |
-| 62   | interruption_rate                             | 0.3059   | High impact on predictions |
-| 44   | call_structure_clarity                        | 0.2535   | High impact on predictions |
-| 41   | location_mentioned                            | 0.2329   | High impact on predictions |
-| 70   | name_usage_count                              | 0.1293   | High impact on predictions |
-| 28   | goal1_questions                               | 0.1074   | High impact on predictions |
-| 79   | sentiment_closing                             | 0.0826   | High impact on predictions |
-| 84   | total_call_duration                           | 0.0729   | High impact on predictions |
-| 66   | stages_skipped                                | 0.0723   | High impact on predictions |
-| 77   | sentiment_early_middle                        | 0.0721   | High impact on predictions |
-| 12   | ready_for_customers                           | 0.0667   | High impact on predictions |
-| 23   | technical_quality_issues                      | 0.0640   | High impact on predictions |
-| 35   | signal_ratio                                  | 0.0488   | High impact on predictions |
-| 61   | total_interruptions                           | 0.0455   | High impact on predictions |
-| 71   | rapport_elements_count                        | 0.0424   | High impact on predictions |
-| 39   | time_to_reason_seconds                        | 0.0407   | High impact on predictions |
+| 44   | call_structure_clarity                        | 0.5009   | High impact on predictions |
+| 39   | time_to_reason_seconds                        | 0.1980   | High impact on predictions |
+| 66   | stages_skipped                                | 0.1326   | High impact on predictions |
+| 43   | call_structure_framed                         | 0.1157   | High impact on predictions |
+| 70   | name_usage_count                              | 0.1024   | High impact on predictions |
+|  2   | TO_OMC_Duration                               | 0.1023   | High impact on predictions |
+| 35   | signal_ratio                                  | 0.0957   | High impact on predictions |
+| 84   | total_call_duration                           | 0.0941   | High impact on predictions |
+| 72   | tone_assessment                               | 0.0929   | High impact on predictions |
+|  1   | TO_length_in_sec                              | 0.0867   | High impact on predictions |
+| 87   | time_in_final_stage                           | 0.0829   | High impact on predictions |
+| 28   | goal1_questions                               | 0.0788   | High impact on predictions |
+| 55   | longest_monologue_length                      | 0.0762   | High impact on predictions |
+| 80   | notable_sentiment_shifts                      | 0.0707   | High impact on predictions |
+| 14   | ready_to_transfer                             | 0.0689   | High impact on predictions |
+| 86   | hang_up_initiated_by                          | 0.0672   | High impact on predictions |
+| 34   | total_resistance_signals                      | 0.0658   | High impact on predictions |
+| 54   | average_monologue_length                      | 0.0645   | High impact on predictions |
+| 79   | sentiment_closing                             | 0.0638   | High impact on predictions |
+| 62   | interruption_rate                             | 0.0632   | High impact on predictions |
 
 ## 2. SHAP Value Statistics
 
@@ -44,34 +44,34 @@ Features ranked by mean absolute SHAP value:
 
 | Feature | High-DPAD Avg | Low-DPAD Avg | Difference |
 |---------|---------------|--------------|------------|
-| interruption_rate                        |   0.0200      |  -0.0204     |  0.0404   |
-| longest_monologue_length                 |   0.0145      |  -0.0137     |  0.0282   |
-| sentiment_progression                    |   0.0112      |  -0.0110     |  0.0222   |
-| interruption_pattern                     |   0.0094      |  -0.0104     |  0.0198   |
-| sentiment_early_middle                   |   0.0084      |  -0.0093     |  0.0178   |
-| total_interruptions                      |   0.0076      |  -0.0101     |  0.0177   |
-| agent_talk_percentage                    |   0.0083      |  -0.0076     |  0.0159   |
-| time_to_reason_seconds                   |   0.0076      |  -0.0058     |  0.0133   |
-| total_call_duration                      |   0.0041      |  -0.0080     |  0.0121   |
-| timezone                                 |   0.0062      |  -0.0056     |  0.0119   |
+| call_structure_clarity                   |   0.0123      |  -0.0121     |  0.0244   |
+| time_to_reason_seconds                   |   0.0060      |  -0.0068     |  0.0128   |
+| stages_skipped                           |   0.0037      |  -0.0046     |  0.0083   |
+| signal_ratio                             |   0.0040      |  -0.0037     |  0.0077   |
+| total_call_duration                      |   0.0028      |  -0.0034     |  0.0062   |
+| TO_length_in_sec                         |   0.0024      |  -0.0037     |  0.0062   |
+| name_usage_count                         |   0.0029      |  -0.0030     |  0.0059   |
+| time_in_final_stage                      |   0.0025      |  -0.0033     |  0.0057   |
+| TO_OMC_Duration                          |   0.0018      |  -0.0032     |  0.0050   |
+| total_discovery_questions                |   0.0023      |  -0.0027     |  0.0049   |
 
 ## 3. Key Insights from SHAP Analysis
 
 ### Features that Push Toward High-DPAD Classification
 
-- **customer_talk_percentage**: Avg SHAP = 0.0014
-- **name_usage_count**: Avg SHAP = 0.0011
-- **disconnect_stage**: Avg SHAP = 0.0010
-- **Dial Attempt Calls**: Avg SHAP = 0.0009
-- **time_to_reason_seconds**: Avg SHAP = 0.0009
+- **location_mentioned**: Avg SHAP = 0.0001
+- **within_45_seconds**: Avg SHAP = 0.0000
+- **season_month**: Avg SHAP = -0.0000
+- **payment_info_collected**: Avg SHAP = -0.0000
+- **full_sale_closed**: Avg SHAP = -0.0000
 
 ### Features that Push Toward Low-DPAD Classification
 
-- **total_call_duration**: Avg SHAP = -0.0020
-- **total_interruptions**: Avg SHAP = -0.0012
-- **ready_for_customers**: Avg SHAP = -0.0009
-- **customer_availability**: Avg SHAP = -0.0009
-- **customer_sentiment_lgs**: Avg SHAP = -0.0007
+- **call_structure_clarity**: Avg SHAP = -0.0030
+- **time_to_reason_seconds**: Avg SHAP = -0.0021
+- **stages_skipped**: Avg SHAP = -0.0015
+- **TO_length_in_sec**: Avg SHAP = -0.0014
+- **TO_OMC_Duration**: Avg SHAP = -0.0014
 
 ## 4. How to Interpret SHAP Plots
 

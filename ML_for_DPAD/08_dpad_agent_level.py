@@ -270,8 +270,8 @@ def create_agent_visualizations(agent_data, comparison_df, output_dir):
     # 1. Agent Performance Heatmap
     print("\n📊 Creating agent performance heatmap...")
     
-    # Select top 10 features by difference
-    top_features = comparison_df.head(10)['Feature'].tolist()
+    # Select top 25 features by difference
+    top_features = comparison_df.head(25)['Feature'].tolist()
     
     # Get mean columns for these features
     feature_cols = [f"{feat}_mean" for feat in top_features if f"{feat}_mean" in agent_data.columns]
@@ -287,7 +287,7 @@ def create_agent_visualizations(agent_data, comparison_df, output_dir):
         heatmap_data[feature_cols] = scaler.fit_transform(heatmap_data[feature_cols])
         
         # Create heatmap
-        fig, ax = plt.subplots(figsize=(14, 10))
+        fig, ax = plt.subplots(figsize=(14, 18))  # Taller figure for 25 features
         
         # Prepare data for seaborn
         heatmap_plot = heatmap_data[feature_cols].T
@@ -299,7 +299,7 @@ def create_agent_visualizations(agent_data, comparison_df, output_dir):
                    annot=True, fmt='.1f', cbar_kws={'label': 'Standardized Score'},
                    linewidths=0.5, ax=ax)
         
-        ax.set_title("Agent Performance Heatmap (Top 10 Features)\n" +
+        ax.set_title("Agent Performance Heatmap (Top 25 Features)\n" +
                      "Green = Above Average | Red = Below Average",
                      fontsize=13, fontweight='bold', pad=15)
         ax.set_ylabel("Feature", fontsize=11, fontweight='bold')
@@ -355,28 +355,64 @@ def create_agent_visualizations(agent_data, comparison_df, output_dir):
     print("\n📊 Creating agent scatter plot...")
     
     if 'interruption_rate_mean' in agent_data.columns and 'sentiment_progression_mean' in agent_data.columns:
-        fig, ax = plt.subplots(figsize=(12, 8))
+        fig, ax = plt.subplots(figsize=(14, 9))  # Slightly larger for better spacing
+        
+        # Store all text objects for potential adjustment
+        texts = []
         
         for group, color, label in [(0, COLORS['low_dpad'], 'Low-DPAD Agents'),
                                      (1, COLORS['high_dpad'], 'High-DPAD Agents')]:
             mask = agent_data['high_dpad'] == group
             ax.scatter(agent_data[mask]['interruption_rate_mean'],
                       agent_data[mask]['sentiment_progression_mean'],
-                      c=color, label=label, s=200, alpha=0.7, 
-                      edgecolors='black', linewidth=2)
+                      c=color, label=label, s=250, alpha=0.7, 
+                      edgecolors='black', linewidth=2, zorder=3)
             
-            # Add agent labels
+            # Add agent labels with smart positioning
             for idx, row in agent_data[mask].iterrows():
-                ax.annotate(f"A{row['agent_id']}", 
-                          (row['interruption_rate_mean'], row['sentiment_progression_mean']),
-                          fontsize=8, ha='center', va='center', fontweight='bold')
+                x = row['interruption_rate_mean']
+                y = row['sentiment_progression_mean']
+                agent_name = str(row['agent_id'])
+                
+                # Use text with offset and bbox for better visibility
+                text = ax.annotate(f"A{agent_name}", 
+                          xy=(x, y),
+                          xytext=(8, 8),  # Offset the text by 8 points
+                          textcoords='offset points',
+                          fontsize=9, 
+                          fontweight='bold',
+                          bbox=dict(boxstyle='round,pad=0.3', 
+                                   facecolor='white', 
+                                   edgecolor='gray',
+                                   alpha=0.8),
+                          arrowprops=dict(arrowstyle='->', 
+                                        connectionstyle='arc3,rad=0',
+                                        color='gray',
+                                        lw=1,
+                                        alpha=0.6),
+                          zorder=4)
+                texts.append(text)
+        
+        # Try to use adjustText if available for automatic label positioning
+        try:
+            from adjustText import adjust_text
+            adjust_text(texts, 
+                       arrowprops=dict(arrowstyle='->', color='gray', lw=1, alpha=0.6),
+                       expand_points=(1.5, 1.5),
+                       expand_text=(1.2, 1.2),
+                       force_points=(0.5, 0.5),
+                       force_text=(0.5, 0.5))
+            print("   ℹ️  Using adjustText for optimal label placement")
+        except ImportError:
+            print("   ℹ️  adjustText not available, using manual offsets")
+            pass
         
         ax.set_xlabel("Mean Interruption Rate", fontsize=12, fontweight='bold')
         ax.set_ylabel("Mean Sentiment Progression", fontsize=12, fontweight='bold')
         ax.set_title("Agent Positioning: Interruption Rate vs Sentiment Progression\n" +
                      "Each point represents one agent's average across all their calls",
                      fontsize=13, fontweight='bold', pad=15)
-        ax.legend(fontsize=11, loc='best')
+        ax.legend(fontsize=11, loc='best', framealpha=0.9)
         ax.grid(True, alpha=0.3)
         
         plt.tight_layout()

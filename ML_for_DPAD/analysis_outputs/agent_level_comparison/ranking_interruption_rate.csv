@@ -1,11 +1,12 @@
 agent_id,DPAD_Group,interruption_rate_mean,total_calls,rank
-Art Estrada,High-DPAD,0.0,3,1
-Ice Bello,Low-DPAD,0.0,1,2
-Rafael Munoz,Low-DPAD,0.0,1,3
-Patrick Garcia,High-DPAD,0.0,5,4
-Oscar Ross,High-DPAD,0.006,5,5
-Cora Johnson,High-DPAD,0.06666666666666667,6,6
-Ismael Marenco,Low-DPAD,0.21166666666666667,6,7
-Benjamin Franklin,Low-DPAD,0.22285714285714286,7,8
-Darwin Sanchez,Low-DPAD,0.302,5,9
-Bryan Bernal,High-DPAD,0.34,1,10
+Cora Johnson,High-DPAD,0.15138349514563107,206,1
+Mary Lopez,Low-DPAD,0.163712,250,2
+Oscar Ross,High-DPAD,0.17600305810397554,327,3
+Ismael Marenco,Low-DPAD,0.19163275434243174,403,4
+Darwin Sanchez,Low-DPAD,0.21125000000000002,388,5
+Art Estrada,High-DPAD,0.2415168539325843,356,6
+Benjamin Franklin,Low-DPAD,0.2449793388429752,484,7
+Patrick Garcia,High-DPAD,0.27144155844155843,231,8
+Ice Bello,Low-DPAD,0.27318875502008033,249,9
+Rafael Munoz,Low-DPAD,0.2845275590551181,254,10
+Bryan Bernal,High-DPAD,0.3874647887323943,71,11

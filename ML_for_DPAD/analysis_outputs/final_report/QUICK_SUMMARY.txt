@@ -14,11 +14,11 @@ This finding is consistent across ALL 6 analytical methods:
 ✓ Agent-Level Aggregation
 
 TOP 5 FEATURES:
-   11. interruption_rate (4 methods)
-   1. sentiment_progression (4 methods)
-   12. longest_monologue_length (3 methods)
-   13. agent_talk_percentage (3 methods)
-   6. sentiment_early_middle (3 methods)
+   14. TO_length_in_sec (4 methods)
+   12. time_to_reason_seconds (3 methods)
+   4. name_usage_count (3 methods)
+   15. total_call_duration (3 methods)
+   11. call_structure_clarity (3 methods)
 
 IMMEDIATE ACTIONS:
    1. Train agents on active listening (reduce interruptions)

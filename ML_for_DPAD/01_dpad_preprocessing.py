@@ -380,10 +380,29 @@ def encode_categorical_variables(df, feature_types):
                     df_encoded[col] = le.fit_transform(df_encoded[col].astype(str))
                     encoders[col] = le
             else:
-                df_encoded[col] = df_encoded[col].astype(int)
+                # Fill NaN values before converting to int (use 0 as default for boolean)
+                df_encoded[col] = df_encoded[col].fillna(0).astype(int)
     
     print(f"\n✅ Encoded {len(encoders)} categorical columns")
     print(f"✅ Converted boolean columns to integers")
+    
+    # Final check: ensure ALL columns are numeric
+    print(f"\n🔍 Performing final numeric conversion check...")
+    for col in df_encoded.columns:
+        if not pd.api.types.is_numeric_dtype(df_encoded[col]):
+            print(f"   ⚠️ Converting non-numeric column: {col}")
+            # Force conversion to numeric
+            le = LabelEncoder()
+            df_encoded[col] = le.fit_transform(df_encoded[col].astype(str))
+            if col not in encoders:
+                encoders[col] = le
+    
+    # Verify all columns are now numeric
+    non_numeric = [col for col in df_encoded.columns if not pd.api.types.is_numeric_dtype(df_encoded[col])]
+    if non_numeric:
+        raise ValueError(f"Still have non-numeric columns after encoding: {non_numeric}")
+    
+    print(f"✅ All {len(df_encoded.columns)} columns are now numeric")
     
     return df_encoded, encoders
 
@@ -500,7 +519,7 @@ def generate_preprocessing_report(high_dpad_df, low_dpad_df, X, y,
     
     # Save report
     report_path = output_dir / "analysis_outputs" / "preprocessed_data" / "preprocessing_report.txt"
-    with open(report_path, 'w') as f:
+    with open(report_path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(report))
     
     print(f"✅ Preprocessing report saved: {report_path}")

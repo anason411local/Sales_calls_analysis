@@ -1,0 +1,12 @@
+agent_id,DPAD_Group,sentiment_progression_mean,total_calls,rank
+Mary Lopez,Low-DPAD,4.684,250,1
+Oscar Ross,High-DPAD,4.342507645259939,327,2
+Ismael Marenco,Low-DPAD,4.3399503722084365,403,3
+Benjamin Franklin,Low-DPAD,4.183884297520661,484,4
+Patrick Garcia,High-DPAD,4.125541125541125,231,5
+Ice Bello,Low-DPAD,4.096385542168675,249,6
+Darwin Sanchez,Low-DPAD,4.02319587628866,388,7
+Cora Johnson,High-DPAD,3.7427184466019416,206,8
+Art Estrada,High-DPAD,3.502808988764045,356,9
+Rafael Munoz,Low-DPAD,3.2283464566929134,254,10
+Bryan Bernal,High-DPAD,3.1971830985915495,71,11

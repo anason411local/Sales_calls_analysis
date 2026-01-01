@@ -9,62 +9,62 @@ correlation with High-DPAD (>1 deal/agent/day) performance.
 **Key Findings:**
 
 - **Features analyzed:** 95
-- **Strong positive correlations (>0.3):** 3
-- **Strong negative correlations (<-0.3):** 2
-- **Strongest positive correlation:** 0.425
-- **Strongest negative correlation:** -0.450
+- **Strong positive correlations (>0.3):** 0
+- **Strong negative correlations (<-0.3):** 0
+- **Strongest positive correlation:** 0.064
+- **Strongest negative correlation:** -0.059
 
 ## 1. Top Positive Correlations
 *Features HIGHER in High-DPAD agents (Success Indicators)*
 
 | Rank | Feature | Correlation |
 |------|---------|-------------|
-|  1   | sentiment_progression                         |  0.425      |
-|  2   | customer_availability                         |  0.333      |
-|  3   | conversation_balance                          |  0.302      |
-|  4   | interruption_pattern                          |  0.284      |
-|  5   | hang_up_initiated_by                          |  0.225      |
-|  6   | sentiment_early_middle                        |  0.217      |
-|  7   | primary_disconnect_reason                     |  0.201      |
-|  8   | timezone                                      |  0.177      |
-|  9   | Connection Made Calls                         |  0.170      |
-| 10   | business_type_mentioned                       |  0.167      |
-| 11   | forbidden_industry                            |  0.160      |
-| 12   | long_monologues                               |  0.159      |
-| 13   | sentiment_late_middle                         |  0.158      |
-| 14   | sentiment_closing                             |  0.158      |
-| 15   | stages_out_of_order                           |  0.147      |
-| 16   | total_buying_signals                          |  0.143      |
-| 17   | talk_ratio_classification                     |  0.138      |
-| 18   | lgs_sentiment_style                           |  0.134      |
-| 19   | empathy_responses                             |  0.130      |
-| 20   | customer_talk_percentage                      |  0.128      |
+|  1   | acknowledgement_rate                          |  0.064      |
+|  2   | business_type_mentioned                       |  0.063      |
+|  3   | ready_to_transfer                             |  0.061      |
+|  4   | name_usage_count                              |  0.052      |
+|  5   | signal_ratio                                  |  0.052      |
+|  6   | objections_acknowledged                       |  0.049      |
+|  7   | total_buying_signals                          |  0.047      |
+|  8   | name_used_first_minute                        |  0.046      |
+|  9   | talk_ratio_classification                     |  0.044      |
+| 10   | lgs_call_not_transferred                      |  0.042      |
+| 11   | total_call_duration                           |  0.042      |
+| 12   | stages_skipped                                |  0.039      |
+| 13   | conversation_balance                          |  0.038      |
+| 14   | rapport_elements_count                        |  0.037      |
+| 15   | long_monologues                               |  0.036      |
+| 16   | customer_talk_percentage                      |  0.035      |
+| 17   | TO_length_in_sec                              |  0.035      |
+| 18   | Connection Made Calls                         |  0.035      |
+| 19   | advanced_discovery_used                       |  0.034      |
+| 20   | very_long_monologues                          |  0.034      |
 
 ## 2. Top Negative Correlations
 *Features LOWER in High-DPAD agents (Warning Signs)*
 
 | Rank | Feature | Correlation |
 |------|---------|-------------|
-|  1   | interruption_rate                             | -0.450      |
-|  2   | time_to_reason_seconds                        | -0.310      |
-|  3   | customer_sentiment_omc                        | -0.266      |
-|  4   | agent_talk_percentage                         | -0.265      |
-|  5   | tone_assessment                               | -0.260      |
-|  6   | technical_quality_score                       | -0.254      |
-|  7   | personal_greeting                             | -0.229      |
-|  8   | total_objections                              | -0.217      |
-|  9   | Dial Attempt Calls                            | -0.217      |
-| 10   | name_usage_count                              | -0.201      |
-| 11   | commitment_type                               | -0.194      |
-| 12   | customer_frustrations                         | -0.187      |
-| 13   | timeline_mentions_final_2min                  | -0.186      |
-| 14   | name_used_first_minute                        | -0.167      |
-| 15   | customer_marketing_experience                 | -0.163      |
-| 16   | Calls Count                                   | -0.161      |
-| 17   | disconnect_stage                              | -0.143      |
-| 18   | objections_rebutted                           | -0.138      |
-| 19   | TO_OMC_Duration                               | -0.137      |
-| 20   | is_decision_maker                             | -0.134      |
+|  1   | tone_assessment                               | -0.059      |
+|  2   | time_to_reason_seconds                        | -0.057      |
+|  3   | lgs_sentiment_style                           | -0.057      |
+|  4   | agent_talk_percentage                         | -0.040      |
+|  5   | script_adherence                              | -0.028      |
+|  6   | call_structure_framed                         | -0.028      |
+|  7   | season_status                                 | -0.027      |
+|  8   | call_result_tag                               | -0.027      |
+|  9   | average_monologue_length                      | -0.027      |
+| 10   | Dial Attempt Calls                            | -0.026      |
+| 11   | sentiment_progression                         | -0.026      |
+| 12   | disconnect_stage                              | -0.025      |
+| 13   | call_structure_clarity                        | -0.024      |
+| 14   | customer_sentiment_lgs                        | -0.023      |
+| 15   | ready_for_customers                           | -0.023      |
+| 16   | omc_agent_sentiment_style                     | -0.022      |
+| 17   | customer_frustrations                         | -0.020      |
+| 18   | assumptive_language_used                      | -0.018      |
+| 19   | Calls Count                                   | -0.015      |
+| 20   | hang_up_initiated_by                          | -0.014      |
 
 ## 3. Correlation Analysis by Category
 
@@ -72,150 +72,150 @@ correlation with High-DPAD (>1 deal/agent/day) performance.
 
 | Feature | Correlation | Interpretation |
 |---------|-------------|----------------|
-| business_type_mentioned             |  0.167      | ~ Weak relationship            |
-| goal3_questions                     |  0.105      | ~ Weak relationship            |
-| location_mentioned                  |  0.102      | ~ Weak relationship            |
-| goal1_questions                     |  0.042      | ~ Weak relationship            |
-| discovery_quality                   |  0.028      | ~ Weak relationship            |
-| advanced_discovery_used             | -0.000      | ~ Weak relationship            |
-| total_discovery_questions           | -0.013      | ~ Weak relationship            |
-| ready_for_customers                 | -0.016      | ~ Weak relationship            |
-| goal2_questions                     | -0.118      | ~ Weak relationship            |
-| is_decision_maker                   | -0.134      | ~ Weak relationship            |
+| business_type_mentioned             |  0.063      | ~ Weak relationship            |
+| advanced_discovery_used             |  0.034      | ~ Weak relationship            |
+| goal3_questions                     |  0.011      | ~ Weak relationship            |
+| is_decision_maker                   |  0.006      | ~ Weak relationship            |
+| goal1_questions                     |  0.001      | ~ Weak relationship            |
+| discovery_quality                   | -0.001      | ~ Weak relationship            |
+| total_discovery_questions           | -0.002      | ~ Weak relationship            |
+| location_mentioned                  | -0.002      | ~ Weak relationship            |
+| goal2_questions                     | -0.011      | ~ Weak relationship            |
+| ready_for_customers                 | -0.023      | ~ Weak relationship            |
 
 ### Objection Handling
 
 | Feature | Correlation | Interpretation |
 |---------|-------------|----------------|
-| acknowledgement_rate                |  0.094      | ~ Weak relationship            |
-| total_resistance_signals            | -0.024      | ~ Weak relationship            |
-| objections_acknowledged             | -0.084      | ~ Weak relationship            |
-| objections_rebutted                 | -0.138      | ~ Weak relationship            |
-| total_objections                    | -0.217      | ✗ Lower in successful agents   |
+| acknowledgement_rate                |  0.064      | ~ Weak relationship            |
+| objections_acknowledged             |  0.049      | ~ Weak relationship            |
+| total_objections                    |  0.010      | ~ Weak relationship            |
+| total_resistance_signals            |  0.006      | ~ Weak relationship            |
+| objections_rebutted                 |  0.001      | ~ Weak relationship            |
 
 ### Sentiment & Rapport
 
 | Feature | Correlation | Interpretation |
 |---------|-------------|----------------|
-| sentiment_progression               |  0.425      | ✓ Higher in successful agents  |
-| sentiment_early_middle              |  0.217      | ✓ Higher in successful agents  |
-| sentiment_late_middle               |  0.158      | ~ Weak relationship            |
-| sentiment_closing                   |  0.158      | ~ Weak relationship            |
-| lgs_sentiment_style                 |  0.134      | ~ Weak relationship            |
-| empathy_responses                   |  0.130      | ~ Weak relationship            |
-| notable_sentiment_shifts            |  0.111      | ~ Weak relationship            |
-| customer_sentiment_lgs              |  0.032      | ~ Weak relationship            |
-| common_ground_established           |  0.000      | ~ Weak relationship            |
-| empathy_response_rate               |  0.000      | ~ Weak relationship            |
-| rapport_elements_count              | -0.053      | ~ Weak relationship            |
-| omc_agent_sentiment_style           | -0.073      | ~ Weak relationship            |
-| sentiment_opening                   | -0.117      | ~ Weak relationship            |
-| name_usage_count                    | -0.201      | ✗ Lower in successful agents   |
-| personal_greeting                   | -0.229      | ✗ Lower in successful agents   |
-| customer_sentiment_omc              | -0.266      | ✗ Lower in successful agents   |
+| name_usage_count                    |  0.052      | ~ Weak relationship            |
+| rapport_elements_count              |  0.037      | ~ Weak relationship            |
+| sentiment_opening                   |  0.033      | ~ Weak relationship            |
+| empathy_responses                   |  0.030      | ~ Weak relationship            |
+| sentiment_early_middle              |  0.028      | ~ Weak relationship            |
+| common_ground_established           |  0.024      | ~ Weak relationship            |
+| personal_greeting                   |  0.012      | ~ Weak relationship            |
+| empathy_response_rate               |  0.011      | ~ Weak relationship            |
+| notable_sentiment_shifts            |  0.007      | ~ Weak relationship            |
+| customer_sentiment_omc              |  0.002      | ~ Weak relationship            |
+| sentiment_closing                   |  0.000      | ~ Weak relationship            |
+| sentiment_late_middle               | -0.003      | ~ Weak relationship            |
+| omc_agent_sentiment_style           | -0.022      | ~ Weak relationship            |
+| customer_sentiment_lgs              | -0.023      | ~ Weak relationship            |
+| sentiment_progression               | -0.026      | ~ Weak relationship            |
+| lgs_sentiment_style                 | -0.057      | ~ Weak relationship            |
 
 ### Talk Dynamics
 
 | Feature | Correlation | Interpretation |
 |---------|-------------|----------------|
-| conversation_balance                |  0.302      | ✓ Higher in successful agents  |
-| interruption_pattern                |  0.284      | ✓ Higher in successful agents  |
-| long_monologues                     |  0.159      | ~ Weak relationship            |
-| talk_ratio_classification           |  0.138      | ~ Weak relationship            |
-| customer_talk_percentage            |  0.128      | ~ Weak relationship            |
-| average_monologue_length            |  0.102      | ~ Weak relationship            |
-| very_long_monologues                |  0.100      | ~ Weak relationship            |
-| longest_monologue_length            |  0.096      | ~ Weak relationship            |
-| medium_monologues                   |  0.075      | ~ Weak relationship            |
-| extended_monologues_count           | -0.011      | ~ Weak relationship            |
-| short_monologues                    | -0.080      | ~ Weak relationship            |
-| total_interruptions                 | -0.097      | ~ Weak relationship            |
-| agent_talk_percentage               | -0.265      | ✗ Lower in successful agents   |
-| interruption_rate                   | -0.450      | ✗ Lower in successful agents   |
+| talk_ratio_classification           |  0.044      | ~ Weak relationship            |
+| conversation_balance                |  0.038      | ~ Weak relationship            |
+| long_monologues                     |  0.036      | ~ Weak relationship            |
+| customer_talk_percentage            |  0.035      | ~ Weak relationship            |
+| very_long_monologues                |  0.034      | ~ Weak relationship            |
+| extended_monologues_count           |  0.019      | ~ Weak relationship            |
+| total_interruptions                 |  0.014      | ~ Weak relationship            |
+| interruption_pattern                |  0.010      | ~ Weak relationship            |
+| longest_monologue_length            |  0.006      | ~ Weak relationship            |
+| medium_monologues                   |  0.006      | ~ Weak relationship            |
+| interruption_rate                   | -0.004      | ~ Weak relationship            |
+| short_monologues                    | -0.010      | ~ Weak relationship            |
+| average_monologue_length            | -0.027      | ~ Weak relationship            |
+| agent_talk_percentage               | -0.040      | ~ Weak relationship            |
 
 ### Call Structure & Timing
 
 | Feature | Correlation | Interpretation |
 |---------|-------------|----------------|
-| stages_out_of_order                 |  0.147      | ~ Weak relationship            |
-| total_call_duration                 |  0.082      | ~ Weak relationship            |
-| time_in_final_stage                 |  0.040      | ~ Weak relationship            |
-| within_45_seconds                   |  0.000      | ~ Weak relationship            |
-| stages_skipped                      | -0.006      | ~ Weak relationship            |
-| script_adherence                    | -0.027      | ~ Weak relationship            |
-| call_structure_clarity              | -0.058      | ~ Weak relationship            |
-| call_structure_framed               | -0.102      | ~ Weak relationship            |
-| TO_OMC_Duration                     | -0.137      | ~ Weak relationship            |
-| time_to_reason_seconds              | -0.310      | ✗ Lower in successful agents   |
+| total_call_duration                 |  0.042      | ~ Weak relationship            |
+| stages_skipped                      |  0.039      | ~ Weak relationship            |
+| stages_out_of_order                 |  0.031      | ~ Weak relationship            |
+| time_in_final_stage                 |  0.014      | ~ Weak relationship            |
+| TO_OMC_Duration                     |  0.011      | ~ Weak relationship            |
+| within_45_seconds                   | -0.002      | ~ Weak relationship            |
+| call_structure_clarity              | -0.024      | ~ Weak relationship            |
+| call_structure_framed               | -0.028      | ~ Weak relationship            |
+| script_adherence                    | -0.028      | ~ Weak relationship            |
+| time_to_reason_seconds              | -0.057      | ~ Weak relationship            |
 
 ### Closing & Commitment
 
 | Feature | Correlation | Interpretation |
 |---------|-------------|----------------|
-| assumptive_language_used            |  0.000      | ~ Weak relationship            |
-| roi_calculation_presented           |  0.000      | ~ Weak relationship            |
-| premature_closing_attempt           |  0.000      | ~ Weak relationship            |
-| followup_scheduled                  | -0.000      | ~ Weak relationship            |
-| commitment_clarity                  | -0.045      | ~ Weak relationship            |
-| price_timeline_contract_before_dropoff | -0.046      | ~ Weak relationship            |
-| price_mentions_final_2min           | -0.111      | ~ Weak relationship            |
-| timeline_mentions_final_2min        | -0.186      | ~ Weak relationship            |
-| commitment_type                     | -0.194      | ~ Weak relationship            |
-| contract_mentions_final_2min        |    nan      | ~ Weak relationship            |
-| full_sale_closed                    |    nan      | ~ Weak relationship            |
-| payment_info_collected              |    nan      | ~ Weak relationship            |
+| contract_mentions_final_2min        |  0.030      | ~ Weak relationship            |
+| full_sale_closed                    |  0.023      | ~ Weak relationship            |
+| commitment_type                     |  0.008      | ~ Weak relationship            |
+| premature_closing_attempt           |  0.004      | ~ Weak relationship            |
+| price_timeline_contract_before_dropoff |  0.003      | ~ Weak relationship            |
+| commitment_clarity                  |  0.001      | ~ Weak relationship            |
+| payment_info_collected              | -0.001      | ~ Weak relationship            |
+| timeline_mentions_final_2min        | -0.001      | ~ Weak relationship            |
+| price_mentions_final_2min           | -0.001      | ~ Weak relationship            |
+| followup_scheduled                  | -0.006      | ~ Weak relationship            |
+| roi_calculation_presented           | -0.010      | ~ Weak relationship            |
+| assumptive_language_used            | -0.018      | ~ Weak relationship            |
 
 ### Call Outcome
 
 | Feature | Correlation | Interpretation |
 |---------|-------------|----------------|
-| hang_up_initiated_by                |  0.225      | ✓ Higher in successful agents  |
-| primary_disconnect_reason           |  0.201      | ✓ Higher in successful agents  |
-| call_result_tag                     | -0.097      | ~ Weak relationship            |
-| disconnect_stage                    | -0.143      | ~ Weak relationship            |
-| customer_frustrations               | -0.187      | ~ Weak relationship            |
+| primary_disconnect_reason           |  0.006      | ~ Weak relationship            |
+| hang_up_initiated_by                | -0.014      | ~ Weak relationship            |
+| customer_frustrations               | -0.020      | ~ Weak relationship            |
+| disconnect_stage                    | -0.025      | ~ Weak relationship            |
+| call_result_tag                     | -0.027      | ~ Weak relationship            |
 
 ### Buying Signals
 
 | Feature | Correlation | Interpretation |
 |---------|-------------|----------------|
-| total_buying_signals                |  0.143      | ~ Weak relationship            |
-| signal_ratio                        | -0.028      | ~ Weak relationship            |
+| signal_ratio                        |  0.052      | ~ Weak relationship            |
+| total_buying_signals                |  0.047      | ~ Weak relationship            |
 
 ### LGS Lead Quality
 
 | Feature | Correlation | Interpretation |
 |---------|-------------|----------------|
-| customer_availability               |  0.333      | ✓ Higher in successful agents  |
-| Connection Made Calls               |  0.170      | ~ Weak relationship            |
-| customer_knows_marketing            |  0.000      | ~ Weak relationship            |
-| ready_to_transfer                   |  0.000      | ~ Weak relationship            |
-| Calls Count                         | -0.161      | ~ Weak relationship            |
-| customer_marketing_experience       | -0.163      | ~ Weak relationship            |
-| Dial Attempt Calls                  | -0.217      | ✗ Lower in successful agents   |
+| ready_to_transfer                   |  0.061      | ~ Weak relationship            |
+| Connection Made Calls               |  0.035      | ~ Weak relationship            |
+| customer_knows_marketing            |  0.016      | ~ Weak relationship            |
+| customer_marketing_experience       | -0.002      | ~ Weak relationship            |
+| customer_availability               | -0.005      | ~ Weak relationship            |
+| Calls Count                         | -0.015      | ~ Weak relationship            |
+| Dial Attempt Calls                  | -0.026      | ~ Weak relationship            |
 
 ### Context
 
 | Feature | Correlation | Interpretation |
 |---------|-------------|----------------|
-| timezone                            |  0.177      | ~ Weak relationship            |
-| season_status                       |  0.000      | ~ Weak relationship            |
-| season_month                        |    nan      | ~ Weak relationship            |
+| season_month                        |  0.027      | ~ Weak relationship            |
+| timezone                            | -0.010      | ~ Weak relationship            |
+| season_status                       | -0.027      | ~ Weak relationship            |
 
 ## 4. Key Insights
 
 **Discovery Questions:**
-- Average correlation: 0.007
+- Average correlation: 0.005
 - ✗ Discovery questions show weak relationship with DPAD
 
 **Objection Handling:**
-- Average correlation: -0.146
+- Average correlation: 0.020
 - ✗ Objection handling shows weak relationship with DPAD
 
 **Sentiment Management:**
-- Average correlation: 0.078
+- Average correlation: -0.006
 - ✗ Sentiment shows weak relationship with DPAD
 
 **Talk Dynamics:**
-- Average correlation: 0.044
+- Average correlation: 0.010
 - ✗ Talk dynamics show weak relationship with DPAD
