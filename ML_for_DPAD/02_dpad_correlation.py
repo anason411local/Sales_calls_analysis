@@ -70,7 +70,15 @@ def load_preprocessed_data():
           f"{len(feature_metadata['categorical_features'])} categorical, "
           f"{len(feature_metadata['boolean_features'])} boolean")
     
-    return X, y.values.ravel(), feature_metadata
+    # Also load original datasets for individual heatmaps
+    high_dpad_df = pd.read_csv("output_data/dpad_gretaer_than_1_temp.csv")
+    low_dpad_df = pd.read_csv("output_data/dpad_less_than_1_temp.csv")
+    
+    print(f"\n✅ Loaded original datasets:")
+    print(f"   High-DPAD (>1): {high_dpad_df.shape}")
+    print(f"   Low-DPAD (<1): {low_dpad_df.shape}")
+    
+    return X, y.values.ravel(), feature_metadata, high_dpad_df, low_dpad_df
 
 
 def calculate_correlations(X, y):
@@ -200,6 +208,214 @@ def create_correlation_heatmap(X, y, output_dir):
     print(f"✅ Saved: correlation_heatmap.png")
     
     plt.close()
+
+
+def create_individual_correlation_heatmaps(high_dpad_df, low_dpad_df, output_dir):
+    """
+    Create full correlation heatmaps for each individual dataset
+    Similar to the old short_calls and long_calls heatmaps
+    """
+    print("\n" + "="*70)
+    print("CREATING INDIVIDUAL DATASET CORRELATION HEATMAPS")
+    print("="*70)
+    
+    output_path = output_dir / "analysis_outputs" / "correlations"
+    output_path.mkdir(parents=True, exist_ok=True)
+    
+    # Columns to EXCLUDE from heatmaps
+    exclude_cols = [
+        'Unnamed: 0', 'index',
+        # Transcription text columns (too long)
+        'TO_Transcription_VICI(64000+ Words)',
+        'TO_Transcription_VICI(32001-64000) Words',
+        'TO_OMC_Transcription_VICI(32000-64000)Words',
+        'TO_OMC_Transcription_VICI(64000+ Words)',
+        # Status/Link columns (not analytical)
+        'TO_Status',
+        'TO_Recording_Link',
+        'TO_OMC_Recording_Link',
+        'TO_OMC_User_Group',
+        # others
+        'row_number',
+        'omc_error_message',
+        'lgs_error_message',
+        # Technical metadata columns
+        'omc_extraction_success',
+        'omc_error_message',
+        'extraction_complete'
+    ]
+    
+    # Columns to INCLUDE (LGS variables and important identifiers)
+    include_cols = [
+        'LQ_User',
+        'LQ_Customer_Name',
+        'LQ_Company_Name',
+        'LQ_Company_Address',
+        'LQ_Service',
+        'Calls Count',
+        'Connection Made Calls',
+        'Dial Attempt Calls'
+    ]
+    
+    # Function to calculate correlation matrix for a dataset
+    def calculate_correlation_matrix(df, dataset_name):
+        print(f"\n📊 Calculating correlations for {dataset_name}...")
+        
+        # Select numeric columns
+        numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
+        
+        # Also include string columns that need to be encoded (LGS variables)
+        for col in include_cols:
+            if col in df.columns and col not in numeric_cols:
+                # Try to encode categorical columns
+                try:
+                    if df[col].dtype == 'object':
+                        # Label encode for correlation
+                        from sklearn.preprocessing import LabelEncoder
+                        le = LabelEncoder()
+                        df[col + '_encoded'] = le.fit_transform(df[col].astype(str))
+                        numeric_cols.append(col + '_encoded')
+                        print(f"   ✓ Encoded categorical column: {col}")
+                except:
+                    pass
+        
+        # Remove excluded columns
+        numeric_cols = [col for col in numeric_cols if col not in exclude_cols]
+        
+        # Remove any column that contains excluded strings
+        numeric_cols = [col for col in numeric_cols if not any(excl.lower() in col.lower() for excl in exclude_cols)]
+        
+        print(f"   Found {len(numeric_cols)} numeric columns (after exclusions)")
+        
+        # Calculate correlation matrix
+        if len(numeric_cols) > 0:
+            corr_matrix = df[numeric_cols].corr(method='spearman')
+            
+            # Save correlation matrix as CSV
+            csv_filename = f"02_correlation_{dataset_name}.csv"
+            corr_matrix.to_csv(output_path / csv_filename)
+            print(f"   ✓ Saved correlation matrix: {csv_filename}")
+            
+            return corr_matrix, numeric_cols
+        else:
+            print(f"   ⚠️  No numeric columns found!")
+            return None, []
+    
+    # Calculate for High-DPAD dataset (>1)
+    high_corr_matrix, high_cols = calculate_correlation_matrix(high_dpad_df.copy(), "high_dpad_greater_than_1")
+    
+    # Calculate for Low-DPAD dataset (<1)
+    low_corr_matrix, low_cols = calculate_correlation_matrix(low_dpad_df.copy(), "low_dpad_less_than_1")
+    
+    # Create heatmap for High-DPAD dataset
+    if high_corr_matrix is not None and len(high_cols) > 0:
+        print(f"\n📊 Creating heatmap for High-DPAD (>1) dataset...")
+        print(f"   Variables: {len(high_cols)}")
+        
+        # Determine figure size and annotation based on number of variables
+        if len(high_cols) <= 30:
+            figsize = (18, 16)
+            annot = True
+            fmt = '.2f'
+            fontsize = 8
+        elif len(high_cols) <= 50:
+            figsize = (24, 22)
+            annot = True
+            fmt = '.2f'
+            fontsize = 6
+        else:
+            figsize = (30, 28)
+            annot = False  # Too many to show values
+            fmt = '.2f'
+            fontsize = 5
+        
+        fig, ax = plt.subplots(figsize=figsize)
+        
+        # Create heatmap with values shown
+        sns.heatmap(high_corr_matrix, 
+                    cmap='RdBu_r', 
+                    center=0,
+                    vmin=-1, 
+                    vmax=1,
+                    square=True,
+                    linewidths=0.3,
+                    cbar_kws={'label': 'Spearman Correlation', 'shrink': 0.8},
+                    annot=annot,  # Show correlation values
+                    fmt=fmt,
+                    annot_kws={'size': fontsize},
+                    xticklabels=True,
+                    yticklabels=True,
+                    ax=ax)
+        
+        # Rotate labels for better readability
+        plt.xticks(rotation=90, ha='right', fontsize=7)
+        plt.yticks(rotation=0, fontsize=7)
+        
+        ax.set_title('LEVEL 1: VARIABLE-LEVEL CORRELATION HEATMAP\n' +
+                     'HIGH-DPAD CALLS (>1 deal/agent/day)\n' +
+                     f'Method: SPEARMAN (Non-Linear) | Variables: {len(high_cols)} Original | Calls: {len(high_dpad_df)}',
+                     fontsize=14, fontweight='bold', pad=20)
+        
+        plt.tight_layout()
+        plt.savefig(output_path / "correlation_heatmap_high_dpad.png", dpi=300, bbox_inches='tight')
+        print(f"   ✓ Saved: correlation_heatmap_high_dpad.png")
+        plt.close()
+    
+    # Create heatmap for Low-DPAD dataset
+    if low_corr_matrix is not None and len(low_cols) > 0:
+        print(f"\n📊 Creating heatmap for Low-DPAD (<1) dataset...")
+        print(f"   Variables: {len(low_cols)}")
+        
+        # Determine figure size and annotation based on number of variables
+        if len(low_cols) <= 30:
+            figsize = (18, 16)
+            annot = True
+            fmt = '.2f'
+            fontsize = 8
+        elif len(low_cols) <= 50:
+            figsize = (24, 22)
+            annot = True
+            fmt = '.2f'
+            fontsize = 6
+        else:
+            figsize = (30, 28)
+            annot = False  # Too many to show values
+            fmt = '.2f'
+            fontsize = 5
+        
+        fig, ax = plt.subplots(figsize=figsize)
+        
+        # Create heatmap with values shown
+        sns.heatmap(low_corr_matrix, 
+                    cmap='RdBu_r', 
+                    center=0,
+                    vmin=-1, 
+                    vmax=1,
+                    square=True,
+                    linewidths=0.3,
+                    cbar_kws={'label': 'Spearman Correlation', 'shrink': 0.8},
+                    annot=annot,  # Show correlation values
+                    fmt=fmt,
+                    annot_kws={'size': fontsize},
+                    xticklabels=True,
+                    yticklabels=True,
+                    ax=ax)
+        
+        # Rotate labels for better readability
+        plt.xticks(rotation=90, ha='right', fontsize=7)
+        plt.yticks(rotation=0, fontsize=7)
+        
+        ax.set_title('LEVEL 1: VARIABLE-LEVEL CORRELATION HEATMAP\n' +
+                     'LOW-DPAD CALLS (<1 deal/agent/day)\n' +
+                     f'Method: SPEARMAN (Non-Linear) | Variables: {len(low_cols)} Original | Calls: {len(low_dpad_df)}',
+                     fontsize=14, fontweight='bold', pad=20)
+        
+        plt.tight_layout()
+        plt.savefig(output_path / "correlation_heatmap_low_dpad.png", dpi=300, bbox_inches='tight')
+        print(f"   ✓ Saved: correlation_heatmap_low_dpad.png")
+        plt.close()
+    
+    print(f"\n✅ Individual correlation heatmaps complete!")
 
 
 def plot_top_correlations(top_positive, top_negative, output_dir, n=20):
@@ -511,7 +727,7 @@ def main():
     output_dir = Path("ML_for_DPAD")
     
     # Load preprocessed data
-    X, y, feature_metadata = load_preprocessed_data()
+    X, y, feature_metadata, high_dpad_df, low_dpad_df = load_preprocessed_data()
     
     # Calculate correlations
     corr_df = calculate_correlations(X, y)
@@ -526,6 +742,9 @@ def main():
     create_correlation_heatmap(X, y, output_dir)
     plot_top_correlations(top_positive, top_negative, output_dir, n=20)
     
+    # NEW: Create individual dataset correlation heatmaps
+    create_individual_correlation_heatmaps(high_dpad_df, low_dpad_df, output_dir)
+    
     # Generate report
     generate_correlation_report(corr_df, top_positive, top_negative, 
                                  categorized_corr, output_dir)
@@ -537,7 +756,11 @@ def main():
     print("✅ CORRELATION ANALYSIS COMPLETE")
     print("="*70)
     print(f"\nOutputs saved to: {output_dir / 'analysis_outputs' / 'correlations'}")
-    print("  - correlation_heatmap.png")
+    print("  - correlation_heatmap.png (combined analysis)")
+    print("  - correlation_heatmap_high_dpad.png (>1 DPAD dataset)")
+    print("  - correlation_heatmap_low_dpad.png (<1 DPAD dataset)")
+    print("  - 02_correlation_high_dpad_greater_than_1.csv")
+    print("  - 02_correlation_low_dpad_less_than_1.csv")
     print("  - top_positive_correlations.png")
     print("  - top_negative_correlations.png")
     print("  - correlation_report.txt")
