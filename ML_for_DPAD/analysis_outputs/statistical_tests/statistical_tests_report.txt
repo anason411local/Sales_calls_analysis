@@ -73,9 +73,9 @@ This report presents rigorous statistical tests comparing High-DPAD
 
 ### Consensus Features (Significant in Both Parametric & Non-parametric Tests)
 
-- **objections_acknowledged**: Robust difference across test types
-- **TO_length_in_sec**: Robust difference across test types
+- **total_buying_signals**: Robust difference across test types
 - **agent_talk_percentage**: Robust difference across test types
 - **acknowledgement_rate**: Robust difference across test types
-- **total_buying_signals**: Robust difference across test types
+- **objections_acknowledged**: Robust difference across test types
+- **TO_length_in_sec**: Robust difference across test types
 - **name_usage_count**: Robust difference across test types

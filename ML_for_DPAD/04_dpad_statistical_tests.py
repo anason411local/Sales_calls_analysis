@@ -404,13 +404,13 @@ def create_combined_effect_size_visualization(t_test_results, chi_square_results
 def create_effect_size_vs_significance_plots(t_test_results, chi_square_results, output_dir):
     """
     Create scatter plots showing effect size vs statistical significance
-    Similar to ML V2 volcano-style plots
+    Similar to ML V2 volcano-style plots with TOP 20 variables labeled
     """
     print("\n📊 Creating effect size vs significance scatter plots...")
     
     output_path = output_dir / "analysis_outputs" / "statistical_tests"
     
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 8))
     
     # Plot 1: Numerical Variables (Cohen's D vs p-value)
     if len(t_test_results) > 0:
@@ -426,31 +426,56 @@ def create_effect_size_vs_significance_plots(t_test_results, chi_square_results,
                 colors.append('#4169E1')  # Blue for not significant
         
         scatter = ax1.scatter(t_test_results['cohens_d'], neg_log_p,
-                            c=colors, s=120, alpha=0.7, edgecolors='black', linewidths=1.5)
+                            c=colors, s=120, alpha=0.7, edgecolors='black', linewidths=1.5, zorder=2)
         
         # Add significance line
         ax1.axhline(-np.log10(0.05), color='red', linestyle='--', 
-                   label='p=0.05', linewidth=2)
+                   label='p=0.05', linewidth=2, zorder=1)
         
-        # Annotate top features by absolute effect size
+        # Calculate combined score for top 20 selection (effect size * significance)
         t_test_results['abs_cohens_d'] = t_test_results['cohens_d'].abs()
-        top_features = t_test_results.nlargest(3, 'abs_cohens_d')
-        for idx, row in top_features.iterrows():
-            if abs(row['cohens_d']) > 0.3:  # Only annotate if meaningful effect
-                ax1.annotate(row['feature'], 
-                           xy=(row['cohens_d'], -np.log10(row['p_value'])),
-                           xytext=(10, 10), textcoords='offset points',
-                           fontsize=9, fontweight='bold',
-                           bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.7),
-                           arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0'))
+        t_test_results['neg_log_p'] = -np.log10(t_test_results['p_value'].replace(0, 1e-300))
+        t_test_results['combined_score'] = t_test_results['abs_cohens_d'] * t_test_results['neg_log_p']
         
-        ax1.set_xlabel("Effect Size (|Cohen's D|)", fontsize=12, fontweight='bold')
+        # Get TOP 20 variables by combined score
+        top_20_features = t_test_results.nlargest(20, 'combined_score')
+        
+        # Annotate TOP 20 features with smart positioning
+        texts = []
+        for idx, row in top_20_features.iterrows():
+            x_pos = row['cohens_d']
+            y_pos = -np.log10(row['p_value'])
+            
+            # Create annotation with arrow
+            text = ax1.annotate(row['feature'], 
+                       xy=(x_pos, y_pos),
+                       xytext=(10, 10), textcoords='offset points',
+                       fontsize=7.5, fontweight='bold',
+                       bbox=dict(boxstyle='round,pad=0.4', facecolor='lightyellow', 
+                                edgecolor='black', alpha=0.9, linewidth=1),
+                       arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0.2',
+                                     color='black', lw=1.2, alpha=0.8),
+                       zorder=3)
+            texts.append(text)
+        
+        # Try to use adjustText for better label positioning if available
+        try:
+            from adjustText import adjust_text
+            adjust_text(texts, ax=ax1,
+                       arrowprops=dict(arrowstyle='->', color='black', lw=1.2, alpha=0.8),
+                       expand_points=(1.5, 1.5),
+                       force_points=(0.5, 0.5),
+                       force_text=(0.5, 0.5))
+        except ImportError:
+            print("   ℹ️ adjustText not available, using manual positioning")
+        
+        ax1.set_xlabel("Effect Size (Cohen's D)", fontsize=12, fontweight='bold')
         ax1.set_ylabel("-log10(p-value)", fontsize=12, fontweight='bold')
         ax1.set_title("Numerical Variables: Effect Size vs Significance\n" +
-                     "Top-right = Large effect + Significant",
+                     "Top-right = Large effect + Significant | Top 20 labeled",
                      fontsize=13, fontweight='bold')
         ax1.legend(fontsize=10)
-        ax1.grid(alpha=0.3)
+        ax1.grid(alpha=0.3, zorder=0)
     
     # Plot 2: Categorical Variables (Cramér's V vs p-value)
     if len(chi_square_results) > 0:
@@ -466,30 +491,55 @@ def create_effect_size_vs_significance_plots(t_test_results, chi_square_results,
                 colors.append('#FF6347')  # Red for not significant
         
         scatter = ax2.scatter(chi_square_results['cramers_v'], neg_log_p,
-                            c=colors, s=120, alpha=0.7, edgecolors='black', linewidths=1.5)
+                            c=colors, s=120, alpha=0.7, edgecolors='black', linewidths=1.5, zorder=2)
         
         # Add significance line
         ax2.axhline(-np.log10(0.05), color='red', linestyle='--',
-                   label='p=0.05', linewidth=2)
+                   label='p=0.05', linewidth=2, zorder=1)
         
-        # Annotate top features
-        top_features = chi_square_results.nlargest(3, 'cramers_v')
-        for idx, row in top_features.iterrows():
-            if row['cramers_v'] > 0.3:  # Only annotate if meaningful effect
-                ax2.annotate(row['feature'],
-                           xy=(row['cramers_v'], -np.log10(row['p_value'])),
-                           xytext=(10, 10), textcoords='offset points',
-                           fontsize=9, fontweight='bold',
-                           bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.7),
-                           arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0'))
+        # Calculate combined score for top 20 selection
+        chi_square_results['neg_log_p'] = -np.log10(chi_square_results['p_value'].replace(0, 1e-300))
+        chi_square_results['combined_score'] = chi_square_results['cramers_v'] * chi_square_results['neg_log_p']
+        
+        # Get TOP 20 variables by combined score
+        top_20_features = chi_square_results.nlargest(min(20, len(chi_square_results)), 'combined_score')
+        
+        # Annotate TOP 20 features with smart positioning
+        texts = []
+        for idx, row in top_20_features.iterrows():
+            x_pos = row['cramers_v']
+            y_pos = -np.log10(row['p_value'])
+            
+            # Create annotation with arrow
+            text = ax2.annotate(row['feature'],
+                       xy=(x_pos, y_pos),
+                       xytext=(10, 10), textcoords='offset points',
+                       fontsize=7.5, fontweight='bold',
+                       bbox=dict(boxstyle='round,pad=0.4', facecolor='lightyellow',
+                                edgecolor='black', alpha=0.9, linewidth=1),
+                       arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0.2',
+                                     color='black', lw=1.2, alpha=0.8),
+                       zorder=3)
+            texts.append(text)
+        
+        # Try to use adjustText for better label positioning if available
+        try:
+            from adjustText import adjust_text
+            adjust_text(texts, ax=ax2,
+                       arrowprops=dict(arrowstyle='->', color='black', lw=1.2, alpha=0.8),
+                       expand_points=(1.5, 1.5),
+                       force_points=(0.5, 0.5),
+                       force_text=(0.5, 0.5))
+        except ImportError:
+            print("   ℹ️ adjustText not available, using manual positioning")
         
         ax2.set_xlabel("Effect Size (Cramér's V)", fontsize=12, fontweight='bold')
         ax2.set_ylabel("-log10(p-value)", fontsize=12, fontweight='bold')
         ax2.set_title("Categorical Variables: Effect Size vs Significance\n" +
-                     "Top-right = Large effect + Significant",
+                     "Top-right = Large effect + Significant | Top 20 labeled",
                      fontsize=13, fontweight='bold')
         ax2.legend(fontsize=10)
-        ax2.grid(alpha=0.3)
+        ax2.grid(alpha=0.3, zorder=0)
     
     plt.suptitle("LEVEL 1: EFFECT SIZE vs STATISTICAL SIGNIFICANCE\n" +
                  "Best variables are in top-right (large effect + low p-value)",
@@ -497,7 +547,7 @@ def create_effect_size_vs_significance_plots(t_test_results, chi_square_results,
     
     plt.tight_layout()
     plt.savefig(output_path / "04_effect_size_vs_significance.png", dpi=300, bbox_inches='tight')
-    print(f"   ✓ Saved: 04_effect_size_vs_significance.png")
+    print(f"   ✓ Saved: 04_effect_size_vs_significance.png (with TOP 20 labels)")
     plt.close()
 
 

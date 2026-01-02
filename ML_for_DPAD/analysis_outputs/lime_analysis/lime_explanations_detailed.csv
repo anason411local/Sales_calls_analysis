@@ -1,91 +1,91 @@
 call_index,description,feature_condition,weight
-0,High-DPAD (Correctly Classified) - Example 1,season_month <= 1.00,0.025253397283997902
+0,High-DPAD (Correctly Classified) - Example 1,season_month <= 1.00,0.025253397283997895
 0,High-DPAD (Correctly Classified) - Example 1,payment_info_collected <= 0.00,-0.022231103823359088
-0,High-DPAD (Correctly Classified) - Example 1,TO_length_in_sec <= 115.00,-0.019708340652428914
-0,High-DPAD (Correctly Classified) - Example 1,9.00 < time_to_reason_seconds <= 15.00,0.018802208448863864
+0,High-DPAD (Correctly Classified) - Example 1,TO_length_in_sec <= 115.00,-0.01970834065242891
+0,High-DPAD (Correctly Classified) - Example 1,9.00 < time_to_reason_seconds <= 15.00,0.018802208448863867
 0,High-DPAD (Correctly Classified) - Example 1,tone_assessment <= 7.00,0.018174340339148703
-0,High-DPAD (Correctly Classified) - Example 1,full_sale_closed <= 0.00,0.015438645277204377
-0,High-DPAD (Correctly Classified) - Example 1,signal_ratio <= 1.00,-0.013727410922899613
+0,High-DPAD (Correctly Classified) - Example 1,full_sale_closed <= 0.00,0.015438645277204366
+0,High-DPAD (Correctly Classified) - Example 1,signal_ratio <= 1.00,-0.01372741092289961
 0,High-DPAD (Correctly Classified) - Example 1,558.75 < call_structure_clarity <= 1085.50,-0.010821969880441021
-0,High-DPAD (Correctly Classified) - Example 1,call_result_tag <= 2.00,0.009287617233477074
+0,High-DPAD (Correctly Classified) - Example 1,call_result_tag <= 2.00,0.009287617233477078
 0,High-DPAD (Correctly Classified) - Example 1,name_usage_count <= 2.00,-0.009207587440423734
-0,High-DPAD (Correctly Classified) - Example 1,total_buying_signals <= 0.00,-0.009115296567733818
-0,High-DPAD (Correctly Classified) - Example 1,customer_talk_percentage <= 33.33,-0.00909630109642233
-0,High-DPAD (Correctly Classified) - Example 1,1.00 < ready_to_transfer <= 5.00,0.008922885178657226
+0,High-DPAD (Correctly Classified) - Example 1,total_buying_signals <= 0.00,-0.009115296567733817
+0,High-DPAD (Correctly Classified) - Example 1,customer_talk_percentage <= 33.33,-0.009096301096422331
+0,High-DPAD (Correctly Classified) - Example 1,1.00 < ready_to_transfer <= 5.00,0.008922885178657228
 0,High-DPAD (Correctly Classified) - Example 1,lgs_sentiment_style <= 3.00,0.008171099157507675
 0,High-DPAD (Correctly Classified) - Example 1,is_decision_maker <= 6.00,0.007610295674855998
 597,High-DPAD (Correctly Classified) - Example 2,call_structure_clarity <= 558.75,0.024241653866015907
 597,High-DPAD (Correctly Classified) - Example 2,9.00 < time_to_reason_seconds <= 15.00,0.02132569877635525
-597,High-DPAD (Correctly Classified) - Example 2,tone_assessment <= 7.00,0.019477418467258787
-597,High-DPAD (Correctly Classified) - Example 2,TO_length_in_sec <= 115.00,-0.01671493230382665
-597,High-DPAD (Correctly Classified) - Example 2,stages_skipped <= 145.00,-0.011309862812208242
+597,High-DPAD (Correctly Classified) - Example 2,tone_assessment <= 7.00,0.019477418467258784
+597,High-DPAD (Correctly Classified) - Example 2,TO_length_in_sec <= 115.00,-0.016714932303826653
+597,High-DPAD (Correctly Classified) - Example 2,stages_skipped <= 145.00,-0.01130986281220824
 597,High-DPAD (Correctly Classified) - Example 2,acknowledgement_rate > 67.00,0.00954819225893559
-597,High-DPAD (Correctly Classified) - Example 2,payment_info_collected <= 0.00,-0.009256965278952483
-597,High-DPAD (Correctly Classified) - Example 2,full_sale_closed <= 0.00,0.008611934387513698
+597,High-DPAD (Correctly Classified) - Example 2,payment_info_collected <= 0.00,-0.009256965278952468
+597,High-DPAD (Correctly Classified) - Example 2,full_sale_closed <= 0.00,0.008611934387513693
 597,High-DPAD (Correctly Classified) - Example 2,time_in_final_stage <= 28.00,0.00793971340068491
 597,High-DPAD (Correctly Classified) - Example 2,lgs_sentiment_style <= 3.00,0.007794047632320901
-597,High-DPAD (Correctly Classified) - Example 2,ready_to_transfer <= 1.00,-0.007784196037302107
-597,High-DPAD (Correctly Classified) - Example 2,total_call_duration <= 121.00,0.007004154195373671
-597,High-DPAD (Correctly Classified) - Example 2,TO_OMC_Duration > 804.00,0.006982908495198247
-597,High-DPAD (Correctly Classified) - Example 2,name_usage_count <= 2.00,-0.006706341849459381
-597,High-DPAD (Correctly Classified) - Example 2,goal3_questions <= 0.00,0.006063235806347324
-1192,Low-DPAD (Correctly Classified) - Example 1,commitment_type <= 47.00,0.020418540740490678
+597,High-DPAD (Correctly Classified) - Example 2,ready_to_transfer <= 1.00,-0.007784196037302106
+597,High-DPAD (Correctly Classified) - Example 2,total_call_duration <= 121.00,0.007004154195373669
+597,High-DPAD (Correctly Classified) - Example 2,TO_OMC_Duration > 804.00,0.006982908495198243
+597,High-DPAD (Correctly Classified) - Example 2,name_usage_count <= 2.00,-0.006706341849459383
+597,High-DPAD (Correctly Classified) - Example 2,goal3_questions <= 0.00,0.006063235806347325
+1192,Low-DPAD (Correctly Classified) - Example 1,commitment_type <= 47.00,0.02041854074049068
 1192,Low-DPAD (Correctly Classified) - Example 1,9.00 < time_to_reason_seconds <= 15.00,0.01904799506126734
 1192,Low-DPAD (Correctly Classified) - Example 1,TO_length_in_sec <= 115.00,-0.0189967085371166
 1192,Low-DPAD (Correctly Classified) - Example 1,tone_assessment <= 7.00,0.017784979344827437
 1192,Low-DPAD (Correctly Classified) - Example 1,stages_skipped <= 145.00,-0.017511775813554835
-1192,Low-DPAD (Correctly Classified) - Example 1,season_month <= 1.00,0.01682032013640589
+1192,Low-DPAD (Correctly Classified) - Example 1,season_month <= 1.00,0.016820320136405886
 1192,Low-DPAD (Correctly Classified) - Example 1,signal_ratio <= 1.00,-0.014799385569836444
 1192,Low-DPAD (Correctly Classified) - Example 1,558.75 < call_structure_clarity <= 1085.50,-0.0128202621239153
 1192,Low-DPAD (Correctly Classified) - Example 1,notable_sentiment_shifts <= 804.75,-0.01184842599788505
 1192,Low-DPAD (Correctly Classified) - Example 1,ready_to_transfer <= 1.00,-0.008132744702624296
-1192,Low-DPAD (Correctly Classified) - Example 1,total_buying_signals <= 0.00,-0.008021601711428142
+1192,Low-DPAD (Correctly Classified) - Example 1,total_buying_signals <= 0.00,-0.008021601711428145
 1192,Low-DPAD (Correctly Classified) - Example 1,lgs_sentiment_style <= 3.00,0.007881077923874756
 1192,Low-DPAD (Correctly Classified) - Example 1,customer_talk_percentage <= 33.33,-0.007205421258259039
-1192,Low-DPAD (Correctly Classified) - Example 1,agent_talk_percentage > 66.67,-0.007134632771977275
-1192,Low-DPAD (Correctly Classified) - Example 1,goal3_questions <= 0.00,0.006921059950378798
-2205,Low-DPAD (Correctly Classified) - Example 2,9.00 < time_to_reason_seconds <= 15.00,0.020375612779014715
-2205,Low-DPAD (Correctly Classified) - Example 2,lgs_call_not_transferred <= 175.00,-0.018819960752248437
+1192,Low-DPAD (Correctly Classified) - Example 1,agent_talk_percentage > 66.67,-0.007134632771977276
+1192,Low-DPAD (Correctly Classified) - Example 1,goal3_questions <= 0.00,0.006921059950378799
+2205,Low-DPAD (Correctly Classified) - Example 2,9.00 < time_to_reason_seconds <= 15.00,0.02037561277901471
+2205,Low-DPAD (Correctly Classified) - Example 2,lgs_call_not_transferred <= 175.00,-0.018819960752248413
 2205,Low-DPAD (Correctly Classified) - Example 2,tone_assessment <= 7.00,0.018382007097012605
 2205,Low-DPAD (Correctly Classified) - Example 2,commitment_type <= 47.00,-0.015500810524278137
-2205,Low-DPAD (Correctly Classified) - Example 2,558.75 < call_structure_clarity <= 1085.50,-0.012088115326506355
+2205,Low-DPAD (Correctly Classified) - Example 2,558.75 < call_structure_clarity <= 1085.50,-0.01208811532650635
 2205,Low-DPAD (Correctly Classified) - Example 2,total_buying_signals > 2.00,0.011953132532079937
-2205,Low-DPAD (Correctly Classified) - Example 2,TO_length_in_sec > 202.00,0.010277844219934275
+2205,Low-DPAD (Correctly Classified) - Example 2,TO_length_in_sec > 202.00,0.010277844219934277
 2205,Low-DPAD (Correctly Classified) - Example 2,signal_ratio > 99.00,0.009971506262510896
-2205,Low-DPAD (Correctly Classified) - Example 2,average_monologue_length > 4.70,-0.008880727266043735
-2205,Low-DPAD (Correctly Classified) - Example 2,forbidden_industry <= 4.00,-0.008188412080568948
+2205,Low-DPAD (Correctly Classified) - Example 2,average_monologue_length > 4.70,-0.008880727266043737
+2205,Low-DPAD (Correctly Classified) - Example 2,forbidden_industry <= 4.00,-0.008188412080568946
 2205,Low-DPAD (Correctly Classified) - Example 2,contract_mentions_final_2min <= 0.00,-0.00737261386094104
-2205,Low-DPAD (Correctly Classified) - Example 2,goal2_questions > 3.00,-0.007067497228327906
+2205,Low-DPAD (Correctly Classified) - Example 2,goal2_questions > 3.00,-0.007067497228327904
 2205,Low-DPAD (Correctly Classified) - Example 2,is_decision_maker <= 6.00,0.006638642348870404
-2205,Low-DPAD (Correctly Classified) - Example 2,ready_to_transfer <= 1.00,-0.006367019579890791
-2205,Low-DPAD (Correctly Classified) - Example 2,disconnect_stage <= 32.00,0.006292414317580645
-27,High-DPAD MISCLASSIFIED as Low-DPAD,9.00 < time_to_reason_seconds <= 15.00,0.023440624213361686
+2205,Low-DPAD (Correctly Classified) - Example 2,ready_to_transfer <= 1.00,-0.006367019579890789
+2205,Low-DPAD (Correctly Classified) - Example 2,disconnect_stage <= 32.00,0.006292414317580643
+27,High-DPAD MISCLASSIFIED as Low-DPAD,9.00 < time_to_reason_seconds <= 15.00,0.02344062421336169
 27,High-DPAD MISCLASSIFIED as Low-DPAD,tone_assessment <= 7.00,0.022003418322842756
-27,High-DPAD MISCLASSIFIED as Low-DPAD,lgs_call_not_transferred <= 175.00,-0.020354775610240246
-27,High-DPAD MISCLASSIFIED as Low-DPAD,558.75 < call_structure_clarity <= 1085.50,-0.010499566633198128
-27,High-DPAD MISCLASSIFIED as Low-DPAD,common_ground_established <= 0.00,0.009050972084814826
-27,High-DPAD MISCLASSIFIED as Low-DPAD,disconnect_stage > 113.00,-0.00900056464208953
-27,High-DPAD MISCLASSIFIED as Low-DPAD,payment_info_collected <= 0.00,0.008722576280329578
-27,High-DPAD MISCLASSIFIED as Low-DPAD,full_sale_closed <= 0.00,-0.008550784692732093
-27,High-DPAD MISCLASSIFIED as Low-DPAD,total_buying_signals <= 0.00,-0.008390383161398481
-27,High-DPAD MISCLASSIFIED as Low-DPAD,ready_to_transfer <= 1.00,-0.00795027999832734
-27,High-DPAD MISCLASSIFIED as Low-DPAD,contract_mentions_final_2min <= 0.00,-0.007659372044524412
+27,High-DPAD MISCLASSIFIED as Low-DPAD,lgs_call_not_transferred <= 175.00,-0.020354775610240235
+27,High-DPAD MISCLASSIFIED as Low-DPAD,558.75 < call_structure_clarity <= 1085.50,-0.01049956663319813
+27,High-DPAD MISCLASSIFIED as Low-DPAD,common_ground_established <= 0.00,0.00905097208481482
+27,High-DPAD MISCLASSIFIED as Low-DPAD,disconnect_stage > 113.00,-0.009000564642089526
+27,High-DPAD MISCLASSIFIED as Low-DPAD,payment_info_collected <= 0.00,0.00872257628032958
+27,High-DPAD MISCLASSIFIED as Low-DPAD,full_sale_closed <= 0.00,-0.008550784692732098
+27,High-DPAD MISCLASSIFIED as Low-DPAD,total_buying_signals <= 0.00,-0.00839038316139848
+27,High-DPAD MISCLASSIFIED as Low-DPAD,ready_to_transfer <= 1.00,-0.007950279998327339
+27,High-DPAD MISCLASSIFIED as Low-DPAD,contract_mentions_final_2min <= 0.00,-0.00765937204452441
 27,High-DPAD MISCLASSIFIED as Low-DPAD,name_usage_count <= 2.00,-0.007338754745482945
-27,High-DPAD MISCLASSIFIED as Low-DPAD,lgs_sentiment_style <= 3.00,0.007235126160059707
+27,High-DPAD MISCLASSIFIED as Low-DPAD,lgs_sentiment_style <= 3.00,0.007235126160059709
 27,High-DPAD MISCLASSIFIED as Low-DPAD,293.00 < stages_skipped <= 358.25,0.007073982827096992
-27,High-DPAD MISCLASSIFIED as Low-DPAD,acknowledgement_rate <= 0.00,-0.006711334928990296
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,season_month <= 1.00,-0.028247160809482984
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,payment_info_collected <= 0.00,0.024618920195510378
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,lgs_call_not_transferred <= 175.00,-0.020751873257197583
+27,High-DPAD MISCLASSIFIED as Low-DPAD,acknowledgement_rate <= 0.00,-0.006711334928990297
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,season_month <= 1.00,-0.028247160809482978
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,payment_info_collected <= 0.00,0.024618920195510367
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,lgs_call_not_transferred <= 175.00,-0.02075187325719759
 1193,Low-DPAD MISCLASSIFIED as High-DPAD,tone_assessment <= 7.00,0.018781749188668023
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,9.00 < time_to_reason_seconds <= 15.00,0.017914997903233736
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,1085.50 < call_structure_clarity <= 1546.00,-0.012215221950316284
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,1.00 < ready_to_transfer <= 5.00,0.011478500870219187
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,9.00 < time_to_reason_seconds <= 15.00,0.01791499790323374
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,1085.50 < call_structure_clarity <= 1546.00,-0.01221522195031628
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,1.00 < ready_to_transfer <= 5.00,0.01147850087021919
 1193,Low-DPAD MISCLASSIFIED as High-DPAD,lgs_sentiment_style > 3.00,-0.011090164916848853
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,total_buying_signals <= 0.00,-0.010792704469557494
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,121.00 < total_call_duration <= 259.00,-0.009177917903350225
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,TO_OMC_Duration <= 307.75,-0.008424408833806032
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,total_buying_signals <= 0.00,-0.010792704469557496
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,121.00 < total_call_duration <= 259.00,-0.009177917903350229
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,TO_OMC_Duration <= 307.75,-0.008424408833806036
 1193,Low-DPAD MISCLASSIFIED as High-DPAD,TO_length_in_sec > 202.00,0.007786891080529403
 1193,Low-DPAD MISCLASSIFIED as High-DPAD,name_usage_count <= 2.00,-0.007522467336557284
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,customer_talk_percentage <= 33.33,-0.006999846041814004
-1193,Low-DPAD MISCLASSIFIED as High-DPAD,is_decision_maker <= 6.00,0.005483148494869133
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,customer_talk_percentage <= 33.33,-0.006999846041814008
+1193,Low-DPAD MISCLASSIFIED as High-DPAD,is_decision_maker <= 6.00,0.0054831484948691354
