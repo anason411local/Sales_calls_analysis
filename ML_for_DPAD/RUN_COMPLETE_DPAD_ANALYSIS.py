@@ -99,6 +99,13 @@ SCRIPTS = [
     },
     {
         'id': 9,
+        'name': 'Advanced Agent Analysis',
+        'script': 'ML_for_DPAD/08b_dpad_advanced_agent_analysis.py',
+        'description': 'Statistical, ML, and temporal agent analysis',
+        'critical': False
+    },
+    {
+        'id': 10,
         'name': 'Combined Report',
         'script': 'ML_for_DPAD/09_dpad_combined_report.py',
         'description': 'Generate executive report',
@@ -253,6 +260,16 @@ def extract_key_findings(output, script_name):
                     if "Total agents:" in line:
                         findings['agents'] = line.split(':')[1].strip()
         
+        elif "Advanced Agent" in script_name:
+            if "Large effect sizes:" in output:
+                for line in output.split('\n'):
+                    if "Large effect sizes:" in line:
+                        findings['large_effects'] = line.split(':')[1].strip()
+                    elif "PC1+PC2 variance explained:" in line:
+                        findings['pca_variance'] = line.split(':')[1].strip()
+                    elif "Optimal clusters:" in line:
+                        findings['clusters'] = line.split(':')[1].strip()
+        
         elif "Combined Report" in script_name:
             findings['reports'] = "Text + HTML + Summary"
     
@@ -309,6 +326,9 @@ def validate_outputs():
         'ML_for_DPAD/analysis_outputs/lime_analysis/lime_feature_importance.csv',
         'ML_for_DPAD/analysis_outputs/visualizations/summary_dashboard.png',
         'ML_for_DPAD/analysis_outputs/agent_level_comparison/agent_aggregated_data.csv',
+        'ML_for_DPAD/analysis_outputs/agent_level_advanced/08b_advanced_report.txt',
+        'ML_for_DPAD/analysis_outputs/agent_level_advanced/08b_effect_sizes.csv',
+        'ML_for_DPAD/analysis_outputs/agent_level_advanced/08b_pca_biplot.png',
         'ML_for_DPAD/analysis_outputs/final_report/EXECUTIVE_REPORT.txt',
         'ML_for_DPAD/analysis_outputs/final_report/EXECUTIVE_REPORT.html'
     ]
@@ -454,7 +474,15 @@ def print_final_summary(successful, failed, total_time, validation_passed):
         print(f"   │  ├─ SHAP Analysis: ML_for_DPAD/analysis_outputs/shap_analysis/")
         print(f"   │  └─ LIME Analysis: ML_for_DPAD/analysis_outputs/lime_analysis/")
         print(f"   │")
-        print(f"   └─ Agent-Level Insights: ML_for_DPAD/analysis_outputs/agent_level_comparison/")
+        print(f"   ├─ Agent-Level Insights:")
+        print(f"   │  ├─ Basic Analysis: ML_for_DPAD/analysis_outputs/agent_level_comparison/")
+        print(f"   │  └─ Advanced Analysis: ML_for_DPAD/analysis_outputs/agent_level_advanced/")
+        print(f"   │      ├─ Effect Sizes: 08b_effect_sizes.csv")
+        print(f"   │      ├─ PCA Biplot: 08b_pca_biplot.png")
+        print(f"   │      ├─ Clustering: 08b_clustering_dendrogram_heatmap.png")
+        print(f"   │      └─ Temporal Trends: 08b_temporal_trends.png")
+        print(f"   │")
+        print(f"   └─ Execution Report: ML_for_DPAD/analysis_outputs/execution_report.txt")
         print(f"\n💡 Next Steps:")
         print(f"   1. Review the Executive Report (HTML version recommended)")
         print(f"   2. Examine the Summary Dashboard for quick insights")
@@ -492,9 +520,10 @@ def print_final_summary(successful, failed, total_time, validation_passed):
     if successful > 0:
         print(f"\n⚡ Performance Stats:")
         print(f"   • Average time per script: {total_time/len(SCRIPTS):.2f} seconds")
-        print(f"   • Total data processed: 40 calls (20 High-DPAD + 20 Low-DPAD)")
-        print(f"   • Analysis methods: 9 comprehensive techniques")
-        print(f"   • Output files generated: 100+ files and visualizations")
+        print(f"   • Total data processed: 3,220 calls (1,192 High-DPAD + 2,028 Low-DPAD)")
+        print(f"   • Agents analyzed: 11 agents (5 High-DPAD + 6 Low-DPAD)")
+        print(f"   • Analysis methods: {len(SCRIPTS)} comprehensive techniques")
+        print(f"   • Output files generated: 150+ files and visualizations")
         print(f"\n{'='*70}")
 
 

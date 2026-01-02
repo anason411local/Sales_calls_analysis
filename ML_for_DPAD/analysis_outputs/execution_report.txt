@@ -1,8 +1,8 @@
 DPAD ANALYSIS - PIPELINE EXECUTION REPORT
 ======================================================================
 
-Execution Date: 2026-01-01 18:37:06
-Total Execution Time: 0:04:42
+Execution Date: 2026-01-02 15:54:43
+Total Execution Time: 0:04:21
 
 ======================================================================
 SCRIPT EXECUTION SUMMARY
@@ -10,49 +10,57 @@ SCRIPT EXECUTION SUMMARY
 
 Script 1: Preprocessing
   Status: ✓ SUCCESS
-  Time: 1.55 seconds
+  Time: 1.38 seconds
 
 Script 2: Correlation Analysis
   Status: ✓ SUCCESS
-  Time: 9.28 seconds
+  Time: 6.67 seconds
 
 Script 3: Feature Importance
   Status: ✓ SUCCESS
-  Time: 33.23 seconds
+  Time: 31.93 seconds
 
 Script 4: Statistical Tests
   Status: ✓ SUCCESS
-  Time: 4.14 seconds
+  Time: 2.77 seconds
   Key Findings:
     - significant_features: 10
 
 Script 5: SHAP Analysis
   Status: ✓ SUCCESS
-  Time: 61.54 seconds
+  Time: 45.17 seconds
   Key Findings:
     - method: SHAP (RF + XGBoost)
 
 Script 6: LIME Analysis
   Status: ✓ SUCCESS
-  Time: 154.90 seconds
+  Time: 154.51 seconds
   Key Findings:
     - method: LIME (RF + XGBoost)
 
 Script 7: Visualizations
   Status: ✓ SUCCESS
-  Time: 12.17 seconds
+  Time: 8.45 seconds
   Key Findings:
     - charts: 7 visualizations
 
 Script 8: Agent-Level Analysis
   Status: ✓ SUCCESS
-  Time: 4.97 seconds
+  Time: 3.53 seconds
   Key Findings:
     - agents: 11
 
-Script 9: Combined Report
+Script 9: Advanced Agent Analysis
   Status: ✓ SUCCESS
-  Time: 0.36 seconds
+  Time: 7.00 seconds
+  Key Findings:
+    - large_effects: 5
+    - pca_variance: 42.1%
+    - clusters: 2
+
+Script 10: Combined Report
+  Status: ✓ SUCCESS
+  Time: 0.35 seconds
   Key Findings:
     - reports: Text + HTML + Summary
 
@@ -60,10 +68,10 @@ Script 9: Combined Report
 OVERALL SUMMARY
 ======================================================================
 
-Total Scripts: 9
-Successful: 9
+Total Scripts: 10
+Successful: 10
 Failed: 0
 Success Rate: 100.0%
 
-Total Time: 0:04:42
-Average Time per Script: 31.35 seconds
+Total Time: 0:04:21
+Average Time per Script: 26.18 seconds

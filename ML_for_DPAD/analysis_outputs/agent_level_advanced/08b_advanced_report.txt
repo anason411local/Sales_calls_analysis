@@ -1,0 +1,144 @@
+# DPAD ANALYSIS - ADVANCED AGENT-LEVEL REPORT
+======================================================================
+
+**Generated:** January 02, 2026 at 15:54
+
+======================================================================
+
+## 🎯 EXECUTIVE SUMMARY
+
+This advanced analysis applies rigorous statistical methods, machine learning,
+and temporal analysis to uncover deeper insights about agent performance.
+
+**Agents Analyzed:** 11
+- High-DPAD: 5
+- Low-DPAD: 6
+
+## 📊 1. EFFECT SIZE ANALYSIS (Cohen's d)
+
+Effect sizes provide a standardized measure of difference magnitude,
+accounting for both mean difference and variability.
+
+### Features with LARGE Effect Sizes (|d| >= 0.8):
+
+| Feature | Cohen's d | High-DPAD Mean | Low-DPAD Mean | Significant |
+|---------|-----------|----------------|---------------|-------------|
+| lgs_sentiment_style                 |    -1.668 |          5.177 |         5.748 |         Yes |
+| TO_length_in_sec                    |     0.999 |        179.928 |       171.467 |          No |
+| total_call_duration                 |     0.871 |        484.199 |       412.718 |          No |
+| signal_ratio                        |     0.866 |         58.854 |        53.669 |          No |
+| long_monologues                     |     0.842 |          3.061 |         2.661 |          No |
+
+### Features with MEDIUM Effect Sizes (0.5 <= |d| < 0.8):
+
+| Feature | Cohen's d | High-DPAD Mean | Low-DPAD Mean | Significant |
+|---------|-----------|----------------|---------------|-------------|
+| very_long_monologues                |     0.797 |          1.124 |         0.833 |          No |
+| sentiment_early_middle              |     0.708 |         40.822 |        39.635 |          No |
+| objections_acknowledged             |     0.690 |          1.002 |         0.822 |          No |
+| forbidden_industry                  |     0.681 |          4.083 |         4.062 |          No |
+| sentiment_progression               |    -0.655 |          3.782 |         4.093 |          No |
+| extended_monologues_count           |     0.649 |          3.617 |         3.242 |          No |
+| total_interruptions                 |     0.635 |          2.156 |         1.595 |          No |
+| agent_talk_percentage               |    -0.632 |         59.271 |        60.477 |          No |
+| disconnect_stage                    |    -0.627 |         64.596 |        67.343 |          No |
+| customer_sentiment_lgs              |    -0.608 |          8.220 |         8.442 |          No |
+
+## 🔬 2. PRINCIPAL COMPONENT ANALYSIS
+
+PCA reveals the underlying 'dimensions' that explain agent variance.
+
+**Key Findings:**
+- PC1 explains 25.1% of variance
+- PC2 explains 17.0% of variance
+- First 2 PCs explain 42.1% total variance
+- Need 6 PCs to explain 80% variance
+
+### Top 10 Features Contributing to PC1:
+
+- **customer_frustrations**: 0.217
+- **total_objections**: 0.217
+- **total_resistance_signals**: 0.216
+- **medium_monologues**: 0.207
+- **total_call_duration**: 0.202
+- **customer_marketing_experience**: 0.200
+- **technical_quality_score**: 0.199
+- **total_interruptions**: 0.195
+- **goal3_questions**: 0.183
+- **objections_acknowledged**: 0.180
+
+## 🎭 3. AGENT CLUSTERING
+
+Clustering identifies distinct agent 'archetypes' based on behavioral patterns.
+
+**Optimal Clusters:** 2
+
+### Cluster 1: 10 agents
+- High-DPAD: 4
+- Low-DPAD: 6
+- Agents: Art Estrada, Benjamin Franklin, Cora Johnson, Darwin Sanchez, Ice Bello, Ismael Marenco, Mary Lopez, Oscar Ross, Patrick Garcia, Rafael Munoz
+
+### Cluster 2: 1 agents
+- High-DPAD: 1
+- Low-DPAD: 0
+- Agents: Bryan Bernal
+
+## ⏱️ 4. TEMPORAL TRENDS
+
+Analysis of how agent performance evolves over time.
+
+**Time Period:** 2025-12-01/2025-12-07 to 2025-12-22/2025-12-28
+**Agents Tracked:** 11
+
+**Key Observations:**
+- Refer to temporal trend visualizations for detailed patterns
+- Individual agent trajectories show improvement/decline over time
+
+## 💡 5. ACTIONABLE INSIGHTS
+
+### Based on Effect Size Analysis:
+5. **lgs_sentiment_style**: High-DPAD agents show LOWER values
+   - Effect: Large (d = -1.668)
+   - Statistical significance: Yes (p < 0.05)
+
+1. **TO_length_in_sec**: High-DPAD agents show HIGHER values
+   - Effect: Large (d = 0.999)
+   - Statistical significance: No
+
+54. **total_call_duration**: High-DPAD agents show HIGHER values
+   - Effect: Large (d = 0.871)
+   - Statistical significance: No
+
+21. **signal_ratio**: High-DPAD agents show HIGHER values
+   - Effect: Large (d = 0.866)
+   - Statistical significance: No
+
+38. **long_monologues**: High-DPAD agents show HIGHER values
+   - Effect: Large (d = 0.842)
+   - Statistical significance: No
+
+### Based on Clustering:
+- Use cluster profiles to identify coaching needs
+- Match training programs to specific agent archetypes
+- Pair agents from different clusters for peer learning
+
+### Based on Temporal Analysis:
+- Monitor agents showing declining trends for early intervention
+- Identify and replicate practices from improving agents
+- Use weekly trends for performance reviews
+
+## 🔬 6. METHODOLOGY
+
+### Statistical Methods:
+- **Cohen's d**: Standardized effect size measure
+- **Bootstrap CI**: Confidence intervals with 1000 iterations
+- **T-tests**: Compare agent group means
+
+### Machine Learning:
+- **PCA**: Dimensionality reduction (standardized features)
+- **Hierarchical Clustering**: Ward linkage method
+- **Silhouette Analysis**: Optimal cluster selection
+
+### Temporal Analysis:
+- **Rolling averages**: 10-call windows
+- **Weekly aggregation**: Week-over-week trends
