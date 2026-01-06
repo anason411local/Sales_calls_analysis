@@ -1,6 +1,0 @@
-Variable,Bin,Value_Range,Count_Short,Count_Long,Total_Count,Pct_Short,Pct_Long,Pct_Difference,Direction,Importance_Score
-time_to_reason_seconds,Very High,"[24.00, 401.00]",85,139,224,37.95,62.05,24.11,Favors Long Calls,12.05
-time_to_reason_seconds,Very Low,"[0.00, 6.00]",135,106,241,56.02,43.98,-12.03,Favors Short Calls,6.02
-time_to_reason_seconds,Low,"[7.00, 11.00]",125,139,264,47.35,52.65,5.3,Neutral,2.65
-time_to_reason_seconds,High,"[17.00, 23.00]",118,109,227,51.98,48.02,-3.96,Neutral,1.98
-time_to_reason_seconds,Medium,"[12.00, 16.00]",110,110,220,50.0,50.0,0.0,Neutral,0.0

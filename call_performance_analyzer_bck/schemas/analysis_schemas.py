@@ -52,6 +52,19 @@ class CallInsight(BaseModel):
     technique_application: Optional[str] = Field(default=None, description="How to apply this technique in other scenarios")
     agent_persona_insight: Optional[str] = Field(default=None, description="What makes this agent's approach unique and effective")
     
+    # First 5 Minutes Engagement Analysis (NEW)
+    first_5min_opening_technique: Optional[str] = Field(default=None, description="Exact opening technique used in first 5 minutes")
+    first_5min_rapport_building: Optional[str] = Field(default=None, description="How rapport was built in first 5 minutes")
+    first_5min_value_proposition: Optional[str] = Field(default=None, description="Value proposition delivered in first 5 minutes")
+    first_5min_discovery_approach: Optional[str] = Field(default=None, description="Discovery questions/approach in first 5 minutes")
+    first_5min_engagement_hooks: Optional[List[str]] = Field(default_factory=list, description="Specific hooks that kept customer engaged")
+    first_5min_key_phrases: Optional[List[str]] = Field(default_factory=list, description="Key phrases that resonated with customer")
+    first_5min_verbatim_proof: Optional[str] = Field(default=None, description="Verbatim proof of what worked/failed in first 5 min")
+    first_5min_customer_response: Optional[str] = Field(default=None, description="How customer responded in first 5 minutes")
+    first_5min_turning_point: Optional[str] = Field(default=None, description="The turning point that either engaged or lost the customer")
+    first_5min_mistakes: Optional[List[str]] = Field(default_factory=list, description="Mistakes made in first 5 minutes that lost engagement")
+    first_5min_success_elements: Optional[List[str]] = Field(default_factory=list, description="Elements that kept customer past 5 minutes")
+    
     # Metadata
     analysis_timestamp: str = Field(default_factory=lambda: datetime.now().isoformat())
     analysis_success: bool = Field(default=True)

@@ -40,6 +40,14 @@ class BatchOrchestrator:
             df = self.data_handler.load_input_data()
             total_rows = len(df)
             
+            # Load agent performance overview data (DPAD, Conversion Rate, Payability)
+            agent_performance_overview = self.data_handler.get_agent_performance_summary()
+            if agent_performance_overview:
+                logger.info(f"Loaded agent performance data for {agent_performance_overview.get('total_agents', 0)} agents")
+            else:
+                logger.warning("No agent performance overview data available")
+                agent_performance_overview = {}
+            
             # Check for checkpoint
             start_row = 0
             if resume:
@@ -71,7 +79,19 @@ class BatchOrchestrator:
                 'retry_queue': [],
                 'ready_for_report': False,
                 'final_report': None,
-                'errors': []
+                'errors': [],
+                # First 5 Minutes Analysis State (NEW)
+                'first_5min_short_call_failures': [],
+                'first_5min_long_call_successes': [],
+                'first_5min_key_phrases_success': [],
+                'first_5min_key_phrases_failure': [],
+                'first_5min_opening_techniques_success': [],
+                'first_5min_opening_techniques_failure': [],
+                'first_5min_engagement_hooks': [],
+                'first_5min_turning_points': [],
+                'first_5min_verbiage_comparison': {'success': [], 'failure': []},
+                # Agent Performance Overview (High-Level Metrics)
+                'agent_performance_overview': agent_performance_overview
             }
             
             # Process batches

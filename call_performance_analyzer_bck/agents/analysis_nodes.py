@@ -48,6 +48,26 @@ def prepare_batch_node(state: AnalysisState) -> AnalysisState:
     if 'errors' not in state:
         state['errors'] = []
     
+    # First 5 Minutes Analysis State (NEW)
+    if 'first_5min_short_call_failures' not in state:
+        state['first_5min_short_call_failures'] = []
+    if 'first_5min_long_call_successes' not in state:
+        state['first_5min_long_call_successes'] = []
+    if 'first_5min_key_phrases_success' not in state:
+        state['first_5min_key_phrases_success'] = []
+    if 'first_5min_key_phrases_failure' not in state:
+        state['first_5min_key_phrases_failure'] = []
+    if 'first_5min_opening_techniques_success' not in state:
+        state['first_5min_opening_techniques_success'] = []
+    if 'first_5min_opening_techniques_failure' not in state:
+        state['first_5min_opening_techniques_failure'] = []
+    if 'first_5min_engagement_hooks' not in state:
+        state['first_5min_engagement_hooks'] = []
+    if 'first_5min_turning_points' not in state:
+        state['first_5min_turning_points'] = []
+    if 'first_5min_verbiage_comparison' not in state:
+        state['first_5min_verbiage_comparison'] = {'success': [], 'failure': []}
+    
     logger.info(f"Batch {state['batch_number']} prepared with {len(state['current_batch'])} rows")
     return state
 
@@ -412,8 +432,91 @@ def accumulate_metrics_node(state: AnalysisState) -> AnalysisState:
                 'factors': insight.success_factors,
                 'quotes': insight.notable_quotes
             })
+        
+        # ========== FIRST 5 MINUTES ANALYSIS COLLECTION (NEW) ==========
+        
+        # Collect first 5 min failures from short calls
+        if insight.is_short_call:
+            failure_data = {
+                'call_id': insight.call_id,
+                'agent': insight.omc_agent,
+                'duration': insight.omc_duration,
+                'opening_technique': insight.first_5min_opening_technique,
+                'mistakes': insight.first_5min_mistakes or [],
+                'turning_point': insight.first_5min_turning_point,
+                'verbatim_proof': insight.first_5min_verbatim_proof,
+                'customer_response': insight.first_5min_customer_response
+            }
+            if len(state['first_5min_short_call_failures']) < 20:
+                state['first_5min_short_call_failures'].append(failure_data)
+            
+            # Collect failed key phrases
+            if insight.first_5min_key_phrases:
+                state['first_5min_key_phrases_failure'].extend(insight.first_5min_key_phrases[:3])
+            
+            # Collect failed opening techniques
+            if insight.first_5min_opening_technique and len(state['first_5min_opening_techniques_failure']) < 15:
+                state['first_5min_opening_techniques_failure'].append({
+                    'agent': insight.omc_agent,
+                    'technique': insight.first_5min_opening_technique,
+                    'result': 'FAILED - Short Call'
+                })
+            
+            # Add to verbiage comparison (failure side)
+            if insight.first_5min_verbatim_proof:
+                state['first_5min_verbiage_comparison']['failure'].append(insight.first_5min_verbatim_proof)
+        
+        # Collect first 5 min successes from long calls
+        if not insight.is_short_call:
+            success_data = {
+                'call_id': insight.call_id,
+                'agent': insight.omc_agent,
+                'duration': insight.omc_duration,
+                'opening_technique': insight.first_5min_opening_technique,
+                'rapport_building': insight.first_5min_rapport_building,
+                'value_proposition': insight.first_5min_value_proposition,
+                'discovery_approach': insight.first_5min_discovery_approach,
+                'engagement_hooks': insight.first_5min_engagement_hooks or [],
+                'key_phrases': insight.first_5min_key_phrases or [],
+                'turning_point': insight.first_5min_turning_point,
+                'success_elements': insight.first_5min_success_elements or [],
+                'verbatim_proof': insight.first_5min_verbatim_proof
+            }
+            if len(state['first_5min_long_call_successes']) < 20:
+                state['first_5min_long_call_successes'].append(success_data)
+            
+            # Collect successful key phrases
+            if insight.first_5min_key_phrases:
+                state['first_5min_key_phrases_success'].extend(insight.first_5min_key_phrases[:5])
+            
+            # Collect successful opening techniques
+            if insight.first_5min_opening_technique and len(state['first_5min_opening_techniques_success']) < 15:
+                state['first_5min_opening_techniques_success'].append({
+                    'agent': insight.omc_agent,
+                    'technique': insight.first_5min_opening_technique,
+                    'result': 'SUCCESS - Long Call'
+                })
+            
+            # Collect engagement hooks
+            if insight.first_5min_engagement_hooks:
+                state['first_5min_engagement_hooks'].extend(insight.first_5min_engagement_hooks[:3])
+            
+            # Add to verbiage comparison (success side)
+            if insight.first_5min_verbatim_proof:
+                state['first_5min_verbiage_comparison']['success'].append(insight.first_5min_verbatim_proof)
+        
+        # Collect turning points (both success and failure)
+        if insight.first_5min_turning_point and len(state['first_5min_turning_points']) < 20:
+            state['first_5min_turning_points'].append({
+                'call_id': insight.call_id,
+                'agent': insight.omc_agent,
+                'is_short_call': insight.is_short_call,
+                'turning_point': insight.first_5min_turning_point,
+                'outcome': 'LOST' if insight.is_short_call else 'ENGAGED'
+            })
     
     logger.info(f"Metrics accumulated. Total agents tracked: {len(state['agent_metrics'])}")
+    logger.info(f"First 5 min data: {len(state['first_5min_short_call_failures'])} failures, {len(state['first_5min_long_call_successes'])} successes")
     return state
 
 

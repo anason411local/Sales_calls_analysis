@@ -11,7 +11,8 @@ from config.settings import (
     INPUT_COLUMNS,
     CHECKPOINT_FILE,
     OUTPUT_FILE,
-    BATCH_SIZE
+    BATCH_SIZE,
+    AGENT_PERFORMANCE_FILE
 )
 
 
@@ -22,6 +23,7 @@ class DataHandler:
         self.input_file = INPUT_FILE
         self.checkpoint_file = CHECKPOINT_FILE
         self.output_file = OUTPUT_FILE
+        self.agent_performance_file = AGENT_PERFORMANCE_FILE
         
     def load_input_data(self) -> pd.DataFrame:
         """
@@ -48,6 +50,77 @@ class DataHandler:
         except Exception as e:
             logger.error(f"Failed to load input data: {str(e)}")
             raise
+    
+    def load_agent_performance_data(self) -> Optional[pd.DataFrame]:
+        """
+        Load agent performance overview data (DPAD, Conversion Rate, Payability, etc.)
+        
+        Returns:
+            DataFrame with agent performance data or None if file doesn't exist
+        """
+        try:
+            if not self.agent_performance_file.exists():
+                logger.warning(f"Agent performance file not found: {self.agent_performance_file}")
+                return None
+            
+            logger.info(f"Loading agent performance data from {self.agent_performance_file}")
+            
+            df = pd.read_csv(self.agent_performance_file)
+            
+            # Expected columns
+            expected_cols = [
+                'Agent_Name', '# Attandance', '# Deals', '# Calls', 'DPAD',
+                'Conversion Rate', '30 Days Payability', '60 Days Payability',
+                '90 Days Payability', '0 - 90 Days Payability'
+            ]
+            
+            missing_cols = [col for col in expected_cols if col not in df.columns]
+            if missing_cols:
+                logger.warning(f"Missing agent performance columns: {missing_cols}")
+            
+            logger.info(f"Loaded {len(df)} agents from agent performance file")
+            return df
+            
+        except Exception as e:
+            logger.error(f"Failed to load agent performance data: {str(e)}")
+            return None
+    
+    def get_agent_performance_summary(self) -> Dict:
+        """
+        Get agent performance data as a summary dictionary for report generation
+        
+        Returns:
+            Dictionary with agent performance metrics
+        """
+        df = self.load_agent_performance_data()
+        
+        if df is None:
+            return {}
+        
+        summary = {
+            'total_agents': len(df),
+            'agents': []
+        }
+        
+        for _, row in df.iterrows():
+            agent_data = {
+                'name': row.get('Agent_Name', 'Unknown'),
+                'attendance': row.get('# Attandance', 0),
+                'deals': row.get('# Deals', 0),
+                'calls': row.get('# Calls', 0),
+                'dpad': row.get('DPAD', 0),
+                'conversion_rate': row.get('Conversion Rate', '-'),
+                'payability_30_days': row.get('30 Days Payability', '-'),
+                'payability_60_days': row.get('60 Days Payability', '-'),
+                'payability_90_days': row.get('90 Days Payability', '-'),
+                'payability_0_90_days': row.get('0 - 90 Days Payability', '-')
+            }
+            summary['agents'].append(agent_data)
+        
+        # Sort by DPAD (highest first)
+        summary['agents'].sort(key=lambda x: float(x['dpad']) if x['dpad'] else 0, reverse=True)
+        
+        return summary
     
     def get_checkpoint(self) -> Optional[Dict]:
         """

@@ -160,7 +160,38 @@ ANALYSIS REQUIREMENTS:
    - **PERSONA INSIGHT**: What makes this agent's approach unique and effective?
    - Think: "If I were training a new agent, what would I teach them from this call?"
 
-6. SPECIFIC RECOMMENDATIONS:
+6. FIRST 5 MINUTES CRITICAL ANALYSIS (MANDATORY FOR ALL CALLS):
+   This is the most critical window for customer engagement. Analyze what happens in the first 5 minutes (300 seconds):
+   
+   **For SHORT CALLS (<5 minutes) - What went WRONG:**
+   - **OPENING FAILURE**: How did the agent open? What was missing?
+   - **RAPPORT BREAKDOWN**: Where did rapport fail to build?
+   - **VALUE PROPOSITION GAP**: Was value communicated? If not, what was said instead?
+   - **DISCOVERY DEFICIENCY**: Were discovery questions asked? How many? Quality?
+   - **ENGAGEMENT LOSS POINT**: At what exact moment did the customer disengage?
+   - **MISTAKES MADE**: List specific mistakes in the first 5 minutes
+   - **VERBATIM PROOF**: Exact quote showing where engagement was lost
+   - **WHAT SHOULD HAVE BEEN SAID**: Provide alternative verbiage that could have worked
+   
+   **For LONG CALLS (>=5 minutes) - What went RIGHT:**
+   - **OPENING TECHNIQUE**: Exact opening that hooked the customer (verbatim)
+   - **RAPPORT BUILDING**: How was rapport established? Specific phrases used
+   - **VALUE PROPOSITION DELIVERY**: How was value communicated in first 5 min?
+   - **DISCOVERY APPROACH**: What questions were asked? In what order?
+   - **ENGAGEMENT HOOKS**: What specific hooks kept the customer engaged?
+   - **KEY PHRASES**: List 3-5 key phrases that resonated with the customer
+   - **TURNING POINT**: The exact moment customer became engaged (with quote)
+   - **SUCCESS ELEMENTS**: What elements can be replicated by other agents?
+   - **VERBATIM PROOF**: Exact quote showing successful engagement
+   
+   **COMPARISON ANALYSIS:**
+   - What did successful agents SAY that unsuccessful agents did NOT say?
+   - What is the EXACT VERBIAGE pattern that works in the first 5 minutes?
+   - What topics/subjects should be covered in first 5 minutes?
+   - What questions should be asked in what order?
+   - What value statements resonate most with customers?
+
+8. SPECIFIC RECOMMENDATIONS:
    - Provide 3-5 actionable recommendations for this agent
    - Focus on what can be improved immediately
    - Consider both individual and process-level changes

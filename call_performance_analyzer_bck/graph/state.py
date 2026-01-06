@@ -35,6 +35,20 @@ class AnalysisState(TypedDict):
     example_short_calls: List[Dict]  # Example short calls
     example_successful_calls: List[Dict]  # Example successful calls
     
+    # First 5 Minutes Analysis (NEW)
+    first_5min_short_call_failures: List[Dict]  # What failed in first 5 min of short calls
+    first_5min_long_call_successes: List[Dict]  # What worked in first 5 min of long calls
+    first_5min_key_phrases_success: List[str]  # Key phrases that worked
+    first_5min_key_phrases_failure: List[str]  # Key phrases that failed
+    first_5min_opening_techniques_success: List[Dict]  # Successful opening techniques
+    first_5min_opening_techniques_failure: List[Dict]  # Failed opening techniques
+    first_5min_engagement_hooks: List[str]  # Hooks that kept customers engaged
+    first_5min_turning_points: List[Dict]  # Turning points in calls
+    first_5min_verbiage_comparison: Dict[str, List[str]]  # Comparison of verbiage: success vs failure
+    
+    # Agent Performance Overview (High-Level Metrics from External Source)
+    agent_performance_overview: Dict  # DPAD, Conversion Rate, Payability metrics per agent
+    
     # Processing metadata
     processed_count: int  # Number of rows processed
     failed_count: int  # Number of failed analyses

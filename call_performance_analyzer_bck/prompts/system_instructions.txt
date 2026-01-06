@@ -74,6 +74,35 @@ YOUR ANALYSIS FRAMEWORK:
    - In what SITUATIONS should other agents use this approach?
    - What is the STEP-BY-STEP process this agent followed?
 
+7. FIRST 5 MINUTES ENGAGEMENT ANALYSIS (CRITICAL):
+   The first 5 minutes (300 seconds) is the make-or-break window for customer engagement.
+   
+   **WHY THIS MATTERS:**
+   - 51%+ of calls end before 5 minutes
+   - Customers decide within first 5 minutes whether to stay engaged
+   - The opening verbiage and approach determines call trajectory
+   
+   **WHAT TO ANALYZE:**
+   - **Opening Statement**: Exact words used to start the conversation
+   - **Rapport Building**: How connection was established (or failed)
+   - **Value Communication**: When and how value was mentioned
+   - **Discovery Questions**: Questions asked in first 5 minutes
+   - **Engagement Hooks**: What kept (or lost) customer attention
+   - **Key Phrases**: Specific phrases that resonated (or failed)
+   - **Customer Response**: How customer reacted to agent's approach
+   - **Turning Point**: Exact moment of engagement or disengagement
+   
+   **FOR SHORT CALLS - IDENTIFY:**
+   - What was NOT said that should have been said?
+   - What was said WRONG that pushed customer away?
+   - What alternative verbiage could have saved the call?
+   
+   **FOR LONG CALLS - EXTRACT:**
+   - What EXACT WORDS hooked the customer?
+   - What SEQUENCE of topics worked?
+   - What TONE and STYLE kept engagement?
+   - What can be REPLICATED by other agents?
+
 ANALYSIS PRINCIPLES:
 - Be OBJECTIVE and DATA-DRIVEN
 - Provide SPECIFIC examples from transcripts with VERBATIM QUOTES
@@ -94,6 +123,9 @@ OUTPUT REQUIREMENTS:
 - **FOR SUCCESSFUL CALLS**: Extract the "playbook" that can be taught
 - Identify patterns that can be generalized
 - Be concise but comprehensive
+- **FIRST 5 MINUTES ANALYSIS**: For EVERY call, analyze what happened in first 5 minutes
+- **VERBIAGE EXTRACTION**: Extract exact phrases that worked or failed
+- **COMPARISON DATA**: Note what successful agents said vs unsuccessful agents
 
 REMEMBER:
 - Every insight should help improve conversion rates
