@@ -970,6 +970,51 @@ Successful outcomes (P2P, SALE, CALLBK) correlate with longer durations and sust
             section += f"**Assessment:** ❌ Low rebuttal usage ({rebuttal_rate:.1f}%). Significant training needed on AVQ rebuttal pattern.\n\n"
         
         # =====================================================================
+        # NEW: Top 6 Objection Types with Proper Rebuttals (Detailed Breakdown)
+        # =====================================================================
+        section += "#### Top 6 Objection Types with Proper Rebuttals\n\n"
+        section += "**Detailed breakdown of the most common objections and how they were handled:**\n\n"
+        
+        top_6_objections = report_data.get('q4_top_6_objections', [])
+        
+        if top_6_objections:
+            # Summary Table
+            section += "| Objection Type | Times Raised | With Rebuttals | Rebuttal Rate |\n"
+            section += "|----------------|--------------|----------------|---------------|\n"
+            for obj in top_6_objections:
+                section += f"| {obj['objection_type']} | {obj['times_raised']} | {obj['times_with_rebuttal']} | {obj['rebuttal_rate']:.1f}% |\n"
+            section += "\n"
+            
+            # Detailed Examples for Each Objection Type
+            section += "**Verbatim Examples of Objections and Rebuttals:**\n\n"
+            
+            for obj_idx, obj in enumerate(top_6_objections, 1):
+                section += f"---\n\n"
+                section += f"**{obj_idx}. {obj['objection_type']}** (Raised {obj['times_raised']} times, {obj['rebuttal_rate']:.1f}% rebuttal rate)\n\n"
+                
+                examples = obj.get('examples', [])
+                if examples:
+                    for ex_idx, ex in enumerate(examples[:3], 1):
+                        section += f"*Example {ex_idx} (Call: {ex.get('call_id', 'N/A')}, Agent: {ex.get('agent', 'N/A')}):*\n\n"
+                        section += f"> **Customer:** \"{ex.get('customer_quote', 'N/A')}\"\n\n"
+                        section += f"> **Agent Rebuttal:** \"{ex.get('agent_rebuttal', 'N/A')}\"\n\n"
+                        
+                        quality = ex.get('rebuttal_quality', 'unknown')
+                        quality_emoji = "✅" if quality in ['excellent', 'good'] else "⚠️" if quality == 'partial' else "❌"
+                        avq = "Yes" if ex.get('followed_avq', False) else "No"
+                        returned = "Yes" if ex.get('returned_to_script', False) else "No"
+                        
+                        section += f"- Rebuttal Quality: {quality_emoji} {quality.title()}\n"
+                        section += f"- Followed AVQ Pattern: {avq}\n"
+                        section += f"- Returned to Script: {returned}\n\n"
+                else:
+                    section += "*No verbatim examples available for this objection type.*\n\n"
+            
+            section += "---\n\n"
+        else:
+            section += "*No objection data available for detailed breakdown.*\n\n"
+        
+        # =====================================================================
         # QUESTION 5: Returning to Script After Objection
         # =====================================================================
         section += "### 8.5 Script Recovery After Objections (Question 5)\n\n"

@@ -92,7 +92,8 @@ class BatchOrchestrator:
                     'total_objections': 0,
                     'objections_with_rebuttals': 0,
                     'objections_with_script_return': 0,
-                    'section_compliance_scores': {}
+                    'section_compliance_scores': {},
+                    'objection_type_breakdown': {}  # NEW: Track objection types with examples
                 },
                 'script_compliance_errors': [],
                 'script_compliance_report_data': None

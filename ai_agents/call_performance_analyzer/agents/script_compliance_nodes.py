@@ -354,6 +354,46 @@ def _update_global_compliance_summary(state: AnalysisState, insight: ScriptCompl
         if section_name not in summary['section_compliance_scores']:
             summary['section_compliance_scores'][section_name] = []
         summary['section_compliance_scores'][section_name].append(section_compliance.compliance_percentage)
+    
+    # =========================================================================
+    # NEW: Track objection types with examples for Top 6 breakdown
+    # =========================================================================
+    if 'objection_type_breakdown' not in summary:
+        summary['objection_type_breakdown'] = {}
+    
+    for objection_analysis in insight.objection_analyses:
+        obj_type = objection_analysis.objection_type
+        
+        # Normalize objection type name
+        obj_type_normalized = obj_type.lower().replace(' ', '_').replace('-', '_')
+        
+        if obj_type_normalized not in summary['objection_type_breakdown']:
+            summary['objection_type_breakdown'][obj_type_normalized] = {
+                'display_name': obj_type,
+                'times_raised': 0,
+                'times_with_rebuttal': 0,
+                'examples': []  # Store up to 3 examples with quotes
+            }
+        
+        breakdown = summary['objection_type_breakdown'][obj_type_normalized]
+        breakdown['times_raised'] += 1
+        
+        if objection_analysis.was_rebuttal_attempted:
+            breakdown['times_with_rebuttal'] += 1
+            
+            # Store example if we have less than 3 and this has good quotes
+            if (len(breakdown['examples']) < 3 and 
+                objection_analysis.customer_objection_verbatim and 
+                objection_analysis.agent_rebuttal_verbatim):
+                breakdown['examples'].append({
+                    'call_id': insight.call_id,
+                    'agent': insight.omc_agent,
+                    'customer_quote': objection_analysis.customer_objection_verbatim,
+                    'agent_rebuttal': objection_analysis.agent_rebuttal_verbatim,
+                    'rebuttal_quality': objection_analysis.rebuttal_quality,
+                    'followed_avq': objection_analysis.followed_avq_pattern,
+                    'returned_to_script': objection_analysis.returned_to_script
+                })
 
 
 def generate_script_compliance_report_data(state: AnalysisState) -> Dict:
@@ -412,6 +452,32 @@ def generate_script_compliance_report_data(state: AnalysisState) -> Dict:
     top_agents = [a['agent'] for a in agent_rankings[:5]]
     bottom_agents = [a['agent'] for a in agent_rankings[-5:] if a['compliance_rate'] < 50]
     
+    # =========================================================================
+    # NEW: Generate Top 6 Objection Type Breakdown with Examples
+    # =========================================================================
+    objection_type_breakdown = summary.get('objection_type_breakdown', {})
+    
+    # Sort by times_raised (descending) and get top 6
+    sorted_objections = sorted(
+        objection_type_breakdown.items(),
+        key=lambda x: x[1]['times_raised'],
+        reverse=True
+    )[:6]
+    
+    top_6_objections = []
+    for obj_key, obj_data in sorted_objections:
+        times_raised = obj_data['times_raised']
+        times_with_rebuttal = obj_data['times_with_rebuttal']
+        rebuttal_rate_obj = (times_with_rebuttal / times_raised * 100) if times_raised > 0 else 0
+        
+        top_6_objections.append({
+            'objection_type': obj_data['display_name'],
+            'times_raised': times_raised,
+            'times_with_rebuttal': times_with_rebuttal,
+            'rebuttal_rate': rebuttal_rate_obj,
+            'examples': obj_data['examples'][:3]  # Ensure max 3 examples
+        })
+    
     report_data = {
         # Question 1: Script Following Rate
         "q1_calls_script_followed_count": summary['calls_script_followed'],
@@ -433,6 +499,9 @@ def generate_script_compliance_report_data(state: AnalysisState) -> Dict:
         "q4_total_objections": summary['total_objections'],
         "q4_objections_with_rebuttals": summary['objections_with_rebuttals'],
         "q4_rebuttal_rate": rebuttal_rate,
+        
+        # NEW: Top 6 Objection Types with Examples
+        "q4_top_6_objections": top_6_objections,
         
         # Question 5: Script Return After Objection
         "q5_objections_with_script_return": summary['objections_with_script_return'],
