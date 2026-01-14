@@ -11,7 +11,7 @@ from config.settings import (
     LANGSMITH_ENDPOINT,
     LANGSMITH_PROJECT
 )
-from schemas.analysis_schemas import CallInsight
+from schemas.analysis_schemas import CallInsight, ScriptComplianceInsight
 from utils.logger import logger
 
 # Configure LangSmith if enabled
@@ -73,5 +73,34 @@ def get_report_llm():
         
     except Exception as e:
         logger.error(f"Failed to initialize report LLM: {str(e)}")
+        raise
+
+
+def get_script_compliance_llm():
+    """
+    Get Gemini LLM configured for script compliance analysis with structured output
+    
+    Returns:
+        Configured LLM with ScriptComplianceInsight structured output
+    """
+    if not GEMINI_API_KEY:
+        raise ValueError("GEMINI_API_KEY not found in environment variables")
+    
+    try:
+        llm = ChatGoogleGenerativeAI(
+            model=GEMINI_MODEL,
+            google_api_key=GEMINI_API_KEY,
+            temperature=0.1,  # Low temperature for consistent analysis
+            convert_system_message_to_human=True
+        )
+        
+        # Configure structured output for script compliance
+        structured_llm = llm.with_structured_output(ScriptComplianceInsight)
+        
+        logger.info(f"Script Compliance LLM initialized: {GEMINI_MODEL}")
+        return structured_llm
+        
+    except Exception as e:
+        logger.error(f"Failed to initialize Script Compliance LLM: {str(e)}")
         raise
 

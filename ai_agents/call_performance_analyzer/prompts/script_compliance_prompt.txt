@@ -1,0 +1,272 @@
+SCRIPT COMPLIANCE ANALYSIS TASK
+================================================================================
+
+Analyze the following OMC sales call for Script Compliance.
+
+CALL INFORMATION:
+- Call ID: {TO_Lead_ID}
+- OMC Agent: {TO_OMC_User}
+- Call Date: {TO_Event_O}
+- Call Duration: {TO_OMC_Duration} seconds
+- Call Status: {TO_OMC_Disposiion}
+- Customer Company: {LQ_Company_Name}
+- Customer Service: {LQ_Service}
+
+OMC TRANSCRIPTION:
+{omc_transcription}
+
+================================================================================
+ANALYSIS REQUIREMENTS
+================================================================================
+
+Perform a comprehensive Script Compliance Analysis covering these areas:
+
+1. OVERALL SCRIPT COMPLIANCE ASSESSMENT
+--------------------------------------------------------------------------------
+Determine:
+- Is the calling script meaningfully followed? (Yes if >=40% compliance AND >=4 core sections attempted)
+- Overall compliance percentage (0-100%)
+- Compliance tier: HIGH (>70%), MEDIUM (40-70%), LOW (<40%)
+- How many of the 10 sections were attempted?
+- Did the agent follow the correct sequence (1→2→3→4→5→6→7→8)?
+
+2. SECTION-BY-SECTION ANALYSIS
+--------------------------------------------------------------------------------
+For EACH of the 10 script sections, analyze:
+
+SECTION 1: INTRO (Hook + Control)
+- Key Elements to Look For:
+  * Greeting with customer name
+  * "Real quick" or similar pace-control phrase
+  * Reference to previous contact/assistant
+  * Mention of looking for reliable business
+  * Online searches reference
+  * "Sound good?" or acknowledgment request
+
+SECTION 2: QUALIFYING (Keep it light & curious)
+- Key Elements to Look For:
+  * Questions about types of jobs
+  * Average job/profit questions
+  * Lead closing rate question
+  * Marketing ROI expectations
+  * Best customer/area questions
+
+SECTION 3: PROBLEM + SETUP
+- Key Elements to Look For:
+  * Google presence question
+  * ZIP code reference
+  * Competitor visibility mention
+  * Statistics (84% use Google, 94% first page)
+  * Visibility opportunity question
+
+SECTION 4: PITCH (Clear and Simple)
+- Key Elements to Look For:
+  * 411 Locals introduction
+  * Local SEO explanation
+  * Website mention (17-page)
+  * Directory listings (50+)
+  * Booking Engine offer
+  * Digital Business Card
+  * Google Ads option
+
+SECTION 5: OFFER + CLOSE (Hard Close)
+- Key Elements to Look For:
+  * Original price anchor
+  * Discounted offer
+  * Monthly pricing
+  * No contract mention
+  * ROI calculation
+  * Assumptive close language
+  * Payment method request
+
+SECTION 6: INFO CHECK
+- Key Elements to Look For:
+  * Business name confirmation
+  * Address, phone, email
+  * Hours of operation
+  * Services offered
+  * Payment methods
+  * Address visibility preference
+
+SECTION 7: SMS AGREEMENT
+- Key Elements to Look For:
+  * Text agreement mention
+  * "Reply I agree" instruction
+  * Price lock mention
+  * Exclusivity mention
+
+SECTION 8: TIMELINE & EXPECTATIONS
+- Key Elements to Look For:
+  * Month 1 setup explanation
+  * Months 2-4 optimization
+  * Month 6+ results
+  * Review request
+  * SEO growth metaphor
+  * Welcome call transfer mention
+
+SECTION 9: OPENING OBJECTIONS (situational)
+- Only analyze if objections occurred early in call
+- Check for proper AVQ handling of:
+  * "I'm fully booked"
+  * "Already have website"
+  * "Too many customers"
+  * "I'm busy"
+  * "What's this about?"
+  * "Costs money"
+  * "Already have marketing"
+
+SECTION 10: CLOSING OBJECTIONS (situational)
+- Only analyze if objections occurred during/after pitch
+- Check for proper AVQ handling of:
+  * "Send email"
+  * "No money/budget"
+  * "No time/too busy"
+  * "Driving/call back"
+  * "No urgency/think about it"
+  * "No trust"
+  * "No card"
+  * "Prepaid card"
+  * "Bad reviews"
+  * "Bad experience"
+  * "Talk to partner"
+  * "Trial/cancellation questions"
+
+For each section, provide:
+- was_attempted: true/false
+- compliance_percentage: 0-100
+- key_elements_covered: list of elements covered
+- key_elements_missed: list of elements missed
+- agent_verbatim: exact quote showing attempt (if any)
+
+3. NON-COMPLIANCE REASON ANALYSIS
+--------------------------------------------------------------------------------
+If script was NOT followed (compliance <40% or <4 core sections), identify:
+
+PRIMARY REASON CATEGORY:
+- customer_hung_up_immediately
+- customer_objection_interrupted
+- technical_connection_issues
+- not_decision_maker
+- wrong_timing_busy
+- language_barrier
+- customer_already_client
+- customer_not_interested_upfront
+- agent_skipped_sections
+- agent_deviated_from_script
+
+CLASSIFICATION:
+- External Factor: technical issues, already client, language barrier
+- Client Interruption: hung up, objection interrupted, not interested, not DM, busy
+- Agent Error: skipped sections, deviated from script
+
+Provide:
+- non_compliance_reason: primary reason
+- non_compliance_category: External Factor / Client Interruption / Agent Error
+- non_compliance_details: detailed explanation
+- non_compliance_verbatim_proof: exact quote proving the reason
+
+4. OBJECTION-REBUTTAL ANALYSIS
+--------------------------------------------------------------------------------
+For EACH objection raised by the customer:
+
+a) Identify the objection TYPE from the script categories
+b) Extract the CUSTOMER VERBATIM (exact quote)
+c) Did agent attempt a REBUTTAL?
+d) Rate REBUTTAL QUALITY:
+   - excellent: Closely follows AVQ pattern
+   - good: Paraphrased but captures acknowledge/value/question
+   - partial: Some elements present
+   - poor: Attempt made but ineffective
+   - none: No rebuttal
+
+e) Extract AGENT REBUTTAL VERBATIM (if any)
+f) Did agent follow AVQ pattern?
+   - A (Acknowledge): Validated concern
+   - V (Value): Provided value/reframe
+   - Q (Question): Asked redirecting question
+
+g) Did agent RETURN TO SCRIPT after handling objection?
+h) Which section did they return to?
+
+5. SCRIPT RECOVERY ANALYSIS
+--------------------------------------------------------------------------------
+After objections were handled (if any):
+- Did agent successfully return to the calling script?
+- Rate recovery quality: excellent/good/partial/poor/none
+- Which section did they resume from?
+
+6. KEY INSIGHTS EXTRACTION
+--------------------------------------------------------------------------------
+Provide:
+- strongest_sections: List of 2-3 best performed sections
+- weakest_sections: List of 2-3 sections needing improvement
+- specific_recommendations: 3-5 actionable improvements for this agent
+- best_practice_quote: One quote showing good script adherence
+- improvement_needed_quote: One quote showing where improvement is needed
+
+================================================================================
+IMPORTANT GUIDELINES
+================================================================================
+
+1. PARAPHRASING IS ACCEPTABLE
+   - Agent doesn't need exact script wording
+   - Look for the INTENT and KEY CONCEPTS
+   - Natural conversation > robotic recitation
+
+2. CONTEXT MATTERS
+   - Short calls may not reach later sections
+   - Customer interruptions affect flow
+   - Some sections (9-10) are situational
+
+3. VERBATIM EVIDENCE
+   - Always provide exact quotes as proof
+   - Use "..." for truncated quotes
+   - Include enough context to understand
+
+4. OBJECTIVE ASSESSMENT
+   - Focus on observable behaviors
+   - Don't assume intent
+   - Rate based on what happened
+
+5. PRACTICAL COMPLIANCE
+   - 40%+ with 4+ sections = Script Followed
+   - Perfect compliance is not expected
+   - Focus on meaningful adherence
+
+================================================================================
+OUTPUT FORMAT
+================================================================================
+
+Provide your analysis in the structured format matching ScriptComplianceInsight schema:
+
+- call_id
+- omc_agent
+- call_duration_seconds
+- is_script_followed (true if >=40% AND >=4 core sections)
+- overall_compliance_percentage
+- compliance_tier (high/medium/low)
+- sections_attempted
+- sections_completed_well
+- section_compliance (list of 10 sections)
+- followed_correct_sequence
+- sequence_deviations
+- non_compliance_reason (if applicable)
+- non_compliance_category
+- non_compliance_details
+- non_compliance_verbatim_proof
+- total_objections_raised
+- objections_with_rebuttals
+- objection_analyses (list)
+- returned_to_script_after_objection
+- script_recovery_quality
+- call_exceeded_5_minutes
+- script_compliance_with_long_call
+- strongest_sections
+- weakest_sections
+- specific_recommendations
+- best_practice_quote
+- improvement_needed_quote
+
+================================================================================
+END OF SCRIPT COMPLIANCE ANALYSIS TASK
+================================================================================

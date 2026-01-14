@@ -8,6 +8,7 @@ from graph.analysis_graph import create_analysis_graph
 from graph.state import AnalysisState
 from reports.react_report_generator import ReActReportGenerator
 from agents.ml_insights_agent import MLInsightsAgent
+from agents.script_compliance_nodes import generate_script_compliance_report_data, get_example_compliance_calls
 from utils.logger import logger
 from config.settings import BATCH_SIZE
 import pandas as pd
@@ -73,7 +74,28 @@ class BatchOrchestrator:
                 'retry_queue': [],
                 'ready_for_report': False,
                 'final_report': None,
-                'errors': []
+                'errors': [],
+                # Script Compliance Analysis - NEW
+                'script_compliance_insights': [],
+                'agent_script_compliance': {},
+                'script_compliance_summary': {
+                    'total_calls': 0,
+                    'calls_script_followed': 0,
+                    'script_followed_and_over_5min': 0,
+                    'high_compliance_calls': 0,
+                    'medium_compliance_calls': 0,
+                    'low_compliance_calls': 0,
+                    'non_compliance_breakdown': {},
+                    'external_factors_count': 0,
+                    'client_interruption_count': 0,
+                    'agent_error_count': 0,
+                    'total_objections': 0,
+                    'objections_with_rebuttals': 0,
+                    'objections_with_script_return': 0,
+                    'section_compliance_scores': {}
+                },
+                'script_compliance_errors': [],
+                'script_compliance_report_data': None
             }
             
             # Process batches
@@ -108,6 +130,26 @@ class BatchOrchestrator:
             
             # Mark as ready for report
             state['ready_for_report'] = True
+            
+            # STEP: SCRIPT COMPLIANCE REPORT DATA GENERATION
+            logger.info("=" * 80)
+            logger.info("SCRIPT COMPLIANCE: GENERATING REPORT DATA")
+            logger.info("=" * 80)
+            
+            try:
+                script_compliance_report_data = generate_script_compliance_report_data(state)
+                script_compliance_examples = get_example_compliance_calls(state, count=3)
+                script_compliance_report_data['examples'] = script_compliance_examples
+                state['script_compliance_report_data'] = script_compliance_report_data
+                
+                logger.info(f"✅ Script Compliance Report Data Generated")
+                logger.info(f"   - Calls analyzed: {script_compliance_report_data.get('q1_total_calls', 0)}")
+                logger.info(f"   - Script followed: {script_compliance_report_data.get('q1_calls_script_followed_count', 0)} "
+                           f"({script_compliance_report_data.get('q1_calls_script_followed_percentage', 0):.1f}%)")
+                logger.info(f"   - Script + >5min: {script_compliance_report_data.get('q2_script_followed_over_5min_count', 0)}")
+            except Exception as e:
+                logger.error(f"❌ Script Compliance Report Data Generation failed: {str(e)}")
+                state['script_compliance_report_data'] = None
             
             # STEP: ML INSIGHTS ANALYSIS (NEW) - Optional, continues if fails
             logger.info("=" * 80)

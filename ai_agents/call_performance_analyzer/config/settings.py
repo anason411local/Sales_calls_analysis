@@ -23,7 +23,7 @@ LOGS_DIR.mkdir(exist_ok=True)
 REPORTS_DIR.mkdir(exist_ok=True)
 
 # Input/Output files
-INPUT_FILE = INPUT_DIR / "sales_variables_.csv"
+INPUT_FILE = INPUT_DIR / "dpad_sales_variables_extracted.csv"
 OUTPUT_FILE = REPORTS_DIR / "call_performance_analysis_report.md"
 CHECKPOINT_FILE = OUTPUT_DIR / "analysis_checkpoint.json"
 
@@ -146,6 +146,203 @@ ANALYSIS_FOCUS = {
     "lgs_handoff": "Quality of LGS to OMC handoff",
     "agent_performance": "Individual agent performance metrics",
     "patterns": "Successful vs unsuccessful call patterns",
-    "recommendations": "Actionable insights for improvement"
+    "recommendations": "Actionable insights for improvement",
+    "script_compliance": "How well agents follow the 10-section sales script"
+}
+
+# ============================================================================
+# SCRIPT COMPLIANCE CONFIGURATION
+# ============================================================================
+
+# Script compliance thresholds
+SCRIPT_COMPLIANCE_THRESHOLDS = {
+    "high_compliance": 70,      # >= 70% = High compliance
+    "medium_compliance": 40,    # 40-69% = Medium compliance
+    "low_compliance": 0,        # < 40% = Low compliance
+    "script_followed_min": 40,  # Minimum % to consider script "followed"
+    "min_core_sections": 4      # Minimum core sections (1-5) to be attempted
+}
+
+# 10 Mandatory Script Sections
+SCRIPT_SECTIONS = {
+    1: {
+        "name": "Intro",
+        "full_name": "Intro (Hook + Control)",
+        "key_elements": [
+            "Greeting with customer name",
+            "Real quick phrase",
+            "Reference to assistant/previous contact",
+            "Looking for reliable business mention",
+            "Online searches reference",
+            "Sound good acknowledgment"
+        ]
+    },
+    2: {
+        "name": "Qualifying",
+        "full_name": "Qualifying (Keep it light & curious)",
+        "key_elements": [
+            "What kind of jobs question",
+            "Average job question",
+            "Profit per job question",
+            "Lead closing rate question",
+            "Marketing ROI question",
+            "Best customers question",
+            "Best areas question"
+        ]
+    },
+    3: {
+        "name": "Problem_Setup",
+        "full_name": "Problem + Setup",
+        "key_elements": [
+            "Google presence question",
+            "ZIP code reference",
+            "Competitors on first page mention",
+            "84% statistic",
+            "94% first page statistic",
+            "Visibility opportunity question"
+        ]
+    },
+    4: {
+        "name": "Pitch",
+        "full_name": "Pitch (Clear and Simple)",
+        "key_elements": [
+            "411 Locals introduction",
+            "70,000 businesses mention",
+            "Local SEO explanation",
+            "17-page website",
+            "50+ directories",
+            "Booking Engine offer",
+            "Digital Business Card",
+            "Google Ads option"
+        ]
+    },
+    5: {
+        "name": "Offer_Close",
+        "full_name": "Offer + Close (Hard Close)",
+        "key_elements": [
+            "Original price anchor",
+            "Discounted offer",
+            "Monthly pricing",
+            "No contract mention",
+            "ROI calculation",
+            "Assumptive close",
+            "Payment method request"
+        ]
+    },
+    6: {
+        "name": "Info_Check",
+        "full_name": "Info Check",
+        "key_elements": [
+            "Business name confirmation",
+            "Address",
+            "Phone & Email",
+            "Hours of operation",
+            "Top services",
+            "Payment methods",
+            "Address visibility"
+        ]
+    },
+    7: {
+        "name": "SMS_Agreement",
+        "full_name": "SMS Agreement",
+        "key_elements": [
+            "Text agreement mention",
+            "Reply I agree instruction",
+            "Price lock mention",
+            "Exclusivity mention"
+        ]
+    },
+    8: {
+        "name": "Timeline_Expectations",
+        "full_name": "Timeline & Expectations",
+        "key_elements": [
+            "Month 1 setup explanation",
+            "Months 2-4 optimization",
+            "Month 6+ results",
+            "Review request",
+            "SEO growth metaphor",
+            "Welcome call transfer"
+        ]
+    },
+    9: {
+        "name": "Opening_Objections",
+        "full_name": "Opening Objections",
+        "is_situational": True,
+        "key_elements": [
+            "I'm fully booked handling",
+            "Already have website handling",
+            "Too many customers handling",
+            "I'm busy handling",
+            "What's this about handling",
+            "Costs money handling",
+            "Already have marketing handling"
+        ]
+    },
+    10: {
+        "name": "Closing_Objections",
+        "full_name": "Closing Objections",
+        "is_situational": True,
+        "key_elements": [
+            "Send email handling",
+            "No money/budget handling",
+            "No time handling",
+            "Driving/call back handling",
+            "No urgency handling",
+            "No trust handling",
+            "No card handling",
+            "Prepaid card handling",
+            "Bad reviews handling",
+            "Bad experience handling",
+            "Talk to partner handling",
+            "Trial/cancellation handling"
+        ]
+    }
+}
+
+# Non-compliance reason categories
+NON_COMPLIANCE_CATEGORIES = {
+    "external_factors": [
+        "customer_hung_up_immediately",
+        "technical_connection_issues",
+        "customer_already_client",
+        "language_barrier"
+    ],
+    "client_interruptions": [
+        "customer_objection_interrupted",
+        "not_decision_maker",
+        "wrong_timing_busy",
+        "customer_not_interested_upfront"
+    ],
+    "agent_errors": [
+        "agent_skipped_sections",
+        "agent_deviated_from_script"
+    ]
+}
+
+# Objection types from script
+SCRIPT_OBJECTIONS = {
+    "opening": [
+        "fully_booked",
+        "already_have_website",
+        "too_many_customers",
+        "busy_right_now",
+        "whats_this_about",
+        "costs_money",
+        "already_have_marketing"
+    ],
+    "closing": [
+        "send_email",
+        "no_money_budget",
+        "no_time_too_busy",
+        "driving_call_back",
+        "no_urgency",
+        "no_trust",
+        "no_card",
+        "prepaid_card",
+        "bad_reviews",
+        "bad_experience",
+        "talk_to_partner",
+        "trial_cancellation"
+    ]
 }
 

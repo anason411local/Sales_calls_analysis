@@ -2,7 +2,7 @@
 LangGraph state management for call performance analysis
 """
 from typing import TypedDict, List, Dict, Optional, Any
-from schemas.analysis_schemas import CallInsight
+from schemas.analysis_schemas import CallInsight, ScriptComplianceInsight
 
 
 class AnalysisState(TypedDict):
@@ -49,4 +49,23 @@ class AnalysisState(TypedDict):
     
     # Error tracking
     errors: List[Dict]  # Errors encountered during processing
+    
+    # =========================================================================
+    # SCRIPT COMPLIANCE ANALYSIS - NEW SECTION
+    # =========================================================================
+    
+    # Script Compliance Insights
+    script_compliance_insights: List[ScriptComplianceInsight]  # All script compliance analyses
+    
+    # Agent-Level Script Compliance Metrics
+    agent_script_compliance: Dict[str, Dict]  # Agent name -> compliance metrics
+    
+    # Global Script Compliance Summary
+    script_compliance_summary: Dict[str, Any]  # Aggregated compliance statistics
+    
+    # Script Compliance Errors
+    script_compliance_errors: List[Dict]  # Errors during compliance analysis
+    
+    # Script Compliance Report Data
+    script_compliance_report_data: Optional[Dict]  # Final formatted report data
 

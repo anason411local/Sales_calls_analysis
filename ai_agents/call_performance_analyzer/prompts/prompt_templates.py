@@ -12,11 +12,62 @@ with open(PROMPTS_DIR / "system_instructions.txt", "r", encoding="utf-8") as f:
 with open(PROMPTS_DIR / "analysis_prompt.txt", "r", encoding="utf-8") as f:
     ANALYSIS_PROMPT = f.read()
 
+# Load Script Compliance prompts
+with open(PROMPTS_DIR / "script_compliance_instructions.txt", "r", encoding="utf-8") as f:
+    SCRIPT_COMPLIANCE_INSTRUCTIONS = f.read()
+
+with open(PROMPTS_DIR / "script_compliance_prompt.txt", "r", encoding="utf-8") as f:
+    SCRIPT_COMPLIANCE_PROMPT = f.read()
+
 # Create chat prompt template
 CALL_ANALYSIS_PROMPT = ChatPromptTemplate.from_messages([
     ("system", SYSTEM_INSTRUCTIONS),
     ("human", ANALYSIS_PROMPT)
 ])
+
+# Create Script Compliance Analysis prompt template
+SCRIPT_COMPLIANCE_ANALYSIS_PROMPT = ChatPromptTemplate.from_messages([
+    ("system", SCRIPT_COMPLIANCE_INSTRUCTIONS),
+    ("human", SCRIPT_COMPLIANCE_PROMPT)
+])
+
+# Script Compliance Report Section Prompt
+SCRIPT_COMPLIANCE_REPORT_PROMPT = """
+You are a senior business analyst generating the Script Compliance section of an executive report.
+
+SCRIPT COMPLIANCE DATA:
+{script_compliance_data}
+
+Generate a comprehensive SCRIPT COMPLIANCE ANALYSIS section that answers these 5 key questions:
+
+1. **Script Adherence Rate**: In how many calls is the calling script being followed?
+   - Include count and percentage
+   - Show compliance tier distribution (High/Medium/Low)
+
+2. **Script + Duration**: Of calls where script is followed, how many go beyond 5 minutes?
+   - Show the correlation between script compliance and call duration
+
+3. **Non-Compliance Reasons**: If the script is not being followed, why?
+   - Categorize: External Factors vs Client Interruptions vs Agent Errors
+   - Provide detailed breakdown
+
+4. **Objection Handling**: When objections are raised, are the right rebuttals being used?
+   - Total objections vs objections with proper rebuttals
+   - Assess rebuttal quality
+
+5. **Script Recovery**: Are agents returning to the calling script after handling objections?
+   - Track script return rate
+   - Assess recovery quality
+
+Include:
+- Data tables for each metric
+- Section-by-section compliance breakdown
+- Agent rankings by script compliance
+- Real examples with verbatim quotes
+- Key findings and recommendations
+
+Use professional Markdown formatting with tables, headers, and bullet points.
+"""
 
 # Report generation prompt
 REPORT_GENERATION_PROMPT = """

@@ -130,6 +130,7 @@ class ReActReportGenerator:
             ('lgs_omc_analysis', self._generate_lgs_omc_analysis),
             ('daily_trends', self._generate_daily_trends),
             ('status_analysis', self._generate_status_analysis),
+            ('script_compliance', self._generate_script_compliance),  # NEW SECTION
             ('recommendations', self._generate_recommendations),
             ('real_examples', self._generate_real_examples)
         ]
@@ -175,6 +176,7 @@ class ReActReportGenerator:
             'lgs_omc_analysis',
             'daily_trends',
             'status_analysis',
+            'script_compliance',  # NEW SECTION
             'recommendations',
             'real_examples'
         ]
@@ -841,6 +843,273 @@ Successful outcomes (P2P, SALE, CALLBK) correlate with longer durations and sust
 
 """
     
+    def _generate_script_compliance(self, state: AnalysisState, reasoning: Dict) -> str:
+        """
+        Generate Script Compliance Analysis section - NEW
+        
+        This section answers 5 key questions:
+        1. In how many calls is the script being followed?
+        2. Of script-followed calls, how many exceed 5 minutes?
+        3. Why is the script not followed?
+        4. Are correct rebuttals being used for objections?
+        5. Are agents returning to script after objections?
+        """
+        
+        # Get script compliance report data from state
+        report_data = state.get('script_compliance_report_data', {})
+        
+        if not report_data or 'error' in report_data:
+            return """## 8. SCRIPT COMPLIANCE ANALYSIS
+
+*Script compliance data not available. This section requires script compliance analysis to be run.*
+
+"""
+        
+        # Build the section
+        section = "## 8. SCRIPT COMPLIANCE ANALYSIS\n\n"
+        section += "This section analyzes how well OMC calling agents follow the mandatory 10-section sales script.\n\n"
+        
+        # =====================================================================
+        # QUESTION 1: Script Following Rate
+        # =====================================================================
+        section += "### 8.1 Script Adherence Rate (Question 1)\n\n"
+        section += "**In how many calls is the Calling Script being followed?**\n\n"
+        
+        total = report_data.get('q1_total_calls', 0)
+        followed = report_data.get('q1_calls_script_followed_count', 0)
+        followed_pct = report_data.get('q1_calls_script_followed_percentage', 0)
+        
+        section += f"| Metric | Count | Percentage |\n"
+        section += f"|--------|-------|------------|\n"
+        section += f"| Calls with Script Followed | {followed} | {followed_pct:.1f}% |\n"
+        section += f"| Calls without Script Compliance | {total - followed} | {100 - followed_pct:.1f}% |\n"
+        section += f"| **Total Calls Analyzed** | **{total}** | **100%** |\n\n"
+        
+        # Compliance tier distribution
+        high_comp = report_data.get('compliance_high_count', 0)
+        med_comp = report_data.get('compliance_medium_count', 0)
+        low_comp = report_data.get('compliance_low_count', 0)
+        
+        section += "**Compliance Tier Distribution:**\n\n"
+        section += f"| Tier | Definition | Count | Percentage |\n"
+        section += f"|------|------------|-------|------------|\n"
+        section += f"| High | >70% compliance | {high_comp} | {high_comp/total*100 if total > 0 else 0:.1f}% |\n"
+        section += f"| Medium | 40-70% compliance | {med_comp} | {med_comp/total*100 if total > 0 else 0:.1f}% |\n"
+        section += f"| Low | <40% compliance | {low_comp} | {low_comp/total*100 if total > 0 else 0:.1f}% |\n\n"
+        
+        # =====================================================================
+        # QUESTION 2: Script Followed + Over 5 Minutes
+        # =====================================================================
+        section += "### 8.2 Script Compliance + Call Duration (Question 2)\n\n"
+        section += "**Of calls where script is followed, how many go beyond 5 minutes?**\n\n"
+        
+        script_and_long = report_data.get('q2_script_followed_over_5min_count', 0)
+        script_and_long_pct = report_data.get('q2_script_followed_over_5min_percentage', 0)
+        denominator = report_data.get('q2_denominator', followed)
+        
+        section += f"| Metric | Count | Percentage |\n"
+        section += f"|--------|-------|------------|\n"
+        section += f"| Script Followed AND >5 min | {script_and_long} | {script_and_long_pct:.1f}% |\n"
+        section += f"| Script Followed BUT ≤5 min | {denominator - script_and_long} | {100 - script_and_long_pct:.1f}% |\n"
+        section += f"| **Total Calls with Script Followed** | **{denominator}** | **100%** |\n\n"
+        
+        section += f"**Key Insight:** When agents follow the script, **{script_and_long_pct:.1f}%** of calls exceed 5 minutes, "
+        section += f"indicating that script compliance is {'positively' if script_and_long_pct > 50 else 'not strongly'} correlated with longer call durations.\n\n"
+        
+        # =====================================================================
+        # QUESTION 3: Why Script Not Followed
+        # =====================================================================
+        section += "### 8.3 Non-Compliance Reasons (Question 3)\n\n"
+        section += "**If the script is not being followed, why? External factors or agent errors?**\n\n"
+        
+        ext_factors = report_data.get('q3_external_factors_count', 0)
+        client_int = report_data.get('q3_client_interruption_count', 0)
+        agent_err = report_data.get('q3_agent_error_count', 0)
+        total_non_comp = ext_factors + client_int + agent_err
+        
+        section += "**By Category:**\n\n"
+        section += f"| Category | Count | Percentage | Description |\n"
+        section += f"|----------|-------|------------|-------------|\n"
+        section += f"| Client Interruptions | {client_int} | {client_int/total_non_comp*100 if total_non_comp > 0 else 0:.1f}% | Customer hung up, objected, not interested |\n"
+        section += f"| External Factors | {ext_factors} | {ext_factors/total_non_comp*100 if total_non_comp > 0 else 0:.1f}% | Technical issues, language barrier, already client |\n"
+        section += f"| Agent Errors | {agent_err} | {agent_err/total_non_comp*100 if total_non_comp > 0 else 0:.1f}% | Skipped sections, deviated from script |\n\n"
+        
+        # Detailed breakdown
+        breakdown = report_data.get('q3_non_compliance_breakdown', {})
+        if breakdown:
+            section += "**Detailed Breakdown:**\n\n"
+            section += f"| Reason | Count |\n"
+            section += f"|--------|-------|\n"
+            sorted_reasons = sorted(breakdown.items(), key=lambda x: x[1], reverse=True)
+            for reason, count in sorted_reasons[:10]:
+                reason_display = reason.replace('_', ' ').title()
+                section += f"| {reason_display} | {count} |\n"
+            section += "\n"
+        
+        # =====================================================================
+        # QUESTION 4: Objection-Rebuttal Analysis
+        # =====================================================================
+        section += "### 8.4 Objection Handling & Rebuttals (Question 4)\n\n"
+        section += "**When objections are raised, are the right rebuttals being used?**\n\n"
+        
+        total_obj = report_data.get('q4_total_objections', 0)
+        obj_with_reb = report_data.get('q4_objections_with_rebuttals', 0)
+        rebuttal_rate = report_data.get('q4_rebuttal_rate', 0)
+        
+        section += f"| Metric | Count | Rate |\n"
+        section += f"|--------|-------|------|\n"
+        section += f"| Total Objections Raised | {total_obj} | - |\n"
+        section += f"| Objections with Rebuttals | {obj_with_reb} | {rebuttal_rate:.1f}% |\n"
+        section += f"| Objections without Rebuttals | {total_obj - obj_with_reb} | {100 - rebuttal_rate:.1f}% |\n\n"
+        
+        if rebuttal_rate >= 70:
+            section += f"**Assessment:** ✅ Strong rebuttal usage ({rebuttal_rate:.1f}%). Agents are effectively handling objections.\n\n"
+        elif rebuttal_rate >= 40:
+            section += f"**Assessment:** ⚠️ Moderate rebuttal usage ({rebuttal_rate:.1f}%). Room for improvement in objection handling.\n\n"
+        else:
+            section += f"**Assessment:** ❌ Low rebuttal usage ({rebuttal_rate:.1f}%). Significant training needed on AVQ rebuttal pattern.\n\n"
+        
+        # =====================================================================
+        # QUESTION 5: Returning to Script After Objection
+        # =====================================================================
+        section += "### 8.5 Script Recovery After Objections (Question 5)\n\n"
+        section += "**Are agents returning to the calling script after handling objections?**\n\n"
+        
+        script_return = report_data.get('q5_objections_with_script_return', 0)
+        script_return_rate = report_data.get('q5_script_return_rate', 0)
+        
+        section += f"| Metric | Count | Rate |\n"
+        section += f"|--------|-------|------|\n"
+        section += f"| Objections with Script Return | {script_return} | {script_return_rate:.1f}% |\n"
+        section += f"| Objections without Script Return | {total_obj - script_return} | {100 - script_return_rate:.1f}% |\n\n"
+        
+        if script_return_rate >= 70:
+            section += f"**Assessment:** ✅ Excellent script recovery ({script_return_rate:.1f}%). Agents effectively return to script flow.\n\n"
+        elif script_return_rate >= 40:
+            section += f"**Assessment:** ⚠️ Moderate script recovery ({script_return_rate:.1f}%). Training needed on returning to script after rebuttals.\n\n"
+        else:
+            section += f"**Assessment:** ❌ Poor script recovery ({script_return_rate:.1f}%). Agents lose script flow after objections.\n\n"
+        
+        # =====================================================================
+        # Section-Level Analysis
+        # =====================================================================
+        section += "### 8.6 Section-by-Section Compliance\n\n"
+        section += "**Which script sections are followed most/least?**\n\n"
+        
+        section_avgs = report_data.get('section_compliance_averages', {})
+        if section_avgs:
+            section += f"| Section | Avg Compliance | Assessment |\n"
+            section += f"|---------|----------------|------------|\n"
+            sorted_sections = sorted(section_avgs.items(), key=lambda x: x[1], reverse=True)
+            for sect_name, avg_comp in sorted_sections:
+                if avg_comp >= 70:
+                    assessment = "✅ Strong"
+                elif avg_comp >= 40:
+                    assessment = "⚠️ Moderate"
+                else:
+                    assessment = "❌ Needs Work"
+                section += f"| {sect_name} | {avg_comp:.1f}% | {assessment} |\n"
+            section += "\n"
+        
+        most_followed = report_data.get('most_followed_sections', [])
+        least_followed = report_data.get('least_followed_sections', [])
+        
+        section += f"**Best Performed Sections:** {', '.join(most_followed[:3]) if most_followed else 'N/A'}\n\n"
+        section += f"**Sections Needing Improvement:** {', '.join(least_followed[:3]) if least_followed else 'N/A'}\n\n"
+        
+        # =====================================================================
+        # Agent Rankings
+        # =====================================================================
+        section += "### 8.7 Agent Script Compliance Rankings\n\n"
+        
+        agent_rankings = report_data.get('agent_rankings', [])
+        if agent_rankings:
+            section += f"| Agent | Total Calls | Compliance Rate | Avg Score |\n"
+            section += f"|-------|-------------|-----------------|------------|\n"
+            for agent in agent_rankings[:15]:
+                section += f"| {agent['agent']} | {agent['total_calls']} | {agent['compliance_rate']:.1f}% | {agent['avg_score']:.1f} |\n"
+            section += "\n"
+        
+        top_agents = report_data.get('top_compliant_agents', [])
+        bottom_agents = report_data.get('agents_needing_training', [])
+        
+        section += f"**Top Script-Compliant Agents:** {', '.join(top_agents[:5]) if top_agents else 'N/A'}\n\n"
+        section += f"**Agents Needing Script Training:** {', '.join(bottom_agents[:5]) if bottom_agents else 'N/A'}\n\n"
+        
+        # =====================================================================
+        # Examples
+        # =====================================================================
+        examples = report_data.get('examples', {})
+        if examples:
+            # High compliance examples
+            high_examples = examples.get('high_compliance_examples', [])
+            if high_examples:
+                section += "### 8.8 Example: High Script Compliance\n\n"
+                for idx, ex in enumerate(high_examples[:2], 1):
+                    section += f"**{idx}. Call ID: {ex.get('call_id', 'N/A')}**\n"
+                    section += f"- Agent: {ex.get('agent', 'N/A')}\n"
+                    section += f"- Duration: {ex.get('duration', 0)} seconds\n"
+                    section += f"- Compliance: {ex.get('compliance_pct', 0):.1f}%\n"
+                    section += f"- Sections Attempted: {ex.get('sections_attempted', 0)}\n"
+                    if ex.get('best_practice_quote'):
+                        section += f"- Best Practice Quote: \"{ex['best_practice_quote']}\"\n"
+                    section += "\n"
+            
+            # Low compliance examples
+            low_examples = examples.get('low_compliance_examples', [])
+            if low_examples:
+                section += "### 8.9 Example: Low Script Compliance\n\n"
+                for idx, ex in enumerate(low_examples[:2], 1):
+                    section += f"**{idx}. Call ID: {ex.get('call_id', 'N/A')}**\n"
+                    section += f"- Agent: {ex.get('agent', 'N/A')}\n"
+                    section += f"- Duration: {ex.get('duration', 0)} seconds\n"
+                    section += f"- Compliance: {ex.get('compliance_pct', 0):.1f}%\n"
+                    section += f"- Non-Compliance Reason: {ex.get('non_compliance_reason', 'N/A')}\n"
+                    if ex.get('proof'):
+                        section += f"- Proof: \"{ex['proof']}\"\n"
+                    section += "\n"
+            
+            # Good objection handling examples
+            objection_examples = examples.get('good_objection_handling_examples', [])
+            if objection_examples:
+                section += "### 8.10 Example: Good Objection Handling\n\n"
+                for idx, ex in enumerate(objection_examples[:2], 1):
+                    section += f"**{idx}. Call ID: {ex.get('call_id', 'N/A')}**\n"
+                    section += f"- Agent: {ex.get('agent', 'N/A')}\n"
+                    section += f"- Objections Handled: {ex.get('objections_handled', 0)}\n"
+                    section += f"- Returned to Script: {'Yes ✅' if ex.get('returned_to_script') else 'No ❌'}\n"
+                    section += f"- Recovery Quality: {ex.get('recovery_quality', 'N/A')}\n"
+                    if ex.get('example_objection'):
+                        obj = ex['example_objection']
+                        section += f"- Objection Type: {obj.get('type', 'N/A')}\n"
+                        section += f"- Customer: \"{obj.get('customer_quote', 'N/A')}\"\n"
+                        section += f"- Agent Rebuttal: \"{obj.get('agent_rebuttal', 'N/A')}\"\n"
+                    section += "\n"
+        
+        # =====================================================================
+        # Key Findings & Recommendations
+        # =====================================================================
+        section += "### 8.11 Script Compliance Key Findings\n\n"
+        
+        section += "**Summary:**\n"
+        section += f"- **{followed_pct:.1f}%** of calls have meaningful script compliance\n"
+        section += f"- **{script_and_long_pct:.1f}%** of script-compliant calls exceed 5 minutes\n"
+        section += f"- **{rebuttal_rate:.1f}%** objection rebuttal rate\n"
+        section += f"- **{script_return_rate:.1f}%** script return rate after objections\n\n"
+        
+        section += "**Recommendations:**\n"
+        if followed_pct < 50:
+            section += "1. **Mandatory Script Training**: Less than half of calls follow the script. Implement refresher training.\n"
+        if rebuttal_rate < 50:
+            section += "2. **AVQ Rebuttal Training**: Focus on Acknowledge-Value-Question pattern for objection handling.\n"
+        if script_return_rate < 50:
+            section += "3. **Script Flow Recovery**: Train agents to return to script after handling objections.\n"
+        if least_followed:
+            section += f"4. **Focus on Weak Sections**: Prioritize training on {', '.join(least_followed[:2])}.\n"
+        section += "\n"
+        
+        return section
+    
     def _generate_recommendations(self, state: AnalysisState, reasoning: Dict) -> str:
         """Generate Recommendations section with ML prioritization (if available)"""
         
@@ -920,7 +1189,7 @@ Generate the section:"""
         
         result = chain.invoke(invoke_params)
         
-        return f"## 8. RECOMMENDATIONS\n\n{result}\n"
+        return f"## 9. RECOMMENDATIONS\n\n{result}\n"
     
     def _generate_real_examples(self, state: AnalysisState, reasoning: Dict) -> str:
         """Generate Real Examples section"""
@@ -928,7 +1197,7 @@ Generate the section:"""
         short_examples = [i for i in state['all_insights'] if i.is_short_call and i.proof_of_issue][:3]
         long_examples = [i for i in state['all_insights'] if not i.is_short_call and i.proof_of_success][:3]
         
-        examples_text = "## 9. REAL EXAMPLES\n\n"
+        examples_text = "## 10. REAL EXAMPLES\n\n"
         
         # Short call examples
         examples_text += "### A. Examples of Short Calls with Issues\n\n"
